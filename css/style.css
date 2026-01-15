@@ -813,6 +813,22 @@ body.dark-theme .lesson-time {
 	}
 }
 
+/* Разделы урока */
+.lesson-section {
+	margin-bottom: 50px;
+	padding-bottom: 30px;
+	border-bottom: 2px solid #e2e8f0;
+}
+
+.lesson-section:last-child {
+	border-bottom: none;
+}
+
+body.dark-theme .lesson-section {
+	border-bottom-color: #4a5568;
+}
+
+
 /* Карточки данных */
 .data-card {
 	background: white;
