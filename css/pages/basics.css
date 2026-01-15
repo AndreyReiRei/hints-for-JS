@@ -1,20 +1,6 @@
 /* ===== СТИЛИ ДЛЯ УРОКА ОСНОВ ===== */
 
-/* Введение урока */
-.lesson-intro {
-	background: linear-gradient(135deg, #667eea, #764ba2);
-	color: white;
-	padding: 25px;
-	border-radius: 15px;
-	margin-bottom: 30px;
-	box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-}
 
-.lesson-intro p {
-	font-size: 1.1rem;
-	line-height: 1.6;
-	margin: 0;
-}
 
 /* Разделы урока */
 .lesson-section {
@@ -379,9 +365,6 @@ body.dark-theme .code-editor {
 
 /* Адаптивность */
 @media (max-width: 768px) {
-	.lesson-intro {
-		padding: 20px;
-	}
 
 	.features-grid {
 		grid-template-columns: 1fr 1fr;

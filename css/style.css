@@ -239,6 +239,25 @@ body.dark-theme .feature-card h4 {
 }
 
 
+/* Введение урока */
+.lesson-intro {
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	color: white;
+	padding: 25px;
+	border-radius: 15px;
+	margin-bottom: 30px;
+	box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.lesson-intro p {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	margin: 0;
+}
+
+
+
+
 /* Список уроков */
 .lessons-preview h2 {
 	text-align: center;
@@ -1683,6 +1702,10 @@ body.dark-theme .editor-actions {
 		margin: 15px 0;
 	}
 
+	.lesson-intro {
+		padding: 20px;
+	}
+
 	.info-box h4 {
 		font-size: 16px;
 	}
@@ -1743,5 +1766,37 @@ body.dark-theme .editor-actions {
 		padding: 10px;
 		font-size: 12px;
 		min-height: 150px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+/* Принудительно скрываем горизонтальный скролл на мобильных */
+@media (max-width: 768px) {
+
+	body,
+	html {
+		overflow-x: clip !important;
+		/* Современная альтернатива hidden */
+		overscroll-behavior-x: none;
+		/* Предотвращает "отскок" на iOS */
+	}
+}
+
+@media (max-width: 480px) {
+
+	body,
+	html {
+		overflow-x: clip !important;
+		/* Современная альтернатива hidden */
+		overscroll-behavior-x: none;
+		/* Предотвращает "отскок" на iOS */
 	}
 }
