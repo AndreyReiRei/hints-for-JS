@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Функции в JavaScript - JS Tutor</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/functions.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html">Основы</a>
+					<a href="variables.html">Переменные</a>
+					<a href="functions.html" class="active">Функции</a>
+					<a href="objects.html">Объекты</a>
+					<a href="arrays.html">Массивы</a>
+					<a href="dom.html">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html">Асинхронность</a>
+					<a href="es6.html">ES6+</a>
+					<a href="practice.html">Практика</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html" class="active"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Функции в JavaScript</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Средний уровень</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 40 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 7 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>Функции</strong> — это строительные блоки JavaScript. Они позволяют группировать код в
+						многократно используемые блоки, делая программы более организованными, читаемыми и легкими в
+						поддержке.</p>
+				</div>
+
+				<!-- Быстрая навигация по уроку -->
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#what-are-functions">Что такое функции?</a></li>
+						<li><a href="#declaration-types">Типы объявлений функций</a></li>
+						<li><a href="#parameters-arguments">Параметры и аргументы</a></li>
+						<li><a href="#return-values">Возврат значений</a></li>
+						<li><a href="#closures">Замыкания</a></li>
+						<li><a href="#recursion">Рекурсия</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- ===== РАЗДЕЛ 1: Что такое функции? ===== -->
+				<section id="what-are-functions" class="lesson-section">
+					<h2><i class="fas fa-cogs"></i> Что такое функции?</h2>
+					<p>Функция — это блок кода, предназначенный для выполнения конкретной задачи. Функции помогают:</p>
+
+					<div class="features-grid">
+						<div class="feature-card">
+							<i class="fas fa-redo"></i>
+							<h4>Повторно использовать код</h4>
+							<p>Один раз написал — много раз использовал</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-project-diagram"></i>
+							<h4>Структурировать программу</h4>
+							<p>Делить сложные задачи на простые части</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-code"></i>
+							<h4>Упрощать отладку</h4>
+							<p>Легче найти ошибку в маленькой функции</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-users-cog"></i>
+							<h4>Работать в команде</h4>
+							<p>Четкое разделение ответственности</p>
+						</div>
+					</div>
+
+					<div class="info-box">
+						<h4><i class="fas fa-lightbulb"></i> Анатомия функции</h4>
+						<p>Каждая функция состоит из:</p>
+						<ul>
+							<li><strong>Ключевое слово</strong> (function, const, let)</li>
+							<li><strong>Имя функции</strong> (опционально для анонимных функций)</li>
+							<li><strong>Параметры</strong> (в круглых скобках)</li>
+							<li><strong>Тело функции</strong> (в фигурных скобках)</li>
+							<li><strong>Возвращаемое значение</strong> (через return)</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 2: Типы объявлений функций ===== -->
+				<section id="declaration-types" class="lesson-section">
+					<h2><i class="fas fa-code-branch"></i> Типы объявлений функций</h2>
+					<p>В JavaScript есть несколько способов объявления функций. Каждый имеет свои особенности:</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-declaration">Function Declaration</button>
+							<button class="tab-btn" data-tab="tab-expression">Function Expression</button>
+							<button class="tab-btn" data-tab="tab-arrow">Arrow Functions</button>
+							<button class="tab-btn" data-tab="tab-iife">IIFE</button>
+						</div>
+
+						<div class="tab-content active" id="tab-declaration">
+							<h4><i class="fas fa-file-signature"></i> Объявление функции (Function Declaration)</h4>
+							<p>Традиционный способ объявления функций. Можно вызывать до объявления (hoisting).</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Function Declaration
+function greet(name) {
+    return `Привет, ${name}!`;
+}
+
+// Можно вызвать ДО объявления
+console.log(greet("Анна")); // ✅ Работает
+
+function calculateSum(a, b) {
+    return a + b;
+}
+
+console.log(calculateSum(5, 3)); // 8
+console.log(calculateSum(10, 20)); // 30
+
+// Функции как значения
+const message = greet("Мир");
+console.log(message); // "Привет, Мир!"</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runDeclarationDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="declarationOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li><strong>Поднимается (hoisted)</strong> - можно вызывать до объявления</li>
+									<li>Имеет собственный <strong>this</strong></li>
+									<li>Можно использовать <strong>arguments</strong></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-expression">
+							<h4><i class="fas fa-variable"></i> Функциональное выражение (Function Expression)</h4>
+							<p>Функция как значение переменной. Нельзя вызывать до инициализации.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Function Expression
+const greet = function(name) {
+    return `Привет, ${name}!`;
+};
+
+// НЕЛЬЗЯ вызвать до объявления
+// console.log(greet("Анна")); // ❌ Ошибка
+
+// Но можно вызвать после
+console.log(greet("Петр")); // "Привет, Петр!"
+
+// Анонимные функции
+const multiply = function(a, b) {
+    return a * b;
+};
+
+console.log(multiply(4, 5)); // 20
+
+// Функции в массиве
+const operations = [
+    function(a, b) { return a + b; },
+    function(a, b) { return a - b; },
+    function(a, b) { return a * b; }
+];
+
+console.log(operations[0](10, 5)); // 15
+console.log(operations[1](10, 5)); // 5</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runExpressionDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="expressionOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li><strong>Не поднимается</strong> - нельзя вызывать до объявления</li>
+									<li>Часто используется для <strong>callback-функций</strong></li>
+									<li>Можно передавать как аргумент</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-arrow">
+							<h4><i class="fas fa-arrow-right"></i> Стрелочные функции (Arrow Functions)</h4>
+							<p>Современный синтаксис ES6+. Короче, нет собственного this.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Стрелочные функции (ES6+)
+const greet = (name) => {
+    return `Привет, ${name}!`;
+};
+
+// Сокращенная запись (если одна инструкция)
+const square = x => x * x;
+
+// Без параметров
+const sayHello = () => "Привет!";
+
+// Несколько параметров
+const sum = (a, b) => a + b;
+
+// Использование
+console.log(greet("Мария")); // "Привет, Мария!"
+console.log(square(5)); // 25
+console.log(sayHello()); // "Привет!"
+console.log(sum(10, 20)); // 30
+
+// Возврат объекта
+const createUser = (name, age) => ({ 
+    name, 
+    age, 
+    isAdult: age >= 18 
+});
+
+console.log(createUser("Алексей", 25));
+// { name: "Алексей", age: 25, isAdult: true }</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runArrowDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="arrowOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li><strong>Нет собственного this</strong> (берет из внешней области)</li>
+									<li><strong>Нельзя использовать как конструктор</strong></li>
+									<li><strong>Нет arguments</strong></li>
+									<li>Идеально для колбэков и методов массивов</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-iife">
+							<h4><i class="fas fa-bolt"></i> Немедленно вызываемые функции (IIFE)</h4>
+							<p>Функции, которые выполняются сразу после создания.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Immediately Invoked Function Expression
+(function() {
+    console.log("Эта функция выполняется сразу!");
+})();
+
+// С параметрами
+(function(name) {
+    console.log(`Привет, ${name}!`);
+})("Алексей");
+
+// С возвращаемым значением
+const randomNumber = (function() {
+    return Math.floor(Math.random() * 100);
+})();
+
+console.log(`Случайное число: ${randomNumber}`);
+
+// Для создания изолированной области видимости
+(function() {
+    const privateVariable = "Секрет";
+    
+    window.getSecret = function() {
+        return privateVariable;
+    };
+})();
+
+// console.log(privateVariable); // ❌ Ошибка - не доступно
+console.log(getSecret()); // ✅ "Секрет" - доступно через публичный метод</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runIIFEDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="iifeOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li>Выполняется <strong>немедленно</strong> после создания</li>
+									<li>Создает <strong>изолированную область видимости</strong></li>
+									<li>Часто используется в <strong>модульных паттернах</strong></li>
+									<li>Помогает избежать <strong>загрязнения глобальной области</strong></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Интерактивное сравнение -->
+					<div class="comparison-demo">
+						<h3><i class="fas fa-balance-scale"></i> Сравнение типов функций:</h3>
+						<div class="comparison-table">
+							<table>
+								<thead>
+									<tr>
+										<th>Тип</th>
+										<th>Hoisting</th>
+										<th>Свой this</th>
+										<th>arguments</th>
+										<th>Использование</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><strong>Function Declaration</strong></td>
+										<td>✅ Да</td>
+										<td>✅ Да</td>
+										<td>✅ Да</td>
+										<td>Основные функции</td>
+									</tr>
+									<tr>
+										<td><strong>Function Expression</strong></td>
+										<td>❌ Нет</td>
+										<td>✅ Да</td>
+										<td>✅ Да</td>
+										<td>Колбэки, присваивание</td>
+									</tr>
+									<tr>
+										<td><strong>Arrow Function</strong></td>
+										<td>❌ Нет</td>
+										<td>❌ Нет</td>
+										<td>❌ Нет</td>
+										<td>Колбэки, методы массивов</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 3: Параметры и аргументы ===== -->
+				<section id="parameters-arguments" class="lesson-section">
+					<h2><i class="fas fa-sliders-h"></i> Параметры и аргументы</h2>
+					<p>Параметры — это переменные в объявлении функции. Аргументы — значения, передаваемые при вызове.
+					</p>
+
+					<div class="interactive-demo">
+						<h3><i class="fas fa-calculator"></i> Калькулятор параметров:</h3>
+						<div class="params-calculator">
+							<div class="function-display">
+								<code>function calculate(<span id="param1">a</span>, <span id="param2">b</span>,
+                                    <span id="param3">operation</span>)</code>
+							</div>
+							<div class="inputs-grid">
+								<div class="input-group">
+									<label for="arg1">Аргумент a:</label>
+									<input type="number" id="arg1" value="10">
+								</div>
+								<div class="input-group">
+									<label for="arg2">Аргумент b:</label>
+									<input type="number" id="arg2" value="5">
+								</div>
+								<div class="input-group">
+									<label for="operation">Операция:</label>
+									<select id="operation">
+										<option value="add">+ (сложение)</option>
+										<option value="subtract">- (вычитание)</option>
+										<option value="multiply">* (умножение)</option>
+										<option value="divide">/ (деление)</option>
+									</select>
+								</div>
+							</div>
+							<button class="btn btn-primary" onclick="runParamsDemo()">
+								<i class="fas fa-play"></i> Вызвать функцию
+							</button>
+							<div id="paramsOutput" class="result-box">
+								<div class="result-placeholder">
+									<i class="fas fa-calculator"></i>
+									Результат появится здесь
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="params-examples">
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">1</span>
+								<h4>Параметры по умолчанию</h4>
+							</div>
+							<pre><code class="javascript">// ES5 способ
+function greet(name, greeting) {
+    greeting = greeting || "Привет";
+    return `${greeting}, ${name}!`;
+}
+
+// ES6+ способ (рекомендуется)
+function greet(name, greeting = "Привет") {
+    return `${greeting}, ${name}!`;
+}
+
+console.log(greet("Анна")); // "Привет, Анна!"
+console.log(greet("Петр", "Здравствуй")); // "Здравствуй, Петр!"</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">2</span>
+								<h4>Rest параметры</h4>
+							</div>
+							<pre><code class="javascript">// Собирает все аргументы в массив
+function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3)); // 6
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+// Можно комбинировать с обычными параметрами
+function showItems(title, ...items) {
+    console.log(`${title}:`);
+    items.forEach(item => console.log(`- ${item}`));
+}
+
+showItems("Фрукты", "Яблоко", "Банан", "Апельсин");</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">3</span>
+								<h4>Деструктуризация параметров</h4>
+							</div>
+							<pre><code class="javascript">// Деструктуризация объектов
+function showUser({ name, age, city = "Москва" }) {
+    console.log(`Имя: ${name}, Возраст: ${age}, Город: ${city}`);
+}
+
+const user = { name: "Анна", age: 25 };
+showUser(user); // Имя: Анна, Возраст: 25, Город: Москва
+
+// Деструктуризация массивов
+function getFirstAndLast([first, ...rest]) {
+    const last = rest.pop();
+    return [first, last];
+}
+
+const arr = [1, 2, 3, 4, 5];
+console.log(getFirstAndLast(arr)); // [1, 5]</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 4: Возврат значений ===== -->
+				<section id="return-values" class="lesson-section">
+					<h2><i class="fas fa-reply"></i> Возврат значений</h2>
+					<p>Функция может возвращать значение с помощью оператора <code>return</code>.</p>
+
+					<div class="return-demo">
+						<div class="tabs">
+							<div class="tab-buttons">
+								<button class="tab-btn active" data-tab="tab-return-single">Один return</button>
+								<button class="tab-btn" data-tab="tab-return-multiple">Несколько return</button>
+								<button class="tab-btn" data-tab="tab-return-none">Без return</button>
+								<button class="tab-btn" data-tab="tab-return-early">Ранний return</button>
+							</div>
+
+							<div class="tab-content active" id="tab-return-single">
+								<h4><i class="fas fa-arrow-right"></i> Функция с одним return</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">// Простая функция с одним return
+function isAdult(age) {
+    return age >= 18;
+}
+
+// Использование
+console.log(isAdult(20)); // true
+console.log(isAdult(16)); // false
+
+// Функция вычисления
+function calculateCircleArea(radius) {
+    return Math.PI * radius * radius;
+}
+
+console.log(`Площадь круга: ${calculateCircleArea(5).toFixed(2)}`);
+// Площадь круга: 78.54
+
+// Стрелочная функция с return
+const square = x => x * x;
+
+console.log(square(4)); // 16</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runReturnSingle()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="returnSingleOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-return-multiple">
+								<h4><i class="fas fa-code-branch"></i> Функция с несколькими return</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">// Функция с несколькими return (условными)
+function getGrade(score) {
+    if (score >= 90) {
+        return 'A';
+    } else if (score >= 80) {
+        return 'B';
+    } else if (score >= 70) {
+        return 'C';
+    } else if (score >= 60) {
+        return 'D';
+    } else {
+        return 'F';
+    }
+}
+
+console.log(getGrade(95)); // 'A'
+console.log(getGrade(85)); // 'B'
+console.log(getGrade(55)); // 'F'
+
+// Функция с возвратом разных типов
+function processValue(value) {
+    if (typeof value === 'string') {
+        return value.toUpperCase();
+    } else if (typeof value === 'number') {
+        return value * 2;
+    } else if (Array.isArray(value)) {
+        return value.length;
+    }
+    return null;
+}
+
+console.log(processValue("hello")); // "HELLO"
+console.log(processValue(10)); // 20
+console.log(processValue([1, 2, 3])); // 3</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runReturnMultiple()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="returnMultipleOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-return-none">
+								<h4><i class="fas fa-ban"></i> Функция без return</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">// Функция без return (возвращает undefined)
+function showMessage(text) {
+    console.log(text);
+    // Нет оператора return
+}
+
+let result = showMessage("Привет, мир!");
+console.log("Результат функции:", result); // undefined
+
+// Функция для побочных эффектов
+function updateCounter() {
+    let count = 0;
+    
+    return function() {
+        count++;
+        console.log(`Счетчик: ${count}`);
+        // Нет return - функция для побочного эффекта
+    };
+}
+
+const counter = updateCounter();
+counter(); // Счетчик: 1
+counter(); // Счетчик: 2
+
+// Функция, модифицирующая внешние переменные
+let total = 0;
+
+function addToTotal(value) {
+    total += value;
+    console.log(`Новый total: ${total}`);
+}
+
+addToTotal(10); // Новый total: 10
+addToTotal(20); // Новый total: 30
+console.log("Итоговый total:", total); // 30</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runReturnNone()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="returnNoneOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-return-early">
+								<h4><i class="fas fa-forward"></i> Ранний return (guard clauses)</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">// Ранний return для проверок
+function processUserData(user) {
+    // Проверка 1: пользователь существует?
+    if (!user) {
+        console.log("Ошибка: пользователь не определен");
+        return null;
+    }
+    
+    // Проверка 2: у пользователя есть имя?
+    if (!user.name || user.name.trim() === '') {
+        console.log("Ошибка: имя пользователя не указано");
+        return null;
+    }
+    
+    // Проверка 3: возраст корректен?
+    if (user.age < 0 || user.age > 150) {
+        console.log("Ошибка: некорректный возраст");
+        return null;
+    }
+    
+    // Все проверки пройдены - обрабатываем данные
+    console.log(`Обработка пользователя: ${user.name}, ${user.age} лет`);
+    return {
+        ...user,
+        isAdult: user.age >= 18,
+        greeting: `Привет, ${user.name}!`
+    };
+}
+
+// Тестирование
+console.log(processUserData(null)); // null с сообщением
+console.log(processUserData({})); // null с сообщением
+console.log(processUserData({ name: "", age: 25 })); // null
+console.log(processUserData({ name: "Анна", age: 250 })); // null
+console.log(processUserData({ name: "Иван", age: 25 })); // объект
+
+// Другой пример
+function calculateDiscount(price, discountCode) {
+    if (price <= 0) return 0;
+    if (!discountCode) return price;
+    
+    if (discountCode === "SALE10") return price * 0.9;
+    if (discountCode === "SALE20") return price * 0.8;
+    if (discountCode === "SALE50") return price * 0.5;
+    
+    return price;
+}
+
+console.log(calculateDiscount(100, "SALE20")); // 80</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runReturnEarly()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="returnEarlyOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 5: Замыкания ===== -->
+				<section id="closures" class="lesson-section">
+					<h2><i class="fas fa-box"></i> Замыкания (Closures)</h2>
+					<p>Замыкание — это функция, которая запоминает свое лексическое окружение даже после того, как
+						внешняя функция завершила выполнение.</p>
+
+					<div class="interactive-demo">
+						<h3><i class="fas fa-calculator"></i> Создайте свой счетчик:</h3>
+						<div class="closure-creator">
+							<div class="input-group">
+								<label for="startValue">Начальное значение:</label>
+								<input type="number" id="startValue" value="0">
+							</div>
+							<div class="input-group">
+								<label for="stepValue">Шаг увеличения:</label>
+								<input type="number" id="stepValue" value="1">
+							</div>
+							<button class="btn btn-primary" onclick="createCounter()">
+								<i class="fas fa-plus-circle"></i> Создать счетчик
+							</button>
+							<div id="counterControls" class="counter-controls">
+								<!-- Здесь появятся кнопки управления счетчиком -->
+							</div>
+							<div id="counterOutput" class="counter-output">
+								<div class="result-placeholder">
+									<i class="fas fa-info-circle"></i>
+									Создайте счетчик для начала работы
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="closure-examples">
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">1</span>
+								<h4>Базовый счетчик</h4>
+							</div>
+							<pre><code class="javascript">function createCounter() {
+    let count = 0; // Приватная переменная
+    
+    return {
+        increment: function() {
+            count++;
+            return count;
+        },
+        decrement: function() {
+            count--;
+            return count;
+        },
+        getValue: function() {
+            return count;
+        },
+        reset: function() {
+            count = 0;
+            return count;
+        }
+    };
+}
+
+const counter = createCounter();
+console.log(counter.increment()); // 1
+console.log(counter.increment()); // 2
+console.log(counter.getValue());  // 2
+console.log(counter.reset());     // 0</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">2</span>
+								<h4>Приватные данные</h4>
+							</div>
+							<pre><code class="javascript">function createBankAccount(initialBalance) {
+    let balance = initialBalance; // Приватная
+    
+    return {
+        deposit: function(amount) {
+            if (amount > 0) {
+                balance += amount;
+                console.log(`Внесено: ${amount}. Баланс: ${balance}`);
+            }
+            return balance;
+        },
+        withdraw: function(amount) {
+            if (amount > 0 && amount <= balance) {
+                balance -= amount;
+                console.log(`Снято: ${amount}. Баланс: ${balance}`);
+            } else {
+                console.log("Недостаточно средств");
+            }
+            return balance;
+        },
+        getBalance: function() {
+            return balance;
+        }
+    };
+}
+
+const account = createBankAccount(1000);
+account.deposit(500);  // Баланс: 1500
+account.withdraw(200); // Баланс: 1300
+console.log(account.balance); // undefined - приватное!</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">3</span>
+								<h4>Замыкания в циклах</h4>
+							</div>
+							<pre><code class="javascript">// Проблема: все обработчики показывают последнее значение
+function problemExample() {
+    const buttons = document.querySelectorAll('.btn');
+    
+    for (var i = 0; i < 3; i++) {
+        buttons[i].onclick = function() {
+            console.log(i); // Всегда 3!
+        };
+    }
+}
+
+// Решение с замыканием
+function solutionExample() {
+    const buttons = document.querySelectorAll('.btn');
+    
+    for (var i = 0; i < 3; i++) {
+        (function(index) {
+            buttons[index].onclick = function() {
+                console.log(index); // 0, 1, 2
+            };
+        })(i);
+    }
+}
+
+// Современное решение с let
+function modernSolution() {
+    const buttons = document.querySelectorAll('.btn');
+    
+    for (let i = 0; i < 3; i++) {
+        buttons[i].onclick = function() {
+            console.log(i); // 0, 1, 2
+        };
+    }
+}</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 6: Рекурсия ===== -->
+				<section id="recursion" class="lesson-section">
+					<h2><i class="fas fa-infinity"></i> Рекурсия</h2>
+					<p>Рекурсия — когда функция вызывает сама себя. Обязательно должен быть базовый случай для
+						остановки.</p>
+
+					<div class="recursion-visualizer">
+						<h3><i class="fas fa-project-diagram"></i> Визуализация рекурсии:</h3>
+						<div class="recursion-input">
+							<div class="input-group">
+								<label for="recursionNumber">Введите число:</label>
+								<input type="number" id="recursionNumber" value="5" min="1" max="10">
+							</div>
+							<div class="buttons-group">
+								<button class="btn btn-primary" onclick="calculateFactorial()">
+									<i class="fas fa-calculator"></i> Вычислить факториал
+								</button>
+								<button class="btn btn-secondary" onclick="calculateFibonacci()">
+									<i class="fas fa-project-diagram"></i> Число Фибоначчи
+								</button>
+								<button class="btn btn-warning" onclick="calculateSumRecursive()">
+									<i class="fas fa-plus"></i> Сумма чисел
+								</button>
+							</div>
+						</div>
+						<div id="recursionOutput" class="recursion-output">
+							<div class="recursion-tree" id="recursionTree">
+								<!-- Здесь будет визуализация рекурсии -->
+							</div>
+							<div class="recursion-result" id="recursionResult">
+								<div class="result-placeholder">
+									<i class="fas fa-play-circle"></i>
+									Выберите алгоритм для вычисления
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="recursion-examples">
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">1</span>
+								<h4>Факториал</h4>
+							</div>
+							<pre><code class="javascript">// Факториал: n! = n * (n-1) * (n-2) * ... * 1
+function factorial(n) {
+    // Базовый случай: 0! = 1, 1! = 1
+    if (n <= 1) {
+        return 1;
+    }
+    // Рекурсивный случай
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // 120
+
+// Визуализация вызовов:
+// factorial(5) = 5 * factorial(4)
+// factorial(4) = 4 * factorial(3)
+// factorial(3) = 3 * factorial(2)
+// factorial(2) = 2 * factorial(1)
+// factorial(1) = 1
+// Затем раскрутка назад: 1 * 2 * 3 * 4 * 5 = 120</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">2</span>
+								<h4>Числа Фибоначчи</h4>
+							</div>
+							<pre><code class="javascript">// Числа Фибоначчи: F(n) = F(n-1) + F(n-2)
+function fibonacci(n) {
+    // Базовые случаи
+    if (n <= 0) return 0;
+    if (n === 1) return 1;
+    
+    // Рекурсивный случай
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(7)); // 13
+
+// Последовательность: 0, 1, 1, 2, 3, 5, 8, 13, 21...
+
+// Оптимизация с мемоизацией
+function fibonacciMemo(n, memo = {}) {
+    if (n in memo) return memo[n];
+    if (n <= 0) return 0;
+    if (n === 1) return 1;
+    
+    memo[n] = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo);
+    return memo[n];
+}
+
+console.log(fibonacciMemo(50)); // Быстро, с мемоизацией</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">3</span>
+								<h4>Рекурсия с массивом</h4>
+							</div>
+							<pre><code class="javascript">// Сумма элементов массива
+function sumArray(arr, index = 0) {
+    if (index >= arr.length) {
+        return 0; // Базовый случай: пустой массив
+    }
+    return arr[index] + sumArray(arr, index + 1);
+}
+
+console.log(sumArray([1, 2, 3, 4, 5])); // 15
+
+// Поиск максимального элемента
+function findMax(arr, index = 0, currentMax = -Infinity) {
+    if (index >= arr.length) {
+        return currentMax;
+    }
+    
+    if (arr[index] > currentMax) {
+        currentMax = arr[index];
+    }
+    
+    return findMax(arr, index + 1, currentMax);
+}
+
+console.log(findMax([3, 1, 4, 1, 5, 9, 2, 6])); // 9
+
+// Обращение массива
+function reverseArray(arr) {
+    if (arr.length <= 1) {
+        return arr; // Базовый случай
+    }
+    
+    const first = arr[0];
+    const rest = arr.slice(1);
+    return [...reverseArray(rest), first];
+}
+
+console.log(reverseArray([1, 2, 3, 4, 5])); // [5, 4, 3, 2, 1]</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 7: Практическое задание ===== -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+					<p>Теперь применим полученные знания на практике:</p>
+
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Универсальный конвертер величин</h3>
+							<span class="difficulty-badge">Средний уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Создайте набор функций для конвертации различных величин:</p>
+							<ol>
+								<li>Температура (Цельсий ↔ Фаренгейт ↔ Кельвин)</li>
+								<li>Длина (метры ↔ километры ↔ мили ↔ футы)</li>
+								<li>Вес (килограммы ↔ граммы ↔ фунты ↔ унции)</li>
+								<li>Деньги (с учетом курса валют)</li>
+								<li>Функцию-фасад для удобного использования</li>
+							</ol>
+
+							<div class="hint-box">
+								<h4><i class="fas fa-lightbulb"></i> Формулы для справки:</h4>
+								<ul>
+									<li><strong>Температура:</strong> °F = °C × 9/5 + 32, K = °C + 273.15</li>
+									<li><strong>Длина:</strong> 1 км = 1000 м, 1 миля = 1609.34 м, 1 фут = 0.3048 м</li>
+									<li><strong>Вес:</strong> 1 кг = 1000 г, 1 фунт = 0.453592 кг, 1 унция = 28.3495 г
+									</li>
+									<li><strong>Деньги:</strong> Используйте фиксированные курсы или API</li>
+								</ul>
+							</div>
+
+							<div class="code-editor-area">
+								<h4><i class="fas fa-code"></i> Редактор кода:</h4>
+								<textarea id="exerciseCode" class="code-editor" placeholder="Напишите здесь ваш код..."
+									rows="15">
+// Ваш код здесь
+// Пример начала:
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+// Тестирование
+console.log("25°C =", celsiusToFahrenheit(25), "°F");
+console.log("77°F =", fahrenheitToCelsius(77), "°C");</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runFunctionsExercise()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<button class="btn btn-secondary" onclick="clearFunctionsExercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+									<button class="btn btn-success" onclick="testFunctionsExercise()">
+										<i class="fas fa-vial"></i> Запустить тесты
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Вывод вашего кода появится здесь
+									</div>
+								</div>
+							</div>
+
+							<div class="solution-section">
+								<button class="btn btn-warning show-solution">
+									<i class="fas fa-code"></i> Показать решение
+								</button>
+								<div class="solution hidden">
+									<h4><i class="fas fa-check-circle"></i> Пример решения:</h4>
+									<pre><code class="javascript">// Решение: Универсальный конвертер величин
+
+// ===== 1. КОНВЕРТАЦИЯ ТЕМПЕРАТУРЫ =====
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+function celsiusToKelvin(celsius) {
+    return celsius + 273.15;
+}
+
+function kelvinToCelsius(kelvin) {
+    return kelvin - 273.15;
+}
+
+// Универсальная функция конвертации температуры
+function convertTemperature(value, fromUnit, toUnit) {
+    const units = {
+        'C': 'Celsius',
+        'F': 'Fahrenheit', 
+        'K': 'Kelvin'
+    };
+    
+    // Конвертируем в Цельсии
+    let inCelsius;
+    switch (fromUnit) {
+        case 'C':
+            inCelsius = value;
+            break;
+        case 'F':
+            inCelsius = fahrenheitToCelsius(value);
+            break;
+        case 'K':
+            inCelsius = kelvinToCelsius(value);
+            break;
+        default:
+            throw new Error(`Неизвестная единица: ${fromUnit}`);
+    }
+    
+    // Конвертируем из Цельсиев
+    switch (toUnit) {
+        case 'C':
+            return inCelsius;
+        case 'F':
+            return celsiusToFahrenheit(inCelsius);
+        case 'K':
+            return celsiusToKelvin(inCelsius);
+        default:
+            throw new Error(`Неизвестная единица: ${toUnit}`);
+    }
+}
+
+// ===== 2. КОНВЕРТАЦИЯ ДЛИНЫ =====
+const lengthFactors = {
+    'm': 1,
+    'km': 1000,
+    'mile': 1609.34,
+    'foot': 0.3048,
+    'inch': 0.0254
+};
+
+function convertLength(value, fromUnit, toUnit) {
+    if (!lengthFactors[fromUnit] || !lengthFactors[toUnit]) {
+        throw new Error('Неизвестная единица длины');
+    }
+    
+    // Конвертируем в метры, затем в целевую единицу
+    const inMeters = value * lengthFactors[fromUnit];
+    return inMeters / lengthFactors[toUnit];
+}
+
+// ===== 3. КОНВЕРТАЦИЯ ВЕСА =====
+const weightFactors = {
+    'kg': 1,
+    'g': 0.001,
+    'lb': 0.453592,
+    'oz': 0.0283495
+};
+
+function convertWeight(value, fromUnit, toUnit) {
+    if (!weightFactors[fromUnit] || !weightFactors[toUnit]) {
+        throw new Error('Неизвестная единица веса');
+    }
+    
+    // Конвертируем в килограммы, затем в целевую единицу
+    const inKilograms = value * weightFactors[fromUnit];
+    return inKilograms / weightFactors[toUnit];
+}
+
+// ===== 4. КОНВЕРТАЦИЯ ВАЛЮТ =====
+const exchangeRates = {
+    'USD': 1,
+    'EUR': 0.85,
+    'GBP': 0.73,
+    'JPY': 110.5,
+    'RUB': 75.3
+};
+
+function convertCurrency(amount, fromCurrency, toCurrency) {
+    if (!exchangeRates[fromCurrency] || !exchangeRates[toCurrency]) {
+        throw new Error('Неизвестная валюта');
+    }
+    
+    // Конвертируем в USD, затем в целевую валюту
+    const inUSD = amount / exchangeRates[fromCurrency];
+    return inUSD * exchangeRates[toCurrency];
+}
+
+// ===== 5. ФАСАД ДЛЯ УДОБНОГО ИСПОЛЬЗОВАНИЯ =====
+class Converter {
+    static temperature(value, fromUnit, toUnit) {
+        const result = convertTemperature(value, fromUnit, toUnit);
+        console.log(`${value}°${fromUnit} = ${result.toFixed(2)}°${toUnit}`);
+        return result;
+    }
+    
+    static length(value, fromUnit, toUnit) {
+        const result = convertLength(value, fromUnit, toUnit);
+        console.log(`${value} ${fromUnit} = ${result.toFixed(4)} ${toUnit}`);
+        return result;
+    }
+    
+    static weight(value, fromUnit, toUnit) {
+        const result = convertWeight(value, fromUnit, toUnit);
+        console.log(`${value} ${fromUnit} = ${result.toFixed(4)} ${toUnit}`);
+        return result;
+    }
+    
+    static currency(amount, fromCurrency, toCurrency) {
+        const result = convertCurrency(amount, fromCurrency, toCurrency);
+        console.log(`${amount} ${fromCurrency} = ${result.toFixed(2)} ${toCurrency}`);
+        return result;
+    }
+}
+
+// ===== 6. ТЕСТИРОВАНИЕ =====
+console.log("=== ТЕСТИРОВАНИЕ КОНВЕРТЕРА ===");
+
+// Температура
+console.log("\n🌡️ Температура:");
+Converter.temperature(25, 'C', 'F');  // 77.00°F
+Converter.temperature(100, 'C', 'K'); // 373.15K
+Converter.temperature(32, 'F', 'C');  // 0.00°C
+
+// Длина
+console.log("\n📏 Длина:");
+Converter.length(1000, 'm', 'km');    // 1.0000 km
+Converter.length(1, 'mile', 'm');     // 1609.3400 m
+Converter.length(6, 'foot', 'm');     // 1.8288 m
+
+// Вес
+console.log("\n⚖️ Вес:");
+Converter.weight(1, 'kg', 'g');       // 1000.0000 g
+Converter.weight(1, 'lb', 'kg');      // 0.4536 kg
+Converter.weight(16, 'oz', 'lb');     // 1.0000 lb
+
+// Валюта
+console.log("\n💰 Валюта:");
+Converter.currency(100, 'USD', 'EUR'); // 85.00 EUR
+Converter.currency(50, 'EUR', 'USD');  // 58.82 USD
+Converter.currency(1000, 'JPY', 'USD'); // 9.05 USD
+
+console.log("\n✅ Все тесты пройдены!");</code></pre>
+									<div class="solution-tips">
+										<h5><i class="fas fa-tips"></i> Советы по улучшению:</h5>
+										<ul>
+											<li>Добавьте кэширование курсов валют</li>
+											<li>Реализуйте обновление курсов через API</li>
+											<li>Добавьте валидацию входных данных</li>
+											<li>Создайте красивый интерфейс для конвертера</li>
+											<li>Добавьте больше единиц измерения</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Пройденные темы -->
+					<div class="topics-summary">
+						<h3><i class="fas fa-graduation-cap"></i> Вы изучили:</h3>
+						<div class="topics-list">
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Что такое функции и зачем они нужны</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>4 способа объявления функций</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Параметры и аргументы функций</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Возврат значений из функций</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Замыкания и приватные данные</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Рекурсивные функции</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Создание конвертера величин</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навигация между уроками -->
+				<div class="navigation-buttons">
+					<a href="variables.html" class="nav-btn prev-btn">
+						<i class="fas fa-arrow-left"></i> Назад: Переменные
+					</a>
+					<a href="objects.html" class="nav-btn next-btn">
+						<i class="fas fa-arrow-right"></i> Следующий урок: Объекты
+					</a>
+				</div>
+
+				<!-- Дополнительные материалы -->
+				<div class="additional-materials">
+					<h3><i class="fas fa-book-open"></i> Дополнительные материалы</h3>
+					<div class="materials-list">
+						<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions" target="_blank"
+							class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Документация MDN по функциям</span>
+						</a>
+						<a href="https://learn.javascript.ru/function-basics" target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Функции на learn.javascript.ru</span>
+						</a>
+						<a href="#" class="material-link">
+							<i class="fas fa-download"></i>
+							<span>Скачать шпаргалку по функциям</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/basic-components.js"></script>
+	<script src="../js/component/functions.js"></script>
+</body>
+
+</html>

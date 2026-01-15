@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Работа с DOM в JavaScript - JS Tutor</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/dom.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html">Основы</a>
+					<a href="variables.html">Переменные</a>
+					<a href="functions.html">Функции</a>
+					<a href="objects.html">Объекты</a>
+					<a href="arrays.html">Массивы</a>
+					<a href="dom.html" class="active">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html">Асинхронность</a>
+					<a href="es6.html">ES6+</a>
+					<a href="practice.html">Практика</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html" class="active"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Работа с DOM в JavaScript</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Веб-разработка</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 45 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 7 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>DOM (Document Object Model)</strong> — это программный интерфейс для HTML и XML
+						документов. Он представляет страницу в виде дерева объектов, которые можно изменять с помощью
+						JavaScript, создавая интерактивные веб-приложения.</p>
+				</div>
+
+				<!-- Быстрая навигация по уроку -->
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#what-is-dom">Что такое DOM?</a></li>
+						<li><a href="#selecting-elements">Выбор элементов</a></li>
+						<li><a href="#modifying-elements">Изменение элементов</a></li>
+						<li><a href="#creating-elements">Создание элементов</a></li>
+						<li><a href="#dom-navigation">Навигация по DOM</a></li>
+						<li><a href="#forms-handling">Работа с формами</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- ===== РАЗДЕЛ 1: Что такое DOM? ===== -->
+				<section id="what-is-dom" class="lesson-section">
+					<h2><i class="fas fa-project-diagram"></i> Что такое DOM?</h2>
+					<p>DOM представляет HTML документ в виде древовидной структуры, где каждый узел — это объект,
+						представляющий часть документа.</p>
+
+					<div class="features-grid">
+						<div class="feature-card">
+							<i class="fas fa-tree"></i>
+							<h4>Древовидная структура</h4>
+							<p>Иерархическое представление документа</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-code"></i>
+							<h4>Программный интерфейс</h4>
+							<p>Доступ и манипуляция через JavaScript</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-sync"></i>
+							<h4>Живое представление</h4>
+							<p>Изменения отражаются в браузере</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-cogs"></i>
+							<h4>Кроссбраузерность</h4>
+							<p>Стандарт, работающий во всех браузерах</p>
+						</div>
+					</div>
+
+					<!-- Визуализация DOM -->
+					<div class="dom-visualization">
+						<h3><i class="fas fa-sitemap"></i> Визуализация DOM-дерева</h3>
+						<div class="dom-tree-container">
+							<div class="dom-tree">
+								<div class="dom-node root">
+									<span><i class="fas fa-file"></i> document</span>
+									<div class="dom-children">
+										<div class="dom-node">
+											<span><i class="fab fa-html5"></i> html</span>
+											<div class="dom-children">
+												<div class="dom-node">
+													<span><i class="fas fa-heading"></i> head</span>
+													<div class="dom-children">
+														<div class="dom-node"><span><i class="fas fa-tag"></i>
+																title</span>
+														</div>
+														<div class="dom-node"><span><i class="fas fa-cog"></i>
+																meta</span>
+														</div>
+													</div>
+												</div>
+												<div class="dom-node">
+													<span><i class="fas fa-body"></i> body</span>
+													<div class="dom-children">
+														<div class="dom-node"><span><i class="fas fa-heading"></i>
+																h1</span>
+														</div>
+														<div class="dom-node"><span><i class="fas fa-paragraph"></i>
+																p</span>
+														</div>
+														<div class="dom-node"><span><i class="fas fa-square"></i>
+																div</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="dom-explanation">
+								<div class="explanation-card">
+									<h4><i class="fas fa-info-circle"></i> Ключевые понятия:</h4>
+									<ul>
+										<li><strong>Document</strong> - корневой элемент</li>
+										<li><strong>Elements</strong> - HTML теги (узлы)</li>
+										<li><strong>Attributes</strong> - атрибуты элементов</li>
+										<li><strong>Text nodes</strong> - текстовое содержимое</li>
+										<li><strong>Comments</strong> - HTML комментарии</li>
+									</ul>
+								</div>
+								<button class="btn btn-primary" onclick="showLiveDOM()" id="showLiveDOMBtn">
+									<i class="fas fa-eye"></i> Показать DOM текущей страницы
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="info-box">
+						<h4><i class="fas fa-lightbulb"></i> Зачем нужен DOM?</h4>
+						<ul>
+							<li><strong>Динамическое изменение контента</strong> — обновление текста, изображений</li>
+							<li><strong>Обработка пользовательских действий</strong> — клики, ввод текста</li>
+							<li><strong>Валидация форм</strong> — проверка данных перед отправкой</li>
+							<li><strong>Анимации и переходы</strong> — создание интерактивных интерфейсов</li>
+							<li><strong>AJAX и динамическая загрузка</strong> — обновление без перезагрузки</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 2: Выбор элементов ===== -->
+				<section id="selecting-elements" class="lesson-section">
+					<h2><i class="fas fa-search"></i> Выбор элементов DOM</h2>
+					<p>JavaScript предоставляет несколько методов для выбора элементов на странице.</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-id">По ID</button>
+							<button class="tab-btn" data-tab="tab-class">По классу</button>
+							<button class="tab-btn" data-tab="tab-tag">По тегу</button>
+							<button class="tab-btn" data-tab="tab-css">CSS селекторы</button>
+							<button class="tab-btn" data-tab="tab-relations">По отношениям</button>
+						</div>
+
+						<div class="tab-content active" id="tab-id">
+							<h4><i class="fas fa-hashtag"></i> getElementById()</h4>
+							<p>Возвращает один элемент по уникальному идентификатору. Самый быстрый метод.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// HTML: &lt;div id="header"&gt;Заголовок&lt;/div&gt;
+
+// Получение элемента по ID
+const header = document.getElementById('header');
+
+// Проверка существования
+if (header) {
+    console.log('Элемент найден:', header);
+    
+    // Изменение элемента
+    header.textContent = 'Новый заголовок';
+    header.style.color = '#667eea';
+    header.classList.add('highlight');
+}
+
+// Получение нескольких элементов
+const elements = {
+    header: document.getElementById('header'),
+    content: document.getElementById('content'),
+    footer: document.getElementById('footer')
+};
+
+// Быстрая проверка
+const elementExists = !!document.getElementById('element-id');
+
+// Пример с формой
+const emailInput = document.getElementById('email');
+if (emailInput) {
+    emailInput.placeholder = 'Введите ваш email';
+    emailInput.focus();
+}</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runGetElementByIdDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="idOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li><strong>Самый быстрый</strong> метод выбора</li>
+									<li>Возвращает <strong>один элемент</strong> или <strong>null</strong></li>
+									<li>ID должен быть <strong>уникальным</strong> на странице</li>
+									<li>Чувствителен к <strong>регистру</strong></li>
+									<li>Можно вызывать от <strong>любого элемента</strong></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-class">
+							<h4><i class="fas fa-layer-group"></i> getElementsByClassName()</h4>
+							<p>Возвращает HTMLCollection (живую коллекцию) элементов по имени класса.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// HTML: &lt;div class="card"&gt;Карточка 1&lt;/div&gt;
+//        &lt;div class="card active"&gt;Карточка 2&lt;/div&gt;
+
+// Получение элементов по классу
+const cards = document.getElementsByClassName('card');
+console.log('Найдено карточек:', cards.length);
+
+// HTMLCollection - живая коллекция
+// Изменения DOM сразу отражаются в коллекции
+
+// Работа с коллекцией через цикл
+for (let i = 0; i < cards.length; i++) {
+    cards[i].style.border = '2px solid #667eea';
+    cards[i].style.padding = '10px';
+    cards[i].style.margin = '5px';
+}
+
+// Получение по нескольким классам
+const activeCards = document.getElementsByClassName('card active');
+console.log('Активных карточек:', activeCards.length);
+
+// Преобразование в массив для удобной работы
+const cardsArray = Array.from(cards);
+cardsArray.forEach((card, index) => {
+    card.dataset.index = index;
+    card.textContent = `Карточка ${index + 1}`;
+});</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runGetElementsByClassNameDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="classOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li>Возвращает <strong>HTMLCollection</strong> (живую коллекцию)</li>
+									<li>Можно искать <strong>несколько классов</strong> через пробел</li>
+									<li>Чувствителен к <strong>регистру</strong></li>
+									<li>Для методов массивов нужно <strong>преобразовать в массив</strong></li>
+									<li>Коллекция <strong>обновляется автоматически</strong></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-tag">
+							<h4><i class="fas fa-tag"></i> getElementsByTagName()</h4>
+							<p>Возвращает HTMLCollection элементов по имени тега.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Получение всех параграфов
+const paragraphs = document.getElementsByTagName('p');
+console.log('Параграфов на странице:', paragraphs.length);
+
+// Получение всех ссылок
+const links = document.getElementsByTagName('a');
+Array.from(links).forEach(link => {
+    // Проверка внешних ссылок
+    if (link.hostname !== window.location.hostname) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+    }
+    
+    // Добавление иконки для внешних ссылок
+    if (link.target === '_blank') {
+        link.innerHTML += ' &lt;i class="fas fa-external-link-alt"&gt;&lt;/i&gt;';
+    }
+});
+
+// Работа с формами
+const inputs = document.getElementsByTagName('input');
+const textInputs = Array.from(inputs).filter(input => 
+    input.type === 'text' || input.type === 'email'
+);
+
+textInputs.forEach(input => {
+    input.addEventListener('focus', function() {
+        this.style.borderColor = '#667eea';
+    });
+    
+    input.addEventListener('blur', function() {
+        this.style.borderColor = '';
+    });
+});</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runGetElementsByTagNameDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="tagOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li>Возвращает все элементы <strong>указанного тега</strong></li>
+									<li>Чувствителен к <strong>регистру</strong> (HTML обычно нет)</li>
+									<li>Можно вызывать от <strong>любого элемента</strong></li>
+									<li><strong> '*' </strong> - вернет все элементы</li>
+									<li>Полезен для <strong>глобальных изменений</strong></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-css">
+							<h4><i class="fas fa-sliders-h"></i> querySelector() / querySelectorAll()</h4>
+							<p>Современные методы для работы с CSS-селекторами.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// querySelector - первый подходящий элемент
+const firstButton = document.querySelector('.btn');
+const firstError = document.querySelector('.error');
+const firstListItem = document.querySelector('ul li');
+
+// querySelectorAll - все подходящие элементы (NodeList)
+const allButtons = document.querySelectorAll('.btn');
+const allErrors = document.querySelectorAll('.error');
+const allListItems = document.querySelectorAll('ul li');
+
+// NodeList поддерживает forEach
+allButtons.forEach((button, index) => {
+    button.dataset.index = index;
+    button.classList.add('interactive');
+});
+
+// Примеры сложных селекторов
+// По ID
+const main = document.querySelector('#main');
+
+// По нескольким классам
+const activeItem = document.querySelector('.item.active');
+
+// По атрибутам
+const textInputs = document.querySelectorAll('input[type="text"]');
+const requiredFields = document.querySelectorAll('[required]');
+const externalLinks = document.querySelectorAll('a[href^="http"]');
+
+// Псевдоклассы
+const firstChild = document.querySelector('li:first-child');
+const lastChild = document.querySelector('li:last-child');
+const oddItems = document.querySelectorAll('tr:nth-child(odd)');
+
+// Комбинированные селекторы
+const directChildren = document.querySelectorAll('.container > .item');
+const adjacentSibling = document.querySelector('h1 + p');
+const generalSibling = document.querySelectorAll('h1 ~ p');</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runQuerySelectorDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="cssOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li><strong>querySelector</strong> - первый элемент или null</li>
+									<li><strong>querySelectorAll</strong> - NodeList (статический)</li>
+									<li>Поддерживает <strong>все CSS селекторы</strong></li>
+									<li>NodeList имеет <strong>forEach</strong>, но не все методы массивов</li>
+									<li>Можно вызывать от <strong>любого элемента</strong></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-relations">
+							<h4><i class="fas fa-network-wired"></i> Выбор по отношениям</h4>
+							<p>Выбор элементов на основе их положения в DOM-дереву.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Получение родительских элементов
+const element = document.querySelector('.child');
+const parent = element.parentElement;
+const parentNode = element.parentNode;
+
+// Получение дочерних элементов
+const container = document.querySelector('.container');
+const children = container.children; // Только элементы
+const childNodes = container.childNodes; // Все узлы (текст, комментарии)
+const firstChild = container.firstElementChild;
+const lastChild = container.lastElementChild;
+
+// Получение соседних элементов
+const current = document.querySelector('.current');
+const nextSibling = current.nextElementSibling;
+const prevSibling = current.previousElementSibling;
+
+// Поиск ближайшего родителя по селектору
+function findAncestor(element, selector) {
+    while (element && !element.matches(selector)) {
+        element = element.parentElement;
+    }
+    return element;
+}
+
+// Найти ближайший элемент .card
+const card = findAncestor(element, '.card');
+
+// Поиск всех предков
+function getAllAncestors(element) {
+    const ancestors = [];
+    while (element.parentElement) {
+        ancestors.push(element.parentElement);
+        element = element.parentElement;
+    }
+    return ancestors;
+}</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runRelationsDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="relationsOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+								<ul>
+									<li><strong>parentElement</strong> - родительский элемент</li>
+									<li><strong>children</strong> - только дочерние элементы</li>
+									<li><strong>childNodes</strong> - все дочерние узлы</li>
+									<li><strong>*ElementSibling</strong> - соседние элементы</li>
+									<li>Полезно для <strong>навигации по DOM</strong></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Интерактивный селектор -->
+					<div class="interactive-demo">
+						<h3><i class="fas fa-magic"></i> Практикуйте выбор элементов:</h3>
+						<div class="selector-practice">
+							<div class="practice-area">
+								<div class="practice-header">
+									<h4>Тестовая область:</h4>
+									<div class="practice-stats">
+										<span>Выбрано: <strong id="selectedCount">0</strong></span>
+										<span>Всего: <strong id="totalCount">10</strong></span>
+									</div>
+								</div>
+								<div class="practice-elements" id="practiceElements">
+									<div class="practice-element" id="el1">Элемент 1</div>
+									<div class="practice-element" id="el2">Элемент 2</div>
+									<div class="practice-element class-a" id="el3">Элемент 3 (class-a)</div>
+									<div class="practice-element class-b" id="el4">Элемент 4 (class-b)</div>
+									<div class="practice-element class-a class-b" id="el5">Элемент 5 (class-a class-b)
+									</div>
+									<div class="practice-element" data-type="special" id="el6">Элемент 6 (data-type)
+									</div>
+									<div class="practice-element" id="el7">
+										<span>Элемент 7 с вложенным <strong>тегом</strong></span>
+									</div>
+									<div class="practice-element" id="el8">Элемент 8</div>
+									<div class="practice-element class-a" id="el9">Элемент 9 (class-a)</div>
+									<div class="practice-element" id="el10">Элемент 10</div>
+								</div>
+							</div>
+							<div class="practice-controls">
+								<h4><i class="fas fa-sliders-h"></i> Селекторы:</h4>
+								<div class="selector-input">
+									<input type="text" id="selectorInput" placeholder="Введите CSS селектор..."
+										class="form-control">
+									<button class="btn btn-primary" onclick="testSelector()">
+										<i class="fas fa-search"></i> Применить
+									</button>
+								</div>
+								<div class="selector-examples">
+									<h5>Примеры селекторов:</h5>
+									<div class="example-buttons">
+										<button class="btn btn-sm" onclick="setSelector('#el3')">#el3</button>
+										<button class="btn btn-sm" onclick="setSelector('.class-a')">.class-a</button>
+										<button class="btn btn-sm" onclick="setSelector('.class-b')">.class-b</button>
+										<button class="btn btn-sm"
+											onclick="setSelector('[data-type]')">[data-type]</button>
+										<button class="btn btn-sm"
+											onclick="setSelector('.class-a.class-b')">.class-a.class-b</button>
+										<button class="btn btn-sm"
+											onclick="setSelector(':nth-child(odd)')">:nth-child(odd)</button>
+										<button class="btn btn-sm"
+											onclick="setSelector(':nth-child(even)')">:nth-child(even)</button>
+										<button class="btn btn-sm" onclick="setSelector('*')">* (все)</button>
+									</div>
+								</div>
+								<div class="selector-result">
+									<h5>Результат:</h5>
+									<div id="selectorResult" class="console-output">
+										<div class="console-line info">Введите селектор и нажмите "Применить"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 3: Изменение элементов ===== -->
+				<section id="modifying-elements" class="lesson-section">
+					<h2><i class="fas fa-edit"></i> Изменение элементов</h2>
+					<p>После выбора элементов можно изменять их содержимое, стили и атрибуты.</p>
+
+					<div class="modification-demo">
+						<div class="tabs">
+							<div class="tab-buttons">
+								<button class="tab-btn active" data-tab="tab-content">Содержимое</button>
+								<button class="tab-btn" data-tab="tab-styles">Стили</button>
+								<button class="tab-btn" data-tab="tab-classes">Классы</button>
+								<button class="tab-btn" data-tab="tab-attributes">Атрибуты</button>
+								<button class="tab-btn" data-tab="tab-dataset">Data-атрибуты</button>
+							</div>
+
+							<div class="tab-content active" id="tab-content">
+								<h4><i class="fas fa-font"></i> Работа с содержимым</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">// textContent - безопасный текст (без HTML)
+const element = document.querySelector('.content');
+element.textContent = 'Новый текст'; // &lt;script&gt; будет текстом
+
+// innerHTML - с HTML разметкой
+element.innerHTML = '&lt;strong&gt;Жирный текст&lt;/strong&gt; и &lt;em&gt;курсив&lt;/em&gt;';
+
+// innerText - с учетом стилей (переносы, видимость)
+element.innerText = 'Текст\nс переносами';
+
+// outerHTML - включает сам элемент
+console.log(element.outerHTML);
+
+// Сравнение методов
+const div = document.createElement('div');
+div.innerHTML = '&lt;span&gt;Текст&lt;/span&gt;';
+
+console.log(div.textContent); // "Текст"
+console.log(div.innerHTML);   // "&lt;span&gt;Текст&lt;/span&gt;"
+
+// Безопасная вставка пользовательского контента
+function safeHTML(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+const userInput = '&lt;script&gt;alert("xss")&lt;/script&gt;';
+element.innerHTML = safeHTML(userInput); // Безопасно
+
+// Добавление к существующему содержимому
+element.textContent += ' (добавленный текст)';
+element.innerHTML += ' &lt;span&gt;новый элемент&lt;/span&gt;';</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runContentDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="contentOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+								<div class="comparison-box">
+									<h5><i class="fas fa-balance-scale"></i> Сравнение методов:</h5>
+									<table>
+										<thead>
+											<tr>
+												<th>Метод</th>
+												<th>Возвращает</th>
+												<th>Безопасность</th>
+												<th>Производительность</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><code>textContent</code></td>
+												<td>Только текст</td>
+												<td>✅ Безопасный</td>
+												<td>⚡ Быстрый</td>
+											</tr>
+											<tr>
+												<td><code>innerHTML</code></td>
+												<td>HTML разметку</td>
+												<td>❌ Опасный</td>
+												<td>🐢 Медленный</td>
+											</tr>
+											<tr>
+												<td><code>innerText</code></td>
+												<td>Текст с CSS</td>
+												<td>✅ Безопасный</td>
+												<td>🐢 Медленный</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-styles">
+								<h4><i class="fas fa-paint-brush"></i> Работа со стилями</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">// Изменение стилей через style
+const element = document.querySelector('.box');
+element.style.color = 'white';
+element.style.backgroundColor = '#667eea';
+element.style.padding = '20px';
+element.style.borderRadius = '8px';
+
+// Свойства в camelCase
+element.style.fontSize = '18px'; // не font-size
+element.style.backgroundColor = '#f0f0f0'; // не background-color
+
+// Удаление стилей
+element.style.color = ''; // удаляет inline стиль
+
+// Получение inline стилей
+const color = element.style.color; // только inline
+const bgColor = element.style.backgroundColor;
+
+// Получение всех стилей (включая CSS)
+const computedStyle = window.getComputedStyle(element);
+const actualColor = computedStyle.color;
+const actualFontSize = computedStyle.fontSize;
+
+// Массовое изменение стилей
+function setStyles(element, styles) {
+    Object.assign(element.style, styles);
+}
+
+setStyles(element, {
+    color: '#333',
+    backgroundColor: '#f8f9fa',
+    padding: '15px',
+    margin: '10px',
+    border: '1px solid #ddd'
+});
+
+// Анимации через JS
+function animateElement(element) {
+    let position = 0;
+    const interval = setInterval(() => {
+        if (position >= 100) {
+            clearInterval(interval);
+        } else {
+            position++;
+            element.style.transform = `translateX(${position}px)`;
+        }
+    }, 10);
+}</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runStylesDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="stylesOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+								<div class="tip-box">
+									<h4><i class="fas fa-info-circle"></i> Рекомендации:</h4>
+									<ul>
+										<li>Используйте <strong>CSS классы</strong> вместо inline стилей</li>
+										<li><code>style</code> изменяет только <strong>inline стили</strong></li>
+										<li><code>getComputedStyle()</code> возвращает <strong>все стили</strong></li>
+										<li>Свойства пишутся в <strong>camelCase</strong></li>
+										<li>Для анимаций лучше использовать <strong>CSS transitions</strong></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-classes">
+								<h4><i class="fas fa-layer-group"></i> Работа с классами</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">const element = document.querySelector('.item');
+
+// Добавление классов
+element.classList.add('active');
+element.classList.add('highlight', 'selected');
+
+// Удаление классов
+element.classList.remove('inactive');
+element.classList.remove('old', 'deprecated');
+
+// Переключение классов
+element.classList.toggle('active'); // добавляет если нет, удаляет если есть
+element.classList.toggle('hidden', true); // принудительно добавить
+element.classList.toggle('visible', false); // принудительно удалить
+
+// Проверка наличия класса
+const isActive = element.classList.contains('active');
+const hasClass = element.classList.contains('some-class');
+
+// Замена классов
+element.classList.replace('old-class', 'new-class');
+
+// Перебор классов
+element.classList.forEach(className => {
+    console.log('Класс:', className);
+});
+
+// Получение строки классов
+const classString = element.className; // строка
+const classList = element.className.split(' '); // массив
+
+// Установка классов через строку
+element.className = 'new-class another-class';</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runClassesDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="classesOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+								<div class="tip-box">
+									<h4><i class="fas fa-info-circle"></i> Рекомендации:</h4>
+									<ul>
+										<li>Используйте <strong>classList</strong> вместо <strong>className</strong>
+										</li>
+										<li><code>classList</code> - более <strong>надежный и удобный</strong></li>
+										<li>Для множества изменений используйте <strong>CSS классы</strong></li>
+										<li>Избегайте прямой манипуляции <strong>className</strong></li>
+										<li>Используйте <strong>data-атрибуты</strong> для состояния</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 7: Практическое задание ===== -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+					<p>Создайте динамический интерфейс для управления продуктами:</p>
+
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Менеджер продуктов</h3>
+							<span class="difficulty-badge">Средний уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Реализуйте следующие функции:</p>
+							<ol>
+								<li>Форма для добавления нового продукта (название, цена, категория, описание)</li>
+								<li>Динамическое отображение списка продуктов в виде карточек</li>
+								<li>Фильтрация продуктов по категории и цене</li>
+								<li>Сортировка по цему, названию, дате добавления</li>
+								<li>Редактирование и удаление продуктов</li>
+								<li>Корзина с возможностью добавления/удаления товаров</li>
+								<li>Расчет общей стоимости и количества товаров в корзине</li>
+								<li>Сохранение данных в localStorage</li>
+							</ol>
+
+							<div class="hint-box">
+								<h4><i class="fas fa-lightbulb"></i> Подсказки:</h4>
+								<ul>
+									<li>Используйте методы DOM для создания и управления элементами</li>
+									<li>Создайте шаблон карточки продукта</li>
+									<li>Используйте data-атрибуты для хранения ID продуктов</li>
+									<li>Реализуйте делегирование событий для кнопок удаления/редактирования</li>
+									<li>Создайте функции-утилиты для работы с localStorage</li>
+								</ul>
+							</div>
+
+							<div class="code-editor-area">
+								<h4><i class="fas fa-code"></i> Редактор кода:</h4>
+								<textarea id="exerciseCode" class="code-editor" placeholder="Напишите здесь ваш код..."
+									rows="15">
+// Ваш код здесь
+// Пример начала:
+class ProductManager {
+    constructor() {
+        this.products = JSON.parse(localStorage.getItem('products')) || [];
+        this.cart = JSON.parse(localStorage.getItem('cart')) || [];
+        this.init();
+    }
+    
+    init() {
+        this.renderProducts();
+        this.setupEventListeners();
+    }
+    
+    addProduct(name, price, category, description) {
+        const product = {
+            id: Date.now(),
+            name,
+            price,
+            category,
+            description,
+            createdAt: new Date()
+        };
+        
+        this.products.push(product);
+        this.saveProducts();
+        this.renderProducts();
+        return product;
+    }
+    
+    renderProducts() {
+        // Реализуйте отображение продуктов
+    }
+}
+
+// Тестирование
+const manager = new ProductManager();
+manager.addProduct("Ноутбук", 50000, "электроника", "Мощный игровой ноутбук");
+console.log("Продукт добавлен:", manager.products[0]);</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runDOMExercise()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<button class="btn btn-secondary" onclick="clearDOMExercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+									<button class="btn btn-success" onclick="testDOMExercise()">
+										<i class="fas fa-vial"></i> Запустить тесты
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Вывод вашего кода появится здесь
+									</div>
+								</div>
+							</div>
+
+							<div class="solution-section">
+								<button class="btn btn-warning show-solution">
+									<i class="fas fa-code"></i> Показать решение
+								</button>
+								<div class="solution hidden">
+									<h4><i class="fas fa-check-circle"></i> Пример решения:</h4>
+									<pre><code class="javascript">// Решение: Менеджер продуктов
+
+class ProductManager {
+    constructor() {
+        this.products = JSON.parse(localStorage.getItem('products')) || [];
+        this.cart = JSON.parse(localStorage.getItem('cart')) || [];
+        this.currentFilter = 'all';
+        this.currentSort = 'name-asc';
+        this.init();
+    }
+    
+    init() {
+        this.renderProductForm();
+        this.renderProducts();
+        this.renderCart();
+        this.setupEventListeners();
+        this.updateStats();
+    }
+    
+    // === РЕНДЕРИНГ ФОРМЫ ===
+    renderProductForm() {
+        const container = document.getElementById('productFormContainer') || 
+                         this.createContainer('productFormContainer', 'Добавить продукт');
+        
+        container.innerHTML = `
+            &lt;form id="productForm" class="product-form"&gt;
+                &lt;div class="form-group"&gt;
+                    &lt;label for="productName"&gt;Название:&lt;/label&gt;
+                    &lt;input type="text" id="productName" required class="form-control"&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="productPrice"&gt;Цена:&lt;/label&gt;
+                    &lt;input type="number" id="productPrice" min="0" step="0.01" required class="form-control"&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="productCategory"&gt;Категория:&lt;/label&gt;
+                    &lt;select id="productCategory" required class="form-control"&gt;
+                        &lt;option value=""&gt;Выберите категорию&lt;/option&gt;
+                        &lt;option value="electronics"&gt;Электроника&lt;/option&gt;
+                        &lt;option value="books"&gt;Книги&lt;/option&gt;
+                        &lt;option value="clothing"&gt;Одежда&lt;/option&gt;
+                        &lt;option value="food"&gt;Еда&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="productDescription"&gt;Описание:&lt;/label&gt;
+                    &lt;textarea id="productDescription" rows="3" class="form-control"&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-actions"&gt;
+                    &lt;button type="submit" class="btn btn-primary"&gt;Добавить продукт&lt;/button&gt;
+                    &lt;button type="button" class="btn" onclick="productManager.clearForm()"&gt;Очистить&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        `;
+        
+        document.getElementById('productForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleAddProduct();
+        });
+    }
+    
+    // === ОБРАБОТКА ДОБАВЛЕНИЯ ===
+    handleAddProduct() {
+        const name = document.getElementById('productName').value.trim();
+        const price = parseFloat(document.getElementById('productPrice').value);
+        const category = document.getElementById('productCategory').value;
+        const description = document.getElementById('productDescription').value.trim();
+        
+        if (!name || isNaN(price) || !category) {
+            this.showMessage('Заполните все обязательные поля', 'error');
+            return;
+        }
+        
+        const product = {
+            id: Date.now(),
+            name,
+            price,
+            category,
+            description,
+            createdAt: new Date()
+        };
+        
+        this.products.push(product);
+        this.saveProducts();
+        this.renderProducts();
+        this.updateStats();
+        this.clearForm();
+        
+        this.showMessage(`Продукт "${name}" добавлен`, 'success');
+    }
+    
+    // === РЕНДЕРИНГ ПРОДУКТОВ ===
+    renderProducts() {
+        const container = document.getElementById('productsContainer') || 
+                         this.createContainer('productsContainer', 'Продукты');
+        
+        // Фильтрация
+        let filteredProducts = this.products;
+        if (this.currentFilter !== 'all') {
+            filteredProducts = filteredProducts.filter(p => p.category === this.currentFilter);
+        }
+        
+        // Сортировка
+        filteredProducts = this.sortProducts(filteredProducts);
+        
+        // Отрисовка
+        container.innerHTML = `
+            &lt;div class="products-controls"&gt;
+                &lt;div class="filter-controls"&gt;
+                    &lt;select id="categoryFilter" class="form-control" onchange="productManager.setFilter(this.value)"&gt;
+                        &lt;option value="all"&gt;Все категории&lt;/option&gt;
+                        &lt;option value="electronics"&gt;Электроника&lt;/option&gt;
+                        &lt;option value="books"&gt;Книги&lt;/option&gt;
+                        &lt;option value="clothing"&gt;Одежда&lt;/option&gt;
+                        &lt;option value="food"&gt;Еда&lt;/option&gt;
+                    &lt;/select&gt;
+                    
+                    &lt;select id="sortSelect" class="form-control" onchange="productManager.setSort(this.value)"&gt;
+                        &lt;option value="name-asc"&gt;Название (А-Я)&lt;/option&gt;
+                        &lt;option value="name-desc"&gt;Название (Я-А)&lt;/option&gt;
+                        &lt;option value="price-asc"&gt;Цена (по возрастанию)&lt;/option&gt;
+                        &lt;option value="price-desc"&gt;Цена (по убыванию)&lt;/option&gt;
+                        &lt;option value="date-desc"&gt;Новые сначала&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="products-count"&gt;
+                    &lt;span&gt;Найдено продуктов: &lt;strong&gt;${filteredProducts.length}&lt;/strong&gt;&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="products-grid" id="productsGrid"&gt;
+                ${filteredProducts.length === 0 ? 
+                    '&lt;div class="no-products"&gt;Продукты не найдены&lt;/div&gt;' : 
+                    filteredProducts.map(product => this.createProductCard(product)).join('')
+                }
+            &lt;/div&gt;
+        `;
+        
+        // Установка текущих значений фильтров
+        document.getElementById('categoryFilter').value = this.currentFilter;
+        document.getElementById('sortSelect').value = this.currentSort;
+    }
+    
+    createProductCard(product) {
+        return `
+            &lt;div class="product-card" data-id="${product.id}"&gt;
+                &lt;div class="product-header"&gt;
+                    &lt;h4 class="product-title"&gt;${this.escapeHtml(product.name)}&lt;/h4&gt;
+                    &lt;span class="product-price"&gt;${product.price.toFixed(2)} ₽&lt;/span&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="product-category"&gt;
+                    &lt;span class="category-badge"&gt;${product.category}&lt;/span&gt;
+                &lt;/div&gt;
+                
+                ${product.description ? `
+                    &lt;div class="product-description"&gt;
+                        ${this.escapeHtml(product.description)}
+                    &lt;/div&gt;
+                ` : ''}
+                
+                &lt;div class="product-footer"&gt;
+                    &lt;div class="product-actions"&gt;
+                        &lt;button class="btn btn-sm" onclick="productManager.addToCart(${product.id})"&gt;
+                            &lt;i class="fas fa-cart-plus"&gt;&lt;/i&gt; В корзину
+                        &lt;/button&gt;
+                        &lt;button class="btn btn-sm" onclick="productManager.editProduct(${product.id})"&gt;
+                            &lt;i class="fas fa-edit"&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                        &lt;button class="btn btn-sm btn-danger" onclick="productManager.deleteProduct(${product.id})"&gt;
+                            &lt;i class="fas fa-trash"&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class="product-date"&gt;
+                        ${new Date(product.createdAt).toLocaleDateString()}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+    
+    // === УПРАВЛЕНИЕ КОРЗИНОЙ ===
+    renderCart() {
+        const container = document.getElementById('cartContainer') || 
+                         this.createContainer('cartContainer', 'Корзина');
+        
+        const cartItems = this.cart.map(item => {
+            const product = this.products.find(p => p.id === item.productId);
+            return product ? { ...item, product } : null;
+        }).filter(Boolean);
+        
+        const totalPrice = cartItems.reduce((sum, item) => 
+            sum + (item.product.price * item.quantity), 0
+        );
+        
+        container.innerHTML = `
+            &lt;div class="cart-header"&gt;
+                &lt;h4&gt;Корзина покупок&lt;/h4&gt;
+                &lt;div class="cart-stats"&gt;
+                    &lt;span&gt;Товаров: &lt;strong&gt;${cartItems.length}&lt;/strong&gt;&lt;/span&gt;
+                    &lt;span&gt;Общая сумма: &lt;strong&gt;${totalPrice.toFixed(2)} ₽&lt;/strong&gt;&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="cart-items" id="cartItems"&gt;
+                ${cartItems.length === 0 ? 
+                    '&lt;div class="empty-cart"&gt;Корзина пуста&lt;/div&gt;' : 
+                    cartItems.map(item => this.createCartItem(item)).join('')
+                }
+            &lt;/div&gt;
+            
+            ${cartItems.length > 0 ? `
+                &lt;div class="cart-actions"&gt;
+                    &lt;button class="btn btn-primary" onclick="productManager.checkout()"&gt;
+                        &lt;i class="fas fa-shopping-cart"&gt;&lt;/i&gt; Оформить заказ
+                    &lt;/button&gt;
+                    &lt;button class="btn btn-danger" onclick="productManager.clearCart()"&gt;
+                        &lt;i class="fas fa-trash"&gt;&lt;/i&gt; Очистить корзину
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            ` : ''}
+        `;
+    }
+    
+    createCartItem(item) {
+        const total = item.product.price * item.quantity;
+        
+        return `
+            &lt;div class="cart-item" data-product-id="${item.productId}"&gt;
+                &lt;div class="cart-item-info"&gt;
+                    &lt;h5&gt;${this.escapeHtml(item.product.name)}&lt;/h5&gt;
+                    &lt;span class="cart-item-price"&gt;${item.product.price.toFixed(2)} ₽&lt;/span&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="cart-item-controls"&gt;
+                    &lt;div class="quantity-controls"&gt;
+                        &lt;button class="btn btn-sm" onclick="productManager.updateQuantity(${item.productId}, ${item.quantity - 1})"&gt;
+                            &lt;i class="fas fa-minus"&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                        &lt;span class="quantity"&gt;${item.quantity}&lt;/span&gt;
+                        &lt;button class="btn btn-sm" onclick="productManager.updateQuantity(${item.productId}, ${item.quantity + 1})"&gt;
+                            &lt;i class="fas fa-plus"&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class="cart-item-total"&gt;
+                        ${total.toFixed(2)} ₽
+                    &lt;/div&gt;
+                    
+                    &lt;button class="btn btn-sm btn-danger" onclick="productManager.removeFromCart(${item.productId})"&gt;
+                        &lt;i class="fas fa-times"&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+    
+    // === ОСНОВНЫЕ МЕТОДЫ ===
+    addToCart(productId) {
+        const existingItem = this.cart.find(item => item.productId === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            this.cart.push({
+                productId,
+                quantity: 1,
+                addedAt: new Date()
+            });
+        }
+        
+        this.saveCart();
+        this.renderCart();
+        this.updateStats();
+        this.showMessage('Товар добавлен в корзину', 'success');
+    }
+    
+    removeFromCart(productId) {
+        this.cart = this.cart.filter(item => item.productId !== productId);
+        this.saveCart();
+        this.renderCart();
+        this.updateStats();
+        this.showMessage('Товар удален из корзины', 'info');
+    }
+    
+    updateQuantity(productId, newQuantity) {
+        if (newQuantity < 1) {
+            this.removeFromCart(productId);
+            return;
+        }
+        
+        const item = this.cart.find(item => item.productId === productId);
+        if (item) {
+            item.quantity = newQuantity;
+            this.saveCart();
+            this.renderCart();
+            this.updateStats();
+        }
+    }
+    
+    clearCart() {
+        if (this.cart.length === 0) return;
+        
+        if (confirm('Очистить корзину?')) {
+            this.cart = [];
+            this.saveCart();
+            this.renderCart();
+            this.updateStats();
+            this.showMessage('Корзина очищена', 'warning');
+        }
+    }
+    
+    deleteProduct(productId) {
+        if (confirm('Удалить продукт?')) {
+            this.products = this.products.filter(p => p.id !== productId);
+            this.cart = this.cart.filter(item => item.productId !== productId);
+            this.saveProducts();
+            this.saveCart();
+            this.renderProducts();
+            this.renderCart();
+            this.updateStats();
+            this.showMessage('Продукт удален', 'info');
+        }
+    }
+    
+    editProduct(productId) {
+        const product = this.products.find(p => p.id === productId);
+        if (!product) return;
+        
+        // Заполняем форму данными продукта
+        document.getElementById('productName').value = product.name;
+        document.getElementById('productPrice').value = product.price;
+        document.getElementById('productCategory').value = product.category;
+        document.getElementById('productDescription').value = product.description;
+        
+        // Изменяем поведение формы на редактирование
+        const form = document.getElementById('productForm');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        
+        const originalSubmit = form.onsubmit;
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            this.handleUpdateProduct(productId);
+            
+            // Восстанавливаем оригинальное поведение
+            form.onsubmit = originalSubmit;
+            submitBtn.textContent = 'Добавить продукт';
+        };
+        
+        submitBtn.textContent = 'Обновить продукт';
+        this.showMessage('Режим редактирования', 'info');
+    }
+    
+    handleUpdateProduct(productId) {
+        const name = document.getElementById('productName').value.trim();
+        const price = parseFloat(document.getElementById('productPrice').value);
+        const category = document.getElementById('productCategory').value;
+        const description = document.getElementById('productDescription').value.trim();
+        
+        if (!name || isNaN(price) || !category) {
+            this.showMessage('Заполните все обязательные поля', 'error');
+            return;
+        }
+        
+        const productIndex = this.products.findIndex(p => p.id === productId);
+        if (productIndex !== -1) {
+            this.products[productIndex] = {
+                ...this.products[productIndex],
+                name,
+                price,
+                category,
+                description,
+                updatedAt: new Date()
+            };
+            
+            this.saveProducts();
+            this.renderProducts();
+            this.clearForm();
+            this.showMessage('Продукт обновлен', 'success');
+        }
+    }
+    
+    // === ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ ===
+    setFilter(filter) {
+        this.currentFilter = filter;
+        this.renderProducts();
+    }
+    
+    setSort(sort) {
+        this.currentSort = sort;
+        this.renderProducts();
+    }
+    
+    sortProducts(products) {
+        switch (this.currentSort) {
+            case 'name-asc':
+                return [...products].sort((a, b) => a.name.localeCompare(b.name));
+            case 'name-desc':
+                return [...products].sort((a, b) => b.name.localeCompare(a.name));
+            case 'price-asc':
+                return [...products].sort((a, b) => a.price - b.price);
+            case 'price-desc':
+                return [...products].sort((a, b) => b.price - a.price);
+            case 'date-desc':
+                return [...products].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            default:
+                return products;
+        }
+    }
+    
+    updateStats() {
+        const totalProducts = this.products.length;
+        const totalInCart = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+        const cartTotal = this.cart.reduce((sum, item) => {
+            const product = this.products.find(p => p.id === item.productId);
+            return sum + (product ? product.price * item.quantity : 0);
+        }, 0);
+        
+        const statsElement = document.getElementById('productStats') || 
+                           this.createContainer('productStats', 'Статистика');
+        
+        statsElement.innerHTML = `
+            &lt;div class="stats-grid"&gt;
+                &lt;div class="stat-card"&gt;
+                    &lt;i class="fas fa-box"&gt;&lt;/i&gt;
+                    &lt;div class="stat-info"&gt;
+                        &lt;span class="stat-label"&gt;Продуктов&lt;/span&gt;
+                        &lt;span class="stat-value"&gt;${totalProducts}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="stat-card"&gt;
+                    &lt;i class="fas fa-shopping-cart"&gt;&lt;/i&gt;
+                    &lt;div class="stat-info"&gt;
+                        &lt;span class="stat-label"&gt;В корзине&lt;/span&gt;
+                        &lt;span class="stat-value"&gt;${totalInCart}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="stat-card"&gt;
+                    &lt;i class="fas fa-ruble-sign"&gt;&lt;/i&gt;
+                    &lt;div class="stat-info"&gt;
+                        &lt;span class="stat-label"&gt;Сумма&lt;/span&gt;
+                        &lt;span class="stat-value"&gt;${cartTotal.toFixed(2)} ₽&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+    
+    clearForm() {
+        document.getElementById('productForm').reset();
+    }
+    
+    checkout() {
+        if (this.cart.length === 0) {
+            this.showMessage('Корзина пуста', 'warning');
+            return;
+        }
+        
+        const order = {
+            id: Date.now(),
+            items: this.cart,
+            total: this.cart.reduce((sum, item) => {
+                const product = this.products.find(p => p.id === item.productId);
+                return sum + (product ? product.price * item.quantity : 0);
+            }, 0),
+            createdAt: new Date()
+        };
+        
+        // Здесь обычно отправка на сервер
+        console.log('Заказ оформлен:', order);
+        
+        this.showMessage('Заказ успешно оформлен!', 'success');
+        this.clearCart();
+    }
+    
+    // === УТИЛИТЫ ===
+    createContainer(id, title) {
+        const container = document.createElement('div');
+        container.id = id;
+        container.className = 'product-container';
+        container.innerHTML = `&lt;h3&gt;${title}&lt;/h3&gt;`;
+        document.querySelector('.lesson-content').appendChild(container);
+        return container;
+    }
+    
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    showMessage(text, type = 'info') {
+        // Реализация показа сообщений
+        console.log(`[${type.toUpperCase()}] ${text}`);
+    }
+    
+    saveProducts() {
+        localStorage.setItem('products', JSON.stringify(this.products));
+    }
+    
+    saveCart() {
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
+    
+    setupEventListeners() {
+        // Дополнительные обработчики событий
+    }
+}
+
+// Инициализация приложения
+document.addEventListener('DOMContentLoaded', () => {
+    window.productManager = new ProductManager();
+    
+    // Добавление тестовых данных
+    if (productManager.products.length === 0) {
+        productManager.addProduct('Ноутбук', 50000, 'electronics', 'Мощный игровой ноутбук');
+        productManager.addProduct('Смартфон', 30000, 'electronics', 'Флагманский смартфон');
+        productManager.addProduct('Книга', 500, 'books', 'Интересная книга по программированию');
+        productManager.addProduct('Футболка', 1500, 'clothing', 'Хлопковая футболка');
+        productManager.addProduct('Кофе', 300, 'food', 'Свежеобжаренный кофе');
+    }
+    
+    console.log('Менеджер продуктов запущен!');
+});</code></pre>
+									<div class="solution-tips">
+										<h5><i class="fas fa-tips"></i> Советы по улучшению:</h5>
+										<ul>
+											<li>Добавьте пагинацию для большого количества продуктов</li>
+											<li>Реализуйте поиск по названию и описанию</li>
+											<li>Добавьте возможность загрузки изображений продуктов</li>
+											<li>Создайте систему рейтингов и отзывов</li>
+											<li>Реализуйте историю заказов</li>
+											<li>Добавьте возможность экспорта/импорта данных</li>
+											<li>Создайте адаптивный дизайн для мобильных устройств</li>
+											<li>Добавьте анимации при добавлении/удалении элементов</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Пройденные темы -->
+					<div class="topics-summary">
+						<h3><i class="fas fa-graduation-cap"></i> Вы изучили:</h3>
+						<div class="topics-list">
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Что такое DOM и как он работает</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>5 методов выбора элементов DOM</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Изменение содержимого и стилей элементов</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Создание и удаление элементов</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Навигацию по DOM-дереву</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Работу с формами и валидацию</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Создание менеджера продуктов</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навигация между уроками -->
+				<div class="navigation-buttons">
+					<a href="arrays.html" class="nav-btn prev-btn">
+						<i class="fas fa-arrow-left"></i> Назад: Массивы
+					</a>
+					<a href="events.html" class="nav-btn next-btn">
+						Следующий урок: События <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
+
+				<!-- Дополнительные материалы -->
+				<div class="additional-materials">
+					<h3><i class="fas fa-book-open"></i> Дополнительные материалы</h3>
+					<div class="materials-list">
+						<a href="https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model" target="_blank"
+							class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Документация MDN по DOM</span>
+						</a>
+						<a href="https://learn.javascript.ru/dom-nodes" target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>DOM на learn.javascript.ru</span>
+						</a>
+						<a href="#" class="material-link">
+							<i class="fas fa-download"></i>
+							<span>Скачать шпаргалку по DOM</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<!-- Подключаем общие библиотеки -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+	<!-- Подключаем общие JS файлы -->
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/basic-components.js"></script>
+
+	<!-- Подключаем файл для DOM урока -->
+	<script src="../js/component/dom.js"></script>
+</body>
+
+</html>

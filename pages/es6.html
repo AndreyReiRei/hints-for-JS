@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Современный JavaScript (ES6+) - JS Tutor</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/es6.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html">Основы</a>
+					<a href="variables.html">Переменные</a>
+					<a href="functions.html">Функции</a>
+					<a href="objects.html">Объекты</a>
+					<a href="arrays.html">Массивы</a>
+					<a href="dom.html">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html">Асинхронность</a>
+					<a href="es6.html" class="active">ES6+</a>
+					<a href="practice.html">Практика</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html" class="active"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Современный JavaScript (ES6+)</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Продвинутый уровень</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 50 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 6 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>ECMAScript 2015 (ES6)</strong> — самая важная версия JavaScript с 2009 года. ES6+
+						включает
+						современные возможности языка, которые делают код чище, понятнее и эффективнее.</p>
+				</div>
+
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#let-const">let и const</a></li>
+						<li><a href="#arrow-functions">Стрелочные функции</a></li>
+						<li><a href="#template-literals">Шаблонные строки</a></li>
+						<li><a href="#destructuring">Деструктуризация</a></li>
+						<li><a href="#spread-rest">Spread и Rest операторы</a></li>
+						<li><a href="#modules">Модули</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- РАЗДЕЛ 1: let и const -->
+				<section id="let-const" class="lesson-section">
+					<h2><i class="fas fa-lock"></i> let и const</h2>
+					<p><code>let</code> и <code>const</code> — современные способы объявления переменных, которые решают
+						проблемы <code>var</code>.</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-let">let</button>
+							<button class="tab-btn" data-tab="tab-const">const</button>
+							<button class="tab-btn" data-tab="tab-comparison">Сравнение</button>
+						</div>
+
+						<div class="tab-content active" id="tab-let">
+							<h4><i class="fas fa-code"></i> Ключевое слово let</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Блочная область видимости
+{
+    let x = 10;
+    console.log(x); // 10
+}
+// console.log(x); // ❌ Ошибка: x is not defined
+
+// Отличие от var (поднятие)
+console.log(y); // undefined (var всплывает)
+var y = 5;
+
+// console.log(z); // ❌ Ошибка: Cannot access 'z' before initialization
+let z = 5;
+
+// Повторное объявление
+var a = 1;
+var a = 2; // ✅ Работает
+
+let b = 1;
+// let b = 2; // ❌ Ошибка: Identifier 'b' has already been declared
+
+// Циклы
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 100); // 0, 1, 2
+}
+
+// Для сравнения с var:
+for (var j = 0; j < 3; j++) {
+    setTimeout(() => console.log(j), 100); // 3, 3, 3
+}</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runLetDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="letOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-const">
+							<h4><i class="fas fa-lock"></i> Ключевое слово const</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Константы должны быть инициализированы
+// const PI; // ❌ Ошибка: Missing initializer
+
+const PI = 3.14159;
+// PI = 3.14; // ❌ Ошибка: Assignment to constant variable
+
+// const для объектов
+const user = {
+    name: "Анна",
+    age: 25
+};
+
+user.age = 26; // ✅ Можно изменять свойства
+console.log(user); // {name: "Анна", age: 26}
+
+// user = {}; // ❌ Нельзя переназначить саму переменную
+
+// const для массивов
+const colors = ["красный", "зеленый"];
+colors.push("синий"); // ✅ Можно добавлять элементы
+console.log(colors); // ["красный", "зеленый", "синий"]
+
+colors[0] = "желтый"; // ✅ Можно изменять элементы
+console.log(colors); // ["желтый", "зеленый", "синий"]
+
+// colors = []; // ❌ Нельзя переназначить
+
+// Замораживание объектов
+const config = Object.freeze({
+    apiUrl: "https://api.example.com",
+    timeout: 5000
+});
+
+// config.timeout = 10000; // ❌ Ошибка в strict mode
+// config.newProp = "value"; // ❌ Ошибка в strict mode
+
+// const в циклах
+const numbers = [1, 2, 3, 4, 5];
+for (const num of numbers) {
+    console.log(num); // ✅ Каждая итерация имеет свою константу
+}
+
+// for (const i = 0; i < 5; i++) {} // ❌ Ошибка</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runConstDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="constOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-comparison">
+							<h4><i class="fas fa-balance-scale"></i> Сравнение var, let, const</h4>
+							<div class="comparison-table">
+								<table>
+									<thead>
+										<tr>
+											<th>Критерий</th>
+											<th>var</th>
+											<th>let</th>
+											<th>const</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Область видимости</td>
+											<td>Функция</td>
+											<td>Блок</td>
+											<td>Блок</td>
+										</tr>
+										<tr>
+											<td>Поднятие (hoisting)</td>
+											<td>✅ С инициализацией</td>
+											<td>✅ Без инициализации</td>
+											<td>✅ Без инициализации</td>
+										</tr>
+										<tr>
+											<td>Повторное объявление</td>
+											<td>✅ Разрешено</td>
+											<td>❌ Запрещено</td>
+											<td>❌ Запрещено</td>
+										</tr>
+										<tr>
+											<td>Изменение значения</td>
+											<td>✅ Разрешено</td>
+											<td>✅ Разрешено</td>
+											<td>❌ Запрещено</td>
+										</tr>
+										<tr>
+											<td>Инициализация при объявлении</td>
+											<td>❌ Не требуется</td>
+											<td>❌ Не требуется</td>
+											<td>✅ Обязательна</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-lightbulb"></i> Правила использования:</h4>
+								<ol>
+									<li>Всегда используйте <code>const</code> по умолчанию</li>
+									<li>Используйте <code>let</code> только когда значение будет меняться</li>
+									<li>Избегайте <code>var</code> в современном коде</li>
+									<li>Для объектов и массивов используйте <code>const</code> — это защищает от
+										случайного переназначения</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- РАЗДЕЛ 2: Стрелочные функции -->
+				<section id="arrow-functions" class="lesson-section">
+					<h2><i class="fas fa-arrow-right"></i> Стрелочные функции</h2>
+					<p>Стрелочные функции предоставляют краткий синтаксис и особое поведение ключевого слова
+						<code>this</code>.
+					</p>
+
+					<div class="methods-grid">
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Базовый синтаксис</h4>
+							</div>
+							<pre><code class="javascript">// Обычная функция
+function add(a, b) {
+    return a + b;
+}
+
+// Стрелочная функция
+const addArrow = (a, b) => {
+    return a + b;
+};
+
+// Еще короче (неявный return)
+const addShort = (a, b) => a + b;
+
+// Без аргументов
+const greet = () => "Привет!";
+
+// Один аргумент (скобки optional)
+const square = x => x * x;
+
+// Возврат объекта
+const createUser = (name, age) => ({
+    name: name,
+    age: age
+});
+
+console.log(add(2, 3)); // 5
+console.log(addArrow(2, 3)); // 5
+console.log(addShort(2, 3)); // 5
+console.log(square(4)); // 16</code></pre>
+							<button class="btn btn-primary" onclick="runArrowBasicDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4>this в стрелочных функциях</h4>
+							</div>
+							<pre><code class="javascript">// Обычная функция
+const obj1 = {
+    value: 10,
+    getValue: function() {
+        return this.value;
+    }
+};
+
+console.log(obj1.getValue()); // 10
+
+// Проблема с this
+const obj2 = {
+    value: 10,
+    getValue: function() {
+        setTimeout(function() {
+            console.log(this.value); // undefined
+        }, 100);
+    }
+};
+
+// Решение со стрелочной функцией
+const obj3 = {
+    value: 10,
+    getValue: function() {
+        setTimeout(() => {
+            console.log(this.value); // 10
+        }, 100);
+    }
+};
+
+// Стрелочные функции НЕ ИМЕЮТ своего this
+const obj4 = {
+    value: 10,
+    getValue: () => {
+        console.log(this.value); // undefined
+    }
+};
+
+obj2.getValue();
+obj3.getValue();
+obj4.getValue();</code></pre>
+							<button class="btn btn-primary" onclick="runArrowThisDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Методы массивов</h4>
+							</div>
+							<pre><code class="javascript">const numbers = [1, 2, 3, 4, 5];
+
+// map
+const doubled = numbers.map(n => n * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// filter
+const evens = numbers.filter(n => n % 2 === 0);
+console.log(evens); // [2, 4]
+
+// reduce
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+console.log(sum); // 15
+
+// Цепочка методов
+const result = numbers
+    .filter(n => n > 2)
+    .map(n => n * 3)
+    .reduce((acc, n) => acc + n, 0);
+
+console.log(result); // 36 (3*3 + 4*3 + 5*3)
+
+// find
+const firstEven = numbers.find(n => n % 2 === 0);
+console.log(firstEven); // 2
+
+// some/every
+const hasNegative = numbers.some(n => n < 0);
+const allPositive = numbers.every(n => n > 0);
+console.log(hasNegative, allPositive); // false true</code></pre>
+							<button class="btn btn-primary" onclick="runArrowArrayDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+					</div>
+
+					<div class="warning-box">
+						<h4><i class="fas fa-exclamation-triangle"></i> Ограничения стрелочных функций:</h4>
+						<ul>
+							<li>Не имеют своего <code>this</code>, <code>arguments</code>, <code>super</code>,
+								<code>new.target</code>
+							</li>
+							<li>Не могут быть использованы как конструкторы (нельзя использовать с <code>new</code>)
+							</li>
+							<li>Не имеют свойства <code>prototype</code></li>
+							<li>Не подходят для методов объектов, где нужен собственный <code>this</code></li>
+							<li>Не могут быть использованы как генераторы</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- РАЗДЕЛ 3: Шаблонные строки -->
+				<section id="template-literals" class="lesson-section">
+					<h2><i class="fas fa-quote-right"></i> Шаблонные строки</h2>
+					<p>Шаблонные строки (template literals) позволяют легко создавать многострочные строки и
+						использовать интерполяцию выражений.</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-basic">Базовое использование</button>
+							<button class="tab-btn" data-tab="tab-multiline">Многострочность</button>
+							<button class="tab-btn" data-tab="tab-tagged">Tagged templates</button>
+						</div>
+
+						<div class="tab-content active" id="tab-basic">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Старый способ конкатенации
+const name = "Анна";
+const age = 25;
+const oldWay = "Имя: " + name + ", возраст: " + age;
+
+// Шаблонные строки
+const newWay = `Имя: ${name}, возраст: ${age}`;
+console.log(newWay);
+
+// Выражения внутри ${}
+const a = 10;
+const b = 20;
+console.log(`Сумма: ${a + b}`); // Сумма: 30
+console.log(`Максимум: ${Math.max(a, b)}`); // Максимум: 20
+
+// Вызов функций
+function formatDate() {
+    return new Date().toLocaleDateString();
+}
+console.log(`Сегодня: ${formatDate()}`);
+
+// Условные выражения
+const isAdmin = true;
+console.log(`Роль: ${isAdmin ? 'Администратор' : 'Пользователь'}`);
+
+// Объекты и массивы
+const user = { firstName: "Иван", lastName: "Петров" };
+console.log(`Пользователь: ${user.firstName} ${user.lastName}`);
+
+const colors = ["красный", "зеленый", "синий"];
+console.log(`Первый цвет: ${colors[0]}`);
+
+// Вложенные шаблонные строки
+const items = 3;
+const total = 1500;
+console.log(`Заказ: ${items} товара на сумму ${total} руб. (${items > 2 ? 'оптом' : 'в розницу'})`);</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runTemplateBasicDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="templateBasicOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-multiline">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Старый способ (неудобно)
+const oldMultiline = "Первая строка\n" +
+                     "Вторая строка\n" +
+                     "Третья строка";
+
+// Шаблонные строки (удобно!)
+const newMultiline = `Первая строка
+Вторая строка
+Третья строка`;
+
+console.log(newMultiline);
+
+// Сохраняются все отступы и пробелы
+const htmlTemplate = `
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Страница</title>
+    </head>
+    <body>
+        <h1>Привет, мир!</h1>
+    </body>
+</html>`;
+
+console.log(htmlTemplate);
+
+// SQL запросы
+const userId = 123;
+const sqlQuery = `
+SELECT 
+    users.id,
+    users.name,
+    orders.total
+FROM users
+JOIN orders ON users.id = orders.user_id
+WHERE users.id = ${userId}
+ORDER BY orders.created_at DESC
+`;
+
+console.log("SQL запрос:", sqlQuery);
+
+// Шаблоны писем
+const emailTemplate = (userName, orderId) => `
+Уважаемый ${userName},
+
+Ваш заказ #${orderId} успешно оформлен!
+
+Детали заказа:
+- Номер: ${orderId}
+- Дата: ${new Date().toLocaleDateString()}
+- Статус: В обработке
+
+С уважением,
+Команда магазина
+`;
+
+console.log(emailTemplate("Анна", "ORD-2024-001"));</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runTemplateMultilineDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="templateMultilineOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-tagged">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Tagged template - функция, обрабатывающая шаблонную строку
+function highlight(strings, ...values) {
+    let result = '';
+    strings.forEach((str, i) => {
+        result += str;
+        if (i < values.length) {
+            result += `<mark>${values[i]}</mark>`;
+        }
+    });
+    return result;
+}
+
+const name = "Анна";
+const score = 95;
+const taggedResult = highlight`Студент ${name} получил ${score} баллов`;
+console.log(taggedResult);
+
+// Безопасность: экранирование HTML
+function safeHtml(strings, ...values) {
+    return strings.reduce((result, str, i) => {
+        const value = values[i] ? 
+            String(values[i])
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;') : '';
+        return result + str + value;
+    }, '');
+}
+
+const userInput = '<script>alert( "XSS" )</script>';
+const safeResult = safeHtml`<div>${userInput}</div>`;
+console.log("Безопасный HTML:", safeResult);
+
+// Форматирование чисел
+function currency(strings, ...values) {
+    return strings.reduce((result, str, i) => {
+        let value = values[i];
+        if (typeof value === 'number') {
+            value = value.toLocaleString('ru-RU', {
+                style: 'currency',
+                currency: 'RUB'
+            });
+        }
+        return result + str + (value || '');
+    }, '');
+}
+
+const price = 1500;
+const discount = 200;
+console.log(currency`Цена: ${price}, скидка: ${discount}, итого: ${price - discount}`);
+
+// Локализация
+function l10n(strings, ...values) {
+    const translations = {
+        'Hello': 'Привет',
+        'World': 'Мир',
+        'welcome': 'добро пожаловать'
+    };
+    
+    return strings.reduce((result, str, i) => {
+        const value = values[i] ? translations[values[i]] || values[i] : '';
+        return result + translations[str.trim()] || str + value;
+    }, '');
+}
+
+console.log(l10n`Hello ${'World'}! welcome to our site.`);</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runTemplateTaggedDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="templateTaggedOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- РАЗДЕЛ 4: Деструктуризация -->
+				<section id="destructuring" class="lesson-section">
+					<h2><i class="fas fa-code-branch"></i> Деструктуризация</h2>
+					<p>Деструктуризация позволяет извлекать значения из объектов и массивов в отдельные переменные.</p>
+
+					<div class="methods-demo">
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">1</span>
+								<h4>Деструктуризация объектов</h4>
+							</div>
+							<pre><code class="javascript">const user = {
+    name: "Анна",
+    age: 25,
+    email: "anna@example.com",
+    address: {
+        city: "Москва",
+        street: "Тверская"
+    }
+};
+
+// Базовый синтаксис
+const { name, age } = user;
+console.log(name, age); // Анна 25
+
+// Новые имена переменных
+const { name: userName, age: userAge } = user;
+console.log(userName, userAge); // Анна 25
+
+// Значения по умолчанию
+const { phone = "не указан" } = user;
+console.log(phone); // не указан
+
+// Вложенная деструктуризация
+const { address: { city, street } } = user;
+console.log(city, street); // Москва Тверская
+
+// Остальные свойства
+const { email, ...rest } = user;
+console.log(email); // anna@example.com
+console.log(rest); // {name: "Анна", age: 25, address: {...}}
+
+// В параметрах функции
+function printUser({ name, age, city = "не указан" }) {
+    console.log(`${name}, ${age} лет, город: ${city}`);
+}
+printUser(user);
+
+// Возврат из функции
+function getUser() {
+    return { id: 1, login: "admin", role: "administrator" };
+}
+const { login, role } = getUser();
+console.log(login, role); // admin administrator</code></pre>
+							<button class="btn btn-primary" onclick="runDestructuringObjectDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">2</span>
+								<h4>Деструктуризация массивов</h4>
+							</div>
+							<pre><code class="javascript">const colors = ["красный", "зеленый", "синий"];
+
+// Базовый синтаксис
+const [first, second, third] = colors;
+console.log(first, second, third); // красный зеленый синий
+
+// Пропуск элементов
+const [primary, , tertiary] = colors;
+console.log(primary, tertiary); // красный синий
+
+// Значения по умолчанию
+const numbers = [1, 2];
+const [a, b, c = 0] = numbers;
+console.log(a, b, c); // 1 2 0
+
+// Остальные элементы
+const [head, ...tail] = colors;
+console.log(head); // красный
+console.log(tail); // ["зеленый", "синий"]
+
+// Обмен переменных
+let x = 10, y = 20;
+[x, y] = [y, x];
+console.log(x, y); // 20 10
+
+// Вложенная деструктуризация
+const matrix = [[1, 2], [3, 4]];
+const [[a1, a2], [b1, b2]] = matrix;
+console.log(a1, a2, b1, b2); // 1 2 3 4
+
+// Строки
+const [letter1, letter2] = "AB";
+console.log(letter1, letter2); // A B
+
+// Возврат из функции
+function getCoords() {
+    return [10.5, 55.8];
+}
+const [latitude, longitude] = getCoords();
+console.log(latitude, longitude); // 10.5 55.8
+
+// Итераторы
+const map = new Map([["name", "Анна"], ["age", 25]]);
+for (const [key, value] of map) {
+    console.log(`${key}: ${value}`);
+}</code></pre>
+							<button class="btn btn-primary" onclick="runDestructuringArrayDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+					</div>
+				</section>
+
+				<!-- РАЗДЕЛ 5: Spread и Rest -->
+				<section id="spread-rest" class="lesson-section">
+					<h2><i class="fas fa-expand-alt"></i> Spread и Rest операторы</h2>
+					<p>Оператор <code>...</code> (spread/rest) позволяет работать с коллекциями данных более гибко.</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-spread">Spread оператор</button>
+							<button class="tab-btn" data-tab="tab-rest">Rest параметры</button>
+						</div>
+
+						<div class="tab-content active" id="tab-spread">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// ===== МАССИВЫ =====
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// Копирование массива
+const copy = [...arr1];
+console.log(copy); // [1, 2, 3]
+
+// Объединение массивов
+const merged = [...arr1, ...arr2];
+console.log(merged); // [1, 2, 3, 4, 5, 6]
+
+// Добавление элементов
+const withExtra = [0, ...arr1, 4];
+console.log(withExtra); // [0, 1, 2, 3, 4]
+
+// Преобразование строки
+const str = "hello";
+const chars = [...str];
+console.log(chars); // ['h', 'e', 'l', 'l', 'o']
+
+// Преобразование NodeList/Set
+const set = new Set([1, 2, 3, 2, 1]);
+const arrayFromSet = [...set];
+console.log(arrayFromSet); // [1, 2, 3]
+
+// ===== ОБЪЕКТЫ (ES2018) =====
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+
+// Копирование объекта
+const objCopy = { ...obj1 };
+console.log(objCopy); // {a: 1, b: 2}
+
+// Объединение объектов
+const objMerged = { ...obj1, ...obj2 };
+console.log(objMerged); // {a: 1, b: 2, c: 3, d: 4}
+
+// Перезапись свойств
+const updated = { ...obj1, b: 20 };
+console.log(updated); // {a: 1, b: 20}
+
+// Добавление свойств
+const withNew = { ...obj1, e: 5 };
+console.log(withNew); // {a: 1, b: 2, e: 5}
+
+// Порядок важен
+const result1 = { x: 1, ...obj1, x: 2 };
+console.log(result1); // {x: 2, a: 1, b: 2}
+
+// ===== ПРАКТИЧЕСКИЕ ПРИМЕРЫ =====
+// Клонирование с глубоким копированием (поверхностное!)
+const original = { 
+    user: { name: "Анна" }, 
+    items: [1, 2, 3] 
+};
+const shallowClone = { ...original };
+shallowClone.user.name = "Мария"; // Изменяет оригинал!
+console.log(original.user.name); // Мария
+
+// Глубокое копирование
+const deepClone = {
+    ...original,
+    user: { ...original.user },
+    items: [...original.items]
+};
+
+// Math функции
+const numbers = [10, 5, 8, 3, 12];
+console.log(Math.max(...numbers)); // 12
+console.log(Math.min(...numbers)); // 3</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runSpreadDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="spreadOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-rest">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Rest параметры в функциях
+function sum(...numbers) {
+    return numbers.reduce((acc, num) => acc + num, 0);
+}
+
+console.log(sum(1, 2, 3)); // 6
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+// Комбинирование с обычными параметрами
+function greet(greeting, ...names) {
+    return `${greeting}, ${names.join(', ')}!`;
+}
+
+console.log(greet("Привет", "Анна", "Петр", "Мария"));
+// Привет, Анна, Петр, Мария!
+
+// Деструктуризация с rest
+const [first, second, ...others] = [1, 2, 3, 4, 5];
+console.log(first, second, others); // 1 2 [3, 4, 5]
+
+const { name, age, ...otherProps } = {
+    name: "Анна",
+    age: 25,
+    city: "Москва",
+    email: "anna@example.com"
+};
+console.log(name, age); // Анна 25
+console.log(otherProps); // {city: "Москва", email: "anna@example.com"}
+
+// ===== ПРАКТИЧЕСКИЕ ПРИМЕРЫ =====
+// Логирование с разными уровнями
+function log(level, ...messages) {
+    const timestamp = new Date().toISOString();
+    console.log(`[${timestamp}] [${level}]`, ...messages);
+}
+
+log("INFO", "Пользователь вошел в систему");
+log("ERROR", "Ошибка соединения", { code: 500 });
+
+// Создание конфигурационных объектов
+function createConfig(baseConfig, ...overrides) {
+    return overrides.reduce((config, override) => ({
+        ...config,
+        ...override
+    }), baseConfig);
+}
+
+const baseConfig = { apiUrl: "https://api.example.com", timeout: 5000 };
+const devConfig = createConfig(baseConfig, 
+    { debug: true },
+    { apiUrl: "https://dev-api.example.com" }
+);
+console.log(devConfig);
+
+// Обработка аргументов разного типа
+function processData(...args) {
+    const numbers = args.filter(arg => typeof arg === 'number');
+    const strings = args.filter(arg => typeof arg === 'string');
+    const others = args.filter(arg => 
+        typeof arg !== 'number' && typeof arg !== 'string'
+    );
+    
+    return { numbers, strings, others };
+}
+
+console.log(processData(1, "hello", true, 2, { x: 1 }));
+
+// Полифил для bind (пример)
+function bindPolyfill(fn, context, ...boundArgs) {
+    return function(...args) {
+        return fn.apply(context, [...boundArgs, ...args]);
+    };
+}
+
+const obj = { value: 10 };
+function multiply(a, b) {
+    return this.value * a * b;
+}
+
+const boundMultiply = bindPolyfill(multiply, obj, 2);
+console.log(boundMultiply(3)); // 60 (10 * 2 * 3)</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runRestDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="restOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- РАЗДЕЛ 6: Модули -->
+				<section id="modules" class="lesson-section">
+					<h2><i class="fas fa-puzzle-piece"></i> Модули ES6</h2>
+					<p>Модульная система ES6 позволяет организовывать код в отдельные файлы с явным импортом/экспортом.
+					</p>
+
+					<div class="features-grid">
+						<div class="feature-card">
+							<i class="fas fa-upload"></i>
+							<h4>Именованный экспорт</h4>
+							<p>Множество экспортов из одного модуля</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-download"></i>
+							<h4>Именованный импорт</h4>
+							<p>Точный импорт нужных элементов</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-box"></i>
+							<h4>Экспорт по умолчанию</h4>
+							<p>Один основной экспорт из модуля</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-asterisk"></i>
+							<h4>Импорт всего</h4>
+							<p>Импорт всех экспортов как объекта</p>
+						</div>
+					</div>
+
+					<div class="code-example">
+						<h4><i class="fas fa-folder-open"></i> Структура проекта:</h4>
+						<pre><code class="plaintext">project/
+├── index.html
+├── main.js
+└── modules/
+    ├── math.js
+    ├── user.js
+    └── config.js</code></pre>
+					</div>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-export">Экспорт</button>
+							<button class="tab-btn" data-tab="tab-import">Импорт</button>
+							<button class="tab-btn" data-tab="tab-dynamic">Динамический импорт</button>
+						</div>
+
+						<div class="tab-content active" id="tab-export">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// ===== modules/math.js =====
+// Именованный экспорт (несколько)
+export const PI = 3.14159;
+
+export function add(a, b) {
+    return a + b;
+}
+
+export function multiply(a, b) {
+    return a * b;
+}
+
+// Экспорт существующих переменных
+const subtract = (a, b) => a - b;
+const divide = (a, b) => a / b;
+
+export { subtract, divide };
+
+// Переименование при экспорте
+const secretAlgorithm = () => "секрет";
+export { secretAlgorithm as publicAlgorithm };
+
+// Групповой экспорт
+export { 
+    PI as piConstant, 
+    add as sum, 
+    multiply as product 
+};
+
+// Экспорт по умолчанию (только один!)
+export default function calculate(operation, a, b) {
+    switch(operation) {
+        case '+': return add(a, b);
+        case '-': return subtract(a, b);
+        case '*': return multiply(a, b);
+        case '/': return divide(a, b);
+        default: return NaN;
+    }
+}
+
+// Можно экспортировать классы
+export class Calculator {
+    constructor() {
+        this.result = 0;
+    }
+    
+    add(x) {
+        this.result += x;
+        return this;
+    }
+    
+    getResult() {
+        return this.result;
+    }
+}
+
+// ===== modules/config.js =====
+// Экспорт констант и объектов
+export const API_URL = "https://api.example.com";
+export const TIMEOUT = 5000;
+
+export const settings = {
+    theme: "dark",
+    language: "ru",
+    notifications: true
+};
+
+// Экспорт объектов по умолчанию
+export default {
+    version: "1.0.0",
+    environment: process.env.NODE_ENV || "development"
+};</code></pre>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-import">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// ===== main.js =====
+// Именованный импорт
+import { PI, add, multiply } from './modules/math.js';
+import { API_URL, TIMEOUT } from './modules/config.js';
+
+console.log(PI); // 3.14159
+console.log(add(2, 3)); // 5
+console.log(API_URL); // https://api.example.com
+
+// Импорт с переименованием
+import { add as sum, multiply as product } from './modules/math.js';
+console.log(sum(5, 3)); // 8
+
+// Импорт всего как объекта
+import * as math from './modules/math.js';
+console.log(math.PI); // 3.14159
+console.log(math.add(1, 2)); // 3
+
+// Импорт по умолчанию
+import calculate from './modules/math.js';
+console.log(calculate('+', 10, 5)); // 15
+
+// Импорт по умолчанию с переименованием
+import calculate as calc from './modules/math.js';
+
+// Комбинированный импорт
+import calculate, { PI, add } from './modules/math.js';
+
+// Импорт без связывания (для side effects)
+import './modules/logger.js'; // Модуль выполнится
+
+// Импорт нескольких элементов
+import { 
+    PI, 
+    add, 
+    multiply,
+    Calculator 
+} from './modules/math.js';
+
+// ===== ПРАКТИЧЕСКИЕ ПРИМЕРЫ =====
+// Импорт классов
+import { Calculator } from './modules/math.js';
+const calc = new Calculator();
+calc.add(5).add(3);
+console.log(calc.getResult()); // 8
+
+// Импорт настроек
+import { settings } from './modules/config.js';
+if (settings.theme === 'dark') {
+    document.body.classList.add('dark-theme');
+}
+
+// Реэкспорт
+// В modules/index.js:
+export { PI, add } from './math.js';
+export { API_URL } from './config.js';
+
+// Тогда в main.js:
+import { PI, add, API_URL } from './modules/index.js';
+
+// Импорт с деструктуризацией
+import config from './modules/config.js';
+const { version, environment } = config;
+console.log(`Версия: ${version}, окружение: ${environment}`);</code></pre>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-dynamic">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Динамический импорт (возвращает Promise)
+// Полезен для:
+// 1. Code splitting (разделение кода)
+// 2. Ленивая загрузка
+// 3. Условный импорт
+
+// Базовый синтаксис
+const loadMathModule = async () => {
+    try {
+        const math = await import('./modules/math.js');
+        console.log(math.PI); // 3.14159
+        console.log(math.add(2, 3)); // 5
+        return math;
+    } catch (error) {
+        console.error('Ошибка загрузки модуля:', error);
+    }
+};
+
+// Условная загрузка
+if (userNeedsCalculator) {
+    import('./modules/math.js')
+        .then(module => {
+            const calculator = new module.Calculator();
+            // используем calculator
+        });
+}
+
+// Загрузка нескольких модулов
+async function loadAppModules() {
+    const [math, config, utils] = await Promise.all([
+        import('./modules/math.js'),
+        import('./modules/config.js'),
+        import('./modules/utils.js')
+    ]);
+    
+    return { math, config, utils };
+}
+
+// Ленивая загрузка компонентов
+const loadUserProfile = async () => {
+    const module = await import('./modules/userProfile.js');
+    return module.default; // предполагается экспорт по умолчанию
+};
+
+// Использование в обработчиках событий
+document.getElementById('calculator-btn').addEventListener('click', async () => {
+    const { Calculator } = await import('./modules/math.js');
+    const calc = new Calculator();
+    // показать калькулятор
+});
+
+// Импорт с параметрами
+async function loadModuleWithParams(moduleName) {
+    const module = await import(`./modules/${moduleName}.js`);
+    return module;
+}
+
+// Обработка ошибок
+async function safeImport(modulePath) {
+    try {
+        return await import(modulePath);
+    } catch (error) {
+        console.warn(`Модуль ${modulePath} не загружен:`, error);
+        return null;
+    }
+}
+
+// Полифил для старых браузеров
+if (!window.Promise) {
+    // Загружаем полифилы только если нужно
+    import('./polyfills/promise.js')
+        .then(() => console.log('Полифилы загружены'))
+        .catch(err => console.error('Ошибка загрузки полифилов:', err));
+}
+
+// Performance optimization
+const loadHeavyModule = () => {
+    if (document.visibilityState === 'visible') {
+        return import('./modules/heavyModule.js');
+    }
+};
+
+// Tree-shaking дружественный код
+// Динамический импорт не поддерживает tree-shaking
+// Используйте только когда нужно</code></pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ПРАКТИЧЕСКОЕ ЗАДАНИЕ -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Конвертер валют с использованием ES6+</h3>
+							<span class="difficulty-badge">Средний уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Создайте конвертер валют, используя современный синтаксис ES6+:</p>
+							<ol>
+								<li>Используйте модули для организации кода</li>
+								<li>Примените деструктуризацию для работы с данными</li>
+								<li>Используйте стрелочные функции и шаблонные строки</li>
+								<li>Реализуйте асинхронную загрузку курсов валют</li>
+								<li>Добавьте кэширование с помощью Map/Set</li>
+								<li>Используйте классы с современным синтаксисом</li>
+							</ol>
+
+							<div class="code-editor-area">
+								<h4><i class="fas fa-code"></i> Редактор кода:</h4>
+								<textarea id="exerciseCode" class="code-editor" placeholder="Напишите здесь ваш код..."
+									rows="15">
+// Ваш код здесь
+// Пример начала:
+const EXCHANGE_RATES = {
+    USD: 1,
+    EUR: 0.85,
+    RUB: 75.5,
+    JPY: 110.5
+};
+
+class CurrencyConverter {
+    constructor(rates = EXCHANGE_RATES) {
+        this.rates = rates;
+    }
+    
+    convert(amount, fromCurrency, toCurrency) {
+        // ваш код
+    }
+}
+
+// Тестирование
+const converter = new CurrencyConverter();
+console.log(converter.convert(100, 'USD', 'EUR'));</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runES6Exercise()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<button class="btn btn-secondary" onclick="clearES6Exercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Вывод вашего кода появится здесь
+									</div>
+								</div>
+							</div>
+
+							<div class="solution-section">
+								<button class="btn btn-warning show-solution">
+									<i class="fas fa-code"></i> Показать решение
+								</button>
+								<div class="solution hidden">
+									<pre><code class="javascript">// Решение: Конвертер валют на ES6+
+
+// ===== МОДУЛЬ: КОНСТАНТЫ И УТИЛИТЫ =====
+const CURRENCY_SYMBOLS = {
+    USD: '$',
+    EUR: '€',
+    RUB: '₽',
+    JPY: '¥',
+    GBP: '£'
+};
+
+const API_ENDPOINTS = {
+    EXCHANGE_RATE: 'https://api.exchangerate-api.com/v4/latest/'
+};
+
+// ===== МОДУЛЬ: СЕРВИС КУРСОВ ВАЛЮТ =====
+class ExchangeRateService {
+    constructor() {
+        this.cache = new Map();
+        this.cacheDuration = 5 * 60 * 1000; // 5 минут
+    }
+    
+    async fetchRate(baseCurrency = 'USD') {
+        // Проверяем кэш
+        const cached = this.cache.get(baseCurrency);
+        if (cached && Date.now() - cached.timestamp < this.cacheDuration) {
+            console.log(`Используем кэшированный курс для ${baseCurrency}`);
+            return cached.rates;
+        }
+        
+        try {
+            const response = await fetch(`${API_ENDPOINTS.EXCHANGE_RATE}${baseCurrency}`);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const data = await response.json();
+            const { rates, date: timestamp } = data;
+            
+            // Сохраняем в кэш
+            this.cache.set(baseCurrency, {
+                rates,
+                timestamp: Date.now()
+            });
+            
+            return rates;
+        } catch (error) {
+            console.error('Ошибка загрузки курсов:', error);
+            return null;
+        }
+    }
+    
+    getCachedRates(baseCurrency) {
+        const cached = this.cache.get(baseCurrency);
+        return cached ? cached.rates : null;
+    }
+    
+    clearCache() {
+        this.cache.clear();
+        console.log('Кэш очищен');
+    }
+}
+
+// ===== МОДУЛЬ: КОНВЕРТЕР =====
+class CurrencyConverter {
+    constructor(rateService) {
+        this.rateService = rateService;
+        this.baseCurrency = 'USD';
+        this.rates = {};
+    }
+    
+    async initialize() {
+        this.rates = await this.rateService.fetchRate(this.baseCurrency);
+        if (!this.rates) {
+            throw new Error('Не удалось загрузить курсы валют');
+        }
+        return this;
+    }
+    
+    convert({ amount, from, to }) {
+        if (!this.rates[from] || !this.rates[to]) {
+            throw new Error(`Неизвестная валюта: ${from} или ${to}`);
+        }
+        
+        // Конвертируем через базовую валюту
+        const amountInBase = amount / this.rates[from];
+        const convertedAmount = amountInBase * this.rates[to];
+        
+        return {
+            amount: convertedAmount,
+            from,
+            to,
+            rate: this.rates[to] / this.rates[from],
+            timestamp: Date.now()
+        };
+    }
+    
+    format({ amount, to }, locale = 'ru-RU') {
+        const symbol = CURRENCY_SYMBOLS[to] || to;
+        const formatter = new Intl.NumberFormat(locale, {
+            style: 'currency',
+            currency: to,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+        
+        return formatter.format(amount);
+    }
+    
+    getAvailableCurrencies() {
+        return Object.keys(this.rates).sort();
+    }
+    
+    getExchangeRate(from, to) {
+        return this.rates[to] / this.rates[from];
+    }
+}
+
+// ===== МОДУЛЬ: ИСТОРИЯ ОПЕРАЦИЙ =====
+class ConversionHistory {
+    constructor() {
+        this.history = new Set();
+        this.maxSize = 10;
+    }
+    
+    add(conversion) {
+        const record = {
+            ...conversion,
+            id: Date.now() + Math.random().toString(36).substr(2, 9),
+            formatted: this.formatRecord(conversion)
+        };
+        
+        this.history.add(record);
+        
+        // Ограничиваем размер истории
+        if (this.history.size > this.maxSize) {
+            const oldest = Array.from(this.history)
+                .sort((a, b) => a.timestamp - b.timestamp)[0];
+            this.history.delete(oldest);
+        }
+        
+        return record;
+    }
+    
+    formatRecord({ amount, from, to, rate }) {
+        return `${amount} ${from} → ${(amount * rate).toFixed(2)} ${to} (курс: ${rate.toFixed(4)})`;
+    }
+    
+    getAll() {
+        return Array.from(this.history)
+            .sort((a, b) => b.timestamp - a.timestamp);
+    }
+    
+    clear() {
+        this.history.clear();
+    }
+    
+    exportToJSON() {
+        return JSON.stringify(this.getAll(), null, 2);
+    }
+}
+
+// ===== МОДУЛЬ: ИНТЕРФЕЙС ПОЛЬЗОВАТЕЛЯ =====
+class CurrencyConverterUI {
+    constructor(converter, history) {
+        this.converter = converter;
+        this.history = history;
+        this.initializeUI();
+    }
+    
+    initializeUI() {
+        this.renderCurrencySelectors();
+        this.setupEventListeners();
+        this.updateDisplay();
+    }
+    
+    renderCurrencySelectors() {
+        const currencies = this.converter.getAvailableCurrencies();
+        const fromSelect = document.getElementById('fromCurrency');
+        const toSelect = document.getElementById('toCurrency');
+        
+        currencies.forEach(currency => {
+            const option = document.createElement('option');
+            option.value = currency;
+            option.textContent = `${currency} ${CURRENCY_SYMBOLS[currency] || ''}`;
+            
+            fromSelect.appendChild(option.cloneNode(true));
+            toSelect.appendChild(option);
+        });
+        
+        fromSelect.value = 'USD';
+        toSelect.value = 'EUR';
+    }
+    
+    setupEventListeners() {
+        document.getElementById('convertBtn').addEventListener('click', 
+            () => this.handleConvert()
+        );
+        
+        document.getElementById('swapBtn').addEventListener('click', 
+            () => this.swapCurrencies()
+        );
+        
+        document.getElementById('clearHistoryBtn').addEventListener('click', 
+            () => this.clearHistory()
+        );
+    }
+    
+    async handleConvert() {
+        const amount = parseFloat(document.getElementById('amount').value);
+        const from = document.getElementById('fromCurrency').value;
+        const to = document.getElementById('toCurrency').value;
+        
+        if (!amount || amount <= 0) {
+            this.showError('Введите корректную сумму');
+            return;
+        }
+        
+        try {
+            const result = this.converter.convert({ amount, from, to });
+            const formatted = this.converter.format({ amount: result.amount, to });
+            
+            // Добавляем в историю
+            this.history.add({
+                ...result,
+                originalAmount: amount
+            });
+            
+            // Обновляем отображение
+            this.updateResult(formatted, result.rate);
+            this.updateHistory();
+            
+        } catch (error) {
+            this.showError(error.message);
+        }
+    }
+    
+    swapCurrencies() {
+        const fromSelect = document.getElementById('fromCurrency');
+        const toSelect = document.getElementById('toCurrency');
+        
+        [fromSelect.value, toSelect.value] = [toSelect.value, fromSelect.value];
+    }
+    
+    updateResult(formattedAmount, rate) {
+        document.getElementById('result').textContent = formattedAmount;
+        document.getElementById('rate').textContent = rate.toFixed(4);
+    }
+    
+    updateHistory() {
+        const historyList = document.getElementById('historyList');
+        historyList.innerHTML = '';
+        
+        this.history.getAll().forEach(record => {
+            const li = document.createElement('li');
+            li.className = 'history-item';
+            li.innerHTML = `
+                ${record.formatted}
+                <small>${new Date(record.timestamp).toLocaleTimeString()}</small>
+            `;
+            historyList.appendChild(li);
+        });
+    }
+    
+    clearHistory() {
+        this.history.clear();
+        this.updateHistory();
+    }
+    
+    showError(message) {
+        const errorDiv = document.getElementById('error');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 3000);
+    }
+    
+    updateDisplay() {
+        const currencies = this.converter.getAvailableCurrencies();
+        document.getElementById('availableCurrencies').textContent = 
+            `Доступные валюты: ${currencies.join(', ')}`;
+    }
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ ПРИЛОЖЕНИЯ =====
+async function initializeApp() {
+    try {
+        console.log('🚀 Инициализация конвертера валют...');
+        
+        // Создаем экземпляры
+        const rateService = new ExchangeRateService();
+        const converter = new CurrencyConverter(rateService);
+        const history = new ConversionHistory();
+        
+        // Инициализируем конвертер
+        await converter.initialize();
+        console.log('✅ Конвертер инициализирован');
+        
+        // Создаем UI
+        const ui = new CurrencyConverterUI(converter, history);
+        console.log('✅ Интерфейс создан');
+        
+        // Пример использования
+        console.log('\n📊 Примеры конвертации:');
+        
+        // Пример 1
+        const result1 = converter.convert({ amount: 100, from: 'USD', to: 'EUR' });
+        const formatted1 = converter.format({ amount: result1.amount, to: 'EUR' });
+        console.log(`100 USD = ${formatted1}`);
+        
+        // Пример 2
+        const result2 = converter.convert({ amount: 5000, from: 'RUB', to: 'USD' });
+        const formatted2 = converter.format({ amount: result2.amount, to: 'USD' });
+        console.log(`5000 RUB = ${formatted2}`);
+        
+        // Пример 3 (добавление в историю)
+        history.add(result1);
+        history.add(result2);
+        console.log(`\n📋 История операций (${history.getAll().length} записей):`);
+        history.getAll().forEach(record => {
+            console.log(`  - ${record.formatted}`);
+        });
+        
+        // Тестирование методов
+        console.log('\n🧪 Тестирование методов:');
+        console.log(`Курс USD → EUR: ${converter.getExchangeRate('USD', 'EUR').toFixed(4)}`);
+        console.log(`Доступные валюты: ${converter.getAvailableCurrencies().length} шт.`);
+        
+        // Экспорт истории
+        console.log('\n💾 Экспорт истории:');
+        console.log(history.exportToJSON());
+        
+        return { converter, history, ui };
+        
+    } catch (error) {
+        console.error('❌ Ошибка инициализации:', error);
+        throw error;
+    }
+}
+
+// Запуск приложения
+initializeApp()
+    .then(app => {
+        console.log('\n🎉 Конвертер валют успешно запущен!');
+        console.log('Используйте методы app.converter, app.history, app.ui');
+    })
+    .catch(error => {
+        console.error('Не удалось запустить приложение:', error);
+    });</code></pre>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Навигация между уроками -->
+					<div class="navigation-buttons">
+						<a href="async.html" class="nav-btn prev-btn">
+							<i class="fas fa-arrow-left"></i> Назад: Асинхронность
+						</a>
+						<a href="practice.html" class="nav-btn next-btn">
+							К практике <i class="fas fa-arrow-right"></i>
+						</a>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/basic-components.js"></script>
+	<script src="../js/component/es6.js"></script>
+</body>
+
+</html>

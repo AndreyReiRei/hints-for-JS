@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Асинхронность в JavaScript - JS Tutor</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/async.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html">Основы</a>
+					<a href="variables.html">Переменные</a>
+					<a href="functions.html">Функции</a>
+					<a href="objects.html">Объекты</a>
+					<a href="arrays.html">Массивы</a>
+					<a href="dom.html">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html" class="active">Асинхронность</a>
+					<a href="es6.html">ES6+</a>
+					<a href="practice.html">Практика</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html" class="active"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Асинхронность в JavaScript</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Продвинутый уровень</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 60 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 6 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>Асинхронность</strong> — это способ выполнения операций без блокировки основного потока.
+						JavaScript использует однопоточную модель, поэтому асинхронные операции критически важны для
+						производительности и отзывчивости приложений.</p>
+				</div>
+
+				<!-- Быстрая навигация по уроку -->
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#what-is-async">Что такое асинхронность?</a></li>
+						<li><a href="#callbacks">Callback-функции</a></li>
+						<li><a href="#promises">Promise (Обещания)</a></li>
+						<li><a href="#async-await">Async/Await</a></li>
+						<li><a href="#fetch-api">Fetch API и работа с сетью</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- ===== РАЗДЕЛ 1: Что такое асинхронность? ===== -->
+				<section id="what-is-async" class="lesson-section">
+					<h2><i class="fas fa-sync-alt"></i> Что такое асинхронность?</h2>
+
+					<div class="info-box">
+						<h4><i class="fas fa-lightbulb"></i> Синхронный vs Асинхронный код</h4>
+						<div class="comparison-table">
+							<table>
+								<thead>
+									<tr>
+										<th>Синхронный код</th>
+										<th>Асинхронный код</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Выполняется последовательно</td>
+										<td>Может выполняться параллельно</td>
+									</tr>
+									<tr>
+										<td>Блокирует выполнение</td>
+										<td>Не блокирует основной поток</td>
+									</tr>
+									<tr>
+										<td>Простой для понимания</td>
+										<td>Требует обработки результатов</td>
+									</tr>
+									<tr>
+										<td>Подходит для быстрых операций</td>
+										<td>Идеален для I/O операций</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="code-executor">
+						<div class="code-editor">
+							<pre><code class="javascript">// СИНХРОННЫЙ КОД (блокирующий)
+console.log("1. Начинаем приготовление кофе");
+console.log("2. Кипятим воду");
+console.log("3. Заливаем кофе");
+console.log("4. Подаем кофе");
+console.log("5. Пьем кофе");
+
+// АСИНХРОННЫЙ КОД (неблокирующий)
+console.log("1. Начинаем приготовление кофе");
+
+setTimeout(() => {
+    console.log("3. Заливаем кофе (после 2 секунд)");
+}, 2000);
+
+console.log("2. Кипятим воду (не ждем)");
+
+setTimeout(() => {
+    console.log("4. Подаем кофе (еще через 1 секунду)");
+}, 3000);
+
+console.log("5. Читаем новости пока готовится кофе");
+
+// Результат выполнения:
+// 1. Начинаем приготовление кофе
+// 2. Кипятим воду (не ждем)
+// 5. Читаем новости пока готовится кофе
+// 3. Заливаем кофе (после 2 секунд)
+// 4. Подаем кофе (еще через 1 секунду)</code></pre>
+						</div>
+						<button class="btn btn-primary run-code" onclick="runSyncVsAsyncDemo()">
+							<i class="fas fa-play"></i> Запустить код
+						</button>
+						<div class="output-container">
+							<h4>Результат:</h4>
+							<div id="syncAsyncOutput" class="console-output">
+								<div class="console-line info">Нажмите "Запустить код"</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="features-grid">
+						<div class="feature-card">
+							<i class="fas fa-clock"></i>
+							<h4>Event Loop</h4>
+							<p>Цикл событий обрабатывает асинхронные операции</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-tasks"></i>
+							<h4>Call Stack</h4>
+							<p>Стек вызовов для синхронных операций</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-inbox"></i>
+							<h4>Callback Queue</h4>
+							<p>Очередь колбэков для асинхронных операций</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-bolt"></i>
+							<h4>Web APIs</h4>
+							<p>Браузерные API для таймеров, запросов и т.д.</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 2: Callback-функции ===== -->
+				<section id="callbacks" class="lesson-section">
+					<h2><i class="fas fa-phone"></i> Callback-функции</h2>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-callback-basic">Базовые колбэки</button>
+							<button class="tab-btn" data-tab="tab-callback-error">Обработка ошибок</button>
+							<button class="tab-btn" data-tab="tab-callback-hell">Callback Hell</button>
+						</div>
+
+						<div class="tab-content active" id="tab-callback-basic">
+							<h4><i class="fas fa-code"></i> Базовые Callback-функции</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Простой callback
+function greet(name, callback) {
+    console.log(`Привет, ${name}!`);
+    callback(); // Вызываем колбэк
+}
+
+function sayGoodbye() {
+    console.log("До свидания!");
+}
+
+greet("Анна", sayGoodbye);
+
+// Callback с параметрами
+function calculate(a, b, operation) {
+    const result = operation(a, b);
+    console.log(`Результат: ${result}`);
+}
+
+function add(x, y) {
+    return x + y;
+}
+
+function multiply(x, y) {
+    return x * y;
+}
+
+calculate(5, 3, add);       // Результат: 8
+calculate(5, 3, multiply);  // Результат: 15
+
+// Анонимный callback
+setTimeout(function() {
+    console.log("Этот код выполнится через 1 секунду");
+}, 1000);
+
+// Стрелочная функция как callback
+setTimeout(() => {
+    console.log("Стрелочная функция через 2 секунды");
+}, 2000);
+
+// Callback в методах массива
+const numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach(function(number) {
+    console.log(number * 2);
+});
+
+// То же самое со стрелочной функцией
+numbers.forEach(number => console.log(number * 2));</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runCallbackBasicDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="callbackBasicOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-callback-error">
+							<h4><i class="fas fa-exclamation-triangle"></i> Обработка ошибок в колбэках</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Паттерн "Error-first callback"
+function readFile(filename, callback) {
+    // Имитация чтения файла
+    const success = Math.random() > 0.3; // 70% успеха
+    
+    setTimeout(() => {
+        if (success) {
+            // Первый параметр - ошибка (null если успех)
+            // Второй параметр - данные
+            callback(null, `Содержимое файла ${filename}`);
+        } else {
+            callback(new Error(`Не удалось прочитать файл ${filename}`), null);
+        }
+    }, 1000);
+}
+
+// Использование с обработкой ошибок
+readFile("document.txt", function(error, data) {
+    if (error) {
+        console.error("Ошибка:", error.message);
+        return;
+    }
+    console.log("Успех:", data);
+});
+
+// Пример с fs модулем (Node.js стиль)
+function getUserData(userId, callback) {
+    // Имитация запроса к базе данных
+    setTimeout(() => {
+        if (userId > 0 && userId < 100) {
+            callback(null, {
+                id: userId,
+                name: "Анна Иванова",
+                email: "anna@example.com"
+            });
+        } else {
+            callback(new Error("Пользователь не найден"), null);
+        }
+    }, 500);
+}
+
+// Практический пример
+getUserData(42, (err, user) => {
+    if (err) {
+        console.error("Ошибка получения пользователя:", err.message);
+        // Можно попробовать получить данные по-другому
+        getUserData(1, (err2, fallbackUser) => {
+            if (err2) {
+                console.error("Запасной вариант тоже не сработал");
+                return;
+            }
+            console.log("Используем запасного пользователя:", fallbackUser.name);
+        });
+        return;
+    }
+    console.log("Пользователь получен:", user.name);
+});
+
+// Универсальная функция-обработчик
+function handleAsyncOperation(operation, successCallback, errorCallback) {
+    operation((error, result) => {
+        if (error) {
+            errorCallback(error);
+        } else {
+            successCallback(result);
+        }
+    });
+}
+
+// Использование
+handleAsyncOperation(
+    (cb) => getUserData(99, cb),
+    (user) => console.log("Успех! Пользователь:", user.name),
+    (error) => console.error("Ошибка:", error.message)
+);</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runCallbackErrorDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="callbackErrorOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-callback-hell">
+							<h4><i class="fas fa-fire"></i> Callback Hell и как его избежать</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// CALLBACK HELL (АД КОЛБЭКОВ)
+function orderPizza(callback) {
+    console.log("1. Заказываем пиццу...");
+    setTimeout(() => {
+        console.log("2. Пицца готова!");
+        callback(null, "Пепперони");
+    }, 2000);
+}
+
+function getDrink(pizza, callback) {
+    console.log(`3. Заказываем напиток к пицце ${pizza}...`);
+    setTimeout(() => {
+        console.log("4. Напиток готов!");
+        callback(null, pizza, "Кола");
+    }, 1000);
+}
+
+function serve(pizza, drink, callback) {
+    console.log(`5. Подаем ${pizza} с ${drink}...`);
+    setTimeout(() => {
+        console.log("6. Все подано!");
+        callback(null, { pizza, drink });
+    }, 500);
+}
+
+// ТРАДИЦИОННЫЙ ПОДХОД (Callback Hell)
+orderPizza(function(err, pizza) {
+    if (err) {
+        console.error("Ошибка с пиццей:", err);
+        return;
+    }
+    
+    getDrink(pizza, function(err, pizza, drink) {
+        if (err) {
+            console.error("Ошибка с напитком:", err);
+            return;
+        }
+        
+        serve(pizza, drink, function(err, order) {
+            if (err) {
+                console.error("Ошибка при подаче:", err);
+                return;
+            }
+            
+            console.log("Заказ выполнен:", order);
+            
+            // А если нужно еще что-то сделать?
+            // Уровни вложенности растут...
+        });
+    });
+});
+
+// РЕШЕНИЕ: Именованные функции
+function handlePizzaOrdered(err, pizza) {
+    if (err) {
+        console.error("Ошибка с пиццей:", err);
+        return;
+    }
+    getDrink(pizza, handleDrinkReady);
+}
+
+function handleDrinkReady(err, pizza, drink) {
+    if (err) {
+        console.error("Ошибка с напитком:", err);
+        return;
+    }
+    serve(pizza, drink, handleOrderServed);
+}
+
+function handleOrderServed(err, order) {
+    if (err) {
+        console.error("Ошибка при подаче:", err);
+        return;
+    }
+    console.log("Заказ выполнен (именованные функции):", order);
+}
+
+// Альтернативный вызов
+orderPizza(handlePizzaOrdered);
+
+// РЕШЕНИЕ: Паттерн "Асинхронный водопад"
+function asyncWaterfall(tasks, finalCallback) {
+    let currentTask = 0;
+    let result = null;
+    
+    function next(error, ...args) {
+        if (error) {
+            finalCallback(error);
+            return;
+        }
+        
+        result = args;
+        
+        if (currentTask >= tasks.length) {
+            finalCallback(null, ...result);
+            return;
+        }
+        
+        const task = tasks[currentTask++];
+        task(next, ...result);
+    }
+    
+    next();
+}
+
+// Использование водопада
+asyncWaterfall([
+    function(callback) {
+        console.log("Водопад: Заказываем пиццу...");
+        setTimeout(() => callback(null, "Маргарита"), 1000);
+    },
+    function(pizza, callback) {
+        console.log(`Водопад: Заказываем напиток к ${pizza}...`);
+        setTimeout(() => callback(null, pizza, "Сок"), 800);
+    },
+    function(pizza, drink, callback) {
+        console.log(`Водопад: Подаем ${pizza} с ${drink}...`);
+        setTimeout(() => callback(null, { pizza, drink, status: "готово" }), 500);
+    }
+], function(err, order) {
+    if (err) {
+        console.error("Водопад ошибка:", err);
+        return;
+    }
+    console.log("Водопад завершен:", order);
+});</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runCallbackHellDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="callbackHellOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 3: Promise (Обещания) ===== -->
+				<section id="promises" class="lesson-section">
+					<h2><i class="fas fa-handshake"></i> Promise (Обещания)</h2>
+
+					<div class="methods-grid">
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Создание Promise</h4>
+								<span class="method-tag">new Promise()</span>
+							</div>
+							<pre><code class="javascript">const promise = new Promise((resolve, reject) => {
+    // Асинхронная операция
+    setTimeout(() => {
+        const success = Math.random() > 0.5;
+        success ? resolve("Успех!") : reject("Ошибка!");
+    }, 1000);
+});</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Обработка Promise</h4>
+								<span class="method-tag">then/catch</span>
+							</div>
+							<pre><code class="javascript">promise
+    .then(result => {
+        console.log("Успешно:", result);
+    })
+    .catch(error => {
+        console.error("Ошибка:", error);
+    })
+    .finally(() => {
+        console.log("Операция завершена");
+    });</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Цепочки Promise</h4>
+								<span class="method-tag">Chaining</span>
+							</div>
+							<pre><code class="javascript">fetchData()
+    .then(processData)
+    .then(saveData)
+    .then(notifyUser)
+    .catch(handleError);</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Статические методы</h4>
+								<span class="method-tag">Promise.*</span>
+							</div>
+							<pre><code class="javascript">Promise.all([p1, p2, p3])
+Promise.race([p1, p2, p3])
+Promise.resolve(value)
+Promise.reject(error)</code></pre>
+						</div>
+					</div>
+
+					<div class="code-executor">
+						<div class="code-editor">
+							<pre><code class="javascript">// ПРАКТИЧЕСКИЕ ПРИМЕРЫ
+
+// 1. Загрузка данных пользователя
+function getUser(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (userId > 0) {
+                resolve({
+                    id: userId,
+                    name: "Анна Иванова",
+                    email: "anna@example.com"
+                });
+            } else {
+                reject(new Error("Неверный ID пользователя"));
+            }
+        }, 1000);
+    });
+}
+
+// 2. Получение постов пользователя
+function getUserPosts(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve([
+                { id: 1, title: "Мой первый пост", userId },
+                { id: 2, title: "Второй пост", userId }
+            ]);
+        }, 800);
+    });
+}
+
+// 3. Получение комментариев
+function getPostComments(postId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve([
+                { id: 1, text: "Отличный пост!", postId },
+                { id: 2, text: "Спасибо за информацию", postId }
+            ]);
+        }, 600);
+    });
+}
+
+// ИСПОЛЬЗОВАНИЕ ЦЕПОЧКИ PROMISE
+getUser(1)
+    .then(user => {
+        console.log("Пользователь получен:", user.name);
+        return getUserPosts(user.id); // Возвращаем новый Promise
+    })
+    .then(posts => {
+        console.log("Посты получены:", posts.length);
+        // Получаем комментарии для первого поста
+        return getPostComments(posts[0].id);
+    })
+    .then(comments => {
+        console.log("Комментарии получены:", comments.length);
+        console.log("Все данные загружены успешно!");
+    })
+    .catch(error => {
+        console.error("Ошибка в цепочке:", error.message);
+    })
+    .finally(() => {
+        console.log("Операция загрузки завершена");
+    });
+
+// Promise.all - параллельное выполнение
+console.log("\n=== Promise.all ===");
+const promise1 = getUser(2);
+const promise2 = getUserPosts(2);
+const promise3 = new Promise(resolve => 
+    setTimeout(() => resolve("Дополнительные данные"), 1200)
+);
+
+Promise.all([promise1, promise2, promise3])
+    .then(([user, posts, extra]) => {
+        console.log("Все Promise выполнены:");
+        console.log("Пользователь:", user.name);
+        console.log("Количество постов:", posts.length);
+        console.log("Дополнительно:", extra);
+    })
+    .catch(error => {
+        console.error("Один из Promise завершился ошибкой:", error);
+    });
+
+// Promise.race - гонка Promise
+console.log("\n=== Promise.race ===");
+const fastPromise = new Promise(resolve => 
+    setTimeout(() => resolve("Быстрый Promise"), 300)
+);
+const slowPromise = new Promise(resolve => 
+    setTimeout(() => resolve("Медленный Promise"), 1000)
+);
+
+Promise.race([fastPromise, slowPromise])
+    .then(result => {
+        console.log("Победитель гонки:", result);
+    });
+
+// Обработка нескольких ошибок
+function safeOperation(operation) {
+    return operation()
+        .then(result => ({ success: true, data: result }))
+        .catch(error => ({ success: false, error: error.message }));
+}
+
+// Использование
+safeOperation(() => getUser(-1))
+    .then(result => {
+        if (result.success) {
+            console.log("Успех:", result.data);
+        } else {
+            console.log("Ошибка обработана:", result.error);
+        }
+    });</code></pre>
+						</div>
+						<button class="btn btn-primary run-code" onclick="runPromisesDemo()">
+							<i class="fas fa-play"></i> Запустить код
+						</button>
+						<div class="output-container">
+							<div id="promisesOutput" class="console-output">
+								<div class="console-line info">Нажмите "Запустить код"</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 4: Async/Await ===== -->
+				<section id="async-await" class="lesson-section">
+					<h2><i class="fas fa-bolt"></i> Async/Await</h2>
+
+					<div class="info-box">
+						<h4><i class="fas fa-lightbulb"></i> Преимущества Async/Await</h4>
+						<ul>
+							<li>Более читаемый и понятный код</li>
+							<li>Простая обработка ошибок через try/catch</li>
+							<li>Возможность использования циклов и условий</li>
+							<li>Интеграция с синхронным кодом</li>
+						</ul>
+					</div>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-async-basic">Базовое использование</button>
+							<button class="tab-btn" data-tab="tab-async-error">Обработка ошибок</button>
+							<button class="tab-btn" data-tab="tab-async-parallel">Параллельное выполнение</button>
+						</div>
+
+						<div class="tab-content active" id="tab-async-basic">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// БАЗОВЫЙ ПРИМЕР
+async function fetchUserData(userId) {
+    console.log("Начинаем загрузку данных пользователя...");
+    
+    // await приостанавливает выполнение функции до разрешения Promise
+    const user = await getUser(userId);
+    console.log("Пользователь загружен:", user.name);
+    
+    const posts = await getUserPosts(user.id);
+    console.log("Посты загружены:", posts.length);
+    
+    const comments = await getPostComments(posts[0].id);
+    console.log("Комментарии загружены:", comments.length);
+    
+    return {
+        user,
+        posts,
+        comments
+    };
+}
+
+// ВЫЗОВ АСИНХРОННОЙ ФУНКЦИИ
+fetchUserData(1)
+    .then(data => {
+        console.log("Все данные получены:");
+        console.log("Имя:", data.user.name);
+        console.log("Постов:", data.posts.length);
+        console.log("Комментариев:", data.comments.length);
+    })
+    .catch(error => {
+        console.error("Ошибка при загрузке:", error.message);
+    });
+
+// АСИНХРОННАЯ СТРЕЛОЧНАЯ ФУНКЦИЯ
+const loadData = async (userId) => {
+    const user = await getUser(userId);
+    return `Пользователь: ${user.name}`;
+};
+
+// АСИНХРОННЫЙ МЕТОД КЛАССА
+class DataService {
+    async loadUser(userId) {
+        const response = await fetch(`/api/users/${userId}`);
+        return response.json();
+    }
+    
+    async loadUserPosts(userId) {
+        const user = await this.loadUser(userId);
+        const posts = await getUserPosts(user.id);
+        return { user, posts };
+    }
+}
+
+// ИСПОЛЬЗОВАНИЕ В ЦИКЛАХ
+async function loadMultipleUsers(userIds) {
+    const users = [];
+    
+    for (const userId of userIds) {
+        try {
+            const user = await getUser(userId);
+            users.push(user);
+            console.log(`Загружен пользователь ${userId}: ${user.name}`);
+        } catch (error) {
+            console.error(`Ошибка загрузки пользователя ${userId}:`, error.message);
+        }
+    }
+    
+    return users;
+}
+
+// ВЫЗОВ
+loadMultipleUsers([1, 2, 3, -1, 4])
+    .then(users => {
+        console.log(`Успешно загружено ${users.length} пользователей`);
+    });
+
+// КОНВЕРТАЦИЯ CALLBACK В ASYNC/AWAIT
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function delayedGreeting(name, delayMs) {
+    await delay(delayMs);
+    return `Привет, ${name}!`;
+}
+
+// Использование
+delayedGreeting("Анна", 1000)
+    .then(greeting => console.log(greeting));</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runAsyncBasicDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="asyncBasicOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-async-error">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// ОБРАБОТКА ОШИБОК С TRY/CATCH
+async function loadUserWithErrorHandling(userId) {
+    try {
+        console.log(`Загружаем пользователя ${userId}...`);
+        const user = await getUser(userId);
+        
+        console.log(`Загружаем посты пользователя ${user.name}...`);
+        const posts = await getUserPosts(user.id);
+        
+        console.log(`Загружаем комментарии...`);
+        const comments = await getPostComments(posts[0].id);
+        
+        return {
+            success: true,
+            data: { user, posts, comments }
+        };
+        
+    } catch (error) {
+        console.error("Произошла ошибка:", error.message);
+        
+        // Можно вернуть значение по умолчанию
+        return {
+            success: false,
+            error: error.message,
+            data: null
+        };
+        
+        // Или пробросить ошибку дальше
+        // throw new Error(`Не удалось загрузить данные: ${error.message}`);
+    } finally {
+        console.log("Загрузка данных завершена (блок finally)");
+    }
+}
+
+// ВЛОЖЕННАЯ ОБРАБОТКА ОШИБОК
+async function complexOperation() {
+    try {
+        const user = await getUser(1);
+        
+        try {
+            const posts = await getUserPosts(user.id);
+            console.log("Посты загружены:", posts.length);
+        } catch (postError) {
+            console.warn("Не удалось загрузить посты, используем пустой массив");
+            return { user, posts: [] };
+        }
+        
+    } catch (userError) {
+        console.error("Критическая ошибка - пользователь не найден");
+        throw userError; // Пробрасываем выше
+    }
+}
+
+// ОБРАБОТКА НЕСКОЛЬКИХ ОШИБОК
+async function robustDataLoader(userId) {
+    let user = null;
+    let posts = [];
+    
+    // Пытаемся загрузить пользователя
+    try {
+        user = await getUser(userId);
+    } catch (userError) {
+        console.error("Ошибка загрузки пользователя:", userError.message);
+        // Используем пользователя по умолчанию
+        user = { id: userId, name: "Гость", email: "guest@example.com" };
+    }
+    
+    // Пытаемся загрузить посты (даже если пользователь - гость)
+    try {
+        posts = await getUserPosts(user.id);
+    } catch (postError) {
+        console.warn("Не удалось загрузить посты:", postError.message);
+        posts = [{ id: 0, title: "Нет доступных постов", userId: user.id }];
+    }
+    
+    return { user, posts };
+}
+
+// ГЛОБАЛЬНЫЙ ОБРАБОТЧИК ОШИБОК ДЛЯ ASYNC ФУНКЦИЙ
+async function safeAsyncOperation(operation) {
+    try {
+        return await operation();
+    } catch (error) {
+        console.error("Безопасная обработка ошибки:", error.message);
+        // Логирование, уведомление и т.д.
+        return null;
+    }
+}
+
+// Использование
+safeAsyncOperation(() => getUser(-1))
+    .then(result => {
+        if (result) {
+            console.log("Операция успешна:", result);
+        } else {
+            console.log("Операция завершилась с ошибкой");
+        }
+    });
+
+// ПРОМЕЖУТОЧНАЯ ОБРАБОТКА ОШИБОК
+async function loadDataWithFallback(userId) {
+    const primarySource = async () => {
+        console.log("Пытаемся основной источник...");
+        await delay(500);
+        throw new Error("Основной источник недоступен");
+    };
+    
+    const fallbackSource = async () => {
+        console.log("Используем запасной источник...");
+        await delay(300);
+        return { id: userId, name: "Из запасного источника" };
+    };
+    
+    try {
+        return await primarySource();
+    } catch (error) {
+        console.warn("Основной источник не сработал, пробуем запасной...");
+        return await fallbackSource();
+    }
+}</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runAsyncErrorDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="asyncErrorOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-async-parallel">
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// ПАРАЛЛЕЛЬНОЕ ВЫПОЛНЕНИЕ
+
+// 1. Promise.all с await
+async function loadAllDataParallel(userId) {
+    console.log("Начинаем параллельную загрузку...");
+    
+    // Запускаем все Promise одновременно
+    const [user, posts, stats] = await Promise.all([
+        getUser(userId),
+        getUserPosts(userId),
+        getUserStats(userId)
+    ]);
+    
+    console.log("Все данные загружены параллельно!");
+    return { user, posts, stats };
+}
+
+// 2. Обработка ошибок в Promise.all
+async function loadAllDataSafe(userId) {
+    try {
+        const [user, posts] = await Promise.all([
+            getUser(userId),
+            getUserPosts(userId)
+        ]);
+        return { user, posts };
+    } catch (error) {
+        console.error("Один из запросов завершился ошибкой:", error.message);
+        // Можно загрузить данные частично
+        return { user: null, posts: [], error: error.message };
+    }
+}
+
+// 3. Promise.allSettled - когда нужно все результаты
+async function loadMultipleUsersSettled(userIds) {
+    const promises = userIds.map(id => getUser(id));
+    const results = await Promise.allSettled(promises);
+    
+    const successful = results
+        .filter(r => r.status === 'fulfilled')
+        .map(r => r.value);
+    
+    const failed = results
+        .filter(r => r.status === 'rejected')
+        .map(r => r.reason.message);
+    
+    console.log(`Успешно: ${successful.length}, Ошибок: ${failed.length}`);
+    return { successful, failed };
+}
+
+// 4. Последовательное vs параллельное выполнение
+async function compareExecution() {
+    console.log("=== ПОСЛЕДОВАТЕЛЬНОЕ ВЫПОЛНЕНИЕ ===");
+    const startSeq = Date.now();
+    
+    const user1 = await getUser(1);
+    const user2 = await getUser(2);
+    const user3 = await getUser(3);
+    
+    const timeSeq = Date.now() - startSeq;
+    console.log(`Последовательно: ${timeSeq}мс`);
+    
+    console.log("\n=== ПАРАЛЛЕЛЬНОЕ ВЫПОЛНЕНИЕ ===");
+    const startPar = Date.now();
+    
+    const [user1p, user2p, user3p] = await Promise.all([
+        getUser(1),
+        getUser(2),
+        getUser(3)
+    ]);
+    
+    const timePar = Date.now() - startPar;
+    console.log(`Параллельно: ${timePar}мс`);
+    console.log(`Ускорение: ${(timeSeq / timePar).toFixed(1)}x`);
+}
+
+// 5. Ограничение параллелизма
+async function processWithConcurrency(items, processor, maxConcurrent = 3) {
+    const results = [];
+    let current = 0;
+    
+    // Функция для обработки одного элемента
+    async function processItem(index) {
+        if (index >= items.length) return;
+        
+        const item = items[index];
+        try {
+            const result = await processor(item);
+            results[index] = { success: true, data: result };
+        } catch (error) {
+            results[index] = { success: false, error: error.message };
+        }
+        
+        // Обрабатываем следующий элемент
+        await processItem(current++);
+    }
+    
+    // Запускаем начальные обработчики
+    const initialProcesses = [];
+    for (let i = 0; i < Math.min(maxConcurrent, items.length); i++) {
+        initialProcesses.push(processItem(current++));
+    }
+    
+    // Ждем завершения всех
+    await Promise.all(initialProcesses);
+    return results;
+}
+
+// Пример использования
+async function exampleConcurrency() {
+    const userIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    
+    console.log("Обработка с ограничением параллелизма (макс 3)...");
+    const results = await processWithConcurrency(
+        userIds,
+        async (userId) => {
+            await delay(500); // Имитация работы
+            return `Обработан пользователь ${userId}`;
+        },
+        3
+    );
+    
+    const successful = results.filter(r => r.success).length;
+    console.log(`Успешно обработано: ${successful}/${userIds.length}`);
+}
+
+// Запуск примеров
+loadAllDataParallel(1)
+    .then(data => console.log("Параллельная загрузка завершена"))
+    .catch(error => console.error("Ошибка:", error));
+
+// compareExecution();
+// exampleConcurrency();</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runAsyncParallelDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="asyncParallelOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 5: Fetch API и работа с сетью ===== -->
+				<section id="fetch-api" class="lesson-section">
+					<h2><i class="fas fa-globe"></i> Fetch API и работа с сетью</h2>
+
+					<div class="methods-grid">
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Базовый GET запрос</h4>
+							</div>
+							<pre><code class="javascript">fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4>POST запрос с данными</h4>
+							</div>
+							<pre><code class="javascript">fetch('/api/users', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: 'John' })
+});</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Обработка ошибок</h4>
+							</div>
+							<pre><code class="javascript">fetch('/api/data')
+    .then(response => {
+        if (!response.ok) throw new Error('Ошибка сети');
+        return response.json();
+    });</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4>Async/Await с Fetch</h4>
+							</div>
+							<pre><code class="javascript">async function getData() {
+    const response = await fetch('/api/data');
+    return await response.json();
+}</code></pre>
+						</div>
+					</div>
+
+					<div class="code-executor">
+						<div class="code-editor">
+							<pre><code class="javascript">// ПРАКТИЧЕСКИЕ ПРИМЕРЫ С FETCH API
+
+// 1. Получение данных с публичного API
+async function fetchPublicData() {
+    try {
+        console.log("Запрашиваем данные с JSONPlaceholder...");
+        
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ошибка! Статус: ${response.status}`);
+        }
+        
+        const post = await response.json();
+        console.log("Получен пост:", post.title);
+        console.log("Текст:", post.body.substring(0, 50) + "...");
+        
+        return post;
+        
+    } catch (error) {
+        console.error("Ошибка при запросе:", error.message);
+        // Можно вернуть данные по умолчанию
+        return {
+            title: "Заголовок по умолчанию",
+            body: "Текст по умолчанию",
+            userId: 1
+        };
+    }
+}
+
+// 2. Отправка данных на сервер
+async function createNewPost(postData) {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer token123' // Пример авторизации
+            },
+            body: JSON.stringify(postData)
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Ошибка создания: ${response.status} - ${errorText}`);
+        }
+        
+        const createdPost = await response.json();
+        console.log("Пост создан успешно! ID:", createdPost.id);
+        return createdPost;
+        
+    } catch (error) {
+        console.error("Не удалось создать пост:", error.message);
+        throw error; // Пробрасываем дальше
+    }
+}
+
+// 3. Параллельные запросы
+async function fetchMultipleResources() {
+    console.log("Загружаем несколько ресурсов параллельно...");
+    
+    const [postsResponse, usersResponse, commentsResponse] = await Promise.all([
+        fetch('https://jsonplaceholder.typicode.com/posts'),
+        fetch('https://jsonplaceholder.typicode.com/users'),
+        fetch('https://jsonplaceholder.typicode.com/comments')
+    ]);
+    
+    // Проверяем все ответы
+    if (!postsResponse.ok || !usersResponse.ok || !commentsResponse.ok) {
+        throw new Error("Один из запросов завершился ошибкой");
+    }
+    
+    // Парсим все JSON
+    const [posts, users, comments] = await Promise.all([
+        postsResponse.json(),
+        usersResponse.json(),
+        commentsResponse.json()
+    ]);
+    
+    console.log(`Загружено: ${posts.length} постов, ${users.length} пользователей, ${comments.length} комментариев`);
+    
+    // Пример обработки данных
+    const enrichedPosts = posts.slice(0, 3).map(post => {
+        const user = users.find(u => u.id === post.userId);
+        const postComments = comments.filter(c => c.postId === post.id);
+        
+        return {
+            ...post,
+            author: user ? user.name : 'Неизвестный автор',
+            commentsCount: postComments.length
+        };
+    });
+    
+    console.log("Обогащенные посты:", enrichedPosts);
+    return { posts, users, comments, enrichedPosts };
+}
+
+// 4. Загрузка с таймаутом
+async function fetchWithTimeout(url, timeout = 5000) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+    
+    try {
+        const response = await fetch(url, {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        return await response.json();
+        
+    } catch (error) {
+        clearTimeout(timeoutId);
+        if (error.name === 'AbortError') {
+            throw new Error(`Запрос отменен по таймауту (${timeout}мс)`);
+        }
+        throw error;
+    }
+}
+
+// 5. Загрузка с повторными попытками (retry)
+async function fetchWithRetry(url, retries = 3, delay = 1000) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+            console.log(`Попытка ${attempt} из ${retries}...`);
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            
+            return await response.json();
+            
+        } catch (error) {
+            console.warn(`Попытка ${attempt} не удалась: ${error.message}`);
+            
+            if (attempt === retries) {
+                throw new Error(`Все ${retries} попыток не удались: ${error.message}`);
+            }
+            
+            // Ждем перед следующей попыткой
+            await new Promise(resolve => setTimeout(resolve, delay * attempt));
+        }
+    }
+}
+
+// 6. Загрузка файлов
+async function uploadFile(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('description', 'Загруженный файл');
+    
+    try {
+        const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData
+            // Заголовки не нужны - браузер сам установит multipart/form-data
+        });
+        
+        const result = await response.json();
+        console.log("Файл загружен:", result);
+        return result;
+        
+    } catch (error) {
+        console.error("Ошибка загрузки файла:", error);
+        throw error;
+    }
+}
+
+// ИСПОЛЬЗОВАНИЕ ПРИМЕРОВ
+async function runFetchExamples() {
+    console.log("=== ПРИМЕРЫ FETCH API ===");
+    
+    // Пример 1: Простой GET запрос
+    await fetchPublicData();
+    
+    // Пример 2: Создание поста
+    try {
+        const newPost = {
+            title: "Мой новый пост",
+            body: "Содержание нового поста...",
+            userId: 1
+        };
+        
+        // Закомментируйте, если не хотите создавать пост
+        // await createNewPost(newPost);
+        
+    } catch (error) {
+        console.error("Пример 2 завершился ошибкой (ожидаемо для тестового API)");
+    }
+    
+    // Пример 3: Параллельные запросы
+    try {
+        await fetchMultipleResources();
+    } catch (error) {
+        console.error("Ошибка параллельных запросов:", error.message);
+    }
+    
+    console.log("\nВсе примеры завершены!");
+}
+
+// Запуск примеров
+runFetchExamples().catch(console.error);</code></pre>
+						</div>
+						<button class="btn btn-primary run-code" onclick="runFetchDemo()">
+							<i class="fas fa-play"></i> Запустить код
+						</button>
+						<div class="output-container">
+							<div id="fetchOutput" class="console-output">
+								<div class="console-line info">Нажмите "Запустить код"</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 6: Практическое задание ===== -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Асинхронный менеджер задач</h3>
+							<span class="difficulty-badge">Продвинутый уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Создайте систему для управления асинхронными задачами с поддержкой:</p>
+							<ol>
+								<li>Очередь задач с приоритетами</li>
+								<li>Ограничение параллельного выполнения</li>
+								<li>Повторные попытки при ошибках</li>
+								<li>Прогресс выполнения</li>
+								<li>Отмена задач</li>
+								<li>Кэширование результатов</li>
+							</ol>
+
+							<div class="code-editor-area">
+								<h4><i class="fas fa-code"></i> Редактор кода:</h4>
+								<textarea id="exerciseCode" class="code-editor" placeholder="Напишите здесь ваш код..."
+									rows="15">
+// Ваш код здесь
+// Пример начала:
+class AsyncTaskManager {
+    constructor(maxConcurrent = 3) {
+        this.maxConcurrent = maxConcurrent;
+        this.queue = [];
+        this.activeTasks = new Map();
+        this.cache = new Map();
+    }
+    
+    addTask(task, priority = 1) {
+        // Ваш код здесь
+    }
+    
+    async run() {
+        // Ваш код здесь
+    }
+}
+
+// Пример использования
+const manager = new AsyncTaskManager(2);
+console.log("Менеджер задач создан");</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runAsyncExercise()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<button class="btn btn-secondary" onclick="clearAsyncExercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Вывод вашего кода появится здесь
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Пройденные темы -->
+					<div class="topics-summary">
+						<h3><i class="fas fa-graduation-cap"></i> Вы изучили:</h3>
+						<div class="topics-list">
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Что такое асинхронность и Event Loop</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Callback-функции и обработку ошибок</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Promise и цепочки выполнения</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Async/Await для читаемого кода</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Fetch API для работы с сетью</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Параллельное выполнение задач</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навигация между уроками -->
+				<div class="navigation-buttons">
+					<a href="events.html" class="nav-btn prev-btn">
+						<i class="fas fa-arrow-left"></i> Назад: События
+					</a>
+					<a href="es6.html" class="nav-btn next-btn">
+						Следующий урок: ES6+ <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/basic-components.js"></script>
+	<script src="../js/component/async.js"></script>
+</body>
+
+</html>

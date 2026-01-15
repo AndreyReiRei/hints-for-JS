@@ -1,0 +1,1747 @@
+/* Общие стили */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	line-height: 1.6;
+	color: #333;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	min-height: 100vh;
+
+	/* Предотвращает горизонтальный скролл */
+	overflow-x: hidden;
+	width: 100%;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1000;
+}
+
+.header-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 0;
+}
+
+.logo a {
+	font-size: 28px;
+	font-weight: 700;
+	color: #333;
+	text-decoration: none;
+}
+
+.logo span {
+	color: #667eea;
+}
+
+/* Навигация для десктопа */
+.nav-desktop {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	flex-direction: row;
+	max-width: 100%;
+}
+
+.nav-desktop a {
+	text-decoration: none;
+	color: #555;
+	font-weight: 500;
+	padding: 8px 16px;
+	border-radius: 8px;
+	transition: all 0.3s ease;
+	position: relative;
+	font-size: 0.9rem;
+	background: rgba(255, 255, 255, 0.9);
+	border: 1px solid #e0e0e0;
+	flex-shrink: 0;
+	white-space: nowrap;
+}
+
+.nav-desktop a:hover {
+	background: rgba(102, 126, 234, 0.1);
+	color: #667eea;
+	border-color: #667eea;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.nav-desktop a.active {
+	background: linear-gradient(135deg, #667eea 0%, #5a67d8 100%);
+	color: white;
+	border-color: #667eea;
+	box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+	font-weight: 600;
+}
+
+/* Компактные стили для большего количества элементов */
+.nav-desktop.compact a {
+	padding: 6px 12px;
+	font-size: 0.85rem;
+	margin: 2px;
+}
+
+/* Адаптивность */
+@media (max-width: 1100px) {
+	.nav-desktop {
+		gap: 6px;
+	}
+
+	.nav-desktop a {
+		padding: 7px 14px;
+		font-size: 0.85rem;
+	}
+}
+
+@media (max-width: 1024px) {
+	.header-inner {
+		flex-wrap: wrap;
+		gap: 15px;
+		padding: 10px 0;
+	}
+
+	.nav-desktop {
+		order: 3;
+		width: 100%;
+		justify-content: center;
+		margin-top: 10px;
+	}
+}
+
+/* Основной контент */
+.main-content {
+	padding-top: 100px;
+	padding-bottom: 60px;
+	min-height: calc(100vh - 100px);
+}
+
+/* Герой секция */
+.hero {
+	text-align: center;
+	padding: 80px 20px;
+	color: white;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+	backdrop-filter: blur(10px);
+	margin-bottom: 60px;
+}
+
+.hero h1 {
+	font-size: 3.5rem;
+	margin-bottom: 20px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+	font-size: 1.2rem;
+	max-width: 600px;
+	margin: 0 auto 30px;
+	opacity: 0.9;
+}
+
+.btn {
+	display: inline-block;
+	background: white;
+	color: #667eea;
+	padding: 15px 40px;
+	border-radius: 30px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.1rem;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Карточки особенностей */
+.features {
+	margin-bottom: 60px;
+}
+
+.features h2 {
+	text-align: center;
+	color: white;
+	font-size: 2.5rem;
+	margin-bottom: 40px;
+}
+
+.features-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	margin: 25px 0;
+}
+
+.feature-card {
+	text-align: center;
+	padding: 20px;
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+	transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+	transform: translateY(-5px);
+}
+
+body.dark-theme .feature-card {
+	background: #2d3748;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card i {
+	font-size: 36px;
+	color: #667eea;
+	margin-bottom: 15px;
+}
+
+.feature-card h3 {
+	margin-bottom: 15px;
+	color: #333;
+}
+
+.feature-card h4 {
+	margin: 10px 0 5px;
+	color: #2d3748;
+}
+
+body.dark-theme .feature-card h4 {
+	color: #e2e8f0;
+}
+
+.feature-card p {
+	font-size: 14px;
+	color: #718096;
+	margin: 0;
+}
+
+
+/* Список уроков */
+.lessons-preview h2 {
+	text-align: center;
+	color: white;
+	font-size: 2.5rem;
+	margin-bottom: 40px;
+}
+
+.lessons-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 20px;
+}
+
+.lesson-card {
+	background: white;
+	padding: 25px;
+	border-radius: 15px;
+	text-decoration: none;
+	color: #333;
+	display: block;
+	transition: all 0.3s ease;
+	border-left: 5px solid #667eea;
+}
+
+.lesson-card:hover {
+	transform: translateX(10px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-number {
+	display: inline-block;
+	background: #667eea;
+	color: white;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 40px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.lesson-card h3 {
+	margin-bottom: 10px;
+}
+
+/* Подвал */
+.footer {
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	text-align: center;
+	padding: 30px 0;
+}
+
+.footer p {
+	margin: 10px 0;
+	opacity: 0.8;
+}
+
+/* Контент страниц уроков */
+.lesson-content {
+	background: white;
+	border-radius: 20px;
+	padding: 40px;
+	margin-top: 30px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-content h1 {
+	color: #667eea;
+	margin-bottom: 20px;
+	font-size: 2.5rem;
+}
+
+.code-example {
+	background: #f8f9fa;
+	border-left: 4px solid #667eea;
+	padding: 20px;
+	margin: 20px 0;
+	border-radius: 5px;
+	overflow-x: auto;
+}
+
+.code-example code {
+	font-family: 'Courier New', monospace;
+	color: #333;
+}
+
+
+/* Кнопки навигации */
+.navigation-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin: 40px 0 20px 0;
+	gap: 15px;
+}
+
+.nav-btn {
+	padding: 14px 28px;
+	background: #667eea;
+	color: white;
+	text-decoration: none;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	transition: all 0.3s ease;
+	font-weight: 500;
+	box-shadow: 0 4px 6px rgba(102, 126, 234, 0.2);
+	border: none;
+	cursor: pointer;
+	font-size: 15px;
+}
+
+.nav-btn:hover {
+	background: #764ba2;
+	transform: translateY(-3px);
+	box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+	text-decoration: none;
+}
+
+.prev-btn {
+	background: #4a5568;
+}
+
+.prev-btn:hover {
+	background: #718096;
+}
+
+.nav-btn i {
+	font-size: 16px;
+}
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+	.async-demo {
+		padding: 15px;
+		margin: 15px 0;
+	}
+
+	.tab-buttons {
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	.tab-btn {
+		width: 100%;
+		border-radius: 5px;
+		margin-right: 0;
+		bottom: 0;
+		margin-bottom: 5px;
+	}
+
+	.tab-content {
+		padding: 15px;
+	}
+
+	.accordion-header {
+		padding: 15px;
+	}
+
+	.accordion-content {
+		padding: 0 15px;
+	}
+
+	.accordion-content.active {
+		padding: 15px;
+	}
+
+	.navigation-buttons {
+		flex-direction: column;
+	}
+
+	.nav-btn {
+		justify-content: center;
+		text-align: center;
+	}
+
+	.exercise {
+		padding: 20px;
+	}
+
+	.exercise ol {
+		padding-left: 15px;
+	}
+
+	.code-example {
+		padding: 15px;
+	}
+
+	.data-card {
+		padding: 15px;
+	}
+
+	.console-output {
+		padding: 12px;
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 480px) {
+	.async-demo {
+		padding: 12px;
+	}
+
+	.tab-content {
+		padding: 12px;
+	}
+
+	.exercise {
+		padding: 15px;
+	}
+
+	.nav-btn {
+		padding: 12px 20px;
+		font-size: 14px;
+	}
+
+	.lesson-meta {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+}
+
+/* Переключатель темы */
+.theme-toggle {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #667eea;
+	color: white;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.1rem;
+	margin-left: 20px;
+	transition: all 0.3s ease;
+	z-index: 100;
+}
+
+.theme-toggle:hover {
+	transform: scale(1.1);
+	background: #5a67d8;
+}
+
+.theme-toggle .theme-tooltip {
+	position: absolute;
+	top: 120%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #333;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-size: 0.8rem;
+	white-space: nowrap;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+	pointer-events: none;
+}
+
+.theme-toggle .theme-tooltip::before {
+	content: '';
+	position: absolute;
+	top: -5px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #333;
+}
+
+.theme-toggle:hover .theme-tooltip {
+	opacity: 1;
+	visibility: visible;
+	top: 110%;
+}
+
+
+/* Система вкладок */
+.tabs {
+	margin: 20px 0;
+	background: #f7fafc;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid #e2e8f0;
+}
+
+body.dark-theme .tabs {
+	background: #2d3748;
+	border-color: #4a5568;
+}
+
+.tab-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0;
+	margin-bottom: 0;
+	background: #edf2f7;
+	padding: 10px 10px 0 10px;
+}
+
+body.dark-theme .tab-buttons {
+	background: #4a5568;
+}
+
+.tab-btn {
+	padding: 12px 24px;
+	background: #e2e8f0;
+	border: none;
+	border-radius: 5px 5px 0 0;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	color: #4a5568;
+	margin-right: 5px;
+	position: relative;
+	bottom: -1px;
+}
+
+.tab-btn:hover {
+	background: #cbd5e0;
+}
+
+.tab-btn.active {
+	background: #667eea;
+	color: white;
+	border-bottom: 2px solid #667eea;
+}
+
+body.dark-theme .tab-btn {
+	background: #4a5568;
+	color: #e2e8f0;
+}
+
+body.dark-theme .tab-btn:hover {
+	background: #718096;
+}
+
+body.dark-theme .tab-btn.active {
+	background: #667eea;
+	border-bottom-color: #667eea;
+}
+
+.tab-content {
+	display: none;
+	padding: 25px;
+	background: white;
+	border-radius: 0 0 10px 10px;
+}
+
+.tab-content.active {
+	display: block;
+	animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+body.dark-theme .tab-content {
+	background: #1a202c;
+}
+
+
+/* Аккордеон */
+.accordion {
+	margin: 15px 0;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	overflow: hidden;
+	background: white;
+}
+
+body.dark-theme .accordion {
+	background: #2d3748;
+	border-color: #4a5568;
+}
+
+.accordion-header {
+	padding: 18px 20px;
+	background: #f7fafc;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: all 0.3s ease;
+	font-weight: 600;
+	color: #2d3748;
+	border-bottom: 1px solid transparent;
+}
+
+.accordion-header:hover {
+	background: #edf2f7;
+}
+
+.accordion-header.active {
+	border-bottom-color: #e2e8f0;
+}
+
+.accordion-header i {
+	transition: transform 0.3s ease;
+}
+
+.accordion-header.active i {
+	transform: rotate(180deg);
+}
+
+body.dark-theme .accordion-header {
+	background: #2d3748;
+	color: #e2e8f0;
+}
+
+body.dark-theme .accordion-header:hover {
+	background: #4a5568;
+}
+
+body.dark-theme .accordion-header.active {
+	border-bottom-color: #4a5568;
+}
+
+.accordion-content {
+	padding: 0 20px;
+	background: white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease, padding 0.3s ease;
+	border-top: 1px solid transparent;
+}
+
+.accordion-content.active {
+	padding: 20px;
+	max-height: 2000px;
+	border-top-color: #e2e8f0;
+}
+
+body.dark-theme .accordion-content {
+	background: #1a202c;
+	border-top-color: #4a5568;
+}
+
+
+
+/* Мета-информация урока */
+.lesson-meta {
+	display: flex;
+	gap: 15px;
+	margin: 15px 0 25px 0;
+	align-items: center;
+}
+
+.lesson-tag {
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	color: white;
+	padding: 6px 12px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.lesson-time {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: #718096;
+	font-size: 14px;
+}
+
+body.dark-theme .lesson-time {
+	color: #a0aec0;
+}
+
+.lesson-time i {
+	font-size: 14px;
+}
+
+
+/* Консоль вывода */
+.console-output {
+	background: #1a202c;
+	color: #e2e8f0;
+	padding: 15px;
+	border-radius: 8px;
+	margin: 15px 0;
+	font-family: 'Courier New', monospace;
+	font-size: 14px;
+	max-height: 300px;
+	overflow-y: auto;
+	border: 1px solid #4a5568;
+}
+
+.console-line {
+	padding: 5px 0;
+	border-bottom: 1px solid #4a5568;
+	font-family: 'Courier New', monospace;
+	font-size: 13px;
+	line-height: 1.4;
+}
+
+.console-line:last-child {
+	border-bottom: none;
+}
+
+.console-line.success {
+	color: #68d391;
+}
+
+.console-line.error {
+	color: #fc8181;
+}
+
+.console-line.info {
+	color: #63b3ed;
+}
+
+.console-line.warning {
+	color: #f6ad55;
+}
+
+/* Индикатор загрузки */
+.loading-spinner {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 3px solid rgba(102, 126, 234, 0.3);
+	border-radius: 50%;
+	border-top-color: #667eea;
+	animation: spin 1s ease-in-out infinite;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Карточки данных */
+.data-card {
+	background: white;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 15px 0;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border: 1px solid #e2e8f0;
+}
+
+body.dark-theme .data-card {
+	background: #2d3748;
+	border-color: #4a5568;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.data-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-theme .data-card:hover {
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Аватар пользователя */
+.user-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	margin-right: 15px;
+	flex-shrink: 0;
+}
+
+
+/* Примеры кода */
+.code-example {
+	background: #1a202c;
+	border-radius: 10px;
+	padding: 25px;
+	margin: 25px 0;
+	overflow-x: auto;
+	border: 1px solid #4a5568;
+	position: relative;
+}
+
+.code-example pre {
+	margin: 0;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.code-example code {
+	color: #e2e8f0;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+/* Практические задания */
+.exercise {
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	color: white;
+	padding: 30px;
+	border-radius: 12px;
+	margin: 35px 0;
+	box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.exercise p {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.exercise ol {
+	margin: 15px 0;
+	padding-left: 20px;
+	font-size: 15px;
+}
+
+.exercise li {
+	margin: 12px 0;
+	padding-left: 10px;
+	line-height: 1.5;
+}
+
+.show-solution {
+	background: white;
+	color: #667eea;
+	margin-top: 20px;
+	font-weight: 600;
+	padding: 12px 24px;
+	border: 2px solid white;
+	transition: all 0.3s ease;
+}
+
+.show-solution:hover {
+	background: rgba(255, 255, 255, 0.9);
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.solution {
+	margin-top: 25px;
+	transition: all 0.3s ease;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 8px;
+	padding: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.solution.hidden {
+	display: none;
+}
+
+.solution pre {
+	margin: 0;
+	background: rgba(0, 0, 0, 0.3);
+	padding: 20px;
+	border-radius: 8px;
+	overflow-x: auto;
+}
+
+.solution code {
+	color: #e2e8f0;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 13px;
+	line-height: 1.4;
+}
+
+/* arrays.css - специфичные стили для урока по массивам */
+
+/* ... существующие стили ... */
+
+/* Дополнительные материалы */
+.additional-materials {
+	background: #f8f9fa;
+	border-radius: 15px;
+	padding: 30px;
+	margin-top: 40px;
+}
+
+body.dark-theme .additional-materials {
+	background: #2d3748;
+}
+
+.materials-list {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-top: 20px;
+}
+
+.material-link {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 15px;
+	background: white;
+	border-radius: 8px;
+	color: #667eea;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.material-link:hover {
+	background: #667eea;
+	color: white;
+	transform: translateX(10px);
+}
+
+body.dark-theme .material-link {
+	background: #4a5568;
+	color: #e2e8f0;
+}
+
+body.dark-theme .material-link:hover {
+	background: #667eea;
+	color: white;
+}
+
+/* Стили для раздела с пройденными темами */
+.topics-summary {
+	margin-top: 30px;
+	padding: 20px;
+	background: #f7fafc;
+	border-radius: 10px;
+	border: 1px solid #e2e8f0;
+}
+
+body.dark-theme .topics-summary {
+	background: #2d3748;
+	border-color: #4a5568;
+}
+
+.topics-summary h3 {
+	color: #2d3748;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+body.dark-theme .topics-summary h3 {
+	color: #e2e8f0;
+}
+
+.topics-summary h3 i {
+	color: #667eea;
+}
+
+.topics-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.topic-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 12px;
+	background: white;
+	border-radius: 6px;
+	transition: transform 0.2s ease;
+}
+
+body.dark-theme .topic-item {
+	background: #4a5568;
+}
+
+.topic-item:hover {
+	transform: translateX(5px);
+}
+
+.topic-item i {
+	color: #48bb78;
+	font-size: 14px;
+}
+
+.topic-item span {
+	font-size: 14px;
+	color: #4a5568;
+}
+
+body.dark-theme .topic-item span {
+	color: #e2e8f0;
+}
+
+/* Стили для кнопок навигации между уроками */
+.navigation-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 40px;
+	gap: 20px;
+}
+
+.nav-btn {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 20px;
+	background: #667eea;
+	color: white;
+	text-decoration: none;
+	border-radius: 8px;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	flex: 1;
+	text-align: center;
+	justify-content: center;
+}
+
+.prev-btn {
+	background: #4a5568;
+}
+
+.prev-btn:hover {
+	background: #718096;
+}
+
+.next-btn {
+	background: #667eea;
+}
+
+.next-btn:hover {
+	background: #764ba2;
+}
+
+/* Адаптивность для новых элементов */
+@media (max-width: 768px) {
+	.navigation-buttons {
+		flex-direction: column;
+	}
+
+	.nav-btn {
+		width: 100%;
+	}
+
+	.topics-summary,
+	.additional-materials {
+		padding: 15px;
+	}
+}
+
+@media (max-width: 480px) {
+	.material-link {
+		padding: 10px 12px;
+		font-size: 13px;
+	}
+
+	.topic-item {
+		padding: 6px 10px;
+	}
+
+	.nav-btn {
+		padding: 10px 15px;
+		font-size: 14px;
+	}
+}
+
+/* Общие стили для скрытых элементов */
+.hidden {
+	display: none !important;
+}
+
+/* Стили для кнопки показа решения */
+.show-solution {
+	margin-top: 15px;
+	background: #ed8936;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-weight: 500;
+	transition: background 0.3s ease;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.show-solution:hover {
+	background: #dd6b20;
+}
+
+body.dark-theme .show-solution {
+	background: #ed8936;
+}
+
+body.dark-theme .show-solution:hover {
+	background: #dd6b20;
+}
+
+/* Стили для блока с решением */
+.solution {
+	margin-top: 20px;
+	padding: 20px;
+	background: #f7fafc;
+	border-radius: 8px;
+	border: 1px solid #e2e8f0;
+}
+
+body.dark-theme .solution {
+	background: #2d3748;
+	border-color: #4a5568;
+}
+
+.solution h4 {
+	color: #2d3748;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+body.dark-theme .solution h4 {
+	color: #e2e8f0;
+}
+
+.solution h4 i {
+	color: #48bb78;
+}
+
+.solution-tips {
+	margin-top: 20px;
+	padding: 15px;
+	background: rgba(102, 126, 234, 0.1);
+	border-radius: 6px;
+	border-left: 4px solid #667eea;
+}
+
+body.dark-theme .solution-tips {
+	background: rgba(102, 126, 234, 0.2);
+}
+
+.solution-tips h5 {
+	color: #2d3748;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+body.dark-theme .solution-tips h5 {
+	color: #e2e8f0;
+}
+
+.solution-tips ul {
+	padding-left: 20px;
+	color: #4a5568;
+}
+
+body.dark-theme .solution-tips ul {
+	color: #a0aec0;
+}
+
+.solution-tips li {
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+/* Стили для вывода упражнений */
+.output-area {
+	margin-top: 15px;
+	padding: 15px;
+	background: #1a202c;
+	border-radius: 6px;
+	border: 1px solid #4a5568;
+	min-height: 100px;
+}
+
+.output-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	color: #a0aec0;
+	text-align: center;
+	padding: 20px;
+}
+
+.output-placeholder i {
+	font-size: 24px;
+	color: #718096;
+}
+
+.exercise-output h4 {
+	color: #48bb78;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.output-section {
+	background: rgba(0, 0, 0, 0.2);
+	padding: 10px;
+	border-radius: 4px;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.output-pre {
+	margin: 0;
+	font-family: 'Courier New', monospace;
+	font-size: 13px;
+	color: #e2e8f0;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.test-report {
+	background: rgba(0, 0, 0, 0.2);
+	padding: 15px;
+	border-radius: 6px;
+	border: 1px solid #4a5568;
+}
+
+.test-report h4 {
+	color: #4299e1;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.test-summary {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 15px;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+}
+
+.test-summary p {
+	margin: 0;
+	color: #e2e8f0;
+	font-size: 14px;
+}
+
+.test-summary strong {
+	color: #68d391;
+}
+
+.test-details {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.test-result {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 12px;
+	border-radius: 4px;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.test-result.passed {
+	border-left: 4px solid #48bb78;
+}
+
+.test-result.failed {
+	border-left: 4px solid #f56565;
+}
+
+.test-result i {
+	font-size: 14px;
+}
+
+.test-result.passed i {
+	color: #48bb78;
+}
+
+.test-result.failed i {
+	color: #f56565;
+}
+
+.test-result span {
+	flex: 1;
+	color: #e2e8f0;
+	font-size: 13px;
+}
+
+.test-result .status {
+	flex: 0;
+}
+
+.test-warning {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px;
+	background: rgba(245, 101, 101, 0.1);
+	border-radius: 4px;
+	border: 1px solid rgba(245, 101, 101, 0.3);
+}
+
+.test-warning i {
+	color: #f56565;
+	font-size: 18px;
+}
+
+.test-warning p {
+	margin: 0;
+	color: #fbd38d;
+	font-size: 14px;
+	flex: 1;
+}
+
+.exercise-error {
+	padding: 15px;
+	background: rgba(245, 101, 101, 0.1);
+	border-radius: 6px;
+	border: 1px solid rgba(245, 101, 101, 0.3);
+}
+
+.exercise-error h4 {
+	color: #f56565;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.error-pre {
+	margin: 0;
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+	color: #fbd38d;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+.error-hint {
+	margin-top: 10px;
+	color: #fbd38d;
+	font-size: 13px;
+	font-style: italic;
+}
+
+/* Оглавление */
+.lesson-toc {
+	background: #f8f9fa;
+	border-radius: 12px;
+	padding: 20px;
+	margin-bottom: 30px;
+	border-left: 4px solid #667eea;
+}
+
+body.dark-theme .lesson-toc {
+	background: #2d3748;
+	border-left-color: #764ba2;
+}
+
+.lesson-toc h3 {
+	margin-top: 0;
+	margin-bottom: 15px;
+	color: #2d3748;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+body.dark-theme .lesson-toc h3 {
+	color: #e2e8f0;
+}
+
+.lesson-toc ol {
+	padding-left: 20px;
+	margin: 0;
+}
+
+.lesson-toc li {
+	margin: 8px 0;
+	padding: 5px 0;
+}
+
+.lesson-toc a {
+	color: #667eea;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.lesson-toc a:hover {
+	color: #764ba2;
+	text-decoration: underline;
+}
+
+
+
+/* Стили для info-box (информационных блоков) */
+.info-box {
+	margin: 20px 0;
+	padding: 20px;
+	background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+	border-left: 4px solid #4299e1;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(66, 153, 225, 0.1);
+}
+
+body.dark-theme .info-box {
+	background: linear-gradient(135deg, #2d4369 0%, #2c5282 100%);
+	border-left-color: #63b3ed;
+	box-shadow: 0 2px 10px rgba(99, 179, 237, 0.1);
+}
+
+.info-box h4 {
+	color: #2b6cb0;
+	margin-top: 0;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 18px;
+}
+
+body.dark-theme .info-box h4 {
+	color: #90cdf4;
+}
+
+.info-box h4 i {
+	font-size: 20px;
+	color: #4299e1;
+}
+
+body.dark-theme .info-box h4 i {
+	color: #63b3ed;
+}
+
+.info-box ul {
+	margin: 0;
+	padding-left: 20px;
+	color: #2d3748;
+}
+
+body.dark-theme .info-box ul {
+	color: #e2e8f0;
+}
+
+.info-box li {
+	margin-bottom: 8px;
+	line-height: 1.5;
+}
+
+.info-box li strong {
+	color: #2b6cb0;
+	font-weight: 600;
+}
+
+body.dark-theme .info-box li strong {
+	color: #90cdf4;
+}
+
+.info-box p {
+	margin: 15px 0 0 0;
+	padding: 12px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 6px;
+	border: 1px solid rgba(66, 153, 225, 0.2);
+	color: #4a5568;
+	font-size: 14px;
+}
+
+body.dark-theme .info-box p {
+	background: rgba(0, 0, 0, 0.2);
+	border-color: rgba(99, 179, 237, 0.3);
+	color: #a0aec0;
+}
+
+.info-box p.warning {
+	background: rgba(254, 178, 178, 0.1);
+	border-color: rgba(245, 101, 101, 0.3);
+	color: #c53030;
+}
+
+body.dark-theme .info-box p.warning {
+	background: rgba(245, 101, 101, 0.1);
+	border-color: rgba(245, 101, 101, 0.3);
+	color: #fc8181;
+}
+
+.info-box p i {
+	margin-right: 8px;
+	color: #ed8936;
+}
+
+/* Стили для code-editor-area (области редактора кода) */
+.code-editor-area {
+	margin: 25px 0;
+	background: white;
+	border-radius: 10px;
+	border: 1px solid #e2e8f0;
+	overflow: hidden;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme .code-editor-area {
+	background: #2d3748;
+	border-color: #4a5568;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.code-editor-area h4 {
+	margin: 0;
+	padding: 15px 20px;
+	background: #f7fafc;
+	border-bottom: 1px solid #e2e8f0;
+	color: #2d3748;
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+body.dark-theme .code-editor-area h4 {
+	background: #4a5568;
+	border-bottom-color: #718096;
+	color: #e2e8f0;
+}
+
+.code-editor-area h4 i {
+	color: #667eea;
+	font-size: 18px;
+}
+
+.code-editor {
+	width: 100%;
+	min-height: 200px;
+	padding: 15px;
+	margin: 0;
+	border: none;
+	background: #1a202c;
+	color: #e2e8f0;
+	font-family: 'Courier New', monospace;
+	font-size: 14px;
+	line-height: 1.5;
+	resize: vertical;
+	box-sizing: border-box;
+	border-bottom: 1px solid #4a5568;
+}
+
+.code-editor:focus {
+	outline: none;
+	box-shadow: inset 0 0 0 2px #667eea;
+}
+
+.code-editor::placeholder {
+	color: #718096;
+	font-style: italic;
+}
+
+.editor-actions {
+	display: flex;
+	gap: 10px;
+	padding: 15px 20px;
+	background: #f7fafc;
+	border-top: 1px solid #e2e8f0;
+}
+
+body.dark-theme .editor-actions {
+	background: #4a5568;
+	border-top-color: #718096;
+}
+
+.editor-actions .btn {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 20px;
+	font-weight: 500;
+	transition: all 0.2s ease;
+}
+
+.editor-actions .btn-primary {
+	background: #667eea;
+	color: white;
+	border: none;
+}
+
+.editor-actions .btn-primary:hover {
+	background: #5a67d8;
+	transform: translateY(-1px);
+}
+
+.editor-actions .btn-secondary {
+	background: #a0aec0;
+	color: white;
+	border: none;
+}
+
+.editor-actions .btn-secondary:hover {
+	background: #718096;
+	transform: translateY(-1px);
+}
+
+.editor-actions .btn-success {
+	background: #48bb78;
+	color: white;
+	border: none;
+}
+
+.editor-actions .btn-success:hover {
+	background: #38a169;
+	transform: translateY(-1px);
+}
+
+/* Адаптивность для новых элементов */
+@media (max-width: 768px) {
+	.info-box {
+		padding: 15px;
+		margin: 15px 0;
+	}
+
+	.info-box h4 {
+		font-size: 16px;
+	}
+
+	.info-box ul {
+		padding-left: 15px;
+	}
+
+	.code-editor-area {
+		margin: 20px 0;
+	}
+
+	.code-editor-area h4 {
+		padding: 12px 15px;
+		font-size: 15px;
+	}
+
+	.code-editor {
+		padding: 12px;
+		font-size: 13px;
+	}
+
+	.editor-actions {
+		padding: 12px 15px;
+		flex-direction: column;
+	}
+
+	.editor-actions .btn {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.info-box {
+		padding: 12px;
+	}
+
+	.info-box h4 {
+		font-size: 15px;
+		gap: 8px;
+	}
+
+	.info-box h4 i {
+		font-size: 18px;
+	}
+
+	.code-editor-area {
+		border-radius: 8px;
+	}
+
+	.code-editor-area h4 {
+		padding: 10px 12px;
+		font-size: 14px;
+	}
+
+	.code-editor {
+		padding: 10px;
+		font-size: 12px;
+		min-height: 150px;
+	}
+}

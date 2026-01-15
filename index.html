@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учебник по JavaScript</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/burger-menu.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="css/dark-theme.css">
+
+	<!-- ЭКСТРЕННЫЙ ФИКС - добавьте в <head>  -->
+	<!-- <style>
+		.nav-mobile {
+			z-index: 99999 !important;
+			background: white !important;
+			border: 5px solid red !important;
+			box-shadow: 0 0 20px rgba(255, 0, 0, 0.5) !important;
+		}
+
+		.menu-overlay {
+			z-index: 1 !important;
+			background: transparent !important;
+			pointer-events: none !important;
+		}
+
+		.burger-icon {
+			z-index: 100000 !important;
+			background: yellow !important;
+			padding: 10px !important;
+		}
+	</style> -->
+
+
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+
+
+				<!-- Бургер меню -->
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<!-- Навигация для десктопа -->
+				<nav class="nav-desktop compact">
+					<a href="index.html" class="active">Главная</a>
+					<a href="pages/basics.html">Основы</a>
+					<a href="pages/variables.html">Переменные</a>
+					<a href="pages/functions.html">Функции</a>
+					<a href="pages/objects.html">Объекты</a>
+					<a href="pages/arrays.html">Массивы</a>
+					<a href="pages/dom.html">DOM</a>
+					<a href="pages/events.html">События</a>
+					<a href="pages/async.html">Асинхронность</a>
+					<a href="pages/es6.html">ES6+</a>
+					<a href="pages/practice.html">Практика</a>
+				</nav>
+				<!-- Тема должна быть внутри header-inner -->
+				<button class="theme-toggle" aria-label="Переключить тему">
+					<i class="fas fa-moon"></i>
+				</button>
+			</div>
+		</div>
+
+		<!-- Мобильное меню -->
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="index.html" class="active"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="pages/basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="pages/variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="pages/functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="pages/objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="pages/arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="pages/dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="pages/events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="pages/async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="pages/es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="pages/practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Основной контент -->
+	<main class="main-content">
+		<div class="container">
+			<section class="hero">
+				<h1>Изучайте JavaScript с нуля</h1>
+				<p>Полный курс по JavaScript с теорией, примерами и практическими заданиями</p>
+				<a href="pages/basics.html" class="btn">Начать обучение</a>
+			</section>
+
+			<section class="features">
+				<h2>Что вы узнаете</h2>
+				<div class="features-grid">
+					<div class="feature-card">
+						<i class="fas fa-code"></i>
+						<h3>Основы синтаксиса</h3>
+						<p>Изучите базовый синтаксис JavaScript</p>
+					</div>
+					<div class="feature-card">
+						<i class="fas fa-brain"></i>
+						<h3>Логика и алгоритмы</h3>
+						<p>Развитие алгоритмического мышления</p>
+					</div>
+					<div class="feature-card">
+						<i class="fas fa-laptop"></i>
+						<h3>Работа с DOM</h3>
+						<p>Взаимодействие с веб-страницей</p>
+					</div>
+					<div class="feature-card">
+						<i class="fas fa-project-diagram"></i>
+						<h3>Современный JS</h3>
+						<p>ES6+ и новые возможности</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="lessons-preview">
+				<h2>Все уроки</h2>
+				<div class="lessons-list">
+					<a href="pages/basics.html" class="lesson-card">
+						<span class="lesson-number">01</span>
+						<h3>Основы JavaScript</h3>
+						<p>Введение в язык, первая программа</p>
+					</a>
+					<a href="pages/variables.html" class="lesson-card">
+						<span class="lesson-number">02</span>
+						<h3>Переменные и типы данных</h3>
+						<p>let, const, типы данных</p>
+					</a>
+					<a href="pages/functions.html" class="lesson-card">
+						<span class="lesson-number">03</span>
+						<h3>Функции</h3>
+						<p>Объявление, параметры, возврат значений</p>
+					</a>
+					<a href="pages/objects.html" class="lesson-card">
+						<span class="lesson-number">04</span>
+						<h3>Объекты</h3>
+						<p>Работа с объектами, методы</p>
+					</a>
+					<a href="pages/arrays.html" class="lesson-card">
+						<span class="lesson-number">05</span>
+						<h3>Массивы</h3>
+						<p>Методы массивов, итерация</p>
+					</a>
+					<a href="pages/dom.html" class="lesson-card">
+						<span class="lesson-number">06</span>
+						<h3>Работа с DOM</h3>
+						<p>Взаимодействие с элементами страницы</p>
+					</a>
+					<a href="pages/events.html" class="lesson-card">
+						<span class="lesson-number">07</span>
+						<h3>События</h3>
+						<p>Обработчики событий, делегирование</p>
+					</a>
+					<a href="pages/async.html" class="lesson-card">
+						<span class="lesson-number">08</span>
+						<h3>Асинхронность</h3>
+						<p>Promise, async/await, AJAX</p>
+					</a>
+					<a href="pages/es6.html" class="lesson-card">
+						<span class="lesson-number">09</span>
+						<h3>ES6+ Нововведения</h3>
+						<p>Современные возможности JavaScript</p>
+					</a>
+					<a href="pages/practice.html" class="lesson-card">
+						<span class="lesson-number">10</span>
+						<h3>Практика</h3>
+						<p>Реальные проекты и задачи</p>
+					</a>
+				</div>
+			</section>
+		</div>
+	</main>
+
+	<!-- Подвал -->
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<script src="js/burger-menu.js"></script>
+	<script src="js/main.js"></script>
+
+
+
+
+
+
+</body>
+
+</html>

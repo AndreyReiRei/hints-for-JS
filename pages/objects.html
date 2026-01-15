@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Объекты в JavaScript - JS Tutor</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/objects.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html">Основы</a>
+					<a href="variables.html">Переменные</a>
+					<a href="functions.html">Функции</a>
+					<a href="objects.html" class="active">Объекты</a>
+					<a href="arrays.html">Массивы</a>
+					<a href="dom.html">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html">Асинхронность</a>
+					<a href="es6.html">ES6+</a>
+					<a href="practice.html">Практика</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html" class="active"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Объекты в JavaScript</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Средний уровень</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 45 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 7 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>Объекты</strong> — это фундаментальная структура данных в JavaScript. Они позволяют
+						организовывать данные в виде пар "ключ-значение" и являются основой для
+						объектно-ориентированного
+						программирования.</p>
+				</div>
+
+				<!-- Быстрая навигация по уроку -->
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#what-are-objects">Что такое объекты?</a></li>
+						<li><a href="#creating-objects">Создание объектов</a></li>
+						<li><a href="#accessing-properties">Доступ к свойствам</a></li>
+						<li><a href="#methods">Методы объектов</a></li>
+						<li><a href="#iterating-objects">Перебор объектов</a></li>
+						<a href="#built-in-methods">Встроенные методы</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- ===== РАЗДЕЛ 1: Что такое объекты? ===== -->
+				<section id="what-are-objects" class="lesson-section">
+					<h2><i class="fas fa-cube"></i> Что такое объекты?</h2>
+					<p>Объект — это коллекция свойств, где каждое свойство состоит из <strong>ключа (имени)</strong> и
+						<strong>значения</strong>. Значением может быть любой тип данных, включая другие объекты и
+						функции.
+					</p>
+
+					<div class="features-grid">
+						<div class="feature-card">
+							<i class="fas fa-key"></i>
+							<h4>Пары ключ-значение</h4>
+							<p>Упорядоченное хранение данных</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-code"></i>
+							<h4>Динамическая структура</h4>
+							<p>Можно добавлять/удалять свойства</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-sitemap"></i>
+							<h4>Вложенность</h4>
+							<p>Объекты внутри объектов</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-cogs"></i>
+							<h4>Методы</h4>
+							<p>Функции как свойства объекта</p>
+						</div>
+					</div>
+
+					<div class="info-box">
+						<h4><i class="fas fa-lightbulb"></i> Зачем нужны объекты?</h4>
+						<ul>
+							<li><strong>Группировка данных</strong> — связанная информация в одном месте</li>
+							<li><strong>Структурирование</strong> — сложные данные становятся понятнее</li>
+							<li><strong>Моделирование реального мира</strong> — пользователи, товары, заказы</li>
+							<li><strong>Повторное использование</strong> — шаблоны через конструкторы и классы</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 2: Создание объектов ===== -->
+				<section id="creating-objects" class="lesson-section">
+					<h2><i class="fas fa-plus-circle"></i> Создание объектов</h2>
+					<p>В JavaScript есть несколько способов создания объектов. Каждый подходит для разных ситуаций:</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-literal">Литерал объекта</button>
+							<button class="tab-btn" data-tab="tab-constructor">new Object()</button>
+							<button class="tab-btn" data-tab="tab-function">Конструкторная функция</button>
+							<button class="tab-btn" data-tab="tab-class">Классы (ES6)</button>
+						</div>
+
+						<div class="tab-content active" id="tab-literal">
+							<h4><i class="fas fa-brackets-curly"></i> Литерал объекта</h4>
+							<p>Самый частый и простой способ. Используется в 90% случаев.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Литерал объекта
+const user = {
+    name: "Анна",
+    age: 25,
+    email: "anna@example.com",
+    isActive: true,
+    address: {
+        city: "Москва",
+        street: "Тверская"
+    },
+    hobbies: ["чтение", "программирование", "путешествия"]
+};
+
+// Использование
+console.log(user.name); // "Анна"
+console.log(user.address.city); // "Москва"
+console.log(user.hobbies[0]); // "чтение"
+
+// Динамическое создание
+const car = {};
+car.brand = "Toyota";
+car.model = "Camry";
+car.year = 2022;
+
+console.log(`${car.brand} ${car.model}`); // "Toyota Camry"</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runLiteralDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="literalOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Когда использовать:</h4>
+								<ul>
+									<li>Создание <strong>единичных объектов</strong></li>
+									<li><strong>Конфигурационные объекты</strong></li>
+									<li><strong>Простое структурирование данных</strong></li>
+									<li>В <strong>90% случаев</strong> в современном JavaScript</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-constructor">
+							<h4><i class="fas fa-object-group"></i> Конструктор new Object()</h4>
+							<p>Альтернативный способ, редко используется в современном коде.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Конструктор new Object()
+const person = new Object();
+person.firstName = "Иван";
+person.lastName = "Петров";
+person.age = 30;
+
+// Добавление метода
+person.getFullName = function() {
+    return `${this.firstName} ${this.lastName}`;
+};
+
+// Использование
+console.log(person.getFullName()); // "Иван Петров"
+console.log(person.age); // 30
+
+// С передачей начальных значений
+const config = new Object({
+    apiUrl: "https://api.example.com",
+    timeout: 5000,
+    retry: true
+});
+
+console.log(config.apiUrl); // "https://api.example.com"
+console.log(config.timeout); // 5000</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runConstructorDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="constructorOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Когда использовать:</h4>
+								<ul>
+									<li>При <strong>динамическом создании</strong> объектов</li>
+									<li>Когда нужна <strong>явная ясность</strong></li>
+									<li><strong>Наследование</strong> от Object.prototype</li>
+									<li>В <strong>легаси-коде</strong> или специальных случаях</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-function">
+							<h4><i class="fas fa-industry"></i> Конструкторная функция</h4>
+							<p>Для создания множества однотипных объектов (до ES6).</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Конструкторная функция
+function Product(name, price, category) {
+    this.name = name;
+    this.price = price;
+    this.category = category;
+    
+    // Метод экземпляра
+    this.getPriceWithTax = function(tax = 0.2) {
+        return this.price * (1 + tax);
+    };
+}
+
+// Создание экземпляров
+const laptop = new Product("Ноутбук", 50000, "электроника");
+const phone = new Product("Смартфон", 30000, "электроника");
+const book = new Product("JavaScript для начинающих", 1500, "книги");
+
+// Использование
+console.log(laptop.name); // "Ноутбук"
+console.log(phone.getPriceWithTax()); // 36000
+console.log(book.category); // "книги"
+
+// Проверка типа
+console.log(laptop instanceof Product); // true
+console.log(laptop.constructor === Product); // true
+
+// Добавление метода в прототип (для всех экземпляров)
+Product.prototype.getInfo = function() {
+    return `${this.name} - ${this.price} руб. (${this.category})`;
+};
+
+console.log(laptop.getInfo()); // "Ноутбук - 50000 руб. (электроника)"</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runFunctionDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="functionOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Когда использовать:</h4>
+								<ul>
+									<li>Создание <strong>множества однотипных объектов</strong></li>
+									<li>Реализация <strong>наследования через прототипы</strong></li>
+									<li>В <strong>старых проектах</strong> (до ES6)</li>
+									<li>Когда нужен <strong>полный контроль</strong> над созданием объектов</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-class">
+							<h4><i class="fas fa-graduation-cap"></i> Классы (ES6+)</h4>
+							<p>Современный синтаксис для объектно-ориентированного программирования.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Классы (ES6+)
+class User {
+    constructor(name, email, age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.isActive = true;
+    }
+    
+    // Метод экземпляра
+    getInfo() {
+        return `${this.name} (${this.email}), ${this.age} лет`;
+    }
+    
+    // Метод с проверкой
+    isAdult() {
+        return this.age >= 18;
+    }
+    
+    // Статический метод
+    static createAdmin() {
+        return new User("Администратор", "admin@example.com", 30);
+    }
+    
+    // Геттер
+    get birthYear() {
+        return new Date().getFullYear() - this.age;
+    }
+    
+    // Сеттер
+    set birthYear(year) {
+        this.age = new Date().getFullYear() - year;
+    }
+}
+
+// Создание экземпляров
+const user1 = new User("Анна", "anna@example.com", 25);
+const user2 = new User("Петр", "petr@example.com", 17);
+
+// Использование
+console.log(user1.getInfo()); // "Анна (anna@example.com), 25 лет"
+console.log(user1.isAdult()); // true
+console.log(user2.isAdult()); // false
+
+// Использование геттера/сеттера
+console.log(user1.birthYear); // 1999 (примерно)
+user1.birthYear = 1995;
+console.log(user1.age); // 29 (примерно)
+
+// Статический метод
+const admin = User.createAdmin();
+console.log(admin.getInfo()); // "Администратор (admin@example.com), 30 лет"
+
+// Наследование
+class PremiumUser extends User {
+    constructor(name, email, age, subscriptionType) {
+        super(name, email, age);
+        this.subscriptionType = subscriptionType;
+    }
+    
+    getInfo() {
+        return `${super.getInfo()} [${this.subscriptionType}]`;
+    }
+}
+
+const premium = new PremiumUser("Мария", "maria@example.com", 28, "Gold");
+console.log(premium.getInfo()); // "Мария (maria@example.com), 28 лет [Gold]"</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runClassDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="classOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Когда использовать:</h4>
+								<ul>
+									<li><strong>Современные проекты</strong> (ES6+)</li>
+									<li><strong>Сложная бизнес-логика</strong></li>
+									<li>Нужно <strong>наследование</strong></li>
+									<li><strong>Крупные приложения</strong> с ООП архитектурой</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Интерактивное создание объекта -->
+					<div class="interactive-demo">
+						<h3><i class="fas fa-edit"></i> Создайте свой объект:</h3>
+						<div class="object-creator">
+							<div class="creator-controls">
+								<div class="input-group">
+									<input type="text" id="objKey" placeholder="Ключ (например: name)">
+									<input type="text" id="objValue" placeholder="Значение (например: Анна)">
+									<button class="btn btn-primary" onclick="addProperty()">
+										<i class="fas fa-plus"></i> Добавить свойство
+									</button>
+								</div>
+								<button class="btn btn-secondary" onclick="clearObject()">
+									<i class="fas fa-trash"></i> Очистить объект
+								</button>
+							</div>
+							<div class="object-display">
+								<h4>Ваш объект:</h4>
+								<pre id="objectCode">const myObject = {};</pre>
+								<div class="object-actions">
+									<button class="btn btn-success" onclick="runObjectCode()">
+										<i class="fas fa-play"></i> Выполнить код
+									</button>
+								</div>
+							</div>
+							<div id="objectOutput" class="console-output">
+								<div class="console-line info">Добавьте свойства и нажмите "Выполнить код"</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 3: Доступ к свойствам ===== -->
+				<section id="accessing-properties" class="lesson-section">
+					<h2><i class="fas fa-key"></i> Доступ к свойствам объекта</h2>
+					<p>Есть два основных способа доступа к свойствам объектов: точечная нотация и скобочная нотация.</p>
+
+					<div class="access-demo">
+						<div class="tabs">
+							<div class="tab-buttons">
+								<button class="tab-btn active" data-tab="tab-dot">Точечная нотация</button>
+								<button class="tab-btn" data-tab="tab-bracket">Скобочная нотация</button>
+								<button class="tab-btn" data-tab="tab-dynamic">Динамический доступ</button>
+								<button class="tab-btn" data-tab="tab-modify">Изменение объектов</button>
+							</div>
+
+							<div class="tab-content active" id="tab-dot">
+								<h4><i class="fas fa-circle"></i> Точечная нотация (Dot Notation)</h4>
+								<p>Простой и читаемый способ, используется в большинстве случаев.</p>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">const book = {
+    title: "JavaScript для начинающих",
+    author: "Иван Иванов",
+    year: 2023,
+    pages: 450,
+    publisher: {
+        name: "Издательский дом",
+        city: "Москва"
+    }
+};
+
+// Доступ к простым свойствам
+console.log(book.title);    // "JavaScript для начинающих"
+console.log(book.author);   // "Иван Иванов"
+console.log(book.year);     // 2023
+
+// Доступ к вложенным свойствам
+console.log(book.publisher.name);  // "Издательский дом"
+console.log(book.publisher.city);  // "Москва"
+
+// Вызов методов (если бы они были)
+// book.someMethod();
+
+// Доступ к несуществующему свойству
+console.log(book.isbn);     // undefined (не ошибка!)
+
+// Цепочка опционального доступа (ES2020)
+console.log(book.publisher?.country); // undefined (без ошибки)
+// Без ?. было бы: TypeError: Cannot read properties of undefined</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runDotNotationDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="dotOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-bracket">
+								<h4><i class="fas fa-brackets-square"></i> Скобочная нотация (Bracket Notation)</h4>
+								<p>Более гибкий способ, позволяет использовать переменные и специальные символы.</p>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">const product = {
+    name: "Смартфон",
+    "price-in-rubles": 29999,
+    "in stock": true,
+    "category-id": "PH001",
+    specs: {
+        "screen-size": "6.5",
+        "battery-capacity": "5000mAh"
+    }
+};
+
+// Обязательно для свойств с дефисами/пробелами
+console.log(product["price-in-rubles"]);    // 29999
+console.log(product["in stock"]);           // true
+console.log(product["category-id"]);        // "PH001"
+
+// Для вложенных объектов
+console.log(product.specs["screen-size"]);  // "6.5"
+console.log(product["specs"]["battery-capacity"]); // "5000mAh"
+
+// Можно использовать строки
+console.log(product["name"]);               // "Смартфон" (работает, но .name лучше)
+
+// Вычисляемые имена свойств
+const prefix = "user_";
+const user = {
+    [prefix + "id"]: 123,
+    [prefix + "name"]: "Анна",
+    [prefix + "role"]: "admin"
+};
+
+console.log(user["user_id"]);    // 123
+console.log(user["user_name"]);  // "Анна"
+console.log(user["user_role"]);  // "admin"
+
+// Массивы в качестве ключей (преобразуются в строки)
+const obj = {};
+const arr = [1, 2, 3];
+obj[arr] = "Массив как ключ";
+console.log(obj[[1, 2, 3]]); // "Массив как ключ"</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runBracketNotationDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="bracketOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-dynamic">
+								<h4><i class="fas fa-bolt"></i> Динамический доступ</h4>
+								<p>Когда имя свойства неизвестно заранее и хранится в переменной.</p>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">const employee = {
+    firstName: "Алексей",
+    lastName: "Сидоров",
+    position: "Разработчик",
+    salary: 120000,
+    department: "IT"
+};
+
+// Имя свойства в переменной
+const propertyName = "firstName";
+console.log(employee[propertyName]); // "Алексей"
+
+// Динамический доступ через функцию
+function getProperty(obj, propName) {
+    return obj[propName];
+}
+
+console.log(getProperty(employee, "position")); // "Разработчик"
+console.log(getProperty(employee, "salary"));   // 120000
+
+// Перебор всех свойств с динамическим доступом
+for (let key in employee) {
+    console.log(`${key}: ${employee[key]}`);
+}
+
+// Поиск свойства по значению
+function findKeyByValue(obj, value) {
+    for (let key in obj) {
+        if (obj[key] === value) {
+            return key;
+        }
+    }
+    return null;
+}
+
+console.log(findKeyByValue(employee, "Разработчик")); // "position"
+
+// Динамическое создание/изменение свойств
+const config = {};
+const settings = [
+    ["theme", "dark"],
+    ["language", "ru"],
+    ["notifications", true]
+];
+
+settings.forEach(([key, value]) => {
+    config[key] = value;
+});
+
+console.log(config.theme);        // "dark"
+console.log(config.language);     // "ru"
+console.log(config.notifications); // true</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runDynamicAccessDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="dynamicOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-modify">
+								<h4><i class="fas fa-edit"></i> Изменение объектов</h4>
+								<p>Объекты в JavaScript динамические — свойства можно добавлять, изменять и удалять.</p>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">let car = {
+    brand: "Toyota",
+    model: "Corolla"
+};
+
+// 1. ДОБАВЛЕНИЕ СВОЙСТВ
+car.year = 2022;
+car.color = "серебристый";
+car["engine-type"] = "гибрид";
+car.features = ["кондиционер", "навигация", "камера"];
+
+console.log("После добавления:", car);
+
+// 2. ИЗМЕНЕНИЕ СВОЙСТВ
+car.color = "черный";
+car.year = 2023;
+car["engine-type"] = "электрический";
+
+console.log("После изменения:", car);
+
+// 3. УДАЛЕНИЕ СВОЙСТВ
+delete car.features;           // удаляет свойство features
+delete car["engine-type"];     // удаляет свойство "engine-type"
+
+console.log("После удаления:", car);
+
+// 4. ПРОВЕРКА СУЩЕСТВОВАНИЯ
+console.log("brand" in car);           // true
+console.log("features" in car);        // false
+console.log(car.hasOwnProperty("model")); // true
+console.log(car.hasOwnProperty("vin"));   // false
+
+// 5. ЗАМОРАЖИВАНИЕ ОБЪЕКТА
+Object.freeze(car); // Теперь нельзя изменять, добавлять или удалять свойства
+// car.year = 2024; // ❌ TypeError в strict mode
+// delete car.brand; // ❌ TypeError в strict mode
+// car.newProp = "value"; // ❌ TypeError в strict mode
+
+console.log("Объект заморожен:", Object.isFrozen(car)); // true
+
+// 6. ПЕЧАТЬ ОБЪЕКТА
+const user = {
+    name: "Мария",
+    age: 28,
+    address: {
+        city: "Санкт-Петербург",
+        street: "Невский проспект"
+    }
+};
+
+// Преобразование в JSON строку
+const jsonString = JSON.stringify(user, null, 2);
+console.log("JSON строка:");
+console.log(jsonString);
+
+// Обратное преобразование
+const parsedUser = JSON.parse(jsonString);
+console.log("Парсинг обратно:");
+console.log(parsedUser);</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runModifyDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="modifyOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 4: Методы объектов ===== -->
+				<section id="methods" class="lesson-section">
+					<h2><i class="fas fa-cogs"></i> Методы объектов</h2>
+					<p>Методы — это функции, которые являются свойствами объекта. Они позволяют объектам "делать"
+						что-то.</p>
+
+					<div class="methods-demo">
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">1</span>
+								<h4>Обычные методы</h4>
+							</div>
+							<pre><code class="javascript">const calculator = {
+    add: function(a, b) {
+        return a + b;
+    },
+    subtract(a, b) { // Сокращенный синтаксис ES6
+        return a - b;
+    },
+    multiply: (a, b) => a * b, // Стрелочная функция
+    divide(a, b) {
+        if (b === 0) {
+            return "Ошибка: деление на ноль";
+        }
+        return a / b;
+    },
+    
+    // Метод, использующий другие методы
+    calculate(operation, a, b) {
+        switch(operation) {
+            case '+': return this.add(a, b);
+            case '-': return this.subtract(a, b);
+            case '*': return this.multiply(a, b);
+            case '/': return this.divide(a, b);
+            default: return "Неизвестная операция";
+        }
+    }
+};
+
+console.log(calculator.add(5, 3)); // 8
+console.log(calculator.calculate('*', 4, 5)); // 20</code></pre>
+							<button class="btn btn-primary" onclick="runMethodsDemo1()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">2</span>
+								<h4>Ключевое слово this</h4>
+							</div>
+							<pre><code class="javascript">const person = {
+    name: "Мария",
+    age: 28,
+    city: "Москва",
+    
+    // Метод с this
+    introduce() {
+        return `Меня зовут ${this.name}, мне ${this.age} лет`;
+    },
+    
+    haveBirthday() {
+        this.age++;
+        console.log(`С днем рождения! Теперь ${this.name} ${this.age} лет`);
+        return this.age;
+    },
+    
+    moveTo(newCity) {
+        const oldCity = this.city;
+        this.city = newCity;
+        console.log(`${this.name} переехал(а) из ${oldCity} в ${newCity}`);
+    },
+    
+    // Метод, возвращающий другой метод
+    createGreeter() {
+        return function() {
+            return `Привет от ${this.name}`;
+        };
+    },
+    
+    // Стрелочная функция сохраняет this
+    createArrowGreeter() {
+        return () => `Привет от ${this.name}`;
+    }
+};
+
+console.log(person.introduce()); // "Меня зовут Мария, мне 28 лет"
+person.haveBirthday(); // "С днем рождения! Теперь Мария 29 лет"
+person.moveTo("Санкт-Петербург");
+
+// Проблема с this в обычных функциях
+const greeter = person.createGreeter();
+// console.log(greeter()); // ❌ Ошибка: this.name is undefined
+
+// Решение со стрелочной функцией
+const arrowGreeter = person.createArrowGreeter();
+console.log(arrowGreeter()); // ✅ "Привет от Мария"</code></pre>
+							<button class="btn btn-primary" onclick="runMethodsDemo2()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">3</span>
+								<h4>Геттеры и сеттеры</h4>
+							</div>
+							<pre><code class="javascript">const user = {
+    firstName: "Иван",
+    lastName: "Петров",
+    
+    // Геттер (получение значения)
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    },
+    
+    // Сеттер (установка значения)
+    set fullName(value) {
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1] || '';
+    },
+    
+    // Еще один пример с проверкой
+    _age: 0, // приватное свойство (по соглашению)
+    
+    get age() {
+        return this._age;
+    },
+    
+    set age(value) {
+        if (value < 0) {
+            console.log("Возраст не может быть отрицательным");
+            return;
+        }
+        if (value > 150) {
+            console.log("Слишком большой возраст");
+            return;
+        }
+        this._age = value;
+    },
+    
+    // Вычисляемое свойство
+    get isAdult() {
+        return this._age >= 18;
+    }
+};
+
+// Использование геттера (как свойство, не как метод)
+console.log(user.fullName); // "Иван Петров"
+
+// Использование сеттера
+user.fullName = "Анна Иванова";
+console.log(user.firstName); // "Анна"
+console.log(user.lastName);  // "Иванова"
+
+// Использование age с сеттером
+user.age = 25;
+console.log(user.age);      // 25
+console.log(user.isAdult);  // true
+
+user.age = -5; // "Возраст не может быть отрицательным"
+user.age = 200; // "Слишком большой возраст"</code></pre>
+							<button class="btn btn-primary" onclick="runMethodsDemo3()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 5: Перебор объектов ===== -->
+				<section id="iterating-objects" class="lesson-section">
+					<h2><i class="fas fa-sync-alt"></i> Перебор объектов</h2>
+					<p>JavaScript предоставляет несколько способов для перебора свойств объектов.</p>
+
+					<div class="interactive-demo">
+						<h3><i class="fas fa-search"></i> Исследуйте объект:</h3>
+						<div class="object-explorer">
+							<div class="explorer-controls">
+								<button class="btn btn-primary" onclick="exploreWithForIn()">
+									<i class="fas fa-redo"></i> for...in
+								</button>
+								<button class="btn btn-secondary" onclick="exploreWithObjectKeys()">
+									<i class="fas fa-key"></i> Object.keys()
+								</button>
+								<button class="btn btn-success" onclick="exploreWithObjectValues()">
+									<i class="fas fa-dollar-sign"></i> Object.values()
+								</button>
+								<button class="btn btn-warning" onclick="exploreWithObjectEntries()">
+									<i class="fas fa-list"></i> Object.entries()
+								</button>
+							</div>
+							<div class="object-data">
+								<h4>Исходный объект:</h4>
+								<pre id="explorerObject">const employee = {
+    name: "Алексей",
+    position: "Разработчик",
+    salary: 100000,
+    department: "IT",
+    skills: ["JavaScript", "React", "Node.js"],
+    address: {
+        city: "Москва",
+        street: "Тверская"
+    }
+};</pre>
+							</div>
+							<div id="explorerOutput" class="console-output">
+								<div class="console-line info">Выберите метод для перебора объекта</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="comparison-table">
+						<table>
+							<thead>
+								<tr>
+									<th>Метод</th>
+									<th>Возвращает</th>
+									<th>Включает унаследованные свойства</th>
+									<th>Лучше для</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>for...in</code></td>
+									<td>Ключи</td>
+									<td>Да (но можно фильтровать)</td>
+									<td>Простой перебор всех свойств</td>
+								</tr>
+								<tr>
+									<td><code>Object.keys()</code></td>
+									<td>Массив ключей</td>
+									<td>Нет (только собственные)</td>
+									<td>Получение списка ключей</td>
+								</tr>
+								<tr>
+									<td><code>Object.values()</code></td>
+									<td>Массив значений</td>
+									<td>Нет</td>
+									<td>Получение списка значений</td>
+								</tr>
+								<tr>
+									<td><code>Object.entries()</code></td>
+									<td>Массив пар [ключ, значение]</td>
+									<td>Нет</td>
+									<td>Полное преобразование объекта</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 6: Встроенные методы ===== -->
+				<section id="built-in-methods" class="lesson-section">
+					<h2><i class="fas fa-tools"></i> Встроенные методы объектов</h2>
+					<p>JavaScript предоставляет множество полезных методов для работы с объектами.</p>
+
+					<div class="methods-grid">
+						<div class="method-card">
+							<div class="method-header">
+								<h4><code>Object.assign()</code></h4>
+								<span class="method-tag">Копирование</span>
+							</div>
+							<p>Копирует свойства из одного или нескольких объектов в целевой объект.</p>
+							<pre><code class="javascript">const target = { a: 1 };
+const source1 = { b: 2 };
+const source2 = { c: 3 };
+
+Object.assign(target, source1, source2);
+// target теперь: { a: 1, b: 2, c: 3 }
+
+// Клонирование объекта
+const original = { x: 10, y: 20 };
+const clone = Object.assign({}, original);</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4><code>Object.freeze()</code></h4>
+								<span class="method-tag">Защита</span>
+							</div>
+							<p>Замораживает объект: нельзя добавлять, удалять или изменять свойства.</p>
+							<pre><code class="javascript">const obj = { prop: 42 };
+Object.freeze(obj);
+
+obj.prop = 33; // Тихая ошибка в нестрогом режиме
+console.log(obj.prop); // 42
+
+delete obj.prop; // Не сработает
+obj.newProp = 100; // Не сработает</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4><code>Object.seal()</code></h4>
+								<span class="method-tag">Защита</span>
+							</div>
+							<p>Запечатывает объект: можно изменять существующие свойства, но нельзя добавлять/удалять.
+							</p>
+							<pre><code class="javascript">const obj = { prop: 42 };
+Object.seal(obj);
+
+obj.prop = 33; // Можно изменять
+console.log(obj.prop); // 33
+
+delete obj.prop; // ❌ Нельзя удалять
+obj.newProp = 100; // ❌ Нельзя добавлять</code></pre>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4><code>Object.create()</code></h4>
+								<span class="method-tag">Наследование</span>
+							</div>
+							<p>Создает новый объект с указанным прототипом.</p>
+							<pre><code class="javascript">const person = {
+    greet() {
+        return `Привет, я ${this.name}`;
+    }
+};
+
+const john = Object.create(person);
+john.name = "Джон";
+
+console.log(john.greet()); // "Привет, я Джон"
+console.log(Object.getPrototypeOf(john) === person); // true</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 7: Практическое задание ===== -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+					<p>Создайте систему управления библиотекой книг с использованием объектов:</p>
+
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Система управления библиотекой</h3>
+							<span class="difficulty-badge">Средний уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Реализуйте следующие компоненты:</p>
+							<ol>
+								<li>Объект <strong>Book</strong> с полями: title, author, year, pages, isAvailable</li>
+								<li>Методы Book: getInfo(), toggleAvailability(), isOldBook() (старше 50 лет)</li>
+								<li>Объект <strong>Library</strong>, который хранит массив книг</li>
+								<li>Методы Library: addBook(), removeBook(), findBooksByAuthor(), getAvailableBooks()
+								</li>
+								<li>Объект <strong>User</strong> с полями: name, borrowedBooks, maxBooks</li>
+								<li>Методы User: borrowBook(), returnBook(), canBorrowMore()</li>
+								<li>Интеграцию между всеми компонентами</li>
+							</ol>
+
+							<div class="hint-box">
+								<h4><i class="fas fa-lightbulb"></i> Подсказки:</h4>
+								<ul>
+									<li>Используйте конструкторы или классы для создания объектов</li>
+									<li>Добавьте проверку на существование книги перед выдачей</li>
+									<li>Учитывайте лимит книг у пользователя</li>
+									<li>Используйте массивы методов для поиска и фильтрации</li>
+								</ul>
+							</div>
+
+							<div class="code-editor-area">
+								<h4><i class="fas fa-code"></i> Редактор кода:</h4>
+								<textarea id="exerciseCode" class="code-editor" placeholder="Напишите здесь ваш код..."
+									rows="15">
+// Ваш код здесь
+// Пример начала:
+class Book {
+    constructor(title, author, year, pages) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.pages = pages;
+        this.isAvailable = true;
+    }
+    
+    getInfo() {
+        return `${this.title} - ${this.author} (${this.year})`;
+    }
+}
+
+// Тестирование
+const book1 = new Book("Мастер и Маргарита", "Михаил Булгаков", 1967, 480);
+console.log(book1.getInfo());</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runObjectsExercise()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<button class="btn btn-secondary" onclick="clearObjectsExercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+									<button class="btn btn-success" onclick="testObjectsExercise()">
+										<i class="fas fa-vial"></i> Запустить тесты
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Вывод вашего кода появится здесь
+									</div>
+								</div>
+							</div>
+
+							<div class="solution-section">
+								<button class="btn btn-warning show-solution">
+									<i class="fas fa-code"></i> Показать решение
+								</button>
+								<div class="solution hidden">
+									<h4><i class="fas fa-check-circle"></i> Пример решения:</h4>
+									<pre><code class="javascript">// Решение: Система управления библиотекой
+
+// ===== 1. КЛАСС КНИГИ =====
+class Book {
+    constructor(title, author, year, pages) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.pages = pages;
+        this.isAvailable = true;
+    }
+    
+    // Методы книги
+    getInfo() {
+        return `${this.title} - ${this.author} (${this.year}), ${this.pages} стр.`;
+    }
+    
+    toggleAvailability() {
+        this.isAvailable = !this.isAvailable;
+        return this.isAvailable;
+    }
+    
+    isOldBook() {
+        const currentYear = new Date().getFullYear();
+        return (currentYear - this.year) > 50;
+    }
+}
+
+// ===== 2. КЛАСС БИБЛИОТЕКИ =====
+class Library {
+    constructor(name) {
+        this.name = name;
+        this.books = [];
+    }
+    
+    // Методы библиотеки
+    addBook(book) {
+        this.books.push(book);
+        console.log(`Книга "${book.title}" добавлена в библиотеку "${this.name}"`);
+        return this;
+    }
+    
+    removeBook(title) {
+        const index = this.books.findIndex(book => book.title === title);
+        if (index !== -1) {
+            const removedBook = this.books.splice(index, 1)[0];
+            console.log(`Книга "${removedBook.title}" удалена из библиотеки`);
+            return removedBook;
+        }
+        console.log(`Книга "${title}" не найдена`);
+        return null;
+    }
+    
+    findBooksByAuthor(authorName) {
+        return this.books.filter(book => 
+            book.author.toLowerCase().includes(authorName.toLowerCase())
+        );
+    }
+    
+    findBookByTitle(title) {
+        return this.books.find(book => 
+            book.title.toLowerCase().includes(title.toLowerCase())
+        );
+    }
+    
+    getAvailableBooks() {
+        return this.books.filter(book => book.isAvailable);
+    }
+    
+    getOldBooks() {
+        return this.books.filter(book => book.isOldBook());
+    }
+    
+    getBookCount() {
+        return this.books.length;
+    }
+    
+    getAvailableBookCount() {
+        return this.getAvailableBooks().length;
+    }
+    
+    // Выдача книги
+    borrowBook(title, user) {
+        const book = this.findBookByTitle(title);
+        
+        if (!book) {
+            console.log(`Книга "${title}" не найдена в библиотеке`);
+            return false;
+        }
+        
+        if (!book.isAvailable) {
+            console.log(`Книга "${title}" уже выдана`);
+            return false;
+        }
+        
+        if (!user.canBorrowMore()) {
+            console.log(`Пользователь ${user.name} достиг лимита книг`);
+            return false;
+        }
+        
+        book.isAvailable = false;
+        user.borrowBook(book);
+        console.log(`Книга "${title}" выдана пользователю ${user.name}`);
+        return true;
+    }
+    
+    // Возврат книги
+    returnBook(book, user) {
+        if (!this.books.includes(book)) {
+            console.log(`Эта книга не из нашей библиотеки`);
+            return false;
+        }
+        
+        book.isAvailable = true;
+        user.returnBook(book);
+        console.log(`Книга "${book.title}" возвращена в библиотеку`);
+        return true;
+    }
+}
+
+// ===== 3. КЛАСС ПОЛЬЗОВАТЕЛЯ =====
+class User {
+    constructor(name, maxBooks = 3) {
+        this.name = name;
+        this.borrowedBooks = [];
+        this.maxBooks = maxBooks;
+    }
+    
+    // Методы пользователя
+    borrowBook(book) {
+        if (this.canBorrowMore()) {
+            this.borrowedBooks.push(book);
+            return true;
+        }
+        return false;
+    }
+    
+    returnBook(book) {
+        const index = this.borrowedBooks.indexOf(book);
+        if (index !== -1) {
+            this.borrowedBooks.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
+    
+    canBorrowMore() {
+        return this.borrowedBooks.length < this.maxBooks;
+    }
+    
+    getBorrowedBooksInfo() {
+        return this.borrowedBooks.map(book => book.getInfo());
+    }
+    
+    getInfo() {
+        return `${this.name} (взято книг: ${this.borrowedBooks.length}/${this.maxBooks})`;
+    }
+}
+
+// ===== 4. ТЕСТИРОВАНИЕ СИСТЕМЫ =====
+console.log("=== ТЕСТИРОВАНИЕ СИСТЕМЫ БИБЛИОТЕКИ ===");
+
+// Создание книг
+const book1 = new Book("Мастер и Маргарита", "Михаил Булгаков", 1967, 480);
+const book2 = new Book("Преступление и наказание", "Федор Достоевский", 1866, 672);
+const book3 = new Book("1984", "Джордж Оруэлл", 1949, 328);
+const book4 = new Book("Гарри Поттер и философский камень", "Джоан Роулинг", 1997, 432);
+const book5 = new Book("Война и мир", "Лев Толстой", 1869, 1225);
+
+// Создание библиотеки
+const cityLibrary = new Library("Городская библиотека");
+
+// Добавление книг в библиотеку
+cityLibrary
+    .addBook(book1)
+    .addBook(book2)
+    .addBook(book3)
+    .addBook(book4)
+    .addBook(book5);
+
+console.log("\n📊 Статистика библиотеки:");
+console.log(`Всего книг: ${cityLibrary.getBookCount()}`);
+console.log(`Доступно книг: ${cityLibrary.getAvailableBookCount()}`);
+console.log(`Старых книг (>50 лет): ${cityLibrary.getOldBooks().length}`);
+
+// Создание пользователей
+const user1 = new User("Анна", 2);
+const user2 = new User("Петр", 3);
+
+console.log("\n👥 Пользователи:");
+console.log(user1.getInfo());
+console.log(user2.getInfo());
+
+// Выдача книг
+console.log("\n📚 Выдача книг:");
+cityLibrary.borrowBook("Мастер и Маргарита", user1);
+cityLibrary.borrowBook("1984", user1);
+cityLibrary.borrowBook("1984", user2); // Уже выдана
+cityLibrary.borrowBook("Война и мир", user1); // Лимит превышен
+cityLibrary.borrowBook("Преступление и наказание", user2);
+cityLibrary.borrowBook("Гарри Поттер", user2);
+
+console.log("\n📖 Книги у пользователей:");
+console.log(`${user1.name}: ${user1.getBorrowedBooksInfo().join(", ")}`);
+console.log(`${user2.name}: ${user2.getBorrowedBooksInfo().join(", ")}`);
+
+console.log("\n🔍 Поиск книг по автору:");
+const dostoevskyBooks = cityLibrary.findBooksByAuthor("Достоевский");
+dostoevskyBooks.forEach(book => console.log(`- ${book.getInfo()}`));
+
+// Возврат книги
+console.log("\n↩️ Возврат книги:");
+cityLibrary.returnBook(book1, user1);
+
+console.log("\n📊 Финальная статистика:");
+console.log(`Доступно книг: ${cityLibrary.getAvailableBookCount()}`);
+console.log(`${user1.name}: ${user1.getBorrowedBooksInfo().join(", ")}`);
+
+console.log("\n✅ Система библиотеки работает корректно!");</code></pre>
+									<div class="solution-tips">
+										<h5><i class="fas fa-tips"></i> Советы по улучшению:</h5>
+										<ul>
+											<li>Добавьте уникальные ID для книг и пользователей</li>
+											<li>Реализуйте систему бронирования книг</li>
+											<li>Добавьте историю выдачи книг</li>
+											<li>Создайте графический интерфейс</li>
+											<li>Добавьте поиск по различным критериям</li>
+											<li>Реализуйте систему штрафов за просрочку</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Пройденные темы -->
+					<div class="topics-summary">
+						<h3><i class="fas fa-graduation-cap"></i> Вы изучили:</h3>
+						<div class="topics-list">
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Что такое объекты и зачем они нужны</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>4 способа создания объектов</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Доступ к свойствам объектов</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Методы объектов и ключевое слово this</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Перебор свойств объектов</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Встроенные методы объектов</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Создание системы управления библиотекой</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навигация между уроками -->
+				<div class="navigation-buttons">
+					<a href="functions.html" class="nav-btn prev-btn">
+						<i class="fas fa-arrow-left"></i> Назад: Функции
+					</a>
+					<a href="arrays.html" class="nav-btn next-btn">
+						<i class="fas fa-arrow-right"></i> Следующий урок: Массивы
+					</a>
+				</div>
+
+				<!-- Дополнительные материалы -->
+				<div class="additional-materials">
+					<h3><i class="fas fa-book-open"></i> Дополнительные материалы</h3>
+					<div class="materials-list">
+						<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Working_with_objects"
+							target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Документация MDN по объектам</span>
+						</a>
+						<a href="https://learn.javascript.ru/object" target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Объекты на learn.javascript.ru</span>
+						</a>
+						<a href="#" class="material-link">
+							<i class="fas fa-download"></i>
+							<span>Скачать шпаргалку по объектам</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/basic-components.js"></script>
+	<script src="../js/component/objects.js"></script>
+</body>
+
+</html>

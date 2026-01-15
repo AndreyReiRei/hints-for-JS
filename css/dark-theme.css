@@ -1,0 +1,148 @@
+/* Темная тема - только основные изменения */
+
+body.dark-theme {
+	background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+	color: #e2e8f0;
+}
+
+/* Текст в темной теме */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme p {
+	color: #e2e8f0;
+}
+
+/* Шапка */
+body.dark-theme .header {
+	background: rgba(26, 32, 44, 0.95);
+}
+
+body.dark-theme .logo a {
+	color: #e2e8f0;
+}
+
+/* Навигация */
+body.dark-theme .nav-desktop a {
+	color: #303132;
+}
+
+body.dark-theme .nav-desktop a:hover,
+body.dark-theme .nav-desktop a.active {
+	background: #667eea;
+	color: #1a202c;
+}
+
+/* Бургер меню */
+body.dark-theme .burger-icon span {
+	background: #e2e8f0;
+}
+
+/* Герой секция */
+body.dark-theme .hero {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .hero h1,
+body.dark-theme .hero p {
+	color: #e2e8f0;
+}
+
+body.dark-theme .btn {
+	background: #667eea;
+	color: white;
+}
+
+/* Карточки особенностей */
+body.dark-theme .feature-card {
+	background: #2d3748;
+	border: 1px solid #4a5568;
+}
+
+body.dark-theme .feature-card h3,
+body.dark-theme .feature-card p {
+	color: #e2e8f0;
+}
+
+body.dark-theme .feature-card i {
+	color: #667eea;
+}
+
+/* Карточки уроков */
+body.dark-theme .lesson-card {
+	background: #2d3748;
+	border: 1px solid #4a5568;
+}
+
+body.dark-theme .lesson-card h3,
+body.dark-theme .lesson-card p {
+	color: #e2e8f0;
+}
+
+/* Контент уроков */
+body.dark-theme .lesson-content {
+	background: #2d3748;
+	border: 1px solid #4a5568;
+}
+
+body.dark-theme .lesson-content h1 {
+	color: #667eea;
+}
+
+body.dark-theme .lesson-content h2,
+body.dark-theme .lesson-content h3 {
+	color: #e2e8f0;
+}
+
+/* Примеры кода */
+body.dark-theme .code-example {
+	background: #1a202c;
+	border: 1px solid #4a5568;
+}
+
+body.dark-theme .code-example code {
+	color: #cbd5e0;
+}
+
+/* Подвал */
+body.dark-theme .footer {
+	background: #1a202c;
+}
+
+body.dark-theme .footer p {
+	color: #cbd5e0;
+}
+
+/* Переключатель темы */
+body.dark-theme .theme-toggle {
+	background: #ed8936;
+}
+
+/* Мобильное меню */
+body.dark-theme .nav-mobile {
+	background: #2d3748;
+}
+
+body.dark-theme .mobile-menu-header {
+	background: #4a5568;
+}
+
+body.dark-theme .mobile-nav-list a {
+	color: #cbd5e0;
+}
+
+body.dark-theme .mobile-nav-list a:hover,
+body.dark-theme .mobile-nav-list a.active {
+	background: #4a5568;
+	color: #667eea;
+}
+
+body.dark-theme .mobile-nav-list a i {
+	color: #667eea;
+}
+
+/* Заголовки секций */
+body.dark-theme .features h2,
+body.dark-theme .lessons-preview h2 {
+	color: #e2e8f0;
+}

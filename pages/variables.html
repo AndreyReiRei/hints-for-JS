@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Переменные в JavaScript - JS Tutor</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/variables.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html">Основы</a>
+					<a href="variables.html" class="active">Переменные</a>
+					<a href="functions.html">Функции</a>
+					<a href="objects.html">Объекты</a>
+					<a href="arrays.html">Массивы</a>
+					<a href="dom.html">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html">Асинхронность</a>
+					<a href="es6.html">ES6+</a>
+					<a href="practice.html">Практика</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html" class="active"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Переменные в JavaScript</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Начальный уровень</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 25 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 7 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>Переменные</strong> — это контейнеры для хранения данных. Они позволяют сохранять
+						значения для последующего использования в программе. Понимание работы с переменными — основа
+						программирования на JavaScript!</p>
+				</div>
+
+				<!-- Быстрая навигация по уроку -->
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#what-are-variables">Что такое переменные?</a></li>
+						<li><a href="#declaration">Объявление переменных</a></li>
+						<li><a href="#var-let-const">var, let и const</a></li>
+						<li><a href="#naming-rules">Правила именования</a></li>
+						<li><a href="#data-assignment">Присваивание значений</a></li>
+						<li><a href="#scope">Область видимости</a></li>
+						<li><a href="#hoisting">Всплытие (hoisting)</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- ===== РАЗДЕЛ 1: Что такое переменные? ===== -->
+				<section id="what-are-variables" class="lesson-section">
+					<h2><i class="fas fa-box-open"></i> Что такое переменные?</h2>
+					<p>Представьте переменные как <strong>коробки с названиями</strong>, в которых можно хранить разные
+						значения:</p>
+
+					<div class="variable-visualization">
+						<div class="variable-box" id="varBox1">
+							<div class="var-name">userName</div>
+							<div class="var-value">"Анна"</div>
+							<div class="var-type">String</div>
+						</div>
+						<div class="variable-box" id="varBox2">
+							<div class="var-name">userAge</div>
+							<div class="var-value">25</div>
+							<div class="var-type">Number</div>
+						</div>
+						<div class="variable-box" id="varBox3">
+							<div class="var-name">isOnline</div>
+							<div class="var-value">true</div>
+							<div class="var-type">Boolean</div>
+						</div>
+					</div>
+
+					<div class="analogy-box">
+						<h4><i class="fas fa-lightbulb"></i> Простая аналогия:</h4>
+						<p>Переменные — это как наклейки на коробках в вашем гараже. Вы пишете "Новогодние украшения" на
+							коробке, и всегда знаете, где их найти. Точно так же переменная <code>userName</code> хранит
+							значение "Анна".</p>
+					</div>
+
+					<div class="demo-container">
+						<h3><i class="fas fa-play-circle"></i> Попробуйте сами:</h3>
+						<div class="code-executor">
+							<div class="code-editor">
+								<pre><code class="javascript">// Создаем переменные
+let greeting = "Привет, мир!";
+let number = 42;
+let isReady = true;
+
+// Используем переменные
+console.log(greeting);     // "Привет, мир!"
+console.log(number);       // 42
+console.log(isReady);      // true
+
+// Меняем значение переменной
+number = 100;
+console.log(number);       // 100
+
+// Складываем значения
+let a = 5;
+let b = 10;
+let sum = a + b;
+console.log(sum);          // 15</code></pre>
+							</div>
+							<button class="btn btn-primary run-code" onclick="runVariablesDemo()">
+								<i class="fas fa-play"></i> Запустить код
+							</button>
+							<div class="output-container">
+								<h4>Вывод в консоль:</h4>
+								<div id="variablesOutput" class="console-output">
+									<div class="console-line info">Нажмите "Запустить код" чтобы увидеть результат</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 2: Объявление переменных ===== -->
+				<section id="declaration" class="lesson-section">
+					<h2><i class="fas fa-pen-alt"></i> Объявление переменных</h2>
+					<p>В JavaScript есть три способа объявления переменных. Каждый имеет свои особенности:</p>
+
+					<div class="declaration-cards">
+						<div class="declaration-card">
+							<div class="declaration-header var-card">
+								<i class="fas fa-exclamation-triangle"></i>
+								<h4>var</h4>
+							</div>
+							<p class="declaration-status">Устаревший</p>
+							<p>Использовался до ES6. Имеет функцию или глобальную область видимости.</p>
+							<pre><code class="javascript">var oldVariable = "Устарело";</code></pre>
+						</div>
+
+						<div class="declaration-card">
+							<div class="declaration-header let-card">
+								<i class="fas fa-exchange-alt"></i>
+								<h4>let</h4>
+							</div>
+							<p class="declaration-status">Современный</p>
+							<p>Блочная область видимости. Можно изменять значение после объявления.</p>
+							<pre><code class="javascript">let modernVariable = "Можно менять";</code></pre>
+						</div>
+
+						<div class="declaration-card">
+							<div class="declaration-header const-card">
+								<i class="fas fa-lock"></i>
+								<h4>const</h4>
+							</div>
+							<p class="declaration-status">Рекомендуемый</p>
+							<p>Блочная область видимости. Нельзя переопределять (константа).</p>
+							<pre><code class="javascript">const constantVariable = "Неизменно";</code></pre>
+						</div>
+					</div>
+
+					<div class="interactive-declaration">
+						<h3><i class="fas fa-keyboard"></i> Интерактивное объявление:</h3>
+						<div class="declaration-form">
+							<div class="form-group">
+								<label for="declarationType">Тип объявления:</label>
+								<select id="declarationType">
+									<option value="let">let (изменяемая)</option>
+									<option value="const">const (константа)</option>
+									<option value="var">var (устаревшая)</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="variableName">Имя переменной:</label>
+								<input type="text" id="variableName" value="myVariable" placeholder="Имя переменной">
+							</div>
+							<div class="form-group">
+								<label for="variableValue">Значение:</label>
+								<input type="text" id="variableValue" value="'Hello World'" placeholder="Значение">
+							</div>
+							<button class="btn btn-secondary" onclick="generateDeclaration()">
+								<i class="fas fa-code"></i> Сгенерировать код
+							</button>
+							<div id="declarationResult" class="result-box">
+								<div class="result-placeholder">
+									<i class="fas fa-arrow-up"></i>
+									Нажмите "Сгенерировать код"
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 3: var, let и const ===== -->
+				<section id="var-let-const" class="lesson-section">
+					<h2><i class="fas fa-balance-scale"></i> Сравнение var, let и const</h2>
+					<p>Понимание различий между этими ключевыми словами критически важно:</p>
+
+					<div class="comparison-table">
+						<table>
+							<thead>
+								<tr>
+									<th>Критерий</th>
+									<th>var</th>
+									<th>let</th>
+									<th>const</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Область видимости</td>
+									<td>Функция или глобальная</td>
+									<td>Блочная</td>
+									<td>Блочная</td>
+								</tr>
+								<tr>
+									<td>Можно переопределить</td>
+									<td>✅ Да</td>
+									<td>✅ Да</td>
+									<td>❌ Нет</td>
+								</tr>
+								<tr>
+									<td>Можно обновить значение</td>
+									<td>✅ Да</td>
+									<td>✅ Да</td>
+									<td>⚠️ Частично*</td>
+								</tr>
+								<tr>
+									<td>Подвержена всплытию</td>
+									<td>✅ Да (undefined)</td>
+									<td>✅ Да (ошибка)</td>
+									<td>✅ Да (ошибка)</td>
+								</tr>
+								<tr>
+									<td>Рекомендуется к использованию</td>
+									<td>❌ Нет</td>
+									<td>✅ Для изменяемых</td>
+									<td>✅ Для неизменяемых</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="info-box">
+						<h4><i class="fas fa-info-circle"></i> Важное замечание про const:</h4>
+						<p><code>const</code> защищает от переопределения переменной, но не делает объект неизменяемым!
+						</p>
+						<pre><code class="javascript">const user = { name: "Анна", age: 25 };
+user.age = 26;                    // ✅ Можно!
+console.log(user.age);            // 26
+
+user = { name: "Мария" };         // ❌ Ошибка! Переопределение</code></pre>
+					</div>
+
+					<div class="live-examples">
+						<h3><i class="fas fa-flask"></i> Интерактивные примеры:</h3>
+						<div class="tabs">
+							<div class="tab-buttons">
+								<button class="tab-btn active" data-tab="tab-let">let vs var</button>
+								<button class="tab-btn" data-tab="tab-const">const особенности</button>
+								<button class="tab-btn" data-tab="tab-block">Блочная область</button>
+							</div>
+
+							<div class="tab-content active" id="tab-let">
+								<h4>Различия между let и var</h4>
+								<pre><code class="javascript">// var - видна вне блока
+if (true) {
+    var varVariable = "Видна снаружи";
+    let letVariable = "Не видна снаружи";
+}
+console.log(varVariable);    // ✅ "Видна снаружи"
+console.log(letVariable);    // ❌ Ошибка! letVariable is not defined</code></pre>
+							</div>
+
+							<div class="tab-content" id="tab-const">
+								<h4>Что можно и нельзя с const</h4>
+								<pre><code class="javascript">const PI = 3.14159;
+PI = 3.14;                     // ❌ Ошибка!
+
+const colors = ["красный", "зеленый"];
+colors.push("синий");          // ✅ Можно!
+colors = ["желтый"];           // ❌ Ошибка!
+
+const person = { name: "Иван" };
+person.name = "Петр";          // ✅ Можно!
+person = { name: "Сергей" };   // ❌ Ошибка!</code></pre>
+							</div>
+
+							<div class="tab-content" id="tab-block">
+								<h4>Блочная область видимости</h4>
+								<pre><code class="javascript">for (let i = 0; i < 3; i++) {
+    // i существует только в цикле
+    console.log(i);           // 0, 1, 2
+}
+console.log(i);               // ❌ Ошибка! i is not defined
+
+for (var j = 0; j < 3; j++) {
+    // j видна снаружи
+}
+console.log(j);               // ✅ 3 (видна снаружи!)</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 4: Правила именования ===== -->
+				<section id="naming-rules" class="lesson-section">
+					<h2><i class="fas fa-signature"></i> Правила именования переменных</h2>
+					<p>JavaScript имеет строгие правила для имен переменных. Их соблюдение делает код чище и понятнее.
+					</p>
+
+					<div class="rules-grid">
+						<div class="rule-card rule-must">
+							<h4><i class="fas fa-check-circle"></i> Обязательные правила:</h4>
+							<ul>
+								<li>Имя может содержать буквы, цифры, $ и _</li>
+								<li>Первый символ не может быть цифрой</li>
+								<li>Чувствительны к регистру (age ≠ Age ≠ AGE)</li>
+								<li>Нельзя использовать зарезервированные слова</li>
+							</ul>
+						</div>
+
+						<div class="rule-card rule-good">
+							<h4><i class="fas fa-thumbs-up"></i> Хорошие практики:</h4>
+							<ul>
+								<li>Используйте camelCase для переменных (userName)</li>
+								<li>Используйте UPPER_CASE для констант (MAX_SIZE)</li>
+								<li>Имена должны быть осмысленными</li>
+								<li>Избегайте сокращений (user лучше чем usr)</li>
+							</ul>
+						</div>
+
+						<div class="rule-card rule-bad">
+							<h4><i class="fas fa-times-circle"></i> Плохие практики:</h4>
+							<ul>
+								<li>Однобуквенные имена (кроме счетчиков)</li>
+								<li>Слишком длинные имена</li>
+								<li>Использование транслита (imya вместо name)</li>
+								<li>Смешение языков в именах</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="naming-examples">
+						<div class="naming-example good">
+							<h4><i class="fas fa-check"></i> Хорошие примеры:</h4>
+							<pre><code class="javascript">let userName = "Анна";
+const MAX_USERS = 100;
+let isLoggedIn = true;
+let itemCount = 5;
+let currentDate = new Date();</code></pre>
+						</div>
+
+						<div class="naming-example bad">
+							<h4><i class="fas fa-times"></i> Плохие примеры:</h4>
+							<pre><code class="javascript">let a = "Анна";            // Что такое "a"?
+let imyapolzovatelya = "..." // Транслит
+let UserName = "..."         // PascalCase для переменной
+let my_super_variable_name_with_long_name = 1 // Слишком длинно</code></pre>
+						</div>
+					</div>
+
+					<div class="naming-checker">
+						<h3><i class="fas fa-search"></i> Проверка имени переменной:</h3>
+						<div class="checker-form">
+							<input type="text" id="checkName" value="userName" placeholder="Введите имя переменной">
+							<button class="btn btn-secondary" onclick="checkVariableName()">
+								<i class="fas fa-check"></i> Проверить
+							</button>
+							<div id="nameResult" class="result-box">
+								<div class="result-placeholder">
+									<i class="fas fa-question-circle"></i>
+									Введите имя для проверки
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 5: Присваивание значений ===== -->
+				<section id="data-assignment" class="lesson-section">
+					<h2><i class="fas fa-equals"></i> Присваивание и изменение значений</h2>
+					<p>Оператор присваивания (<code>=</code>) сохраняет значение в переменную. Можно использовать
+						составные операторы для краткости.</p>
+
+					<div class="assignment-operators">
+						<table>
+							<thead>
+								<tr>
+									<th>Оператор</th>
+									<th>Пример</th>
+									<th>Эквивалент</th>
+									<th>Описание</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>=</code></td>
+									<td><code>x = 5</code></td>
+									<td><code>x = 5</code></td>
+									<td>Простое присваивание</td>
+								</tr>
+								<tr>
+									<td><code>+=</code></td>
+									<td><code>x += 3</code></td>
+									<td><code>x = x + 3</code></td>
+									<td>Прибавить и присвоить</td>
+								</tr>
+								<tr>
+									<td><code>-=</code></td>
+									<td><code>x -= 2</code></td>
+									<td><code>x = x - 2</code></td>
+									<td>Вычесть и присвоить</td>
+								</tr>
+								<tr>
+									<td><code>*=</code></td>
+									<td><code>x *= 4</code></td>
+									<td><code>x = x * 4</code></td>
+									<td>Умножить и присвоить</td>
+								</tr>
+								<tr>
+									<td><code>/=</code></td>
+									<td><code>x /= 2</code></td>
+									<td><code>x = x / 2</code></td>
+									<td>Разделить и присвоить</td>
+								</tr>
+								<tr>
+									<td><code>%=</code></td>
+									<td><code>x %= 3</code></td>
+									<td><code>x = x % 3</code></td>
+									<td>Остаток от деления</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="value-change-demo">
+						<h3><i class="fas fa-sync-alt"></i> Демонстрация изменения значений:</h3>
+						<div class="demo-panel">
+							<div class="demo-variable">
+								<div class="var-info">
+									<span class="var-label">Переменная:</span>
+									<code id="demoVarName">counter</code>
+								</div>
+								<div class="var-info">
+									<span class="var-label">Текущее значение:</span>
+									<code id="demoVarValue">0</code>
+								</div>
+							</div>
+							<div class="demo-controls">
+								<button class="btn btn-sm" onclick="changeValue('increment')">
+									<i class="fas fa-plus"></i> counter++
+								</button>
+								<button class="btn btn-sm" onclick="changeValue('decrement')">
+									<i class="fas fa-minus"></i> counter--
+								</button>
+								<button class="btn btn-sm" onclick="changeValue('double')">
+									<i class="fas fa-times"></i> counter *= 2
+								</button>
+								<button class="btn btn-sm" onclick="changeValue('reset')">
+									<i class="fas fa-redo"></i> Сбросить
+								</button>
+							</div>
+							<div class="code-preview">
+								<pre><code id="demoCode">let counter = 0;</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 6: Область видимости ===== -->
+				<section id="scope" class="lesson-section">
+					<h2><i class="fas fa-binoculars"></i> Область видимости (Scope)</h2>
+					<p>Область видимости определяет, где переменная доступна для использования.</p>
+
+					<div class="scope-types">
+						<div class="scope-card">
+							<div class="scope-header global">
+								<i class="fas fa-globe"></i>
+								<h4>Глобальная область</h4>
+							</div>
+							<p>Переменная доступна везде в коде</p>
+							<pre><code class="javascript">// Вне всех функций и блоков
+let globalVar = "Я везде!";
+
+function test() {
+    console.log(globalVar); // ✅ Доступна
+}</code></pre>
+						</div>
+
+						<div class="scope-card">
+							<div class="scope-header local">
+								<i class="fas fa-code-branch"></i>
+								<h4>Локальная (функция)</h4>
+							</div>
+							<p>Доступна только внутри функции</p>
+							<pre><code class="javascript">function myFunction() {
+    let localVar = "Только здесь";
+    console.log(localVar); // ✅
+}
+console.log(localVar); // ❌ Ошибка!</code></pre>
+						</div>
+
+						<div class="scope-card">
+							<div class="scope-header block">
+								<i class="fas fa-cube"></i>
+								<h4>Блочная (ES6)</h4>
+							</div>
+							<p>Доступна только внутри блока {}</p>
+							<pre><code class="javascript">if (true) {
+    let blockVar = "В блоке";
+    console.log(blockVar); // ✅
+}
+console.log(blockVar); // ❌ Ошибка!</code></pre>
+						</div>
+					</div>
+
+					<div class="scope-visualization">
+						<h3><i class="fas fa-sitemap"></i> Визуализация области видимости:</h3>
+						<div class="scope-tree">
+							<div class="tree-node global-node">
+								<div class="node-header">Глобальная область</div>
+								<div class="node-vars">
+									<div class="node-var">globalVar</div>
+								</div>
+								<div class="tree-children">
+									<div class="tree-node function-node">
+										<div class="node-header">Функция outer()</div>
+										<div class="node-vars">
+											<div class="node-var">outerVar</div>
+										</div>
+										<div class="tree-children">
+											<div class="tree-node block-node">
+												<div class="node-header">Блок if</div>
+												<div class="node-vars">
+													<div class="node-var">blockVar</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 7: Всплытие (Hoisting) ===== -->
+				<section id="hoisting" class="lesson-section">
+					<h2><i class="fas fa-parachute-box"></i> Всплытие (Hoisting)</h2>
+					<p>JavaScript "поднимает" объявления переменных в начало их области видимости перед выполнением
+						кода.</p>
+
+					<div class="hoisting-demo">
+						<div class="hoisting-step">
+							<h4><i class="fas fa-arrow-up"></i> Как работает hoisting:</h4>
+							<div class="code-comparison">
+								<div class="code-original">
+									<h5>Исходный код:</h5>
+									<pre><code class="javascript">console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+
+console.log(y); // Ошибка!
+let y = 10;</code></pre>
+								</div>
+								<div class="code-hoisted">
+									<h5>После hoisting:</h5>
+									<pre><code class="javascript">var x; // Объявление поднято
+console.log(x); // undefined
+x = 5; // Присваивание осталось
+console.log(x); // 5
+
+// let не инициализируется
+console.log(y); // Ошибка!
+let y = 10;</code></pre>
+								</div>
+							</div>
+						</div>
+
+						<div class="hoisting-rules">
+							<h4><i class="fas fa-list-ol"></i> Правила hoisting:</h4>
+							<ul>
+								<li><code>var</code>: объявление поднимается, инициализируется как
+									<code>undefined</code>
+								</li>
+								<li><code>let/const</code>: объявление поднимается, но не инициализируется (временная
+									мертвая зона)</li>
+								<li>Функции: полностью поднимаются (можно вызывать до объявления)</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 8: Практическое задание ===== -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+					<p>Применим знания на практике:</p>
+
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Конвертер валют</h3>
+							<span class="difficulty-badge">Средний уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Создайте программу для конвертации валют:</p>
+							<ol>
+								<li>Объявите константы для курсов валют (USD, EUR)</li>
+								<li>Запросите у пользователя сумму в рублях</li>
+								<li>Вычислите эквивалент в долларах и евро</li>
+								<li>Выведите результаты с пояснениями</li>
+								<li>Добавьте возможность выбрать целевую валюту</li>
+							</ol>
+
+							<div class="hint-box">
+								<h4><i class="fas fa-lightbulb"></i> Подсказки:</h4>
+								<ul>
+									<li>Используйте <code>const</code> для курсов валют</li>
+									<li>Для ввода используйте <code>prompt()</code> или <code>parseFloat()</code></li>
+									<li>Форматируйте вывод с помощью <code>toFixed(2)</code></li>
+									<li>Проверяйте корректность ввода</li>
+								</ul>
+							</div>
+
+							<div class="code-editor-area">
+								<h4>Редактор кода:</h4>
+								<textarea id="exerciseCode" class="code-editor" placeholder="Напишите здесь ваш код...">// Ваш код здесь
+// Пример начала:
+// const USD_RATE = 90.5;
+// const EUR_RATE = 98.3;</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runExercise()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<button class="btn btn-secondary" onclick="clearExercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Вывод вашего кода появится здесь
+									</div>
+								</div>
+							</div>
+
+							<div class="solution-section">
+								<button class="btn btn-warning show-solution" onclick="toggleSolution(this)">
+									<i class="fas fa-code"></i> Показать решение
+								</button>
+								<div class="solution hidden">
+									<h4><i class="fas fa-check-circle"></i> Пример решения:</h4>
+									<pre><code class="javascript">// Конвертер валют
+
+// 1. Объявляем константы с курсами
+const USD_RATE = 90.5;    // 1 USD = 90.5 RUB
+const EUR_RATE = 98.3;    // 1 EUR = 98.3 RUB
+
+// 2. Запрашиваем сумму в рублях
+let rubles = prompt("Введите сумму в рублях:");
+
+// 3. Проверяем корректность ввода
+if (rubles === null || rubles === "") {
+    console.log("Отмена или пустой ввод");
+} else {
+    // Преобразуем строку в число
+    rubles = parseFloat(rubles);
+    
+    if (isNaN(rubles) || rubles <= 0) {
+        console.log("Ошибка: введите корректную сумму");
+    } else {
+        // 4. Вычисляем эквиваленты
+        let dollars = rubles / USD_RATE;
+        let euros = rubles / EUR_RATE;
+        
+        // 5. Выводим результаты
+        console.log("=== Результаты конвертации ===");
+        console.log(`Сумма в рублях: ${rubles} RUB`);
+        console.log(`В долларах: ${dollars.toFixed(2)} USD`);
+        console.log(`В евро: ${euros.toFixed(2)} EUR`);
+        
+        // 6. Дополнительно: выбор валюты
+        let targetCurrency = prompt("Выберите валюту (USD или EUR):")?.toUpperCase();
+        
+        if (targetCurrency === "USD") {
+            console.log(`Вы выбрали USD: ${dollars.toFixed(2)}`);
+        } else if (targetCurrency === "EUR") {
+            console.log(`Вы выбрали EUR: ${euros.toFixed(2)}`);
+        } else {
+            console.log("Выбор не распознан, показаны все валюты");
+        }
+        
+        console.log("Спасибо за использование конвертера!");
+    }
+}</code></pre>
+									<div class="solution-tips">
+										<h5><i class="fas fa-tips"></i> Советы по улучшению:</h5>
+										<ul>
+											<li>Добавьте больше валют (GBP, JPY, CNY)</li>
+											<li>Создайте функцию для конвертации</li>
+											<li>Добавьте кэширование курсов валют</li>
+											<li>Сделайте красивое форматирование вывода</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Пройденные темы -->
+					<div class="topics-summary">
+						<h3><i class="fas fa-graduation-cap"></i> Вы изучили:</h3>
+						<div class="topics-list">
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Что такое переменные</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>var, let и const</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Правила именования</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Присваивание значений</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Область видимости</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Всплытие (hoisting)</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навигация между уроками -->
+				<div class="navigation-buttons">
+					<a href="basics.html" class="nav-btn prev-btn">
+						<i class="fas fa-arrow-left"></i> Основы JavaScript
+					</a>
+					<a href="functions.html" class="nav-btn next-btn">
+						<i class="fas fa-arrow-right"></i> Следующий урок: Функции
+					</a>
+				</div>
+
+				<!-- Дополнительные материалы -->
+				<div class="additional-materials">
+					<h3><i class="fas fa-book-open"></i> Дополнительные материалы</h3>
+					<div class="materials-list">
+						<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Grammar_and_types"
+							target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>MDN: Переменные и типы данных</span>
+						</a>
+						<a href="https://learn.javascript.ru/variables" target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Учебник: Переменные</span>
+						</a>
+						<a href="#" class="material-link" onclick="downloadCheatSheet()">
+							<i class="fas fa-download"></i>
+							<span>Скачать шпаргалку по переменным</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/basic-components.js"></script>
+	<script src="../js/component/variables.js"></script>
+</body>
+
+</html>

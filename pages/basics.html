@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Основы JavaScript - JS Tutor</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/basics.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html" class="active">Основы</a>
+					<a href="variables.html">Переменные</a>
+					<a href="functions.html">Функции</a>
+					<a href="objects.html">Объекты</a>
+					<a href="arrays.html">Массивы</a>
+					<a href="dom.html">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html">Асинхронность</a>
+					<a href="es6.html">ES6+</a>
+					<a href="practice.html">Практика</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html" class="active"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Основы JavaScript</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Начальный уровень</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 20 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 5 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>JavaScript</strong> — это язык программирования, который превращает статические
+						веб-страницы в интерактивные приложения. Работает в браузере, на сервере (Node.js) и даже в
+						мобильных приложениях!</p>
+				</div>
+
+				<!-- Быстрая навигация по уроку -->
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#what-is-js">Что такое JavaScript?</a></li>
+						<li><a href="#first-program">Первая программа</a></li>
+						<li><a href="#connecting-js">Подключение JavaScript</a></li>
+						<li><a href="#syntax">Синтаксис языка</a></li>
+						<li><a href="#data-types">Типы данных</a></li>
+						<li><a href="#operators">Операторы</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- ===== РАЗДЕЛ 1: Что такое JavaScript? ===== -->
+				<section id="what-is-js" class="lesson-section">
+					<h2><i class="fas fa-code"></i> Что такое JavaScript?</h2>
+					<p>JavaScript — это <strong>высокоуровневый, интерпретируемый язык программирования</strong>,
+						который выполняет код прямо в браузере пользователя. С его помощью можно:</p>
+
+					<div class="features-grid">
+						<div class="feature-card">
+							<i class="fas fa-mouse-pointer"></i>
+							<h4>Добавлять интерактивность</h4>
+							<p>Кнопки, формы, слайдеры</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-sync-alt"></i>
+							<h4>Обновлять контент</h4>
+							<p>Без перезагрузки страницы</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-database"></i>
+							<h4>Работать с данными</h4>
+							<p>Отправлять и получать данные</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-gamepad"></i>
+							<h4>Создавать игры</h4>
+							<p>Браузерные игры и анимации</p>
+						</div>
+					</div>
+
+					<div class="info-box">
+						<h4><i class="fas fa-lightbulb"></i> Интересный факт</h4>
+						<p>JavaScript был создан всего за 10 дней в 1995 году Бренданом Айком для браузера Netscape
+							Navigator. Несмотря на схожее название, он <strong>не имеет отношения к Java</strong>.</p>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 2: Первая программа ===== -->
+				<section id="first-program" class="lesson-section">
+					<h2><i class="fas fa-rocket"></i> Первая программа</h2>
+					<p>Давайте напишем нашу первую программу на JavaScript. В браузере есть <strong>консоль
+							разработчика</strong>, куда можно выводить информацию:</p>
+
+					<div class="demo-container">
+						<h3><i class="fas fa-play-circle"></i> Попробуйте сами:</h3>
+						<div class="code-executor">
+							<div class="code-editor">
+								<pre><code class="javascript">// Это комментарий - он не выполняется
+console.log("Привет, мир!");
+
+// Можно выводить разные типы данных
+console.log("Добро пожаловать в JavaScript!");
+console.log(42);                 // Число
+console.log(true);               // Логическое значение
+console.log([1, 2, 3]);          // Массив
+console.log({name: "Вася"});     // Объект</code></pre>
+							</div>
+							<button class="btn btn-primary run-code" onclick="runBasicCode()">
+								<i class="fas fa-play"></i> Запустить код
+							</button>
+							<div class="output-container">
+								<h4>Вывод в консоль:</h4>
+								<div id="basicOutput" class="console-output">
+									<div class="console-line info">Нажмите "Запустить код" чтобы увидеть результат</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tip-box">
+						<h4><i class="fas fa-keyboard"></i> Как открыть консоль:</h4>
+						<ul>
+							<li><strong>Chrome/Firefox:</strong> F12 → вкладка Console</li>
+							<li><strong>Windows:</strong> Ctrl + Shift + I</li>
+							<li><strong>Mac:</strong> Cmd + Option + I</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 3: Подключение JavaScript ===== -->
+				<section id="connecting-js" class="lesson-section">
+					<h2><i class="fas fa-link"></i> Как подключить JavaScript к HTML</h2>
+					<p>Есть несколько способов подключения JavaScript к HTML-странице. Выберите подходящий для вашей
+						задачи:</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-inline">1. Встроенный скрипт</button>
+							<button class="tab-btn" data-tab="tab-external">2. Внешний файл</button>
+							<button class="tab-btn" data-tab="tab-modern">3. Современный подход</button>
+						</div>
+
+						<div class="tab-content active" id="tab-inline">
+							<h4><i class="fas fa-code"></i> Встроенный (inline) скрипт</h4>
+							<p>Подходит для небольших скриптов прямо в HTML:</p>
+							<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Пример&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Моя страница&lt;/h1&gt;
+    
+    &lt;script&gt;
+        // JavaScript код прямо здесь
+        console.log("Страница загружена!");
+        
+        function sayHello() {
+            alert("Привет!");
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+							<div class="code-hint">
+								<i class="fas fa-exclamation-circle"></i> Не рекомендуется для больших проектов
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-external">
+							<h4><i class="fas fa-file-code"></i> Внешний файл (рекомендуется)</h4>
+							<p>Лучшая практика - выносить JavaScript в отдельные файлы:</p>
+							<div class="file-structure">
+								<div class="file-tree">
+									<div class="file-item">
+										<i class="fas fa-folder"></i> project/
+									</div>
+									<div class="file-item">
+										<i class="fas fa-file"></i> index.html
+									</div>
+									<div class="file-item">
+										<i class="fas fa-file-code"></i> script.js
+									</div>
+								</div>
+								<div class="code-example">
+									<pre><code class="html">&lt;!-- index.html --&gt;
+&lt;script src="script.js" defer&gt;&lt;/script&gt;</code></pre>
+									<pre><code class="javascript">// script.js
+console.log("Скрипт загружен!");
+// Весь JavaScript код здесь</code></pre>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-modern">
+							<h4><i class="fas fa-bolt"></i> Современный подход</h4>
+							<p>В современных проектах используют модули:</p>
+							<pre><code class="html">&lt;!-- Тип модуль --&gt;
+&lt;script type="module" src="main.js"&gt;&lt;/script&gt;</code></pre>
+							<pre><code class="javascript">// main.js
+import { calculate } from './math.js';
+import { formatDate } from './utils.js';
+
+// Используем импортированные функции
+console.log(calculate(10, 5));</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 4: Синтаксис ===== -->
+				<section id="syntax" class="lesson-section">
+					<h2><i class="fas fa-terminal"></i> Синтаксис JavaScript</h2>
+					<p>Каждый язык программирования имеет свой синтаксис - правила написания кода.</p>
+
+					<div class="syntax-examples">
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">1</span>
+								<h4>Инструкции</h4>
+							</div>
+							<p>Каждая инструкция заканчивается точкой с запятой:</p>
+							<pre><code class="javascript">let x = 5;        // Присваивание
+let y = 10;       // Еще одна переменная
+let z = x + y;    // Сложение
+console.log(z);   // Вывод результата</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">2</span>
+								<h4>Комментарии</h4>
+							</div>
+							<p>Комментарии помогают понять код другим разработчикам:</p>
+							<pre><code class="javascript">// Однострочный комментарий
+
+/* Многострочный
+   комментарий
+   на несколько строк */
+
+/**
+ * JSDoc комментарии
+ * @param {number} a - первое число
+ * @param {number} b - второе число
+ * @returns {number} сумма чисел
+ */
+function add(a, b) {
+    return a + b;
+}</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">3</span>
+								<h4>Чувствительность к регистру</h4>
+							</div>
+							<p>JavaScript различает заглавные и строчные буквы:</p>
+							<pre><code class="javascript">let userName = "Иван";    // Правильно
+let username = "Петр";    // Другая переменная!
+let UserName = "Сергей";  // И третья!
+
+console.log(userName);    // "Иван"
+console.log(UserName);    // "Сергей"
+// console.log(username);  // Ошибка! переменная не объявлена</code></pre>
+							<div class="warning-box">
+								<i class="fas fa-exclamation-triangle"></i> Это частая причина ошибок у новичков!
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 5: Типы данных ===== -->
+				<section id="data-types" class="lesson-section">
+					<h2><i class="fas fa-boxes"></i> Типы данных</h2>
+					<p>В JavaScript данные делятся на примитивные (хранят одно значение) и ссылочные (объекты).</p>
+
+					<div class="data-types-grid">
+						<div class="data-type-card">
+							<div class="type-header type-number">
+								<i class="fas fa-calculator"></i>
+								<h4>Number</h4>
+							</div>
+							<p>Числа: целые и дробные</p>
+							<pre><code class="javascript">let age = 25;
+let price = 99.99;
+let temperature = -10;
+let billion = 1e9; // 1000000000
+let hex = 0xFF;    // 255 в 16-ричной</code></pre>
+						</div>
+
+						<div class="data-type-card">
+							<div class="type-header type-string">
+								<i class="fas fa-quote-right"></i>
+								<h4>String</h4>
+							</div>
+							<p>Текст в кавычках</p>
+							<pre><code class="javascript">let name = "Анна";
+let message = 'Привет!';
+let text = `Шаблонная строка`;
+
+// Конкатенация
+let greeting = "Привет, " + name + "!";
+let template = `Вам ${age} лет`;</code></pre>
+						</div>
+
+						<div class="data-type-card">
+							<div class="type-header type-boolean">
+								<i class="fas fa-check-circle"></i>
+								<h4>Boolean</h4>
+							</div>
+							<p>Логические значения</p>
+							<pre><code class="javascript">let isLogged = true;
+let hasAccess = false;
+let isAdult = age >= 18; // true или false
+
+// Логические операторы
+let result = true && false; // false
+let choice = true || false; // true
+let inverse = !true;        // false</code></pre>
+						</div>
+
+						<div class="data-type-card">
+							<div class="type-header type-special">
+								<i class="fas fa-question-circle"></i>
+								<h4>Особые значения</h4>
+							</div>
+							<p>Undefined, null, NaN</p>
+							<pre><code class="javascript">let undefinedVar;    // undefined
+let empty = null;      // намеренное отсутствие
+let notANumber = NaN;  // не число
+let infinity = Infinity; // бесконечность
+
+console.log(typeof undefinedVar); // "undefined"
+console.log(0 / 0);               // NaN</code></pre>
+						</div>
+					</div>
+
+					<!-- Интерактивный пример с типами данных -->
+					<div class="interactive-demo">
+						<h3><i class="fas fa-flask"></i> Проверьте типы данных:</h3>
+						<div class="type-checker">
+							<div class="input-group">
+								<input type="text" id="typeInput" value="'Hello'" placeholder="Введите значение">
+								<button class="btn btn-secondary" onclick="checkDataType()">
+									<i class="fas fa-search"></i> Проверить тип
+								</button>
+							</div>
+							<div id="typeResult" class="result-box">
+								<div class="result-placeholder">
+									<i class="fas fa-info-circle"></i>
+									Введите значение и нажмите "Проверить тип"
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 6: Операторы ===== -->
+				<section id="operators" class="lesson-section">
+					<h2><i class="fas fa-cogs"></i> Операторы</h2>
+					<p>Операторы позволяют выполнять операции над значениями.</p>
+
+					<div class="operators-table">
+						<table>
+							<thead>
+								<tr>
+									<th>Категория</th>
+									<th>Операторы</th>
+									<th>Пример</th>
+									<th>Результат</th>
+									<th>Описание</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Арифметические</td>
+									<td><code>+ - * / % **</code></td>
+									<td><code>10 + 5</code></td>
+									<td><code>15</code></td>
+									<td>Сложение, вычитание, умножение, деление</td>
+								</tr>
+								<tr>
+									<td>Присваивания</td>
+									<td><code>= += -= *= /=</code></td>
+									<td><code>x += 5</code></td>
+									<td><code>x = x + 5</code></td>
+									<td>Сокращенное присваивание</td>
+								</tr>
+								<tr>
+									<td>Сравнения</td>
+									<td><code>== === != !== > < >= <=</code></td>
+									<td><code>5 == "5"</code></td>
+									<td><code>true</code></td>
+									<td>Сравнение с приведением типов</td>
+								</tr>
+								<tr>
+									<td>Строгого сравнения</td>
+									<td><code>=== !==</code></td>
+									<td><code>5 === "5"</code></td>
+									<td><code>false</code></td>
+									<td>Сравнение без приведения типов</td>
+								</tr>
+								<tr>
+									<td>Логические</td>
+									<td><code>&& || !</code></td>
+									<td><code>true && false</code></td>
+									<td><code>false</code></td>
+									<td>Логическое И, ИЛИ, НЕ</td>
+								</tr>
+								<tr>
+									<td>Тернарный</td>
+									<td><code>? :</code></td>
+									<td><code>age >= 18 ? "взрослый" : "ребенок"</code></td>
+									<td><code>"взрослый"</code></td>
+									<td>Условный оператор</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<!-- Интерактивный пример с операторами -->
+					<div class="calculator-demo">
+						<h3><i class="fas fa-calculator"></i> Калькулятор операторов:</h3>
+						<div class="calculator">
+							<div class="calc-inputs">
+								<input type="number" id="calcA" value="10" placeholder="Число A">
+								<select id="calcOperator">
+									<option value="+">+ (сложение)</option>
+									<option value="-">- (вычитание)</option>
+									<option value="*">* (умножение)</option>
+									<option value="/">/ (деление)</option>
+									<option value="%">% (остаток)</option>
+									<option value="**">** (степень)</option>
+									<option value="==">== (равно)</option>
+									<option value="===">=== (строго равно)</option>
+								</select>
+								<input type="number" id="calcB" value="5" placeholder="Число B">
+							</div>
+							<button class="btn btn-primary" onclick="calculateOperation()">
+								<i class="fas fa-equals"></i> Вычислить
+							</button>
+							<div id="calcResult" class="calc-result">
+								<div class="result-placeholder">
+									<i class="fas fa-calculator"></i>
+									Результат появится здесь
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 7: Практическое задание ===== -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+					<p>Теперь применим полученные знания на практике:</p>
+
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Калькулятор возраста</h3>
+							<span class="difficulty-badge">Легкий уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Создайте программу, которая:</p>
+							<ol>
+								<li>Запрашивает имя пользователя</li>
+								<li>Запрашивает год рождения</li>
+								<li>Вычисляет возраст</li>
+								<li>Выводит персонализированное сообщение</li>
+								<li>Определяет совершеннолетний ли пользователь</li>
+							</ol>
+
+							<div class="hint-box">
+								<h4><i class="fas fa-lightbulb"></i> Подсказки:</h4>
+								<ul>
+									<li>Используйте <code>prompt()</code> для ввода данных</li>
+									<li>Для вычисления возраста: текущий год - год рождения</li>
+									<li>Используйте <code>console.log()</code> для вывода</li>
+									<li>Условный оператор <code>if...else</code> для проверки возраста</li>
+								</ul>
+							</div>
+
+							<div class="code-editor-area">
+								<h4>Редактор кода:</h4>
+								<textarea id="exerciseCode" class="code-editor" placeholder="Напишите здесь ваш код...">
+// Ваш код здесь
+// Пример начала:
+// let name = prompt("Как вас зовут?");</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runExercise()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<button class="btn btn-secondary" onclick="clearExercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Вывод вашего кода появится здесь
+									</div>
+								</div>
+							</div>
+
+							<div class="solution-section">
+								<button class="btn btn-warning show-solution">
+									<i class="fas fa-code"></i> Показать решение
+								</button>
+								<div class="solution hidden">
+									<h4><i class="fas fa-check-circle"></i> Пример решения:</h4>
+									<pre><code class="javascript">// Решение задачи "Калькулятор возраста"
+
+// 1. Запрашиваем данные у пользователя
+let userName = prompt("Как вас зовут?");
+let birthYear = prompt("В каком году вы родились?");
+
+// 2. Вычисляем возраст
+let currentYear = new Date().getFullYear();
+let age = currentYear - birthYear;
+
+// 3. Выводим приветствие
+console.log("=== Результаты ===");
+console.log(`Привет, ${userName}!`);
+console.log(`Тебе ${age} лет.`);
+
+// 4. Проверяем совершеннолетие
+if (age >= 18) {
+    console.log("Ты совершеннолетний!");
+} else {
+    console.log("Ты еще несовершеннолетний.");
+}
+
+// 5. Дополнительная информация
+if (age >= 65) {
+    console.log("Пенсионный возраст!");
+} else if (age >= 60) {
+    console.log("Скоро на пенсию!");
+}
+
+console.log("Спасибо за участие!");</code></pre>
+									<div class="solution-tips">
+										<h5><i class="fas fa-tips"></i> Советы по улучшению:</h5>
+										<ul>
+											<li>Добавьте проверку корректности ввода</li>
+											<li>Используйте <code>parseInt()</code> для преобразования строки в число
+											</li>
+											<li>Добавьте больше проверок возраста</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Пройденные темы -->
+					<div class="topics-summary">
+						<h3><i class="fas fa-graduation-cap"></i> Вы изучили:</h3>
+						<div class="topics-list">
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Что такое JavaScript</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Первая программа на JS</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Способы подключения JS</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Синтаксис языка</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Типы данных</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Операторы</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навигация между уроками -->
+				<div class="navigation-buttons">
+					<a href="../index.html" class="nav-btn prev-btn">
+						<i class="fas fa-home"></i> На главную
+					</a>
+					<a href="variables.html" class="nav-btn next-btn">
+						<i class="fas fa-arrow-right"></i> Следующий урок: Переменные
+					</a>
+				</div>
+
+				<!-- Дополнительные материалы -->
+				<div class="additional-materials">
+					<h3><i class="fas fa-book-open"></i> Дополнительные материалы</h3>
+					<div class="materials-list">
+						<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide" target="_blank"
+							class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Официальная документация MDN</span>
+						</a>
+						<a href="https://learn.javascript.ru/first-steps" target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Учебник на learn.javascript.ru</span>
+						</a>
+						<a href="#" class="material-link">
+							<i class="fas fa-download"></i>
+							<span>Скачать шпаргалку по основам</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/basic-components.js"></script>
+	<script src="../js/component/basics.js"></script>
+</body>
+
+</html>

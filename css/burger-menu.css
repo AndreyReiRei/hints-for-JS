@@ -1,0 +1,472 @@
+/* Бургер меню */
+.burger-menu {
+	/* Скрыто по умолчанию, показывается только на мобильных */
+	display: none;
+	cursor: pointer;
+	/* Курсор-указатель при наведении */
+	margin-left: auto;
+	/* Автоматический отступ слева - прижимает вправо */
+	margin-right: 15px;
+	/* Отступ справа для отступа от края */
+}
+
+/* Контейнер для иконки бургера */
+.burger-icon {
+	width: 30px;
+	/* Ширина иконки */
+	height: 24px;
+	/* Высота иконки */
+	position: relative;
+	/* Для позиционирования полосок внутри */
+	display: block;
+	z-index: 1;
+	/* Чтобы была выше других элементов */
+}
+
+/* Общие стили для всех трех полосок бургера */
+.burger-icon span {
+	display: block;
+	position: absolute;
+	/* Абсолютное позиционирование внутри .burger-icon */
+	height: 3px;
+	/* Толщина полоски */
+	width: 100%;
+	/* Занимает всю ширину контейнера */
+	background: #333;
+	/* Цвет полоски для светлой темы */
+	border-radius: 3px;
+	/* Закругленные края */
+	transition: all 0.3s ease;
+	/* Плавная анимация всех свойств */
+	transform-origin: center;
+	/* Точка трансформации в центре */
+	z-index: 1;
+}
+
+/* Позиционирование каждой полоски */
+.burger-icon span:nth-child(1) {
+	top: 0;
+	/* Верхняя полоска */
+}
+
+.burger-icon span:nth-child(2) {
+	top: 10px;
+	/* Средняя полоска */
+}
+
+.burger-icon span:nth-child(3) {
+	top: 20px;
+	/* Нижняя полоска */
+}
+
+/* Темная тема - меняем цвет полосок на белый */
+body.dark-theme .burger-icon span {
+	background: #ffffff;
+}
+
+/* ============ АНИМАЦИЯ ПРИ ОТКРЫТИИ МЕНЮ ============ */
+/* Добавляется класс .open к .burger-icon при открытом меню */
+
+/* Верхняя полоска: поворачивается на 45 градусов и опускается в центр */
+.burger-icon.open span:nth-child(1) {
+	transform: rotate(45deg);
+	top: 10px;
+	/* Опускается на уровень средней полоски */
+}
+
+/* Средняя полоска: становится прозрачной и сдвигается влево */
+.burger-icon.open span:nth-child(2) {
+	opacity: 0;
+	/* Полное исчезновение */
+	transform: translateX(-20px);
+	/* Сдвиг влево за пределы иконки */
+}
+
+/* Нижняя полоска: поворачивается на -45 градусов и поднимается в центр */
+.burger-icon.open span:nth-child(3) {
+	transform: rotate(-45deg);
+	top: 10px;
+	/* Поднимается на уровень средней полоски */
+}
+
+/* ============ МОБИЛЬНОЕ МЕНЮ ============ */
+
+/* Основной контейнер мобильного меню */
+.nav-mobile {
+	position: fixed;
+	/* Фиксированное позиционирование относительно окна */
+	top: 0;
+	/* Прижато к верхнему краю */
+	right: -280px;
+	/* Скрыто за правым краем экрана */
+	width: 280px;
+	/* Ширина меню */
+	max-width: 85vw;
+	/* Не более 85% ширины экрана (для очень узких устройств) */
+	height: 100vh;
+	/* На всю высоту окна */
+	background: white;
+	/* Фон для светлой темы */
+	box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+	/* Тень слева для эффекта глубины */
+	transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	/* Плавное выезжание с пружинным эффектом */
+	z-index: 10002;
+	/* Высокий z-index - должно быть выше оверлея */
+	overflow-y: auto;
+	/* Вертикальная прокрутка если контент не помещается */
+}
+
+/* Класс .active добавляется при открытом меню */
+.nav-mobile.active {
+	right: 0;
+	/* Сдвигаем в видимую область */
+}
+
+/* Темная тема для мобильного меню */
+body.dark-theme .nav-mobile {
+	background: #1a202c;
+	/* Темный фон для темной темы */
+}
+
+/* Оверлей (подложка) затемняющая фон при открытом меню */
+.menu-overlay {
+	position: fixed;
+	/* Фиксированное позиционирование */
+	top: 0;
+	left: 0;
+	width: 100%;
+	/* На всю ширину экрана */
+	height: 100%;
+	/* На всю высоту экрана */
+	background: rgba(0, 0, 0, 0.7);
+	/* Полупрозрачный черный фон */
+	opacity: 0;
+	/* Изначально невидимый */
+	visibility: hidden;
+	/* И скрытый от взаимодействия */
+	transition: all 0.3s ease;
+	/* Плавное появление */
+	z-index: 10001;
+	/* Ниже меню, но выше всего остального */
+	backdrop-filter: blur(2px);
+	/* Легкое размытие фона под оверлеем */
+}
+
+/* Активный оверлей */
+.menu-overlay.active {
+	opacity: 1;
+	/* Полная непрозрачность */
+	visibility: visible;
+	/* Становится видимым и доступным */
+}
+
+/* ============ СТИЛИ ДЛЯ КОНТЕНТА МЕНЮ ============ */
+
+/* Шапка мобильного меню с заголовком и кнопкой закрытия */
+.mobile-menu-header {
+	display: flex;
+	/* Flex-контейнер */
+	justify-content: space-between;
+	/* Распределение пространства между элементами */
+	align-items: center;
+	/* Вертикальное выравнивание по центру */
+	padding: 20px;
+	/* Внутренние отступы */
+	background: #667eea;
+	/* Сиреневый фон */
+	color: white;
+	/* Белый текст */
+	position: sticky;
+	/* "Липкая" позиция при прокрутке */
+	top: 0;
+	/* Прилипает к верху меню */
+	z-index: 1;
+	/* Чтобы было выше прокручиваемого контента */
+}
+
+/* Темная тема для шапки меню */
+body.dark-theme .mobile-menu-header {
+	background: #4c51bf;
+	/* Более темный синий для темной темы */
+}
+
+.mobile-menu-header h3 {
+	margin: 0;
+	/* Убираем стандартные отступы */
+	font-size: 1.3rem;
+	/* Размер шрифта */
+}
+
+/* Кнопка закрытия меню (крестик) */
+.close-menu {
+	cursor: pointer;
+	/* Курсор-указатель */
+	font-size: 1.5rem;
+	/* Размер иконки крестика */
+	background: none;
+	/* Прозрачный фон */
+	border: none;
+	/* Без рамки */
+	color: white;
+	/* Белый цвет */
+	width: 40px;
+	/* Фиксированная ширина */
+	height: 40px;
+	/* Фиксированная высота */
+	display: flex;
+	/* Flex для центрирования иконки */
+	align-items: center;
+	/* Центрирование по вертикали */
+	justify-content: center;
+	/* Центрирование по горизонтали */
+	border-radius: 50%;
+	/* Круглая форма */
+	transition: background 0.3s ease;
+	/* Плавное изменение фона */
+	padding: 0;
+	/* Убираем внутренние отступы */
+}
+
+/* Эффект при наведении на кнопку закрытия */
+.close-menu:hover {
+	background: rgba(255, 255, 255, 0.2);
+	/* Полупрозрачный белый фон */
+}
+
+/* Список навигации в мобильном меню */
+.mobile-nav-list {
+	list-style: none;
+	/* Убираем маркеры списка */
+	padding: 20px 0;
+	/* Внутренние отступы сверху и снизу */
+	margin: 0;
+	/* Убираем внешние отступы */
+}
+
+.mobile-nav-list li {
+	margin: 0;
+	/* Убираем отступы между пунктами */
+}
+
+/* Стили ссылок в мобильном меню */
+.mobile-nav-list a {
+	display: flex;
+	/* Flex для выравнивания иконки и текста */
+	align-items: center;
+	/* Вертикальное центрирование */
+	padding: 15px 25px;
+	/* Внутренние отступы */
+	text-decoration: none;
+	/* Убираем подчеркивание */
+	color: #333;
+	/* Темно-серый текст для светлой темы */
+	font-weight: 500;
+	/* Средняя жирность */
+	transition: all 0.3s ease;
+	/* Плавные переходы для всех свойств */
+	border-left: 4px solid transparent;
+	/* Прозрачная левая граница для анимации */
+}
+
+/* Темная тема для ссылок */
+body.dark-theme .mobile-nav-list a {
+	color: #e2e8f0;
+	/* Светло-серый для темной темы */
+}
+
+/* Иконки в ссылках меню */
+.mobile-nav-list a i {
+	margin-right: 15px;
+	/* Отступ справа от иконки */
+	width: 20px;
+	/* Фиксированная ширина для выравнивания */
+	color: #667eea;
+	/* Цвет иконок */
+}
+
+/* Эффекты при наведении и активном состоянии */
+.mobile-nav-list a:hover,
+.mobile-nav-list a.active {
+	background: #f7fafc;
+	/* Светлый фон при активности/наведении */
+	color: #667eea;
+	/* Сиреневый текст */
+	border-left-color: #667eea;
+	/* Цветная левая граница */
+	padding-left: 30px;
+	/* Увеличиваем отступ слева для эффекта */
+}
+
+/* Темная тема для активных/наведенных ссылок */
+body.dark-theme .mobile-nav-list a:hover,
+body.dark-theme .mobile-nav-list a.active {
+	background: #2d3748;
+	/* Темный фон */
+	color: #e2e8f0;
+	/* Светлый текст */
+}
+
+/* ============ МЕДИА-ЗАПРОСЫ ============ */
+
+/* Стили для мобильных устройств (ширина до 768px) */
+@media (max-width: 768px) {
+	.burger-menu {
+		display: flex;
+		/* Показываем бургер-меню */
+		align-items: center;
+		/* Вертикальное центрирование */
+	}
+
+	/* Скрываем десктопную навигацию на мобильных */
+	.nav-desktop {
+		display: none !important;
+		/* !important для принудительного скрытия */
+	}
+}
+
+/* Стили для десктопных устройств (ширина от 769px) */
+@media (min-width: 769px) {
+
+	/* Скрываем мобильное меню и оверлей на десктопе */
+	.nav-mobile,
+	.menu-overlay {
+		display: none !important;
+		/* !important для принудительного скрытия */
+	}
+}
+
+/* ============ ГАРАНТИРУЕМ ПРАВИЛЬНЫЙ Z-INDEX ============ */
+
+/* Заголовок должен быть ниже меню, чтобы не перекрывать его */
+.header {
+	position: relative;
+	z-index: 1000;
+	/* Меньше чем у меню (10002) */
+}
+
+/* Переопределяем z-index для надежности */
+.nav-mobile {
+	z-index: 99999 !important;
+	/* Очень высокий приоритет */
+	background: white !important;
+	/* Явно задаем фон */
+}
+
+body.dark-theme .nav-mobile {
+	background: #1a202c !important;
+	/* Явно задаем темный фон */
+}
+
+.menu-overlay {
+	z-index: 999 !important;
+	/* Ниже меню, но выше всего остального */
+	background: rgba(0, 0, 0, 0.5) !important;
+	/* Явно задаем прозрачность */
+	pointer-events: auto !important;
+	/* Разрешаем взаимодействие с оверлеем */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ============ ПЕРЕКЛЮЧЕНИЕ ТЕМЫ В МОБИЛЬНОМ МЕНЮ ============ */
+
+/* Контейнер для переключателя темы в мобильном меню */
+.theme-toggle-mobile {
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	user-select: none;
+	transition: all 0.3s ease;
+}
+
+/* Элемент переключателя темы */
+.theme-toggle-item {
+	display: flex;
+	align-items: center;
+	padding: 15px 25px;
+	color: #333;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	border-left: 4px solid transparent;
+	background: transparent;
+}
+
+/* Темная тема для переключателя */
+body.dark-theme .theme-toggle-item {
+	color: #e2e8f0;
+}
+
+/* Иконка в переключателе темы */
+.theme-toggle-item i {
+	margin-right: 15px;
+	width: 20px;
+	text-align: center;
+	font-size: 1.1rem;
+	color: #667eea;
+	transition: transform 0.3s ease;
+}
+
+/* Текст в переключателе */
+.theme-toggle-item span {
+	flex: 1;
+}
+
+/* Эффекты при наведении на переключатель темы */
+.theme-toggle-mobile:hover .theme-toggle-item {
+	background: #f7fafc;
+	color: #667eea;
+	border-left-color: #667eea;
+	padding-left: 30px;
+}
+
+/* Темная тема для наведения */
+body.dark-theme .theme-toggle-mobile:hover .theme-toggle-item {
+	background: #2d3748;
+	color: #e2e8f0;
+}
+
+/* Анимация иконки при наведении */
+.theme-toggle-mobile:hover .theme-toggle-item i {
+	transform: rotate(15deg);
+}
+
+/* Разделительная линия перед переключателем темы */
+.theme-toggle-mobile::before {
+	content: '';
+	display: block;
+	height: 1px;
+	background: #e2e8f0;
+	margin: 0 25px;
+}
+
+body.dark-theme .theme-toggle-mobile::before {
+	background: #4a5568;
+}
+
+/* Анимация переключения темы (для мобильного меню) */
+.theme-toggle-item.pulse i {
+	animation: themePulse 0.6s ease;
+}
+
+@keyframes themePulse {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.2);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}

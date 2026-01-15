@@ -1,0 +1,225 @@
+/* arrays.css - специфичные стили для урока по массивам */
+
+/* Стили для конструктора массивов */
+.array-creator {
+	background: white;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 20px 0;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .array-creator {
+	background: #2d3748;
+}
+
+.array-creator .creator-controls {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 20px;
+}
+
+.array-creator .input-group {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.array-creator input {
+	flex: 1;
+	min-width: 200px;
+	padding: 8px 12px;
+	border: 1px solid #e2e8f0;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+body.dark-theme .array-creator input {
+	background: #4a5568;
+	border-color: #718096;
+	color: #e2e8f0;
+}
+
+.array-display {
+	background: #1a202c;
+	border-radius: 8px;
+	padding: 15px;
+	margin: 15px 0;
+	border: 1px solid #4a5568;
+}
+
+.array-display pre {
+	margin: 10px 0;
+	font-family: 'Courier New', monospace;
+	font-size: 14px;
+	color: #e2e8f0;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.array-info {
+	display: flex;
+	gap: 20px;
+	margin: 10px 0;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+.array-info span {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.array-info span span {
+	font-weight: bold;
+	color: #68d391;
+}
+
+.array-actions {
+	display: flex;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+/* Стили для демонстраций операций с массивами */
+.operations-demo .code-editor {
+	margin-bottom: 15px;
+}
+
+.operations-demo .output-container {
+	margin-top: 15px;
+}
+
+/* Стили для методов массивов */
+.methods-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	margin: 20px 0;
+}
+
+.method-card {
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease;
+}
+
+body.dark-theme .method-card {
+	background: #2d3748;
+}
+
+.method-card:hover {
+	transform: translateY(-5px);
+}
+
+.method-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.method-header h4 {
+	margin: 0;
+	color: #667eea;
+	font-size: 16px;
+}
+
+.method-tag {
+	background: #edf2f7;
+	color: #4a5568;
+	padding: 2px 8px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+body.dark-theme .method-tag {
+	background: #4a5568;
+	color: #e2e8f0;
+}
+
+.method-card pre {
+	background: #1a202c;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	margin: 10px 0;
+	overflow-x: auto;
+}
+
+.method-card button {
+	width: 100%;
+	margin-top: 10px;
+}
+
+/* Стили для примеров с методами преобразования */
+.methods-demo {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+	margin: 20px 0;
+}
+
+.methods-demo .example-card {
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .methods-demo .example-card {
+	background: #2d3748;
+}
+
+.methods-demo .example-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.methods-demo .example-badge {
+	background: #667eea;
+	color: white;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.methods-demo pre {
+	background: #1a202c;
+	padding: 15px;
+	border-radius: 5px;
+	margin: 10px 0;
+	font-size: 13px;
+	overflow-x: auto;
+}
+
+.methods-demo button {
+	width: 100%;
+	margin-top: 10px;
+}
+
+/* Индикатор типа данных в выводе */
+.type-tag {
+	display: inline-block;
+	background: rgba(255, 255, 255, 0.1);
+	color: #a0aec0;
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 11px;
+	margin-left: 5px;
+	vertical-align: middle;
+}

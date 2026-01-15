@@ -1,0 +1,790 @@
+/* dom.css - специфичные стили для урока по DOM */
+
+/* Стили для визуализации DOM */
+.dom-visualization {
+	margin: 30px 0;
+	padding: 20px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .dom-visualization {
+	background: #2d3748;
+}
+
+.dom-tree-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+	.dom-tree-container {
+		grid-template-columns: 1fr;
+	}
+}
+
+.dom-tree {
+	background: #1a202c;
+	border-radius: 8px;
+	padding: 20px;
+	border: 1px solid #4a5568;
+}
+
+.dom-node {
+	margin: 10px 0;
+	padding-left: 20px;
+	position: relative;
+}
+
+.dom-node.root {
+	padding-left: 0;
+}
+
+.dom-node span {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 12px;
+	background: rgba(102, 126, 234, 0.1);
+	border-radius: 6px;
+	color: #e2e8f0;
+	font-family: 'Courier New', monospace;
+	font-size: 14px;
+	border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.dom-node i {
+	color: #667eea;
+}
+
+.dom-node.root>span {
+	background: rgba(102, 126, 234, 0.2);
+	font-size: 16px;
+	padding: 12px 16px;
+}
+
+.dom-children {
+	margin-left: 20px;
+	padding-left: 20px;
+	border-left: 2px dashed #4a5568;
+}
+
+.dom-explanation {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.explanation-card {
+	background: #f7fafc;
+	border-radius: 8px;
+	padding: 20px;
+	border: 1px solid #e2e8f0;
+}
+
+body.dark-theme .explanation-card {
+	background: #2d3748;
+	border-color: #4a5568;
+}
+
+.explanation-card h4 {
+	color: #2d3748;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+body.dark-theme .explanation-card h4 {
+	color: #e2e8f0;
+}
+
+.explanation-card ul {
+	padding-left: 20px;
+	color: #4a5568;
+}
+
+body.dark-theme .explanation-card ul {
+	color: #a0aec0;
+}
+
+.explanation-card li {
+	margin-bottom: 8px;
+	font-size: 14px;
+}
+
+/* Стили для практики селекторов */
+.selector-practice {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+	.selector-practice {
+		grid-template-columns: 1fr;
+	}
+}
+
+.practice-area {
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .practice-area {
+	background: #2d3748;
+}
+
+.practice-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+body.dark-theme .practice-header {
+	border-bottom-color: #4a5568;
+}
+
+.practice-stats {
+	display: flex;
+	gap: 15px;
+	color: #4a5568;
+}
+
+body.dark-theme .practice-stats {
+	color: #a0aec0;
+}
+
+.practice-stats strong {
+	color: #667eea;
+}
+
+.practice-elements {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 10px;
+}
+
+.practice-element {
+	padding: 15px;
+	background: #f7fafc;
+	border-radius: 6px;
+	border: 2px solid #e2e8f0;
+	color: #4a5568;
+	font-size: 14px;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+body.dark-theme .practice-element {
+	background: #4a5568;
+	border-color: #718096;
+	color: #e2e8f0;
+}
+
+.practice-element:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.practice-element.selected {
+	border-color: #667eea;
+	background: rgba(102, 126, 234, 0.1);
+	color: #667eea;
+}
+
+body.dark-theme .practice-element.selected {
+	background: rgba(102, 126, 234, 0.2);
+}
+
+.practice-element.class-a {
+	border-color: #48bb78;
+}
+
+.practice-element.class-b {
+	border-color: #ed8936;
+}
+
+.practice-element.class-a.class-b {
+	border-color: #9f7aea;
+}
+
+.practice-element[data-type] {
+	border-color: #f56565;
+}
+
+.practice-controls {
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .practice-controls {
+	background: #2d3748;
+}
+
+.selector-input {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.selector-input .form-control {
+	flex: 1;
+}
+
+.selector-examples {
+	margin-bottom: 20px;
+}
+
+.selector-examples h5 {
+	margin-bottom: 10px;
+	color: #4a5568;
+}
+
+body.dark-theme .selector-examples h5 {
+	color: #a0aec0;
+}
+
+.example-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+
+.example-buttons .btn-sm {
+	padding: 4px 8px;
+	font-size: 12px;
+	background: #edf2f7;
+	border: 1px solid #e2e8f0;
+	color: #4a5568;
+}
+
+body.dark-theme .example-buttons .btn-sm {
+	background: #4a5568;
+	border-color: #718096;
+	color: #e2e8f0;
+}
+
+.example-buttons .btn-sm:hover {
+	background: #e2e8f0;
+}
+
+body.dark-theme .example-buttons .btn-sm:hover {
+	background: #718096;
+}
+
+.selector-result .console-output {
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+/* Модальное окно DOM */
+.dom-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	padding: 20px;
+}
+
+.modal-content {
+	background: white;
+	border-radius: 10px;
+	width: 90%;
+	max-width: 800px;
+	max-height: 80vh;
+	display: flex;
+	flex-direction: column;
+}
+
+body.dark-theme .modal-content {
+	background: #2d3748;
+}
+
+.modal-header {
+	padding: 20px;
+	border-bottom: 1px solid #e2e8f0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+body.dark-theme .modal-header {
+	border-bottom-color: #4a5568;
+}
+
+.modal-header h3 {
+	margin: 0;
+	color: #2d3748;
+}
+
+body.dark-theme .modal-header h3 {
+	color: #e2e8f0;
+}
+
+.close-modal {
+	background: none;
+	border: none;
+	font-size: 24px;
+	color: #718096;
+	cursor: pointer;
+	padding: 0;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.close-modal:hover {
+	color: #f56565;
+}
+
+.modal-body {
+	padding: 20px;
+	overflow-y: auto;
+	flex: 1;
+}
+
+.tree-loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 40px;
+	color: #718096;
+}
+
+.tree-node {
+	margin: 5px 0;
+	font-family: 'Courier New', monospace;
+	font-size: 13px;
+}
+
+.tree-node-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 10px;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .tree-node-header {
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+.tree-node-header i {
+	color: #667eea;
+	font-size: 12px;
+}
+
+.tree-tag {
+	color: #2d3748;
+	font-weight: bold;
+}
+
+body.dark-theme .tree-tag {
+	color: #e2e8f0;
+}
+
+.tree-id {
+	color: #48bb78;
+}
+
+.tree-class {
+	color: #ed8936;
+}
+
+.tree-children-count {
+	color: #718096;
+	font-size: 11px;
+}
+
+.tree-more {
+	color: #718096;
+	font-style: italic;
+	font-size: 12px;
+	padding: 4px 0;
+}
+
+/* Flash сообщения */
+.flash-message {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	padding: 12px 20px;
+	border-radius: 6px;
+	background: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	z-index: 1000;
+	opacity: 0;
+	transform: translateX(100%);
+	transition: all 0.3s ease;
+}
+
+.flash-message.show {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.flash-message.success {
+	background: #48bb78;
+	color: white;
+}
+
+.flash-message.error {
+	background: #f56565;
+	color: white;
+}
+
+.flash-message.warning {
+	background: #ed8936;
+	color: white;
+}
+
+.flash-message.info {
+	background: #4299e1;
+	color: white;
+}
+
+/* Сравнительная таблица */
+.comparison-box {
+	margin-top: 20px;
+	background: #f7fafc;
+	border-radius: 8px;
+	padding: 20px;
+	border: 1px solid #e2e8f0;
+}
+
+body.dark-theme .comparison-box {
+	background: #2d3748;
+	border-color: #4a5568;
+}
+
+.comparison-box table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.comparison-box th {
+	background: #edf2f7;
+	padding: 10px;
+	text-align: left;
+	font-weight: 600;
+	color: #4a5568;
+	border-bottom: 2px solid #e2e8f0;
+}
+
+body.dark-theme .comparison-box th {
+	background: #4a5568;
+	color: #e2e8f0;
+	border-bottom-color: #718096;
+}
+
+.comparison-box td {
+	padding: 10px;
+	border-bottom: 1px solid #e2e8f0;
+	color: #718096;
+}
+
+body.dark-theme .comparison-box td {
+	border-bottom-color: #4a5568;
+	color: #a0aec0;
+}
+
+.comparison-box tr:last-child td {
+	border-bottom: none;
+}
+
+/* Стили для упражнения */
+.exercise-output .output-section {
+	background: rgba(0, 0, 0, 0.2);
+	padding: 15px;
+	border-radius: 6px;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.output-pre {
+	margin: 0;
+	font-family: 'Courier New', monospace;
+	font-size: 13px;
+	color: #e2e8f0;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	line-height: 1.5;
+}
+
+.console-line.details {
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+	color: #a0aec0;
+	white-space: pre-wrap;
+	padding-left: 20px;
+	line-height: 1.4;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+	.practice-elements {
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	}
+
+	.dom-tree {
+		padding: 10px;
+	}
+
+	.dom-node span {
+		padding: 6px 8px;
+		font-size: 12px;
+	}
+
+	.selector-input {
+		flex-direction: column;
+	}
+}
+
+/* Дополнительные стили для модального окна DOM */
+.dom-stats {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 15px;
+	margin-bottom: 20px;
+	padding: 15px;
+	background: #f7fafc;
+	border-radius: 8px;
+	border: 1px solid #e2e8f0;
+}
+
+body.dark-theme .dom-stats {
+	background: #2d3748;
+	border-color: #4a5568;
+}
+
+.stat-item {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.stat-label {
+	font-size: 12px;
+	color: #718096;
+}
+
+body.dark-theme .stat-label {
+	color: #a0aec0;
+}
+
+.stat-value {
+	font-size: 18px;
+	font-weight: bold;
+	color: #667eea;
+}
+
+.tree-node-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 12px;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	user-select: none;
+	transition: all 0.2s ease;
+}
+
+body.dark-theme .tree-node-header {
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+.tree-node-header:hover {
+	background: rgba(102, 126, 234, 0.1);
+	border-color: rgba(102, 126, 234, 0.3);
+}
+
+.tree-node-header.has-children {
+	font-weight: 600;
+}
+
+.tree-node-header.collapsed .tree-toggle i {
+	transform: rotate(-90deg);
+}
+
+.tree-node-header.collapsed+.tree-children {
+	display: none;
+}
+
+.tree-node-header i {
+	color: #667eea;
+	font-size: 14px;
+	width: 16px;
+	text-align: center;
+}
+
+.tree-tag {
+	color: #2d3748;
+	font-weight: bold;
+	font-family: 'Courier New', monospace;
+}
+
+body.dark-theme .tree-tag {
+	color: #e2e8f0;
+}
+
+.tree-id {
+	color: #48bb78;
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+}
+
+.tree-class {
+	color: #ed8936;
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+}
+
+.tree-toggle {
+	margin-left: auto;
+	color: #718096;
+}
+
+.tree-toggle i {
+	transition: transform 0.2s ease;
+}
+
+.tree-children {
+	margin-left: 10px;
+	padding-left: 20px;
+	border-left: 2px dashed #e2e8f0;
+}
+
+body.dark-theme .tree-children {
+	border-left-color: #4a5568;
+}
+
+.tree-attributes {
+	padding: 4px 12px 4px 32px;
+	font-size: 11px;
+	color: #718096;
+	font-family: 'Courier New', monospace;
+}
+
+.attr-item {
+	background: rgba(0, 0, 0, 0.05);
+	padding: 2px 6px;
+	border-radius: 3px;
+	margin-top: 2px;
+}
+
+body.dark-theme .attr-item {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.tree-limit {
+	padding: 8px 12px;
+	color: #718096;
+	font-style: italic;
+	font-size: 12px;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+	margin: 5px 0;
+}
+
+body.dark-theme .tree-limit {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.tree-more {
+	padding: 6px 12px;
+	color: #718096;
+	font-size: 11px;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+	margin: 5px 0;
+}
+
+body.dark-theme .tree-more {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+/* Улучшенные стили для консольного вывода */
+.console-line code {
+	background: rgba(0, 0, 0, 0.1);
+	padding: 2px 6px;
+	border-radius: 3px;
+	font-family: 'Courier New', monospace;
+	font-size: 12px;
+	color: #667eea;
+}
+
+body.dark-theme .console-line code {
+	background: rgba(255, 255, 255, 0.1);
+	color: #d6bcfa;
+}
+
+/* Анимация загрузки */
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.fa-spin {
+	animation: spin 1s linear infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+	.modal-content {
+		width: 95%;
+		height: 90vh;
+	}
+
+	.dom-stats {
+		grid-template-columns: 1fr;
+	}
+
+	.tree-node-header {
+		padding: 6px 8px;
+		font-size: 12px;
+	}
+
+	.tree-node-header i {
+		font-size: 12px;
+	}
+
+	.tree-children {
+		padding-left: 15px;
+	}
+}

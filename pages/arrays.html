@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Массивы в JavaScript - JS Tutor</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/arrays.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html">Основы</a>
+					<a href="variables.html">Переменные</a>
+					<a href="functions.html">Функции</a>
+					<a href="objects.html">Объекты</a>
+					<a href="arrays.html" class="active">Массивы</a>
+					<a href="dom.html">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html">Асинхронность</a>
+					<a href="es6.html">ES6+</a>
+					<a href="practice.html">Практика</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html" class="active"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Массивы в JavaScript</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Средний уровень</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 45 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 7 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>Массивы</strong> — это упорядоченные коллекции элементов, которые могут содержать данные
+						любого типа. Массивы в JavaScript являются объектами и предоставляют множество встроенных
+						методов для удобной работы с данными.</p>
+				</div>
+
+				<!-- Быстрая навигация по уроку -->
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#what-are-arrays">Что такое массивы?</a></li>
+						<li><a href="#creating-arrays">Создание массивов</a></li>
+						<li><a href="#basic-operations">Основные операции</a></li>
+						<li><a href="#iteration-methods">Методы перебора</a></li>
+						<li><a href="#transformation-methods">Методы преобразования</a></li>
+						<li><a href="#advanced-arrays">Продвинутые техники</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- ===== РАЗДЕЛ 1: Что такое массивы? ===== -->
+				<section id="what-are-arrays" class="lesson-section">
+					<h2><i class="fas fa-list"></i> Что такое массивы?</h2>
+					<p>Массив — это структура данных для хранения упорядоченной коллекции элементов. Каждый элемент
+						имеет числовой индекс, начиная с 0.</p>
+
+					<div class="features-grid">
+						<div class="feature-card">
+							<i class="fas fa-sort-numeric-up"></i>
+							<h4>Упорядоченные элементы</h4>
+							<p>Доступ по индексу, сохранение порядка</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-code"></i>
+							<h4>Динамический размер</h4>
+							<p>Можно добавлять/удалять элементы</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-random"></i>
+							<h4>Разные типы данных</h4>
+							<p>Можно хранить любые типы в одном массиве</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-cogs"></i>
+							<h4>Богатые методы</h4>
+							<p>Встроенные методы для работы с данными</p>
+						</div>
+					</div>
+
+					<div class="info-box">
+						<h4><i class="fas fa-lightbulb"></i> Зачем нужны массивы?</h4>
+						<ul>
+							<li><strong>Коллекции данных</strong> — списки товаров, пользователей, задач</li>
+							<li><strong>Обработка данных</strong> — фильтрация, сортировка, преобразование</li>
+							<li><strong>Алгоритмы</strong> — работа с последовательностями</li>
+							<li><strong>Многомерные структуры</strong> — матрицы, таблицы данных</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 2: Создание массивов ===== -->
+				<section id="creating-arrays" class="lesson-section">
+					<h2><i class="fas fa-plus-circle"></i> Создание массивов</h2>
+					<p>В JavaScript есть несколько способов создания массивов. Выбор зависит от конкретной задачи:</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-literal">Литерал массива</button>
+							<button class="tab-btn" data-tab="tab-constructor">new Array()</button>
+							<button class="tab-btn" data-tab="tab-from">Array.from()</button>
+							<button class="tab-btn" data-tab="tab-of">Array.of()</button>
+						</div>
+
+						<div class="tab-content active" id="tab-literal">
+							<h4><i class="fas fa-brackets-square"></i> Литерал массива</h4>
+							<p>Самый частый и простой способ. Используется в 95% случаев.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Литерал массива
+const fruits = ["яблоко", "банан", "апельсин"];
+const numbers = [1, 2, 3, 4, 5];
+
+// Разные типы данных в одном массиве
+const mixed = ["текст", 42, true, null, { name: "объект" }];
+
+// Пустой массив
+const emptyArray = [];
+
+// Доступ к элементам
+console.log(fruits[0]);      // "яблоко" (индексация с 0)
+console.log(fruits[1]);      // "банан"
+console.log(fruits.length);  // 3 (длина массива)
+
+// Изменение элемента
+fruits[2] = "мандарин";
+console.log(fruits);         // ["яблоко", "банан", "мандарин"]
+
+// Добавление элемента
+fruits[3] = "виноград";
+console.log(fruits.length);  // 4
+console.log(fruits[3]);      // "виноград"
+
+// Пропуск индексов (не рекомендуется)
+const sparseArray = [];
+sparseArray[0] = "первый";
+sparseArray[5] = "шестой";
+console.log(sparseArray);    // ["первый", empty × 4, "шестой"]
+console.log(sparseArray.length); // 6</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runLiteralDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="literalOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Когда использовать:</h4>
+								<ul>
+									<li>Создание <strong>простых массивов</strong></li>
+									<li><strong>Статические данные</strong></li>
+									<li>В <strong>95% случаев</strong> в современном JavaScript</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-constructor">
+							<h4><i class="fas fa-object-group"></i> Конструктор new Array()</h4>
+							<p>Альтернативный способ, полезен для создания массивов определенной длины.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Конструктор new Array()
+const colors = new Array("красный", "зеленый", "синий");
+console.log(colors);          // ["красный", "зеленый", "синий"]
+
+// Создание массива определенной длины
+const emptyArray = new Array(5);
+console.log(emptyArray);      // [empty × 5]
+console.log(emptyArray.length); // 5
+
+// Заполнение массива значениями
+emptyArray.fill(0);
+console.log(emptyArray);      // [0, 0, 0, 0, 0]
+
+// Смешанные аргументы
+const mixed = new Array(3, "текст", true);
+console.log(mixed);           // [3, "текст", true]
+
+// Осторожно с одним числовым аргументом!
+const singleNumber = new Array(3);
+console.log(singleNumber);    // [empty × 3] (не [3]!)
+
+const multipleNumbers = new Array(3, 4);
+console.log(multipleNumbers); // [3, 4] (корректно)
+
+// Создание и заполнение массива
+const sequence = new Array(10).fill().map((_, i) => i + 1);
+console.log(sequence);        // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// Использование с оператором spread
+const combined = [...new Array(3).fill(0), ...colors];
+console.log(combined);        // [0, 0, 0, "красный", "зеленый", "синий"]</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runConstructorDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="constructorOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Когда использовать:</h4>
+								<ul>
+									<li>Создание массива <strong>определенной длины</strong></li>
+									<li>Когда нужен <strong>динамический размер</strong></li>
+									<li>Для совместимости со <strong>старым кодом</strong></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-from">
+							<h4><i class="fas fa-sync-alt"></i> Array.from()</h4>
+							<p>Создает массив из итерируемого или массивоподобного объекта.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Array.from() - создание из строки
+const fromString = Array.from("JavaScript");
+console.log(fromString); 
+// ['J', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't']
+
+// Создание из Set
+const set = new Set([1, 2, 3, 2, 1]);
+const fromSet = Array.from(set);
+console.log(fromSet); // [1, 2, 3] (уникальные значения)
+
+// Создание из Map
+const map = new Map([
+    ['name', 'Анна'],
+    ['age', 25],
+    ['city', 'Москва']
+]);
+const fromMap = Array.from(map);
+console.log(fromMap); 
+// [['name', 'Анна'], ['age', 25], ['city', 'Москва']]
+
+// Создание из массивоподобного объекта
+const arrayLike = {
+    0: 'первый',
+    1: 'второй',
+    2: 'третий',
+    length: 3
+};
+const fromArrayLike = Array.from(arrayLike);
+console.log(fromArrayLike); // ['первый', 'второй', 'третий']
+
+// С функцией преобразования
+const numbers = Array.from({ length: 5 }, (_, index) => index * 2);
+console.log(numbers); // [0, 2, 4, 6, 8]
+
+// Генерация последовательности
+const sequence = Array.from({ length: 10 }, (_, i) => i + 1);
+console.log(sequence); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// Создание диапазона чисел
+function range(start, end, step = 1) {
+    const length = Math.ceil((end - start) / step);
+    return Array.from({ length }, (_, i) => start + i * step);
+}
+
+console.log(range(1, 10));    // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(range(5, 25, 5)); // [5, 10, 15, 20]</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runFromDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="fromOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Когда использовать:</h4>
+								<ul>
+									<li>Преобразование <strong>итерируемых объектов</strong> в массивы</li>
+									<li>Создание массивов из <strong>NodeList, arguments</strong></li>
+									<li><strong>Генерация последовательностей</strong> чисел</li>
+									<li>Когда нужна <strong>функция преобразования</strong></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-of">
+							<h4><i class="fas fa-layer-group"></i> Array.of()</h4>
+							<p>Создает массив из переданных аргументов, решая проблему с одним числовым аргументом.</p>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Array.of() - создает массив из аргументов
+const array1 = Array.of(1, 2, 3);
+console.log(array1); // [1, 2, 3]
+
+const array2 = Array.of("текст", 42, true);
+console.log(array2); // ["текст", 42, true]
+
+// Разница с new Array() для одного аргумента
+const withNewArray = new Array(3);
+console.log(withNewArray);    // [empty × 3]
+console.log(withNewArray.length); // 3
+
+const withArrayOf = Array.of(3);
+console.log(withArrayOf);     // [3]
+console.log(withArrayOf.length); // 1
+
+// Создание массива из одного элемента
+const singleElement = Array.of("один");
+console.log(singleElement);   // ["один"]
+
+// Создание массива из переменных
+const a = 10, b = 20, c = 30;
+const fromVariables = Array.of(a, b, c);
+console.log(fromVariables);   // [10, 20, 30]
+
+// Преобразование аргументов функции в массив
+function sumAll(...numbers) {
+    return Array.of(...numbers).reduce((sum, num) => sum + num, 0);
+}
+
+console.log(sumAll(1, 2, 3, 4, 5)); // 15
+
+// Создание массива объектов
+const users = Array.of(
+    { name: "Анна", age: 25 },
+    { name: "Петр", age: 30 },
+    { name: "Мария", age: 28 }
+);
+console.log(users.length); // 3
+console.log(users[0].name); // "Анна"
+
+// Комбинирование с другими методами
+const processed = Array.of(1, 2, 3, 4, 5)
+    .map(x => x * 2)
+    .filter(x => x > 5);
+
+console.log(processed); // [6, 8, 10]</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runOfDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<h4>Результат:</h4>
+									<div id="ofOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-info-circle"></i> Когда использовать:</h4>
+								<ul>
+									<li>Когда нужно <strong>явно создать массив из аргументов</strong></li>
+									<li>Избегание проблем с <strong>new Array(число)</strong></li>
+									<li>Создание массива из <strong>одного элемента</strong></li>
+									<li>Для <strong>ясности и читаемости</strong> кода</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Интерактивное создание массива -->
+					<div class="interactive-demo">
+						<h3><i class="fas fa-edit"></i> Создайте свой массив:</h3>
+						<div class="array-creator">
+							<div class="creator-controls">
+								<div class="input-group">
+									<input type="text" id="arrayValue" placeholder="Значение (например: яблоко)">
+									<button class="btn btn-primary" onclick="addArrayElement()">
+										<i class="fas fa-plus"></i> Добавить элемент
+									</button>
+								</div>
+								<div class="input-group">
+									<button class="btn btn-secondary" onclick="generateRandomArray()">
+										<i class="fas fa-random"></i> Случайный массив
+									</button>
+									<button class="btn btn-danger" onclick="clearArray()">
+										<i class="fas fa-trash"></i> Очистить массив
+									</button>
+								</div>
+							</div>
+							<div class="array-display">
+								<h4>Ваш массив:</h4>
+								<pre id="arrayCode">const myArray = [];</pre>
+								<div class="array-info">
+									<span>Длина: <span id="arrayLength">0</span></span>
+									<span>Типы: <span id="arrayTypes"></span></span>
+								</div>
+								<div class="array-actions">
+									<button class="btn btn-success" onclick="runArrayCode()">
+										<i class="fas fa-play"></i> Выполнить код
+									</button>
+									<button class="btn btn-warning" onclick="testArrayMethods()">
+										<i class="fas fa-vial"></i> Тест методов
+									</button>
+								</div>
+							</div>
+							<div id="arrayOutput" class="console-output">
+								<div class="console-line info">Добавьте элементы и нажмите "Выполнить код"</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 3: Основные операции ===== -->
+				<section id="basic-operations" class="lesson-section">
+					<h2><i class="fas fa-tools"></i> Основные операции с массивами</h2>
+					<p>Массивы предоставляют множество методов для работы с элементами.</p>
+
+					<div class="operations-demo">
+						<div class="tabs">
+							<div class="tab-buttons">
+								<button class="tab-btn active" data-tab="tab-add">Добавление</button>
+								<button class="tab-btn" data-tab="tab-remove">Удаление</button>
+								<button class="tab-btn" data-tab="tab-modify">Изменение</button>
+								<button class="tab-btn" data-tab="tab-search">Поиск</button>
+							</div>
+
+							<div class="tab-content active" id="tab-add">
+								<h4><i class="fas fa-plus"></i> Добавление элементов</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">const arr = [1, 2, 3];
+console.log("Исходный массив:", arr);
+
+// push() - добавляет элемент в конец
+arr.push(4);
+console.log("После push(4):", arr); // [1, 2, 3, 4]
+
+// push() может добавлять несколько элементов
+arr.push(5, 6);
+console.log("После push(5, 6):", arr); // [1, 2, 3, 4, 5, 6]
+
+// unshift() - добавляет элемент в начало
+arr.unshift(0);
+console.log("После unshift(0):", arr); // [0, 1, 2, 3, 4, 5, 6]
+
+// unshift() тоже может добавлять несколько элементов
+arr.unshift(-2, -1);
+console.log("После unshift(-2, -1):", arr); // [-2, -1, 0, 1, 2, 3, 4, 5, 6]
+
+// concat() - создает новый массив, объединяя с другими массивами
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = arr1.concat(arr2);
+console.log("arr1.concat(arr2):", combined); // [1, 2, 3, 4, 5, 6]
+console.log("arr1 не изменился:", arr1); // [1, 2, 3]
+
+// Оператор spread (ES6) - альтернатива concat()
+const spreadCombined = [...arr1, ...arr2];
+console.log("[...arr1, ...arr2]:", spreadCombined); // [1, 2, 3, 4, 5, 6]
+
+// Добавление по индексу
+const newArr = [1, 2, 3];
+newArr[5] = 6; // Осторожно! Создает "дырки"
+console.log("После arr[5] = 6:", newArr); // [1, 2, 3, empty × 2, 6]
+console.log("Длина:", newArr.length); // 6
+console.log("newArr[3]:", newArr[3]); // undefined
+console.log("3 in newArr:", 3 in newArr); // false
+
+// splice() для добавления
+const spliceArr = [1, 2, 3, 4];
+spliceArr.splice(2, 0, 2.5); // Добавляет 2.5 на позицию 2
+console.log("После splice(2, 0, 2.5):", spliceArr); // [1, 2, 2.5, 3, 4]</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runAddDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="addOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-remove">
+								<h4><i class="fas fa-minus"></i> Удаление элементов</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">const arr = [1, 2, 3, 4, 5];
+console.log("Исходный массив:", arr);
+
+// pop() - удаляет последний элемент
+const last = arr.pop();
+console.log("После pop():", arr); // [1, 2, 3, 4]
+console.log("Удаленный элемент:", last); // 5
+
+// shift() - удаляет первый элемент
+const first = arr.shift();
+console.log("После shift():", arr); // [2, 3, 4]
+console.log("Удаленный элемент:", first); // 1
+
+// splice() для удаления
+const arr2 = [10, 20, 30, 40, 50];
+const removed = arr2.splice(1, 2); // Удаляет 2 элемента начиная с индекса 1
+console.log("После splice(1, 2):", arr2); // [10, 40, 50]
+console.log("Удаленные элементы:", removed); // [20, 30]
+
+// splice() с отрицательным индексом
+const arr3 = [1, 2, 3, 4, 5];
+arr3.splice(-2, 1); // Удаляет 1 элемент с конца (4)
+console.log("После splice(-2, 1):", arr3); // [1, 2, 3, 5]
+
+// delete оператор (не рекомендуется)
+const arr4 = [1, 2, 3, 4, 5];
+delete arr4[2];
+console.log("После delete arr[2]:", arr4); // [1, 2, empty, 4, 5]
+console.log("Длина не изменилась:", arr4.length); // 5
+console.log("arr[2]:", arr4[2]); // undefined
+
+// filter() для удаления по условию (создает новый массив)
+const numbers = [1, 2, 3, 4, 5, 6];
+const evenNumbers = numbers.filter(n => n % 2 === 0);
+console.log("Исходный массив:", numbers); // [1, 2, 3, 4, 5, 6]
+console.log("Только четные (filter):", evenNumbers); // [2, 4, 6]
+
+// slice() для получения части массива (не изменяет исходный)
+const original = [1, 2, 3, 4, 5];
+const part = original.slice(1, 4); // С 1 индекса до 4 (не включая)
+console.log("Исходный массив:", original); // [1, 2, 3, 4, 5]
+console.log("original.slice(1, 4):", part); // [2, 3, 4]
+
+// Очистка массива разными способами
+let arrToClear = [1, 2, 3, 4, 5];
+arrToClear.length = 0; // Самый эффективный способ
+console.log("После arr.length = 0:", arrToClear); // []
+
+arrToClear = [1, 2, 3, 4, 5];
+arrToClear.splice(0, arrToClear.length);
+console.log("После splice(0, arr.length):", arrToClear); // []
+
+arrToClear = [1, 2, 3, 4, 5];
+while (arrToClear.length) arrToClear.pop();
+console.log("После while pop():", arrToClear); // []</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runRemoveDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="removeOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-modify">
+								<h4><i class="fas fa-edit"></i> Изменение элементов</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">const arr = [1, 2, 3, 4, 5];
+console.log("Исходный массив:", arr);
+
+// Простое изменение по индексу
+arr[2] = 30;
+console.log("После arr[2] = 30:", arr); // [1, 2, 30, 4, 5]
+
+// splice() для замены элементов
+const arr2 = [10, 20, 30, 40, 50];
+arr2.splice(1, 2, 25, 35); // Заменяет 2 элемента начиная с индекса 1
+console.log("После splice(1, 2, 25, 35):", arr2); // [10, 25, 35, 40, 50]
+
+// splice() для вставки вместо удаления
+const arr3 = [1, 2, 3];
+arr3.splice(1, 0, 1.5); // Вставляет без удаления
+console.log("После splice(1, 0, 1.5):", arr3); // [1, 1.5, 2, 3]
+
+// fill() - заполняет массив значением
+const filledArray = new Array(5).fill(0);
+console.log("new Array(5).fill(0):", filledArray); // [0, 0, 0, 0, 0]
+
+// fill() с диапазоном
+const partialFill = [1, 2, 3, 4, 5];
+partialFill.fill(0, 1, 4); // Заполняет 0 с индекса 1 до 4 (не включая)
+console.log("fill(0, 1, 4):", partialFill); // [1, 0, 0, 0, 5]
+
+// copyWithin() - копирует часть массива в другое место
+const arr4 = [1, 2, 3, 4, 5];
+arr4.copyWithin(0, 3); // Копирует элементы с 3 позиции в начало
+console.log("copyWithin(0, 3):", arr4); // [4, 5, 3, 4, 5]
+
+// reverse() - переворачивает массив (изменяет исходный)
+const arr5 = [1, 2, 3, 4, 5];
+arr5.reverse();
+console.log("После reverse():", arr5); // [5, 4, 3, 2, 1]
+
+// sort() - сортирует массив (изменяет исходный)
+const arr6 = [40, 100, 1, 5, 25];
+arr6.sort((a, b) => a - b); // Числовая сортировка по возрастанию
+console.log("sort((a, b) => a - b):", arr6); // [1, 5, 25, 40, 100]
+
+// map() для преобразования (создает новый массив)
+const doubled = arr.map(x => x * 2);
+console.log("Исходный массив:", arr); // [1, 2, 30, 4, 5]
+console.log("arr.map(x => x * 2):", doubled); // [2, 4, 60, 8, 10]
+
+// Множественное изменение через цикл
+const arr7 = [1, 2, 3, 4, 5];
+for (let i = 0; i < arr7.length; i++) {
+    arr7[i] = arr7[i] * 10;
+}
+console.log("После умножения на 10 в цикле:", arr7); // [10, 20, 30, 40, 50]
+
+// forEach() для изменения
+const arr8 = [1, 2, 3];
+arr8.forEach((value, index, array) => {
+    array[index] = value * 3;
+});
+console.log("После forEach умножения на 3:", arr8); // [3, 6, 9]</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runModifyDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="modifyOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-content" id="tab-search">
+								<h4><i class="fas fa-search"></i> Поиск элементов</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">const arr = [10, 20, 30, 40, 50, 30];
+console.log("Исходный массив:", arr);
+
+// indexOf() - поиск индекса элемента
+console.log("arr.indexOf(30):", arr.indexOf(30)); // 2
+console.log("arr.indexOf(100):", arr.indexOf(100)); // -1 (не найдено)
+
+// indexOf() с начальной позиции
+console.log("arr.indexOf(30, 3):", arr.indexOf(30, 3)); // 5 (ищет с индекса 3)
+
+// lastIndexOf() - поиск с конца
+console.log("arr.lastIndexOf(30):", arr.lastIndexOf(30)); // 5
+
+// includes() - проверка наличия элемента
+console.log("arr.includes(20):", arr.includes(20)); // true
+console.log("arr.includes(60):", arr.includes(60)); // false
+console.log("arr.includes(30, 4):", arr.includes(30, 4)); // true (ищет с индекса 4)
+
+// find() - поиск по условию
+const firstGreaterThan25 = arr.find(x => x > 25);
+console.log("arr.find(x => x > 25):", firstGreaterThan25); // 30
+
+// find() с объектами
+const users = [
+    { name: "Анна", age: 25 },
+    { name: "Петр", age: 30 },
+    { name: "Мария", age: 28 }
+];
+const userOver27 = users.find(user => user.age > 27);
+console.log("users.find(user => user.age > 27):", userOver27); // { name: "Петр", age: 30 }
+
+// findIndex() - поиск индекса по условию
+const indexGreaterThan25 = arr.findIndex(x => x > 25);
+console.log("arr.findIndex(x => x > 25):", indexGreaterThan25); // 2
+
+// findLast() и findLastIndex() (ES2023)
+const numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+const lastEven = numbers.findLast(x => x % 2 === 0);
+console.log("numbers.findLast(x => x % 2 === 0):", lastEven); // 2
+
+const lastEvenIndex = numbers.findLastIndex(x => x % 2 === 0);
+console.log("numbers.findLastIndex(x => x % 2 === 0):", lastEvenIndex); // 7
+
+// some() - проверяет, есть ли хотя бы один элемент, удовлетворяющий условию
+const hasNegative = [1, 2, -3, 4, 5].some(x => x < 0);
+console.log("[1, 2, -3, 4, 5].some(x => x < 0):", hasNegative); // true
+
+const allPositive = [1, 2, 3, 4, 5].some(x => x < 0);
+console.log("[1, 2, 3, 4, 5].some(x => x < 0):", allPositive); // false
+
+// every() - проверяет, все ли элементы удовлетворяют условию
+const allGreaterThan0 = [1, 2, 3, 4, 5].every(x => x > 0);
+console.log("[1, 2, 3, 4, 5].every(x => x > 0):", allGreaterThan0); // true
+
+const allGreaterThan2 = [1, 2, 3, 4, 5].every(x => x > 2);
+console.log("[1, 2, 3, 4, 5].every(x => x > 2):", allGreaterThan2); // false
+
+// Линнейный поиск
+function linearSearch(array, target) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === target) return i;
+    }
+    return -1;
+}
+
+console.log("linearSearch([1, 2, 3, 4, 5], 3):", linearSearch([1, 2, 3, 4, 5], 3)); // 2
+console.log("linearSearch([1, 2, 3, 4, 5], 6):", linearSearch([1, 2, 3, 4, 5], 6)); // -1
+
+// Поиск по нескольким критериям
+const products = [
+    { name: "Яблоки", price: 100, category: "фрукты" },
+    { name: "Бананы", price: 80, category: "фрукты" },
+    { name: "Молоко", price: 70, category: "молочные" },
+    { name: "Хлеб", price: 50, category: "выпечка" }
+];
+
+const cheapFruits = products.find(p => p.category === "фрукты" && p.price < 90);
+console.log("Дешевый фрукт:", cheapFruits); // { name: "Бананы", price: 80, category: "фрукты" }</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runSearchDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="searchOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 4: Методы перебора ===== -->
+				<section id="iteration-methods" class="lesson-section">
+					<h2><i class="fas fa-sync-alt"></i> Методы перебора массивов</h2>
+					<p>JavaScript предоставляет несколько способов для перебора элементов массива.</p>
+
+					<div class="methods-grid">
+						<div class="method-card">
+							<div class="method-header">
+								<h4><code>for</code> цикл</h4>
+								<span class="method-tag">Базовый</span>
+							</div>
+							<p>Классический цикл с доступом по индексу.</p>
+							<pre><code class="javascript">const arr = [10, 20, 30, 40, 50];
+
+// Обычный for цикл
+for (let i = 0; i < arr.length; i++) {
+    console.log(`arr[${i}] = ${arr[i]}`);
+}
+
+// for...of цикл (ES6)
+for (const value of arr) {
+    console.log(value);
+}
+
+// for...in (для объектов, не для массивов!)
+// Не рекомендуется для массивов</code></pre>
+							<button class="btn btn-primary" onclick="runForLoopDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4><code>forEach()</code></h4>
+								<span class="method-tag">Функциональный</span>
+							</div>
+							<p>Выполняет функцию для каждого элемента массива.</p>
+							<pre><code class="javascript">const numbers = [1, 2, 3, 4, 5];
+let sum = 0;
+
+numbers.forEach((number, index, array) => {
+    sum += number;
+    console.log(`Элемент ${index}: ${number}`);
+});
+
+console.log(`Сумма: ${sum}`);
+
+// С объектами
+const users = [
+    { name: "Анна", active: true },
+    { name: "Петр", active: false }
+];
+
+users.forEach((user, index) => {
+    console.log(`${index + 1}. ${user.name}: ${user.active ? 'активен' : 'неактивен'}`);
+});</code></pre>
+							<button class="btn btn-primary" onclick="runForEachDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4><code>map()</code></h4>
+								<span class="method-tag">Преобразование</span>
+							</div>
+							<p>Создает новый массив, преобразуя каждый элемент.</p>
+							<pre><code class="javascript">const numbers = [1, 2, 3, 4, 5];
+
+// Умножение на 2
+const doubled = numbers.map(x => x * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// Квадраты чисел
+const squares = numbers.map(x => x * x);
+console.log(squares); // [1, 4, 9, 16, 25]
+
+// Преобразование объектов
+const users = [
+    { firstName: "Анна", lastName: "Иванова" },
+    { firstName: "Петр", lastName: "Петров" }
+];
+
+const fullNames = users.map(user => 
+    `${user.firstName} ${user.lastName}`
+);
+console.log(fullNames); // ["Анна Иванова", "Петр Петров"]</code></pre>
+							<button class="btn btn-primary" onclick="runMapDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="method-card">
+							<div class="method-header">
+								<h4><code>filter()</code></h4>
+								<span class="method-tag">Фильтрация</span>
+							</div>
+							<p>Создает новый массив с элементами, прошедшими проверку.</p>
+							<pre><code class="javascript">const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Четные числа
+const even = numbers.filter(x => x % 2 === 0);
+console.log(even); // [2, 4, 6, 8, 10]
+
+// Числа больше 5
+const greaterThan5 = numbers.filter(x => x > 5);
+console.log(greaterThan5); // [6, 7, 8, 9, 10]
+
+// Фильтрация объектов
+const products = [
+    { name: "Яблоки", price: 100, inStock: true },
+    { name: "Бананы", price: 80, inStock: false },
+    { name: "Апельсины", price: 120, inStock: true }
+];
+
+const availableProducts = products.filter(p => p.inStock);
+console.log(availableProducts);
+// [{name: "Яблоки"...}, {name: "Апельсины"...}]</code></pre>
+							<button class="btn btn-primary" onclick="runFilterDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 5: Методы преобразования ===== -->
+				<section id="transformation-methods" class="lesson-section">
+					<h2><i class="fas fa-exchange-alt"></i> Методы преобразования массивов</h2>
+					<p>Мощные методы для сложных операций с массивами.</p>
+
+					<div class="methods-demo">
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">1</span>
+								<h4><code>reduce()</code> и <code>reduceRight()</code></h4>
+							</div>
+							<pre><code class="javascript">const numbers = [1, 2, 3, 4, 5];
+
+// Сумма всех чисел
+const sum = numbers.reduce((acc, current) => acc + current, 0);
+console.log("Сумма:", sum); // 15
+
+// Произведение всех чисел
+const product = numbers.reduce((acc, current) => acc * current, 1);
+console.log("Произведение:", product); // 120
+
+// Максимальное значение
+const max = numbers.reduce((acc, current) => 
+    Math.max(acc, current), -Infinity
+);
+console.log("Максимум:", max); // 5
+
+// Подсчет частоты элементов
+const fruits = ["яблоко", "банан", "яблоко", "апельсин", "банан", "яблоко"];
+const frequency = fruits.reduce((acc, fruit) => {
+    acc[fruit] = (acc[fruit] || 0) + 1;
+    return acc;
+}, {});
+console.log("Частота:", frequency);
+// {яблоко: 3, банан: 2, апельсин: 1}
+
+// Группировка объектов
+const people = [
+    { name: "Анна", age: 25, city: "Москва" },
+    { name: "Петр", age: 30, city: "СПб" },
+    { name: "Мария", age: 25, city: "Москва" }
+];
+
+const groupedByCity = people.reduce((acc, person) => {
+    const city = person.city;
+    if (!acc[city]) acc[city] = [];
+    acc[city].push(person);
+    return acc;
+}, {});
+console.log("Группировка по городу:", groupedByCity);
+
+// reduceRight() - работает справа налево
+const reversed = numbers.reduceRight((acc, current) => {
+    acc.push(current);
+    return acc;
+}, []);
+console.log("reduceRight для reverse:", reversed); // [5, 4, 3, 2, 1]</code></pre>
+							<button class="btn btn-primary" onclick="runReduceDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">2</span>
+								<h4><code>sort()</code> и <code>reverse()</code></h4>
+							</div>
+							<pre><code class="javascript">const numbers = [40, 100, 1, 5, 25, 10];
+
+// Без функции сравнения (работает как строковая)
+numbers.slice().sort(); // [1, 10, 100, 25, 40, 5]
+
+// Числовая сортировка по возрастанию
+const asc = [...numbers].sort((a, b) => a - b);
+console.log("По возрастанию:", asc); // [1, 5, 10, 25, 40, 100]
+
+// Числовая сортировка по убыванию
+const desc = [...numbers].sort((a, b) => b - a);
+console.log("По убыванию:", desc); // [100, 40, 25, 10, 5, 1]
+
+// Сортировка строк
+const fruits = ["яблоко", "банан", "Апельсин", "арбуз"];
+const sortedFruits = [...fruits].sort((a, b) => 
+    a.localeCompare(b, 'ru')
+);
+console.log("Сортировка строк:", sortedFruits);
+// ["Апельсин", "арбуз", "банан", "яблоко"]
+
+// Сортировка объектов
+const users = [
+    { name: "Анна", age: 25 },
+    { name: "Петр", age: 30 },
+    { name: "Мария", age: 20 }
+];
+
+// По возрасту
+const byAge = [...users].sort((a, b) => a.age - b.age);
+console.log("По возрасту:", byAge);
+
+// По имени
+const byName = [...users].sort((a, b) => 
+    a.name.localeCompare(b.name, 'ru')
+);
+console.log("По имени:", byName);
+
+// Многоуровневая сортировка
+const students = [
+    { name: "Анна", grade: 85, age: 20 },
+    { name: "Петр", grade: 85, age: 21 },
+    { name: "Мария", grade: 90, age: 20 }
+];
+
+// Сначала по оценке (убывание), потом по возрасту (возрастание)
+students.sort((a, b) => {
+    if (b.grade !== a.grade) {
+        return b.grade - a.grade; // по оценке убывание
+    }
+    return a.age - b.age; // по возрасту возрастание
+});
+console.log("Многоуровневая сортировка:", students);
+
+// reverse() - переворачивает массив
+const arr = [1, 2, 3, 4, 5];
+arr.reverse();
+console.log("После reverse:", arr); // [5, 4, 3, 2, 1]</code></pre>
+							<button class="btn btn-primary" onclick="runSortDemo()">
+								<i class="fas fa-play"></i> Запустить
+							</button>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 6: Продвинутые техники ===== -->
+				<section id="advanced-arrays" class="lesson-section">
+					<h2><i class="fas fa-rocket"></i> Продвинутые техники работы с массивами</h2>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-multidimensional">Многомерные</button>
+							<button class="tab-btn" data-tab="tab-flat">flat() и flatMap()</button>
+							<button class="tab-btn" data-tab="tab-spread">Spread и Rest</button>
+							<button class="tab-btn" data-tab="tab-destructuring">Деструктуризация</button>
+						</div>
+
+						<div class="tab-content active" id="tab-multidimensional">
+							<h4><i class="fas fa-th"></i> Многомерные массивы</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Двумерный массив (матрица)
+const matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+console.log("Матрица 3x3:");
+console.log(matrix[0]); // [1, 2, 3]
+console.log(matrix[1][1]); // 5
+console.log(matrix[2][2]); // 9
+
+// Обход матрицы
+console.log("\nОбход матрицы:");
+for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+        console.log(`matrix[${i}][${j}] = ${matrix[i][j]}`);
+    }
+}
+
+// Создание шахматной доски
+const chessboard = [];
+for (let i = 0; i < 8; i++) {
+    chessboard[i] = [];
+    for (let j = 0; j < 8; j++) {
+        chessboard[i][j] = (i + j) % 2 === 0 ? "white" : "black";
+    }
+}
+console.log("\nШахматная доска 8x8 создана");
+
+// Трехмерный массив
+const cube = [
+    [
+        [1, 2],
+        [3, 4]
+    ],
+    [
+        [5, 6],
+        [7, 8]
+    ]
+];
+console.log("\nКуб 2x2x2:");
+console.log(cube[0][0][0]); // 1
+console.log(cube[1][1][1]); // 8
+
+// Массив массивов объектов
+const studentGroups = [
+    [
+        { name: "Анна", grade: 85 },
+        { name: "Петр", grade: 90 }
+    ],
+    [
+        { name: "Мария", grade: 88 },
+        { name: "Алексей", grade: 92 }
+    ]
+];
+
+// Сумма всех оценок
+let totalSum = 0;
+let totalCount = 0;
+
+studentGroups.forEach(group => {
+    group.forEach(student => {
+        totalSum += student.grade;
+        totalCount++;
+    });
+});
+
+const averageGrade = totalSum / totalCount;
+console.log(`\nСредняя оценка всех студентов: ${averageGrade.toFixed(2)}`);
+
+// Транспонирование матрицы
+const original = [
+    [1, 2, 3],
+    [4, 5, 6]
+];
+
+function transpose(matrix) {
+    return matrix[0].map((_, colIndex) => 
+        matrix.map(row => row[colIndex])
+    );
+}
+
+const transposed = transpose(original);
+console.log("\nОригинальная матрица:", original);
+console.log("Транспонированная:", transposed);</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runMultidimensionalDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="multidimensionalOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-flat">
+							<h4><i class="fas fa-layer-group"></i> flat() и flatMap()</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// flat() - "выравнивает" массив
+const nested = [1, 2, [3, 4], [5, [6, 7]]];
+
+console.log("Исходный массив:", nested);
+
+// flat() по умолчанию на 1 уровень
+const flat1 = nested.flat();
+console.log("flat() на 1 уровень:", flat1); // [1, 2, 3, 4, 5, [6, 7]]
+
+// flat() на 2 уровня
+const flat2 = nested.flat(2);
+console.log("flat(2) на 2 уровня:", flat2); // [1, 2, 3, 4, 5, 6, 7]
+
+// flat() с Infinity
+const deeplyNested = [1, [2, [3, [4, [5]]]]];
+const completelyFlat = deeplyNested.flat(Infinity);
+console.log("flat(Infinity):", completelyFlat); // [1, 2, 3, 4, 5]
+
+// flatMap() - map() + flat() на 1 уровень
+const numbers = [1, 2, 3, 4];
+
+// Создаем пары [число, квадрат]
+const mapped = numbers.flatMap(x => [x, x * x]);
+console.log("\nflatMap(x => [x, x * x]):", mapped);
+// [1, 1, 2, 4, 3, 9, 4, 16]
+
+// Разделение строк на слова
+const sentences = ["Привет мир", "Массивы это круто"];
+const words = sentences.flatMap(sentence => sentence.split(" "));
+console.log("Все слова:", words);
+// ["Привет", "мир", "Массивы", "это", "круто"]
+
+// Удаление "дырок" из массива
+const sparseArray = [1, , 3, , 5];
+const denseArray = sparseArray.flat();
+console.log("\nУдаление дырок:", denseArray); // [1, 3, 5]
+
+// Обработка вложенных данных
+const orders = [
+    { id: 1, items: ["яблоки", "бананы"] },
+    { id: 2, items: ["апельсины", "виноград"] },
+    { id: 3, items: ["молоко", "хлеб"] }
+];
+
+// Все товары из всех заказов
+const allItems = orders.flatMap(order => order.items);
+console.log("\nВсе товары:", allItems);
+// ["яблоки", "бананы", "апельсины", "виноград", "молоко", "хлеб"]
+
+// Сглаживание с фильтрацией
+const mixed = [1, 2, [3, 4], [5, 6], 7];
+const flatEven = mixed.flat().filter(x => x % 2 === 0);
+console.log("\nЧетные числа после flat:", flatEven); // [2, 4, 6]</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runFlatDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="flatOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-spread">
+							<h4><i class="fas fa-expand-alt"></i> Spread и Rest операторы</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Spread оператор (...)
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// Копирование массива
+const copy = [...arr1];
+console.log("Копия arr1:", copy); // [1, 2, 3]
+
+// Объединение массивов
+const combined = [...arr1, ...arr2];
+console.log("Объединенный:", combined); // [1, 2, 3, 4, 5, 6]
+
+// Добавление элементов
+const withExtra = [0, ...arr1, 4, 5];
+console.log("С дополнительными элементами:", withExtra); // [0, 1, 2, 3, 4, 5]
+
+// Преобразование строки в массив
+const str = "hello";
+const chars = [...str];
+console.log("Строка как массив:", chars); // ['h', 'e', 'l', 'l', 'o']
+
+// Преобразование NodeList/Set в массив
+const set = new Set([1, 2, 3, 2, 1]);
+const arrayFromSet = [...set];
+console.log("Set как массив:", arrayFromSet); // [1, 2, 3]
+
+// Math функции с массивом
+const numbers = [10, 5, 8, 3, 12];
+const maxNumber = Math.max(...numbers);
+const minNumber = Math.min(...numbers);
+console.log(`\nМаксимум: ${maxNumber}, Минимум: ${minNumber}`);
+
+// Rest параметры в функциях
+function sumAll(...args) {
+    return args.reduce((sum, num) => sum + num, 0);
+}
+
+console.log("\nsumAll(1, 2, 3):", sumAll(1, 2, 3)); // 6
+console.log("sumAll(1, 2, 3, 4, 5):", sumAll(1, 2, 3, 4, 5)); // 15
+
+// Деструктуризация с rest
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(`\nДеструктуризация: first=${first}, second=${second}, rest=${rest}`);
+// first=1, second=2, rest=[3, 4, 5]
+
+// Клонирование объектов в массиве
+const originalArray = [{ x: 1 }, { x: 2 }];
+const clonedArray = originalArray.map(obj => ({ ...obj }));
+clonedArray[0].x = 100;
+console.log("\nОригинальный массив:", originalArray); // [{x: 1}, {x: 2}]
+console.log("Клонированный массив:", clonedArray); // [{x: 100}, {x: 2}]
+
+// Создание массива из аргументов функции
+function processNumbers(...nums) {
+    return nums.map(n => n * 2).filter(n => n > 5);
+}
+
+const result = processNumbers(1, 2, 3, 4, 5);
+console.log("\nprocessNumbers(1, 2, 3, 4, 5):", result); // [6, 8, 10]</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runSpreadDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="spreadOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-content" id="tab-destructuring">
+							<h4><i class="fas fa-code-branch"></i> Деструктуризация массивов</h4>
+							<div class="code-executor">
+								<div class="code-editor">
+									<pre><code class="javascript">// Базовая деструктуризация
+const colors = ["красный", "зеленый", "синий"];
+const [firstColor, secondColor, thirdColor] = colors;
+
+console.log("firstColor:", firstColor); // "красный"
+console.log("secondColor:", secondColor); // "зеленый"
+console.log("thirdColor:", thirdColor); // "синий"
+
+// Пропуск элементов
+const [first, , third] = colors;
+console.log("\nПропуск второго элемента:");
+console.log("first:", first); // "красный"
+console.log("third:", third); // "синий"
+
+// Значения по умолчанию
+const [primary = "черный", secondary = "белый"] = ["красный"];
+console.log("\nЗначения по умолчанию:");
+console.log("primary:", primary); // "красный"
+console.log("secondary:", secondary); // "белый"
+
+// Rest оператор в деструктуризации
+const numbers = [1, 2, 3, 4, 5];
+const [firstNum, secondNum, ...otherNums] = numbers;
+
+console.log("\nRest в деструктуризации:");
+console.log("firstNum:", firstNum); // 1
+console.log("secondNum:", secondNum); // 2
+console.log("otherNums:", otherNums); // [3, 4, 5]
+
+// Обмен переменных
+let a = 10;
+let b = 20;
+[a, b] = [b, a];
+console.log("\nОбмен переменных:");
+console.log("a:", a); // 20
+console.log("b:", b); // 10
+
+// Деструктуризация вложенных массивов
+const matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+const [[a11, a12], [a21]] = matrix;
+console.log("\nДеструктуризация матрицы:");
+console.log("a11:", a11); // 1
+console.log("a12:", a12); // 2
+console.log("a21:", a21); // 4
+
+// Деструктуризация в параметрах функции
+function printCoordinates([x, y]) {
+    console.log(`Координаты: x=${x}, y=${y}`);
+}
+
+printCoordinates([10, 20]); // Координаты: x=10, y=20
+
+// Деструктуризация с объектами в массиве
+const users = [
+    { name: "Анна", age: 25 },
+    { name: "Петр", age: 30 },
+    { name: "Мария", age: 28 }
+];
+
+const [{ name: firstName }, , { name: thirdName }] = users;
+console.log("\nДеструктуризация объектов в массиве:");
+console.log("firstName:", firstName); // "Анна"
+console.log("thirdName:", thirdName); // "Мария"
+
+// Получение нескольких элементов из функции
+function getMinMax(numbers) {
+    return [Math.min(...numbers), Math.max(...numbers)];
+}
+
+const [min, max] = getMinMax([10, 5, 8, 3, 12]);
+console.log("\nМинимум и максимум:");
+console.log("min:", min); // 3
+console.log("max:", max); // 12
+
+// Деструктуризация с игнорированием элементов
+const data = ["заголовок", "описание", "метаданные", "содержимое"];
+const [title, , , content] = data;
+console.log("\nТолько нужные элементы:");
+console.log("title:", title);
+console.log("content:", content);</code></pre>
+								</div>
+								<button class="btn btn-primary run-code" onclick="runDestructuringDemo()">
+									<i class="fas fa-play"></i> Запустить код
+								</button>
+								<div class="output-container">
+									<div id="destructuringOutput" class="console-output">
+										<div class="console-line info">Нажмите "Запустить код"</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 7: Практическое задание ===== -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+					<p>Создайте систему управления задачами (ToDo List) с использованием массивов:</p>
+
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Система управления задачами</h3>
+							<span class="difficulty-badge">Средний уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Реализуйте следующие компоненты:</p>
+							<ol>
+								<li>Объект <strong>Task</strong> с полями: id, title, description, completed, priority,
+									dueDate</li>
+								<li>Массив <strong>tasks</strong> для хранения всех задач</li>
+								<li>Функции для: добавления задачи, удаления, пометки выполнения</li>
+								<li>Функции для фильтрации: по статусу, приоритету, поиску по названию</li>
+								<li>Функции для сортировки: по дате, приоритету, статусу</li>
+								<li>Статистика: количество выполненных, просроченных, по приоритетам</li>
+								<li>Интерфейс для взаимодействия с пользователем</li>
+							</ol>
+
+							<div class="hint-box">
+								<h4><i class="fas fa-lightbulb"></i> Подсказки:</h4>
+								<ul>
+									<li>Используйте методы массивов: filter, map, reduce, sort</li>
+									<li>Генерируйте уникальные id для задач</li>
+									<li>Реализуйте валидацию данных при добавлении</li>
+									<li>Добавьте возможность редактирования задач</li>
+									<li>Создайте функции для импорта/экспорта задач</li>
+								</ul>
+							</div>
+
+							<div class="code-editor-area">
+								<h4><i class="fas fa-code"></i> Редактор кода:</h4>
+								<textarea id="exerciseCode" class="code-editor" placeholder="Напишите здесь ваш код..."
+									rows="15">
+// Ваш код здесь
+// Пример начала:
+class Task {
+    constructor(title, description, priority = 'medium', dueDate = null) {
+        this.id = Date.now() + Math.random();
+        this.title = title;
+        this.description = description;
+        this.completed = false;
+        this.priority = priority; // 'low', 'medium', 'high'
+        this.dueDate = dueDate;
+        this.createdAt = new Date();
+    }
+}
+
+class TaskManager {
+    constructor() {
+        this.tasks = [];
+    }
+    
+    addTask(title, description, priority, dueDate) {
+        const task = new Task(title, description, priority, dueDate);
+        this.tasks.push(task);
+        return task;
+    }
+}
+
+// Тестирование
+const manager = new TaskManager();
+manager.addTask("Изучить массивы", "Практика методов массивов", "high");
+console.log("Добавлена задача:", manager.tasks[0]);</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runArraysExercise()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<button class="btn btn-secondary" onclick="clearArraysExercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+									<button class="btn btn-success" onclick="testArraysExercise()">
+										<i class="fas fa-vial"></i> Запустить тесты
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Вывод вашего кода появится здесь
+									</div>
+								</div>
+							</div>
+
+							<div class="solution-section">
+								<button class="btn btn-warning show-solution">
+									<i class="fas fa-code"></i> Показать решение
+								</button>
+								<div class="solution hidden">
+									<h4><i class="fas fa-check-circle"></i> Пример решения:</h4>
+									<pre><code class="javascript">// Решение: Система управления задачами
+
+// ===== 1. КЛАСС ЗАДАЧИ =====
+class Task {
+    constructor(title, description, priority = 'medium', dueDate = null) {
+        this.id = Date.now() + Math.random().toString(36).substr(2, 9);
+        this.title = title;
+        this.description = description || '';
+        this.completed = false;
+        this.priority = ['low', 'medium', 'high'].includes(priority) 
+            ? priority 
+            : 'medium';
+        this.dueDate = dueDate ? new Date(dueDate) : null;
+        this.createdAt = new Date();
+        this.updatedAt = new Date();
+    }
+    
+    // Методы задачи
+    toggleComplete() {
+        this.completed = !this.completed;
+        this.updatedAt = new Date();
+        return this.completed;
+    }
+    
+    update(updates) {
+        Object.assign(this, updates);
+        this.updatedAt = new Date();
+        return this;
+    }
+    
+    isOverdue() {
+        if (!this.dueDate) return false;
+        return !this.completed && new Date() > this.dueDate;
+    }
+    
+    getInfo() {
+        const status = this.completed ? '✅ Выполнено' : '⏳ В работе';
+        const overdue = this.isOverdue() ? ' (⚠️ Просрочено)' : '';
+        const due = this.dueDate 
+            ? ` до ${this.dueDate.toLocaleDateString('ru-RU')}` 
+            : '';
+        return `${this.title} [${this.priority}]${due} - ${status}${overdue}`;
+    }
+}
+
+// ===== 2. КЛАСС МЕНЕДЖЕРА ЗАДАЧ =====
+class TaskManager {
+    constructor() {
+        this.tasks = [];
+        this.loadFromStorage();
+    }
+    
+    // === CRUD операции ===
+    addTask(title, description, priority = 'medium', dueDate = null) {
+        const task = new Task(title, description, priority, dueDate);
+        this.tasks.push(task);
+        this.saveToStorage();
+        console.log(`✅ Задача "${title}" добавлена`);
+        return task;
+    }
+    
+    removeTask(taskId) {
+        const index = this.tasks.findIndex(task => task.id === taskId);
+        if (index !== -1) {
+            const removed = this.tasks.splice(index, 1)[0];
+            this.saveToStorage();
+            console.log(`🗑️ Задача "${removed.title}" удалена`);
+            return removed;
+        }
+        console.log(`❌ Задача с ID ${taskId} не найдена`);
+        return null;
+    }
+    
+    getTask(taskId) {
+        return this.tasks.find(task => task.id === taskId);
+    }
+    
+    updateTask(taskId, updates) {
+        const task = this.getTask(taskId);
+        if (task) {
+            task.update(updates);
+            this.saveToStorage();
+            console.log(`✏️ Задача "${task.title}" обновлена`);
+            return task;
+        }
+        return null;
+    }
+    
+    toggleTaskComplete(taskId) {
+        const task = this.getTask(taskId);
+        if (task) {
+            const newStatus = task.toggleComplete();
+            this.saveToStorage();
+            console.log(`✅ Задача "${task.title}" ${newStatus ? 'выполнена' : 'возвращена в работу'}`);
+            return task;
+        }
+        return null;
+    }
+    
+    // === Фильтрация ===
+    getCompletedTasks() {
+        return this.tasks.filter(task => task.completed);
+    }
+    
+    getPendingTasks() {
+        return this.tasks.filter(task => !task.completed);
+    }
+    
+    getOverdueTasks() {
+        return this.tasks.filter(task => task.isOverdue());
+    }
+    
+    getTasksByPriority(priority) {
+        return this.tasks.filter(task => task.priority === priority);
+    }
+    
+    searchTasks(keyword) {
+        const searchTerm = keyword.toLowerCase();
+        return this.tasks.filter(task => 
+            task.title.toLowerCase().includes(searchTerm) ||
+            task.description.toLowerCase().includes(searchTerm)
+        );
+    }
+    
+    getTasksDueToday() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        
+        return this.tasks.filter(task => 
+            task.dueDate && 
+            task.dueDate >= today && 
+            task.dueDate < tomorrow
+        );
+    }
+    
+    // === Сортировка ===
+    sortByPriority(order = 'desc') {
+        const priorityOrder = { high: 3, medium: 2, low: 1 };
+        return [...this.tasks].sort((a, b) => {
+            const aValue = priorityOrder[a.priority] || 0;
+            const bValue = priorityOrder[b.priority] || 0;
+            return order === 'desc' ? bValue - aValue : aValue - bValue;
+        });
+    }
+    
+    sortByDueDate(order = 'asc') {
+        return [...this.tasks].sort((a, b) => {
+            const aDate = a.dueDate || new Date(8640000000000000);
+            const bDate = b.dueDate || new Date(8640000000000000);
+            return order === 'asc' ? aDate - bDate : bDate - aDate;
+        });
+    }
+    
+    sortByCreatedAt(order = 'desc') {
+        return [...this.tasks].sort((a, b) => 
+            order === 'desc' ? b.createdAt - a.createdAt : a.createdAt - b.createdAt
+        );
+    }
+    
+    sortByTitle(order = 'asc') {
+        return [...this.tasks].sort((a, b) => 
+            order === 'asc' 
+                ? a.title.localeCompare(b.title, 'ru')
+                : b.title.localeCompare(a.title, 'ru')
+        );
+    }
+    
+    // === Статистика ===
+    getStatistics() {
+        const total = this.tasks.length;
+        const completed = this.getCompletedTasks().length;
+        const pending = this.getPendingTasks().length;
+        const overdue = this.getOverdueTasks().length;
+        
+        const priorityStats = this.tasks.reduce((stats, task) => {
+            stats[task.priority] = (stats[task.priority] || 0) + 1;
+            return stats;
+        }, {});
+        
+        return {
+            total,
+            completed,
+            pending,
+            overdue,
+            completionRate: total > 0 ? (completed / total * 100).toFixed(1) : 0,
+            priorityStats,
+            overdueRate: pending > 0 ? (overdue / pending * 100).toFixed(1) : 0
+        };
+    }
+    
+    // === Импорт/Экспорт ===
+    exportToJSON() {
+        return JSON.stringify(this.tasks, null, 2);
+    }
+    
+    importFromJSON(jsonString) {
+        try {
+            const importedTasks = JSON.parse(jsonString);
+            if (Array.isArray(importedTasks)) {
+                this.tasks = importedTasks.map(taskData => {
+                    const task = new Task(
+                        taskData.title,
+                        taskData.description,
+                        taskData.priority,
+                        taskData.dueDate
+                    );
+                    Object.assign(task, taskData);
+                    return task;
+                });
+                this.saveToStorage();
+                console.log(`✅ Импортировано ${this.tasks.length} задач`);
+                return true;
+            }
+        } catch (error) {
+            console.error('❌ Ошибка импорта:', error);
+        }
+        return false;
+    }
+    
+    clearCompleted() {
+        const completedCount = this.getCompletedTasks().length;
+        this.tasks = this.getPendingTasks();
+        this.saveToStorage();
+        console.log(`🧹 Удалено ${completedCount} выполненных задач`);
+        return completedCount;
+    }
+    
+    // === Локальное хранилище ===
+    saveToStorage() {
+        localStorage.setItem('taskManagerData', JSON.stringify(this.tasks));
+    }
+    
+    loadFromStorage() {
+        try {
+            const saved = localStorage.getItem('taskManagerData');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                this.tasks = parsed.map(taskData => {
+                    const task = new Task(
+                        taskData.title,
+                        taskData.description,
+                        taskData.priority,
+                        taskData.dueDate
+                    );
+                    Object.assign(task, taskData);
+                    // Восстанавливаем даты
+                    task.createdAt = new Date(taskData.createdAt);
+                    task.updatedAt = new Date(taskData.updatedAt);
+                    if (taskData.dueDate) task.dueDate = new Date(taskData.dueDate);
+                    return task;
+                });
+                console.log(`📂 Загружено ${this.tasks.length} задач из хранилища`);
+            }
+        } catch (error) {
+            console.error('❌ Ошибка загрузки из хранилища:', error);
+            this.tasks = [];
+        }
+    }
+    
+    // === Вспомогательные методы ===
+    printAllTasks() {
+        console.log('\n📋 ВСЕ ЗАДАЧИ:');
+        if (this.tasks.length === 0) {
+            console.log('   Нет задач');
+            return;
+        }
+        
+        this.tasks.forEach((task, index) => {
+            console.log(`${index + 1}. ${task.getInfo()}`);
+        });
+    }
+    
+    printStatistics() {
+        const stats = this.getStatistics();
+        console.log('\n📊 СТАТИСТИКА:');
+        console.log(`   Всего задач: ${stats.total}`);
+        console.log(`   Выполнено: ${stats.completed} (${stats.completionRate}%)`);
+        console.log(`   В работе: ${stats.pending}`);
+        console.log(`   Просрочено: ${stats.overdue} (${stats.overdueRate}% от невыполненных)`);
+        console.log('   По приоритетам:');
+        Object.entries(stats.priorityStats).forEach(([priority, count]) => {
+            console.log(`     ${priority}: ${count}`);
+        });
+    }
+}
+
+// ===== 3. ТЕСТИРОВАНИЕ СИСТЕМЫ =====
+console.log("=== ТЕСТИРОВАНИЕ СИСТЕМЫ УПРАВЛЕНИЯ ЗАДАЧАМИ ===");
+
+// Создание менеджера задач
+const taskManager = new TaskManager();
+
+// Добавление тестовых задач
+console.log("\n📝 ДОБАВЛЕНИЕ ЗАДАЧ:");
+taskManager.addTask("Изучить массивы в JavaScript", "Практика методов массивов", "high", "2024-12-15");
+taskManager.addTask("Создать ToDo приложение", "Реализовать CRUD операции", "high");
+taskManager.addTask("Купить продукты", "Молоко, хлеб, яйца", "medium", "2024-12-10");
+taskManager.addTask("Позвонить маме", "Обсудить планы на выходные", "low");
+taskManager.addTask("Записаться к врачу", "Проверить здоровье", "medium", "2024-12-20");
+
+// Вывод всех задач
+taskManager.printAllTasks();
+
+// Тестирование фильтрации
+console.log("\n🔍 ФИЛЬТРАЦИЯ:");
+console.log("Невыполненные задачи:");
+taskManager.getPendingTasks().forEach((task, i) => 
+    console.log(`   ${i + 1}. ${task.title}`)
+);
+
+console.log("\nЗадачи высокого приоритета:");
+taskManager.getTasksByPriority('high').forEach((task, i) => 
+    console.log(`   ${i + 1}. ${task.title}`)
+);
+
+console.log("\nПоиск по слову 'массивы':");
+taskManager.searchTasks('массивы').forEach((task, i) => 
+    console.log(`   ${i + 1}. ${task.title}`)
+);
+
+// Тестирование сортировки
+console.log("\n📊 СОРТИРОВКА:");
+console.log("По приоритету (убывание):");
+taskManager.sortByPriority('desc').forEach((task, i) => 
+    console.log(`   ${i + 1}. ${task.title} [${task.priority}]`)
+);
+
+console.log("\nПо дате выполнения (возрастание):");
+taskManager.sortByDueDate('asc').forEach((task, i) => 
+    console.log(`   ${i + 1}. ${task.title} ${task.dueDate ? task.dueDate.toLocaleDateString() : 'без срока'}`)
+);
+
+// Выполнение задач
+console.log("\n✅ ВЫПОЛНЕНИЕ ЗАДАЧ:");
+taskManager.toggleTaskComplete(taskManager.tasks[0].id);
+taskManager.toggleTaskComplete(taskManager.tasks[3].id);
+
+// Обновление задачи
+console.log("\n✏️ ОБНОВЛЕНИЕ ЗАДАЧИ:");
+const taskToUpdate = taskManager.tasks[1];
+taskManager.updateTask(taskToUpdate.id, {
+    description: "Реализовать CRUD операции с использованием методов массивов",
+    priority: "medium"
+});
+
+// Вывод статистики
+taskManager.printStatistics();
+
+// Экспорт/Импорт
+console.log("\n📁 ЭКСПОРТ/ИМПОРТ:");
+const exportData = taskManager.exportToJSON();
+console.log(`Экспортировано ${taskManager.tasks.length} задач (${exportData.length} байт)`);
+
+// Очистка выполненных задач
+console.log("\n🧹 ОЧИСТКА ВЫПОЛНЕННЫХ:");
+const clearedCount = taskManager.clearCompleted();
+console.log(`Удалено ${clearedCount} выполненных задач`);
+
+// Финальная статистика
+taskManager.printAllTasks();
+taskManager.printStatistics();
+
+console.log("\n✅ Система управления задачами работает корректно!");</code></pre>
+									<div class="solution-tips">
+										<h5><i class="fas fa-tips"></i> Советы по улучшению:</h5>
+										<ul>
+											<li>Добавьте категории/теги для задач</li>
+											<li>Реализуйте повторяющиеся задачи</li>
+											<li>Добавьте напоминания/уведомления</li>
+											<li>Создайте графический интерфейс</li>
+											<li>Добавьте совместную работу над задачами</li>
+											<li>Реализуйте историю изменений задач</li>
+											<li>Добавьте прикрепление файлов</li>
+											<li>Создайте отчеты и аналитику</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Пройденные темы -->
+					<div class="topics-summary">
+						<h3><i class="fas fa-graduation-cap"></i> Вы изучили:</h3>
+						<div class="topics-list">
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Что такое массивы и зачем они нужны</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>4 способа создания массивов</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Основные операции с массивами</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Методы перебора и преобразования</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Сортировку и поиск в массивах</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Продвинутые техники работы</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Создание системы управления задачами</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навигация между уроками -->
+				<div class="navigation-buttons">
+					<a href="objects.html" class="nav-btn prev-btn">
+						<i class="fas fa-arrow-left"></i> Назад: Объекты
+					</a>
+					<a href="dom.html" class="nav-btn next-btn">
+						Следующий урок: DOM <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
+
+				<!-- Дополнительные материалы -->
+				<div class="additional-materials">
+					<h3><i class="fas fa-book-open"></i> Дополнительные материалы</h3>
+					<div class="materials-list">
+						<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Grammar_and_types"
+							target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>MDN: Переменные и типы данных</span>
+						</a>
+						<a href="https://learn.javascript.ru/variables" target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Учебник: Переменные</span>
+						</a>
+						<a href="#" class="material-link" onclick="downloadCheatSheet()">
+							<i class="fas fa-download"></i>
+							<span>Скачать шпаргалку по переменным</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Шпаргалка по JavaScript.</p>
+			<p>Сайт создан для образовательных целей.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/basic-components.js"></script>
+	<script src="../js/component/arrays.js"></script>
+</body>
+
+</html>
