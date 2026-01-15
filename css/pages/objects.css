@@ -66,8 +66,8 @@ body.dark-theme .creator-controls input {
 
 /* Стили для методов объектов */
 .methods-demo {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	/* display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
 	gap: 20px;
 	margin: 20px 0;
 }
