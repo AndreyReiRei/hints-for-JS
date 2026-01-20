@@ -7,6 +7,9 @@
 	padding: 20px;
 	margin: 20px 0;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	box-sizing: border-box;
+	/* Учитываем padding в ширине */
 }
 
 body.dark-theme .object-creator {
@@ -27,12 +30,14 @@ body.dark-theme .object-creator {
 }
 
 .creator-controls input {
-	flex: 1;
+	flex: 1 1 auto;
+	/* Гибкое распределение пространства */
 	min-width: 150px;
 	padding: 8px 12px;
 	border: 1px solid #e2e8f0;
 	border-radius: 4px;
 	font-size: 14px;
+	box-sizing: border-box;
 }
 
 body.dark-theme .creator-controls input {
@@ -47,6 +52,8 @@ body.dark-theme .creator-controls input {
 	padding: 15px;
 	margin: 15px 0;
 	border: 1px solid #4a5568;
+	overflow-x: auto;
+	/* Добавляем горизонтальный скролл для длинного контента */
 }
 
 .object-display pre {
@@ -56,18 +63,20 @@ body.dark-theme .creator-controls input {
 	color: #e2e8f0;
 	white-space: pre-wrap;
 	word-wrap: break-word;
+	min-width: min-content;
+	/* Минимальная ширина по содержимому */
 }
 
 .object-actions {
 	display: flex;
 	gap: 10px;
 	margin-top: 10px;
+	flex-wrap: wrap;
+	/* Позволяем кнопкам переноситься */
 }
 
 /* Стили для методов объектов */
 .methods-demo {
-	/* display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
 	gap: 20px;
 	margin: 20px 0;
 }
@@ -77,6 +86,7 @@ body.dark-theme .creator-controls input {
 	border-radius: 8px;
 	padding: 20px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
 }
 
 body.dark-theme .methods-demo .example-card {
@@ -88,12 +98,15 @@ body.dark-theme .methods-demo .example-card {
 	align-items: center;
 	gap: 10px;
 	margin-bottom: 15px;
+	flex-wrap: wrap;
+	/* На мобильных элементы могут переноситься */
 }
 
 .methods-demo .example-badge {
 	background: #667eea;
 	color: white;
-	width: 30px;
+	min-width: 30px;
+	/* Вместо фиксированной ширины */
 	height: 30px;
 	border-radius: 50%;
 	display: flex;
@@ -101,6 +114,8 @@ body.dark-theme .methods-demo .example-card {
 	justify-content: center;
 	font-weight: bold;
 	font-size: 14px;
+	flex-shrink: 0;
+	/* Не даем сжиматься */
 }
 
 .methods-demo pre {
@@ -110,11 +125,14 @@ body.dark-theme .methods-demo .example-card {
 	margin: 10px 0;
 	font-size: 13px;
 	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	/* Плавный скролл на iOS */
 }
 
 .methods-demo button {
 	width: 100%;
 	margin-top: 10px;
+	box-sizing: border-box;
 }
 
 /* Стили для исследователя объектов */
@@ -124,6 +142,8 @@ body.dark-theme .methods-demo .example-card {
 	padding: 20px;
 	margin: 20px 0;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	box-sizing: border-box;
 }
 
 body.dark-theme .object-explorer {
@@ -138,8 +158,9 @@ body.dark-theme .object-explorer {
 }
 
 .explorer-controls button {
-	flex: 1;
+	flex: 1 1 auto;
 	min-width: 150px;
+	box-sizing: border-box;
 }
 
 .object-data {
@@ -148,6 +169,7 @@ body.dark-theme .object-explorer {
 	padding: 15px;
 	margin: 15px 0;
 	border: 1px solid #4a5568;
+	overflow-x: auto;
 }
 
 .object-data pre {
@@ -155,6 +177,7 @@ body.dark-theme .object-explorer {
 	font-family: 'Courier New', monospace;
 	font-size: 14px;
 	color: #e2e8f0;
+	min-width: min-content;
 }
 
 /* Стили для сетки методов */
@@ -171,6 +194,11 @@ body.dark-theme .object-explorer {
 	padding: 20px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: transform 0.2s ease;
+	box-sizing: border-box;
+	min-width: 0;
+	/* Важно для правильного поведения grid в Firefox */
+	overflow: hidden;
+	/* Скрываем переполнение */
 }
 
 body.dark-theme .method-card {
@@ -184,14 +212,20 @@ body.dark-theme .method-card {
 .method-header {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
+	/* Изменено с center на flex-start */
 	margin-bottom: 10px;
+	flex-wrap: wrap;
+	gap: 8px;
 }
 
 .method-header h4 {
 	margin: 0;
 	color: #667eea;
 	font-size: 16px;
+	line-height: 1.3;
+	word-break: break-word;
+	/* Перенос длинных названий методов */
 }
 
 .method-tag {
@@ -201,6 +235,8 @@ body.dark-theme .method-card {
 	border-radius: 12px;
 	font-size: 12px;
 	font-weight: 500;
+	white-space: nowrap;
+	flex-shrink: 0;
 }
 
 body.dark-theme .method-tag {
@@ -213,6 +249,7 @@ body.dark-theme .method-tag {
 	font-size: 14px;
 	line-height: 1.5;
 	margin-bottom: 10px;
+	word-break: break-word;
 }
 
 body.dark-theme .method-card p {
@@ -226,6 +263,7 @@ body.dark-theme .method-card p {
 	font-size: 12px;
 	margin: 0;
 	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 /* Стили для демонстрации доступа к свойствам */
@@ -237,48 +275,253 @@ body.dark-theme .method-card p {
 	margin-top: 15px;
 }
 
-/* Адаптивность */
+/* ==================== АДАПТИВНОСТЬ ==================== */
+
+/* Планшеты и небольшие ноутбуки (769px - 1024px) */
+@media (max-width: 1024px) {
+
+	.object-creator,
+	.object-explorer {
+		padding: 18px;
+	}
+
+	.methods-grid {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 16px;
+	}
+
+	.creator-controls .input-group {
+		gap: 8px;
+	}
+}
+
+/* Планшеты в портретной ориентации (481px - 768px) */
 @media (max-width: 768px) {
+
+	.object-creator,
+	.object-explorer {
+		padding: 16px;
+		margin: 16px 0;
+		border-radius: 8px;
+	}
+
 	.creator-controls .input-group {
 		flex-direction: column;
+		gap: 12px;
 	}
 
 	.creator-controls input,
 	.creator-controls button {
 		width: 100%;
+		min-width: auto;
+		/* Сбрасываем минимальную ширину */
 	}
 
 	.explorer-controls {
 		flex-direction: column;
+		gap: 12px;
 	}
 
 	.explorer-controls button {
 		width: 100%;
+		min-width: auto;
 	}
 
 	.methods-demo,
 	.methods-grid {
 		grid-template-columns: 1fr;
+		gap: 16px;
 	}
 
 	.object-actions {
 		flex-direction: column;
+		gap: 12px;
 	}
 
 	.object-actions button {
 		width: 100%;
 	}
+
+	.method-card {
+		padding: 16px;
+	}
+
+	.method-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+	}
+
+	.method-header h4 {
+		font-size: 15px;
+	}
 }
 
+/* Мобильные устройства (320px - 480px) */
 @media (max-width: 480px) {
-
-	.methods-demo .example-card,
-	.method-card {
-		padding: 15px;
-	}
 
 	.object-creator,
 	.object-explorer {
-		padding: 15px;
+		padding: 14px;
+		margin: 14px 0;
+		border-radius: 6px;
+	}
+
+	.creator-controls,
+	.explorer-controls {
+		gap: 10px;
+	}
+
+	.methods-demo .example-card,
+	.method-card {
+		padding: 14px;
+		border-radius: 6px;
+	}
+
+	.method-header h4 {
+		font-size: 14px;
+	}
+
+	.method-card p {
+		font-size: 13px;
+	}
+
+	.methods-demo pre,
+	.object-display pre,
+	.object-data pre {
+		font-size: 12px;
+		padding: 12px;
+	}
+
+	.object-display,
+	.object-data {
+		padding: 12px;
+	}
+
+	.methods-demo .example-badge {
+		width: 26px;
+		height: 26px;
+		font-size: 12px;
+	}
+}
+
+/* Очень маленькие мобильные (менее 320px) */
+@media (max-width: 320px) {
+
+	.object-creator,
+	.object-explorer {
+		padding: 12px;
+		margin: 12px 0;
+	}
+
+	.methods-demo .example-card,
+	.method-card {
+		padding: 12px;
+	}
+
+	.creator-controls input {
+		padding: 6px 10px;
+		font-size: 13px;
+	}
+
+	button {
+		padding: 8px 12px;
+		font-size: 13px;
+	}
+
+	.methods-demo .example-badge {
+		width: 24px;
+		height: 24px;
+		font-size: 11px;
+	}
+}
+
+/* Ландшафтная ориентация на мобильных */
+@media (max-height: 500px) and (orientation: landscape) {
+
+	.object-creator,
+	.object-explorer {
+		padding: 12px;
+		margin: 12px 0;
+	}
+
+	.creator-controls .input-group {
+		flex-direction: row;
+		/* В ландшафте можно оставить строкой */
+		flex-wrap: wrap;
+	}
+
+	.creator-controls input {
+		flex: 1 1 45%;
+		/* Два элемента в строке */
+		min-width: 120px;
+	}
+}
+
+/* Высокопиксельные экраны (ретина) */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+	.object-creator,
+	.object-explorer,
+	.method-card,
+	.methods-demo .example-card {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		/* Более мягкая тень */
+	}
+}
+
+/* Темный режим с повышенной контрастностью */
+@media (prefers-contrast: high) {
+
+	.object-creator,
+	.object-explorer,
+	.method-card,
+	.methods-demo .example-card {
+		border: 2px solid #667eea;
+	}
+
+	.creator-controls input {
+		border-width: 2px;
+	}
+}
+
+/* Адаптивные шрифты для больших экранов */
+@media (min-width: 1200px) {
+
+	.object-creator,
+	.object-explorer {
+		padding: 24px;
+		margin: 24px 0;
+	}
+
+	.methods-grid {
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 24px;
+	}
+
+	.method-card {
+		padding: 24px;
+	}
+
+	.method-header h4 {
+		font-size: 17px;
+	}
+
+	.method-card p {
+		font-size: 15px;
+	}
+}
+
+/* Поддержка очень широких экранов */
+@media (min-width: 1600px) {
+	.container {
+		max-width: 1400px;
+		/* Ограничиваем максимальную ширину */
+		margin: 0 auto;
+	}
+
+	.methods-grid {
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	}
 }

@@ -1591,7 +1591,7 @@ body.dark-theme .info-box p.warning {
 	color: #ed8936;
 }
 
-/* Стили для code-editor-area (области редактора кода) */
+/* Редактор кода задания */
 .code-editor-area {
 	margin: 25px 0;
 	background: white;

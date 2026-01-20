@@ -1,8 +1,5 @@
 /* ===== СТИЛИ ДЛЯ УРОКА ОСНОВ ===== */
 
-
-
-
 /* Примеры синтаксиса */
 .syntax-examples {
 	display: grid;
@@ -259,93 +256,6 @@ body.dark-theme .operators-table tr:hover {
 	font-size: 13px;
 }
 
-/* Редактор кода задания */
-.code-editor-area {
-	background: white;
-	border-radius: 12px;
-	padding: 25px;
-	margin: 25px 0;
-	border: 2px solid #e2e8f0;
-}
-
-body.dark-theme .code-editor-area {
-	background: #2d3748;
-	border-color: #4a5568;
-}
-
-.codeeditor- {
-	width: 100%;
-	min-height: 200px;
-	padding: 20px;
-	border: 2px solid #e2e8f0;
-	border-radius: 8px;
-	font-family: 'Consolas', 'Monaco', monospace;
-	font-size: 14px;
-	line-height: 1.5;
-	resize: vertical;
-	margin-bottom: 20px;
-}
-
-body.dark-theme .code-editor {
-	background: #1a202c;
-	border-color: #4a5568;
-	color: #e2e8f0;
-}
-
-.editor-actions {
-	display: flex;
-	gap: 15px;
-	margin-bottom: 20px;
-}
-
-.output-area {
-	min-height: 150px;
-	background: #1a202c;
-	border-radius: 8px;
-	padding: 20px;
-	border: 1px solid #4a5568;
-	font-family: 'Consolas', 'Monaco', monospace;
-	font-size: 14px;
-	color: #e2e8f0;
-	overflow-x: auto;
-}
-
-
-/* Бейджи */
-.type-badge {
-	display: inline-block;
-	padding: 4px 12px;
-	border-radius: 15px;
-	font-size: 12px;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-}
-
-.type-badge.number {
-	background: #4299e1;
-	color: white;
-}
-
-.type-badge.string {
-	background: #ed8936;
-	color: white;
-}
-
-.type-badge.boolean {
-	background: #48bb78;
-	color: white;
-}
-
-.type-badge.undefined {
-	background: #718096;
-	color: white;
-}
-
-.type-badge.object {
-	background: #9f7aea;
-	color: white;
-}
 
 
 /* Адаптивность */
