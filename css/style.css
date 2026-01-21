@@ -99,32 +99,6 @@ body {
 	margin: 2px;
 }
 
-/* Адаптивность */
-@media (max-width: 1100px) {
-	.nav-desktop {
-		gap: 6px;
-	}
-
-	.nav-desktop a {
-		padding: 7px 14px;
-		font-size: 0.85rem;
-	}
-}
-
-@media (max-width: 1024px) {
-	.header-inner {
-		flex-wrap: wrap;
-		gap: 15px;
-		padding: 10px 0;
-	}
-
-	.nav-desktop {
-		order: 3;
-		width: 100%;
-		justify-content: center;
-		margin-top: 10px;
-	}
-}
 
 /* Основной контент */
 .main-content {
@@ -1711,79 +1685,6 @@ body.dark-theme .editor-actions {
 	transform: translateY(-1px);
 }
 
-/* Адаптивность для новых элементов */
-@media (max-width: 768px) {
-	.info-box {
-		padding: 15px;
-		margin: 15px 0;
-	}
-
-	.lesson-intro {
-		padding: 20px;
-	}
-
-	.info-box h4 {
-		font-size: 16px;
-	}
-
-	.info-box ul {
-		padding-left: 15px;
-	}
-
-	.code-editor-area {
-		margin: 20px 0;
-	}
-
-	.code-editor-area h4 {
-		padding: 12px 15px;
-		font-size: 15px;
-	}
-
-	.code-editor {
-		padding: 12px;
-		font-size: 13px;
-	}
-
-	.editor-actions {
-		padding: 12px 15px;
-		flex-direction: column;
-	}
-
-	.editor-actions .btn {
-		width: 100%;
-		justify-content: center;
-	}
-}
-
-@media (max-width: 480px) {
-	.info-box {
-		padding: 12px;
-	}
-
-	.info-box h4 {
-		font-size: 15px;
-		gap: 8px;
-	}
-
-	.info-box h4 i {
-		font-size: 18px;
-	}
-
-	.code-editor-area {
-		border-radius: 8px;
-	}
-
-	.code-editor-area h4 {
-		padding: 10px 12px;
-		font-size: 14px;
-	}
-
-	.code-editor {
-		padding: 10px;
-		font-size: 12px;
-		min-height: 150px;
-	}
-}
 
 
 
@@ -1793,6 +1694,11 @@ body.dark-theme .editor-actions {
 
 
 
+
+
+
+
+/* ФИКСЫ */
 
 /* Принудительно скрываем горизонтальный скролл на мобильных */
 @media (max-width: 768px) {
@@ -1814,5 +1720,1341 @@ body.dark-theme .editor-actions {
 		/* Современная альтернатива hidden */
 		overscroll-behavior-x: none;
 		/* Предотвращает "отскок" на iOS */
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Адаптивность под разные экраны */
+
+/* Очень большие экраны (1920px и выше) */
+@media (min-width: 1920px) {
+	.container {
+		max-width: 1800px;
+	}
+
+	.hero h1 {
+		font-size: 4.5rem;
+	}
+
+	.hero p {
+		font-size: 1.4rem;
+		max-width: 900px;
+		margin: 0 auto 40px;
+	}
+
+	.features-grid {
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 40px;
+	}
+
+	.lessons-list {
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 40px;
+	}
+
+	.lesson-content {
+		padding: 70px;
+		max-width: 1600px;
+		margin: 40px auto;
+	}
+
+	.code-example,
+	.exercise,
+	.info-box {
+		max-width: 1400px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.nav-desktop {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+/* Большие экраны (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+	.container {
+		max-width: 1400px;
+	}
+
+	.hero h1 {
+		font-size: 4rem;
+	}
+
+	.hero p {
+		font-size: 1.3rem;
+		max-width: 800px;
+		margin: 0 auto 35px;
+	}
+
+	.features-grid {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 30px;
+	}
+
+	.lessons-list {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 30px;
+	}
+
+	.lesson-content {
+		padding: 60px;
+	}
+
+	.nav-desktop {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+/* Средние ноутбуки (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+	.container {
+		max-width: 1140px;
+		padding: 0 30px;
+	}
+
+	.hero h1 {
+		font-size: 3.2rem;
+	}
+
+	.hero p {
+		font-size: 1.2rem;
+		max-width: 700px;
+		margin: 0 auto 30px;
+	}
+
+	.features-grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 25px;
+	}
+
+	.lessons-list {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 25px;
+	}
+
+	.lesson-content {
+		padding: 50px;
+	}
+
+	.nav-desktop {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+/* Маленькие ноутбуки (1024px - 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+	.container {
+		max-width: 980px;
+		padding: 0 25px;
+	}
+
+	.header-inner {
+		/* flex-wrap: wrap; */
+		gap: 15px;
+		padding: 12px 0;
+	}
+
+	.nav-desktop {
+		/* order: 3; */
+		width: 100%;
+		justify-content: center;
+		margin-top: 10px;
+		gap: 6px;
+	}
+
+	.nav-desktop a {
+		padding: 7px 14px;
+		font-size: 0.85rem;
+	}
+
+	.hero h1 {
+		font-size: 2.8rem;
+	}
+
+	.hero p {
+		font-size: 1.1rem;
+		max-width: 650px;
+		margin: 0 auto 25px;
+	}
+
+	.features-grid {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 18px;
+	}
+
+	.lessons-list {
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 18px;
+	}
+
+	.lesson-content {
+		padding: 35px;
+		margin-top: 30px;
+	}
+
+	.navigation-buttons {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.nav-btn {
+		flex: 1;
+		min-width: 200px;
+	}
+
+	.nav-desktop {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+/* Планшеты в альбомной ориентации (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+	.container {
+		max-width: 100%;
+		padding: 0 25px;
+	}
+
+	.main-content {
+		padding-top: 90px;
+	}
+
+	.header-inner {
+		flex-wrap: nowrap;
+		padding: 10px 0;
+	}
+
+
+
+	.logo a {
+		font-size: 24px;
+	}
+
+	.nav-desktop {
+		display: flex;
+		gap: 4px;
+		overflow-x: auto;
+		padding-bottom: 5px;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.nav-desktop a {
+		padding: 6px 12px;
+		font-size: 0.8rem;
+		white-space: nowrap;
+	}
+
+	.hero {
+		padding: 60px 20px;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.hero h1 {
+		font-size: 2.5rem;
+	}
+
+	.hero p {
+		font-size: 1.1rem;
+		max-width: 600px;
+		margin: 0 auto 25px;
+	}
+
+	.btn {
+		padding: 14px 35px;
+		font-size: 1rem;
+	}
+
+	.features h2,
+	.lessons-preview h2 {
+		font-size: 2rem;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	.features-grid {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 20px;
+	}
+
+	.lessons-list {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 20px;
+	}
+
+	.lesson-content {
+		padding: 30px;
+		margin-top: 25px;
+	}
+
+	.lesson-content h1 {
+		font-size: 2rem;
+	}
+
+	.lesson-intro {
+		padding: 20px;
+		margin-bottom: 25px;
+	}
+
+	.lesson-intro p {
+		font-size: 1rem;
+	}
+
+	.navigation-buttons {
+		flex-direction: row;
+		gap: 15px;
+		flex-wrap: wrap;
+	}
+
+	.nav-btn {
+		flex: 1;
+		min-width: 150px;
+		padding: 12px 20px;
+		font-size: 14px;
+		justify-content: center;
+	}
+
+	.info-box {
+		padding: 18px;
+		margin: 18px 0;
+	}
+
+	.code-editor-area {
+		margin: 20px 0;
+	}
+
+	.code-editor {
+		min-height: 180px;
+	}
+
+	.tab-buttons {
+		flex-wrap: wrap;
+	}
+
+	.tab-btn {
+		flex: 1;
+		min-width: 120px;
+	}
+
+	.accordion-header {
+		padding: 15px;
+		font-size: 16px;
+	}
+
+	.exercise {
+		padding: 20px;
+	}
+
+	.data-card {
+		padding: 15px;
+	}
+
+	.console-output {
+		padding: 12px;
+		font-size: 13px;
+	}
+}
+
+/* Планшеты в портретной ориентации (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+	.container {
+		padding: 0 20px;
+	}
+
+	.main-content {
+		padding-top: 85px;
+		padding-bottom: 50px;
+	}
+
+	.header-inner {
+		padding: 8px 0;
+	}
+
+	.nav-desktop {
+		display: none;
+	}
+
+	.mobile-menu-btn {
+		display: flex;
+	}
+
+	.hero {
+		padding: 50px 20px;
+		margin-bottom: 35px;
+		text-align: center;
+	}
+
+	.hero h1 {
+		font-size: 2.2rem;
+		margin-bottom: 15px;
+	}
+
+	.hero p {
+		font-size: 1rem;
+		margin-bottom: 25px;
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.btn {
+		padding: 12px 30px;
+		font-size: 0.95rem;
+	}
+
+	.features h2,
+	.lessons-preview h2 {
+		font-size: 1.8rem;
+		margin-bottom: 25px;
+		text-align: center;
+	}
+
+	.features-grid,
+	.lessons-list {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 15px;
+	}
+
+	.feature-card,
+	.lesson-card {
+		padding: 18px;
+	}
+
+	.lesson-content {
+		padding: 25px;
+		margin-top: 20px;
+		border-radius: 15px;
+	}
+
+	.lesson-content h1 {
+		font-size: 1.8rem;
+		margin-bottom: 15px;
+		text-align: center;
+	}
+
+	.lesson-meta {
+		margin: 12px 0 20px 0;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.lesson-section {
+		margin-bottom: 35px;
+		padding-bottom: 25px;
+	}
+
+	.code-example {
+		padding: 20px;
+		margin: 20px 0;
+	}
+
+	.exercise {
+		padding: 25px;
+		margin: 30px 0;
+	}
+
+	.navigation-buttons {
+		margin-top: 35px;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.nav-btn {
+		width: 100%;
+	}
+
+	.editor-actions {
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.editor-actions .btn {
+		flex: 1;
+		min-width: 140px;
+	}
+
+	.theme-toggle {
+		width: 35px;
+		height: 35px;
+		font-size: 1rem;
+	}
+}
+
+/* Большие мобильные (425px - 599px) */
+@media (min-width: 425px) and (max-width: 599px) {
+	.container {
+		padding: 0 18px;
+	}
+
+	.main-content {
+		padding-top: 80px;
+		padding-bottom: 40px;
+	}
+
+	.hero {
+		padding: 40px 15px;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	.hero h1 {
+		font-size: 2rem;
+		line-height: 1.2;
+	}
+
+	.hero p {
+		font-size: 0.95rem;
+		margin-bottom: 20px;
+		max-width: 400px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.btn {
+		padding: 11px 28px;
+		font-size: 0.9rem;
+	}
+
+	.features h2,
+	.lessons-preview h2 {
+		font-size: 1.7rem;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	.features-grid,
+	.lessons-list {
+		grid-template-columns: 1fr;
+		gap: 15px;
+	}
+
+	.feature-card,
+	.lesson-card {
+		padding: 20px;
+		text-align: center;
+	}
+
+	.feature-card:hover,
+	.lesson-card:hover {
+		transform: translateY(-3px);
+	}
+
+	.lesson-content {
+		padding: 20px;
+		margin-top: 15px;
+		border-radius: 12px;
+	}
+
+	.lesson-content h1 {
+		font-size: 1.6rem;
+		text-align: center;
+	}
+
+	.lesson-intro {
+		padding: 18px;
+		margin-bottom: 20px;
+		border-radius: 12px;
+	}
+
+	.lesson-meta {
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.code-example {
+		padding: 18px;
+		border-radius: 8px;
+		overflow-x: auto;
+	}
+
+	.code-example pre,
+	.code-example code {
+		font-size: 13px;
+	}
+
+	.exercise {
+		padding: 20px;
+		margin: 25px 0;
+		border-radius: 10px;
+	}
+
+	.exercise p {
+		font-size: 16px;
+	}
+
+	.exercise ol {
+		padding-left: 18px;
+	}
+
+	.navigation-buttons {
+		flex-direction: column;
+		margin-top: 30px;
+		gap: 12px;
+	}
+
+	.nav-btn {
+		width: 100%;
+		padding: 12px 20px;
+		text-align: center;
+		justify-content: center;
+	}
+
+	.tabs {
+		margin: 15px 0;
+	}
+
+	.tab-buttons {
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding: 8px 8px 0 8px;
+		gap: 4px;
+	}
+
+	.tab-btn {
+		flex: 1;
+		min-width: 120px;
+		padding: 10px 15px;
+		font-size: 13px;
+		text-align: center;
+		margin-bottom: 8px;
+	}
+
+	.tab-content {
+		padding: 18px;
+	}
+
+	.accordion-header {
+		padding: 15px 18px;
+		font-size: 15px;
+	}
+
+	.accordion-content {
+		padding: 0 18px;
+	}
+
+	.accordion-content.active {
+		padding: 18px;
+	}
+
+	.info-box {
+		padding: 16px;
+		margin: 16px 0;
+	}
+
+	.info-box h4 {
+		font-size: 16px;
+	}
+
+	.info-box ul {
+		padding-left: 18px;
+	}
+
+	.code-editor-area {
+		border-radius: 8px;
+		margin: 16px 0;
+		overflow-x: auto;
+	}
+
+	.code-editor-area h4 {
+		padding: 14px 16px;
+		font-size: 15px;
+	}
+
+	.code-editor {
+		padding: 14px;
+		font-size: 13px;
+		min-height: 160px;
+		overflow-x: auto;
+	}
+
+	.editor-actions {
+		flex-direction: column;
+		padding: 14px 16px;
+		gap: 10px;
+	}
+
+	.editor-actions .btn {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+/* Средние мобильные (375px - 424px) */
+@media (min-width: 375px) and (max-width: 424px) {
+	.container {
+		padding: 0 15px;
+	}
+
+	.main-content {
+		padding-top: 75px;
+		padding-bottom: 35px;
+	}
+
+	.hero {
+		padding: 35px 12px;
+		margin-bottom: 25px;
+		text-align: center;
+	}
+
+	.hero h1 {
+		font-size: 1.8rem;
+		line-height: 1.2;
+	}
+
+	.hero p {
+		font-size: 0.9rem;
+		margin-bottom: 18px;
+		padding: 0 5px;
+	}
+
+	.btn {
+		padding: 10px 25px;
+		font-size: 0.85rem;
+	}
+
+	.features h2,
+	.lessons-preview h2 {
+		font-size: 1.6rem;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	.feature-card,
+	.lesson-card {
+		padding: 18px;
+		text-align: center;
+	}
+
+	.lesson-content {
+		padding: 18px;
+		margin-top: 12px;
+		border-radius: 10px;
+	}
+
+	.lesson-content h1 {
+		font-size: 1.5rem;
+		margin-bottom: 12px;
+		text-align: center;
+	}
+
+	.lesson-meta {
+		margin: 10px 0 15px 0;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.lesson-tag,
+	.lesson-time {
+		font-size: 11px;
+	}
+
+	.lesson-section {
+		margin-bottom: 30px;
+		padding-bottom: 20px;
+	}
+
+	.lesson-section h2 {
+		font-size: 1.3rem;
+	}
+
+	.code-example {
+		padding: 15px;
+		margin: 15px 0;
+		border-radius: 6px;
+		overflow-x: auto;
+	}
+
+	.code-example pre,
+	.code-example code {
+		font-size: 12px;
+	}
+
+	.exercise {
+		padding: 18px;
+		margin: 20px 0;
+		border-radius: 8px;
+	}
+
+	.exercise p {
+		font-size: 15px;
+		margin-bottom: 15px;
+	}
+
+	.exercise ol {
+		font-size: 14px;
+		padding-left: 15px;
+	}
+
+	.show-solution {
+		padding: 10px 18px;
+		font-size: 14px;
+		width: 100%;
+		text-align: center;
+	}
+
+	.solution {
+		padding: 16px;
+		font-size: 13px;
+	}
+
+	.navigation-buttons {
+		margin-top: 25px;
+		gap: 10px;
+	}
+
+	.nav-btn {
+		padding: 11px 18px;
+		font-size: 13px;
+		width: 100%;
+		text-align: center;
+		justify-content: center;
+	}
+
+	.info-box {
+		padding: 14px;
+		margin: 14px 0;
+		border-radius: 6px;
+	}
+
+	.info-box h4 {
+		font-size: 15px;
+		gap: 8px;
+		justify-content: center;
+	}
+
+	.info-box h4 i {
+		font-size: 18px;
+	}
+
+	.info-box ul {
+		padding-left: 16px;
+	}
+
+	.info-box li {
+		font-size: 13px;
+		margin-bottom: 6px;
+	}
+}
+
+/* Маленькие мобильные (320px - 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+	.container {
+		padding: 0 12px;
+	}
+
+	.main-content {
+		padding-top: 70px;
+		padding-bottom: 30px;
+	}
+
+	.hero {
+		padding: 30px 10px;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	.hero h1 {
+		font-size: 1.6rem;
+		line-height: 1.2;
+		margin-bottom: 12px;
+	}
+
+	.hero p {
+		font-size: 0.85rem;
+		margin-bottom: 15px;
+		padding: 0 5px;
+	}
+
+	.btn {
+		padding: 9px 22px;
+		font-size: 0.8rem;
+	}
+
+	.features h2,
+	.lessons-preview h2 {
+		font-size: 1.4rem;
+		margin-bottom: 18px;
+		text-align: center;
+	}
+
+	.feature-card,
+	.lesson-card {
+		padding: 15px;
+		text-align: center;
+	}
+
+	.feature-card i {
+		font-size: 30px;
+		margin-bottom: 12px;
+	}
+
+	.feature-card h3,
+	.lesson-card h3 {
+		font-size: 16px;
+	}
+
+	.feature-card p,
+	.lesson-card p {
+		font-size: 13px;
+	}
+
+	.lesson-content {
+		padding: 15px;
+		border-radius: 8px;
+	}
+
+	.lesson-content h1 {
+		font-size: 1.4rem;
+		text-align: center;
+	}
+
+	.code-example {
+		padding: 12px;
+		margin: 12px 0;
+		overflow-x: auto;
+	}
+
+	.code-example pre,
+	.code-example code {
+		font-size: 11px;
+	}
+
+	.exercise {
+		padding: 15px;
+		margin: 15px 0;
+	}
+
+	.exercise p {
+		font-size: 14px;
+	}
+
+	.exercise ol {
+		font-size: 13px;
+		padding-left: 12px;
+	}
+
+	.navigation-buttons {
+		margin-top: 20px;
+		gap: 8px;
+	}
+
+	.nav-btn {
+		padding: 10px 15px;
+		font-size: 12px;
+		width: 100%;
+		text-align: center;
+		justify-content: center;
+	}
+
+	.tab-buttons {
+		gap: 4px;
+	}
+
+	.tab-btn {
+		min-width: 100px;
+		padding: 8px 12px;
+		font-size: 12px;
+		flex: 1 0 calc(50% - 4px);
+	}
+
+	.tab-content {
+		padding: 15px;
+		font-size: 13px;
+	}
+
+	.accordion-header {
+		padding: 12px 15px;
+		font-size: 14px;
+	}
+
+	.accordion-content.active {
+		padding: 15px;
+		font-size: 13px;
+	}
+
+	.info-box {
+		padding: 12px;
+		margin: 12px 0;
+	}
+
+	.info-box h4 {
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.info-box ul {
+		padding-left: 14px;
+	}
+
+	.code-editor-area {
+		margin: 12px 0;
+		overflow-x: auto;
+	}
+
+	.code-editor-area h4 {
+		padding: 12px 14px;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.code-editor {
+		padding: 12px;
+		font-size: 12px;
+		min-height: 140px;
+		overflow-x: auto;
+	}
+
+	.editor-actions {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.editor-actions .btn {
+		font-size: 12px;
+		padding: 10px 15px;
+	}
+}
+
+/* Очень маленькие мобильные (до 319px) */
+@media (max-width: 319px) {
+	.container {
+		padding: 0 8px;
+	}
+
+	.main-content {
+		padding-top: 65px;
+		padding-bottom: 25px;
+	}
+
+	.hero {
+		padding: 25px 8px;
+		margin-bottom: 15px;
+	}
+
+	.hero h1 {
+		font-size: 1.4rem;
+	}
+
+	.hero p {
+		font-size: 0.8rem;
+		padding: 0 5px;
+	}
+
+	.btn {
+		padding: 8px 20px;
+		font-size: 0.75rem;
+		width: 100%;
+	}
+
+	.features h2,
+	.lessons-preview h2 {
+		font-size: 1.3rem;
+	}
+
+	.feature-card,
+	.lesson-card {
+		padding: 12px;
+	}
+
+	.lesson-content {
+		padding: 12px;
+	}
+
+	.lesson-content h1 {
+		font-size: 1.3rem;
+	}
+
+	.code-example,
+	.exercise,
+	.info-box {
+		padding: 10px;
+		margin: 10px 0;
+	}
+
+	.tab-btn {
+		min-width: 80px;
+		font-size: 11px;
+		padding: 6px 10px;
+	}
+
+	.nav-btn {
+		padding: 9px 12px;
+		font-size: 11px;
+	}
+}
+
+/* Адаптация для landscape-режима на мобильных */
+@media (max-height: 500px) and (orientation: landscape) {
+	.main-content {
+		padding-top: 70px;
+		padding-bottom: 25px;
+	}
+
+	.header {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 1000;
+	}
+
+	.hero {
+		padding: 25px 15px;
+		margin-bottom: 20px;
+		min-height: auto;
+	}
+
+	.hero h1 {
+		font-size: 1.8rem;
+		margin-bottom: 10px;
+	}
+
+	.hero p {
+		font-size: 0.9rem;
+		margin-bottom: 15px;
+		max-height: 3.6em;
+		overflow: hidden;
+		line-height: 1.2em;
+	}
+
+	.lesson-content {
+		padding: 20px;
+	}
+
+	.code-example,
+	.exercise,
+	.info-box {
+		margin: 12px 0;
+		padding: 15px;
+	}
+
+	.code-example pre,
+	.code-editor {
+		max-height: 150px;
+		overflow-y: auto;
+	}
+
+	.navigation-buttons {
+		margin-top: 20px;
+	}
+}
+
+/* Адаптация для очень высоких экранов */
+@media (min-height: 900px) and (min-width: 768px) {
+	.main-content {
+		padding-top: 120px;
+		padding-bottom: 80px;
+	}
+
+	.hero {
+		padding: 100px 40px;
+		min-height: 60vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.lesson-content {
+		padding: 50px;
+		max-width: 1200px;
+		margin: 40px auto;
+	}
+
+	.code-example,
+	.exercise,
+	.info-box {
+		max-width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* Поддержка экранов с высокой плотностью пикселей (ретина) */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+	.btn,
+	.nav-btn,
+	.show-solution,
+	.feature-card,
+	.lesson-card {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		border-width: 0.5px;
+	}
+
+	.code-example code,
+	.code-editor {
+		font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Courier New', monospace;
+		font-weight: 400;
+	}
+}
+
+/* Поддержка темной темы системного уровня */
+@media (prefers-color-scheme: dark) {
+	body:not(.dark-theme) {
+		background: #121212;
+		color: #e0e0e0;
+	}
+
+	body:not(.dark-theme) .code-example {
+		background: #1a1a1a;
+		border-color: #333;
+	}
+
+	body:not(.dark-theme) .code-example code {
+		color: #e2e8f0;
+	}
+
+	body:not(.dark-theme) .feature-card,
+	body:not(.dark-theme) .lesson-card {
+		background: #1e1e1e;
+		border-color: #333;
+	}
+}
+
+/* Отключение анимаций для пользователей, предпочитающих уменьшенное движение */
+@media (prefers-reduced-motion: reduce) {
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.feature-card:hover,
+	.lesson-card:hover,
+	.btn:hover,
+	.nav-btn:hover,
+	.show-solution:hover,
+	.tab-btn:hover {
+		transform: none !important;
+	}
+
+	.accordion-content {
+		transition: none !important;
+	}
+}
+
+/* Поддержка устройства с сенсорным экраном */
+@media (hover: none) and (pointer: coarse) {
+
+	.feature-card:hover,
+	.lesson-card:hover {
+		transform: none;
+	}
+
+	.btn:active,
+	.nav-btn:active,
+	.show-solution:active {
+		transform: scale(0.98);
+	}
+
+	.code-example,
+	.code-editor {
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Увеличиваем размер кликабельных элементов для touch */
+	.btn,
+	.nav-btn,
+	.show-solution,
+	.tab-btn,
+	.accordion-header {
+		min-height: 44px;
+	}
+
+	.nav-desktop a {
+		padding: 12px 16px;
+	}
+}
+
+/* Адаптация для режима печати */
+@media print {
+
+	.header,
+	.hero,
+	.features,
+	.lessons-preview,
+	.navigation-buttons,
+	.editor-actions,
+	.theme-toggle,
+	.mobile-menu-btn {
+		display: none !important;
+	}
+
+	.main-content {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	.container {
+		max-width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.lesson-content {
+		padding: 0 !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
+
+	body {
+		font-size: 12pt;
+		line-height: 1.5;
+		color: #000 !important;
+		background: #fff !important;
+	}
+
+	.code-example,
+	.exercise,
+	.info-box {
+		break-inside: avoid;
+		border: 1px solid #ccc;
+		background: #fff !important;
+		color: #000 !important;
+	}
+
+	.code-example code {
+		color: #000 !important;
+		background: #fff !important;
+	}
+
+	a {
+		color: #000 !important;
+		text-decoration: underline;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		color: #000 !important;
 	}
 }
