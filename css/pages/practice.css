@@ -1,5 +1,11 @@
 /* practice.css - стили для страницы практики */
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 /* Общие стили для проектов */
 .project-overview {
 	background: white;

@@ -1,5 +1,11 @@
 /* functions.css - специфичные стили для урока по функциям */
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 /* Стили для визуализации рекурсии */
 .recursion-tree {
 	background: #2d3748;

@@ -1,5 +1,11 @@
 /* es6.css - стили для урока ES6+ */
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 /* Стили для таблицы сравнения */
 .comparison-table {
 	margin: 20px 0;
