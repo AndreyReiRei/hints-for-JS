@@ -242,33 +242,6 @@ body.dark-theme .mobile-menu-header {
 	/* Внутренние отступы сверху и снизу */
 	margin: 0;
 	/* Убираем внешние отступы */
-
-
-	max-height: calc(100vh - 80px);
-	/* 100vh минус высота шапки меню */
-	overflow-y: auto;
-	/* Включаем вертикальную прокрутку */
-	/* Добавьте кастомный скроллбар для лучшего UX */
-	scrollbar-width: thin;
-	scrollbar-color: #667eea transparent;
-}
-
-/* Кастомный скроллбар для Webkit-браузеров */
-.mobile-nav-list::-webkit-scrollbar {
-	width: 4px;
-}
-
-.mobile-nav-list::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-.mobile-nav-list::-webkit-scrollbar-thumb {
-	background: #667eea;
-	border-radius: 2px;
-}
-
-body.dark-theme .mobile-nav-list::-webkit-scrollbar-thumb {
-	background: #764ba2;
 }
 
 .mobile-nav-list li {
