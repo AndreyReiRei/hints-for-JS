@@ -1,11 +1,5 @@
 /* arrays.css - специфичные стили для урока по массивам */
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
 /* Стили для конструктора массивов */
 .array-creator {
 	background: white;

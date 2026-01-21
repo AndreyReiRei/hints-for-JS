@@ -1,11 +1,5 @@
 /* basics.css - стили для урока по основам JavaScript */
 
-/* ВАЖНО: Добавляем border-box для всех элементов */
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
 
 /* Примеры синтаксиса */
 .syntax-examples {

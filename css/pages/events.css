@@ -1,10 +1,5 @@
 /* events.css - специфичные стили для урока по событиям */
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
 
 /* Демонстрация потока событий */
 .event-flow-demo {

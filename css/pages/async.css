@@ -1,5 +1,6 @@
 /* async.css - специфичные стили для урока по асинхронности */
 
+
 /* Индикаторы состояния Promise */
 .promise-status {
 	display: flex;
