@@ -103,8 +103,8 @@ body.dark-theme .burger-icon span {
 	/* Ширина меню */
 	max-width: 85vw;
 	/* Не более 85% ширины экрана (для очень узких устройств) */
-	height: 100vh;
-	/* На всю высоту окна */
+	max-height: 90vh;
+	/* Ограничиваем, но не жестко */
 	background: white;
 	/* Фон для светлой темы */
 	box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
@@ -306,6 +306,21 @@ body.dark-theme .mobile-nav-list a.active {
 	color: #e2e8f0;
 	/* Светлый текст */
 }
+
+/* Добавляем кастомный скролл для iOS */
+.nav-mobile::-webkit-scrollbar {
+	width: 4px;
+}
+
+.nav-mobile::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.nav-mobile::-webkit-scrollbar-thumb {
+	background: rgba(102, 126, 234, 0.5);
+	border-radius: 2px;
+}
+
 
 /* ============ МЕДИА-ЗАПРОСЫ ============ */
 
