@@ -297,7 +297,7 @@ body.dark-theme .code-example {
 }
 
 .code-example h4 {
-	color: #2c3e50;
+	color: #ffffff;
 	margin-bottom: 15px;
 	display: flex;
 	align-items: center;
@@ -339,19 +339,10 @@ body.dark-theme .tabs {
 }
 
 .tab-buttons {
-	display: flex;
-	flex-direction: column;
 	background: #f8f9fa;
 	border-bottom: 1px solid #e0e0e0;
-	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
 }
 
-@media (min-width: 768px) {
-	.tab-buttons {
-		flex-direction: row;
-	}
-}
 
 body.dark-theme .tab-buttons {
 	background: #1a202c;

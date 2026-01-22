@@ -814,6 +814,160 @@ element.className = 'new-class another-class';</code></pre>
 									</ul>
 								</div>
 							</div>
+							<!-- ==================== ВКЛАДКА «АТРИБУТЫ» ==================== -->
+							<div class="tab-content" id="tab-attributes">
+								<h4><i class="fas fa-tag"></i> Работа с атрибутами</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">// Получение и установка атрибутов
+const link = document.querySelector('a');
+
+// getAttribute - получить значение атрибута
+const href = link.getAttribute('href');
+const target = link.getAttribute('target');
+
+// setAttribute - установить/изменить атрибут
+link.setAttribute('href', 'https://example.com');
+link.setAttribute('target', '_blank');
+link.setAttribute('rel', 'noopener noreferrer');
+
+// Удаление атрибутов
+link.removeAttribute('title');
+link.removeAttribute('style');
+
+// Проверка наличия атрибута
+const hasClass = link.hasAttribute('class');
+const hasId = link.hasAttribute('id');
+
+// Получение всех атрибутов элемента
+const attributes = link.attributes;
+Array.from(attributes).forEach(attr => {
+    console.log(`${attr.name} = ${attr.value}`);
+});
+
+// Специальные свойства для стандартных атрибутов
+const img = document.querySelector('img');
+img.src = 'new-image.jpg';    // эквивалентно setAttribute('src', '...')
+img.alt = 'Описание изображения';
+img.width = 300;
+img.height = 200;
+
+// data-* атрибуты доступны через dataset
+const element = document.querySelector('[data-user-id]');
+const userId = element.dataset.userId;          // "12345"
+const userRole = element.dataset.userRole;      // "admin"
+
+// Установка data-атрибутов через dataset
+element.dataset.userStatus = 'active';
+element.dataset.lastLogin = '2024-01-23';</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runAttributesDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="attributesOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+								<div class="tip-box">
+									<h4><i class="fas fa-info-circle"></i> Рекомендации:</h4>
+									<ul>
+										<li>Используйте <strong>dataset</strong> для работы с <strong>data-*</strong>
+											атрибутами</li>
+										<li>Для стандартных атрибутов доступны <strong>специальные свойства</strong>
+											(src, href и т.д.)</li>
+										<li>Проверяйте наличие атрибута перед доступом с помощью
+											<strong>hasAttribute()</strong></li>
+										<li>Используйте <strong>removeAttribute()</strong> для удаления атрибутов</li>
+										<li>Атрибуты всегда возвращаются как <strong>строки</strong></li>
+									</ul>
+								</div>
+							</div>
+
+							<!-- ==================== ВКЛАДКА «DATA-АТРИБУТЫ» ==================== -->
+							<div class="tab-content" id="tab-dataset">
+								<h4><i class="fas fa-database"></i> Data-атрибуты (dataset)</h4>
+								<div class="code-executor">
+									<div class="code-editor">
+										<pre><code class="javascript">// HTML: &lt;div data-user-id="123" data-user-role="admin"&gt;...&lt;/div&gt;
+
+const userCard = document.querySelector('[data-user-id]');
+
+// Доступ к data-атрибутам через dataset
+// Дефисы преобразуются в camelCase
+const userId = userCard.dataset.userId;           // "123"
+const userRole = userCard.dataset.userRole;       // "admin"
+
+// Установка новых data-атрибутов
+userCard.dataset.lastLogin = '2024-01-23';
+userCard.dataset.accountStatus = 'active';
+userCard.dataset.isVerified = 'true';
+
+// Ключи в camelCase преобразуются в kebab-case в HTML
+// dataset.userStatus → data-user-status
+// dataset.lastLoginDate → data-last-login-date
+
+// Получение всех data-атрибутов
+const allData = userCard.dataset;
+console.log('Все data-атрибуты:', Object.keys(allData));
+
+// Преобразование типов
+const numericId = parseInt(userCard.dataset.userId, 10);
+const isVerified = userCard.dataset.isVerified === 'true';
+const lastLogin = new Date(userCard.dataset.lastLogin);
+
+// Удаление data-атрибутов
+delete userCard.dataset.tempData;
+userCard.dataset.oldData = null; // Это УСТАНАВЛИВАЕТ значение "null", а не удаляет
+
+// Правильное удаление:
+delete userCard.dataset.oldData;
+
+// Использование в условиях
+if (userCard.dataset.userRole === 'admin') {
+    userCard.classList.add('admin-card');
+}
+
+// Динамическое создание data-атрибутов
+function setUserData(element, userData) {
+    Object.keys(userData).forEach(key => {
+        element.dataset[key] = userData[key];
+    });
+}
+
+setUserData(userCard, {
+    userId: '456',
+    userRole: 'moderator',
+    joinDate: '2023-12-01'
+});
+
+// data-атрибуты в CSS
+// Можно использовать в селекторах: [data-role="admin"]</code></pre>
+									</div>
+									<button class="btn btn-primary run-code" onclick="runDatasetDemo()">
+										<i class="fas fa-play"></i> Запустить код
+									</button>
+									<div class="output-container">
+										<div id="datasetOutput" class="console-output">
+											<div class="console-line info">Нажмите "Запустить код"</div>
+										</div>
+									</div>
+								</div>
+								<div class="tip-box">
+									<h4><i class="fas fa-info-circle"></i> Особенности:</h4>
+									<ul>
+										<li><strong>dataset</strong> предоставляет доступ ко всем
+											<strong>data-*</strong> атрибутам</li>
+										<li>Имена преобразуются: <strong>data-user-id</strong> → <strong>userId</strong>
+											(camelCase)</li>
+										<li>Все значения возвращаются как <strong>строки</strong></li>
+										<li>Используйте <strong>delete</strong> для удаления data-атрибутов</li>
+										<li>Доступны в <strong>CSS</strong> через селекторы атрибутов</li>
+										<li>Идеально для хранения <strong>кастомных данных</strong> элемента</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
