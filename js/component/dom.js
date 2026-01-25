@@ -414,6 +414,99 @@ class DOMLessonManager {
         `;
 	}
 
+	// ===== НОВЫЕ МЕТОДЫ ДЛЯ РАБОТЫ С АТРИБУТАМИ =====
+	runAttributesDemo() {
+		const output = this.createOutputElement( 'attributesOutput' );
+
+		output.innerHTML = `
+            <div class="console-line info">Демонстрация работы с атрибутами...</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] getAttribute(name) - получить значение атрибута</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] setAttribute(name, value) - установить/изменить атрибут</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] removeAttribute(name) - удалить атрибут</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] hasAttribute(name) - проверить наличие атрибута</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] attributes - коллекция всех атрибутов</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] dataset - доступ к data-* атрибутам</div>
+            <div class="console-line success">[${new Date().toLocaleTimeString()}] Демонстрация завершена</div>
+            
+            <div class="console-line info">Пример data-атрибутов:</div>
+            <div class="console-line">// HTML: &lt;div data-user-id="123" data-user-role="admin"&gt;</div>
+            <div class="console-line">const element = document.querySelector('[data-user-id]');</div>
+            <div class="console-line">const userId = element.dataset.userId;          // "123"</div>
+            <div class="console-line">const userRole = element.dataset.userRole;      // "admin"</div>
+            <div class="console-line">element.dataset.userStatus = 'active';</div>
+            <div class="console-line">// Преобразуется в data-user-status="active"</div>
+        `;
+	}
+
+	runDatasetDemo() {
+		const output = this.createOutputElement( 'datasetOutput' );
+
+		// Создаем тестовый элемент для демонстрации
+		const testElement = document.createElement( 'div' );
+		testElement.id = 'dataset-demo-element';
+		testElement.innerHTML = 'Тестовый элемент для демонстрации dataset';
+
+		// Устанавливаем data-атрибуты
+		testElement.dataset.userId = '12345';
+		testElement.dataset.userRole = 'admin';
+		testElement.dataset.accountStatus = 'active';
+		testElement.dataset.lastLogin = '2024-01-23';
+
+		// Временно добавляем на страницу для демонстрации
+		const container = output.parentElement;
+		if ( container ) {
+			container.appendChild( testElement );
+			testElement.style.display = 'block';
+			testElement.style.padding = '10px';
+			testElement.style.margin = '10px 0';
+			testElement.style.backgroundColor = '#f0f9ff';
+			testElement.style.border = '1px solid #4299e1';
+			testElement.style.borderRadius = '4px';
+		}
+
+		output.innerHTML = `
+            <div class="console-line info">Демонстрация работы с data-атрибутами (dataset)...</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] dataset - объект для работы с data-* атрибутами</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] Дефисы преобразуются в camelCase: data-user-id → userId</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] Все значения возвращаются как строки</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] Установка: element.dataset.key = 'value'</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] Удаление: delete element.dataset.key</div>
+            <div class="console-line">[${new Date().toLocaleTimeString()}] Все data-атрибуты: ${JSON.stringify( testElement.dataset )}</div>
+            <div class="console-line success">[${new Date().toLocaleTimeString()}] Демонстрация завершена</div>
+            
+            <div class="console-line info">Примеры операций:</div>
+            <div class="console-line">const element = document.getElementById('dataset-demo-element');</div>
+            <div class="console-line">console.log(element.dataset.userId);         // "12345"</div>
+            <div class="console-line">console.log(element.dataset.userRole);       // "admin"</div>
+            <div class="console-line">console.log(element.dataset.accountStatus);  // "active"</div>
+            <div class="console-line">console.log(element.dataset.lastLogin);      // "2024-01-23"</div>
+            <div class="console-line">console.log(Object.keys(element.dataset));   // ["userId", "userRole", "accountStatus", "lastLogin"]</div>
+            
+            <div class="console-line info">Создан тестовый элемент:</div>
+            <div class="console-line demo-element" id="demoElementInfo"></div>
+        `;
+
+		// Показываем HTML элемента
+		const demoInfo = output.querySelector( '#demoElementInfo' );
+		if ( demoInfo ) {
+			demoInfo.textContent = testElement.outerHTML;
+			demoInfo.style.fontFamily = 'monospace';
+			demoInfo.style.fontSize = '12px';
+			demoInfo.style.overflow = 'auto';
+			demoInfo.style.padding = '10px';
+			demoInfo.style.backgroundColor = '#f8f9fa';
+			demoInfo.style.border = '1px solid #dee2e6';
+			demoInfo.style.borderRadius = '4px';
+		}
+
+		// Удаляем тестовый элемент через 10 секунд
+		setTimeout( () => {
+			if ( testElement && testElement.parentElement ) {
+				testElement.remove();
+			}
+		}, 10000 );
+	}
+
 	// ===== РАЗДЕЛ 7: Практическое задание =====
 	runDOMExercise() {
 		const code = document.getElementById( 'exerciseCode' ).value;
@@ -656,6 +749,8 @@ window.setSelector = ( selector ) => window.domLesson?.setSelector( selector );
 window.runContentDemo = () => window.domLesson?.runContentDemo();
 window.runStylesDemo = () => window.domLesson?.runStylesDemo();
 window.runClassesDemo = () => window.domLesson?.runClassesDemo();
+window.runAttributesDemo = () => window.domLesson?.runAttributesDemo();
+window.runDatasetDemo = () => window.domLesson?.runDatasetDemo();
 window.runDOMExercise = () => window.domLesson?.runDOMExercise();
 window.testDOMExercise = () => window.domLesson?.testDOMExercise();
 window.clearDOMExercise = () => window.domLesson?.clearDOMExercise();
