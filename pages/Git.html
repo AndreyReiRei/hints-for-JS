@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Работа с Git</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dark-theme.css">
+	<link rel="stylesheet" href="../css/burger-menu.css">
+	<link rel="stylesheet" href="../css/pages/basics.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+	<!-- Шапка -->
+	<header class="header">
+		<div class="container">
+			<div class="header-inner">
+
+				<div class="burger-menu">
+					<div class="burger-icon" id="burgerIcon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<nav class="nav-desktop compact">
+					<a href="../index.html">Главная</a>
+					<a href="basics.html">Основы</a>
+					<a href="variables.html">Переменные</a>
+					<a href="functions.html">Функции</a>
+					<a href="objects.html">Объекты</a>
+					<a href="arrays.html">Массивы</a>
+					<a href="dom.html">DOM</a>
+					<a href="events.html">События</a>
+					<a href="async.html">Асинхронность</a>
+					<a href="es6.html">ES6+</a>
+					<a href="practice.html">Практика</a>
+					<a href="Git.html">Работа с Git</a>
+				</nav>
+			</div>
+		</div>
+
+		<nav class="nav-mobile" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<h3>Меню</h3>
+				<div class="close-menu" id="closeMenu">
+					<i class="fas fa-times"></i>
+				</div>
+			</div>
+			<ul class="mobile-nav-list">
+				<li><a href="../index.html"><i class="fas fa-home"></i>Главная</a></li>
+				<li><a href="basics.html"><i class="fas fa-code"></i>Основы JS</a></li>
+				<li><a href="variables.html"><i class="fas fa-memory"></i>Переменные</a></li>
+				<li><a href="functions.html"><i class="fas fa-cogs"></i>Функции</a></li>
+				<li><a href="objects.html"><i class="fas fa-cube"></i>Объекты</a></li>
+				<li><a href="arrays.html"><i class="fas fa-list"></i>Массивы</a></li>
+				<li><a href="dom.html"><i class="fas fa-file-code"></i>DOM</a></li>
+				<li><a href="events.html"><i class="fas fa-mouse-pointer"></i>События</a></li>
+				<li><a href="async.html"><i class="fas fa-sync-alt"></i>Асинхронность</a></li>
+				<li><a href="es6.html"><i class="fas fa-star"></i>ES6+</a></li>
+				<li><a href="practice.html"><i class="fas fa-laptop-code"></i>Практика</a></li>
+				<li><a href="Git.html" class="active"><i class="fab fa-git-alt"></i>Работа с Git</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="lesson-content">
+				<h1>Работа с Git</h1>
+
+				<div class="lesson-meta">
+					<span class="lesson-tag">Начальный уровень</span>
+					<span class="lesson-time"><i class="far fa-clock"></i> 25 минут</span>
+					<span class="lesson-chapters"><i class="fas fa-list-ol"></i> 6 разделов</span>
+				</div>
+
+				<div class="lesson-intro">
+					<p><strong>Git</strong> — это распределенная система контроля версий, которая позволяет отслеживать
+						изменения в исходном коде, работать в команде и управлять историей разработки. Основа любого
+						современного проекта!</p>
+				</div>
+
+				<!-- Быстрая навигация по уроку -->
+				<div class="lesson-toc">
+					<h3><i class="fas fa-map-signs"></i> Содержание урока:</h3>
+					<ol>
+						<li><a href="#what-is-git">Что такое Git?</a></li>
+						<li><a href="#installation">Установка и настройка</a></li>
+						<li><a href="#first-commands">Первые команды Git</a></li>
+						<li><a href="#branching">Ветвление (Branching)</a></li>
+						<li><a href="#remote">Работа с удаленным репозиторием</a></li>
+						<li><a href="#workflow">Типовые рабочие процессы</a></li>
+						<li><a href="#practice">Практическое задание</a></li>
+					</ol>
+				</div>
+
+				<!-- ===== РАЗДЕЛ 1: Что такое Git? ===== -->
+				<section id="what-is-git" class="lesson-section">
+					<h2><i class="fab fa-git-alt"></i> Что такое Git?</h2>
+					<p>Git — это <strong>система контроля версий (VCS)</strong>, созданная Линусом Торвальдсом для
+						разработки ядра Linux. Она помогает:</p>
+
+					<div class="features-grid">
+						<div class="feature-card">
+							<i class="fas fa-history"></i>
+							<h4>Хранить историю</h4>
+							<p>Все изменения кода за всё время</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-users"></i>
+							<h4>Работать в команде</h4>
+							<p>Без конфликтов и потерь данных</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-code-branch"></i>
+							<h4>Создавать ветки</h4>
+							<p>Параллельная разработка функций</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-undo-alt"></i>
+							<h4>Откатывать изменения</h4>
+							<p>Возврат к любой точке истории</p>
+						</div>
+					</div>
+
+					<div class="info-box">
+						<h4><i class="fas fa-lightbulb"></i> Интересный факт</h4>
+						<p>Git был создан в 2005 году после того, как компания BitKeeper отозвала бесплатную лицензию
+							для разработчиков ядра Linux. Линус Торвальдс написал Git всего за 2 недели!</p>
+					</div>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-local">Локальный репозиторий</button>
+							<button class="tab-btn" data-tab="tab-remote">Удаленный репозиторий</button>
+							<button class="tab-btn" data-tab="tab-workflow">Рабочий процесс</button>
+						</div>
+
+						<div class="tab-content active" id="tab-local">
+							<h4><i class="fas fa-desktop"></i> Локальный репозиторий</h4>
+							<p>Все данные хранятся на вашем компьютере:</p>
+							<ul>
+								<li>Полная история проекта</li>
+								<li>Работа без интернета</li>
+								<li>Быстрые операции</li>
+								<li>Сохранение всех версий файлов</li>
+							</ul>
+						</div>
+
+						<div class="tab-content" id="tab-remote">
+							<h4><i class="fas fa-cloud"></i> Удаленный репозиторий</h4>
+							<p>Сервер для совместной работы:</p>
+							<ul>
+								<li><strong>GitHub</strong> — самый популярный хостинг</li>
+								<li><strong>GitLab</strong> — с CI/CD инструментами</li>
+								<li><strong>Bitbucket</strong> — от Atlassian</li>
+								<li><strong>Обмен изменениями</strong> между разработчиками</li>
+							</ul>
+						</div>
+
+						<div class="tab-content" id="tab-workflow">
+							<h4><i class="fas fa-project-diagram"></i> Рабочий процесс</h4>
+							<p>Типовая схема работы:</p>
+							<pre><code>Рабочая директория → Индекс → Репозиторий
+
+1. Работаете с файлами
+2. Добавляете изменения в индекс (stage)
+3. Фиксируете изменения (commit)
+4. Отправляете на сервер (push)</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 2: Установка и настройка ===== -->
+				<section id="installation" class="lesson-section">
+					<h2><i class="fas fa-download"></i> Установка и настройка Git</h2>
+					<p>Перед началом работы нужно установить и настроить Git на вашем компьютере.</p>
+
+					<div class="demo-container">
+						<h3><i class="fas fa-terminal"></i> Проверка установки:</h3>
+						<div class="code-executor">
+							<div class="code-editor">
+								<pre><code class="bash"># Проверить, установлен ли Git
+git --version
+
+# Если установлен, вы увидите что-то вроде:
+# git version 2.40.1</code></pre>
+							</div>
+							<div class="tip-box">
+								<h4><i class="fas fa-download"></i> Скачать Git:</h4>
+								<ul>
+									<li><strong>Windows:</strong> <a href="https://git-scm.com/download/win"
+											target="_blank">git-scm.com/download/win</a></li>
+									<li><strong>macOS:</strong> <code>brew install git</code> или скачать с сайта</li>
+									<li><strong>Linux:</strong> <code>sudo apt install git</code> (Ubuntu/Debian)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<h3><i class="fas fa-cog"></i> Настройка Git:</h3>
+					<p>После установки необходимо настроить основные параметры:</p>
+
+					<pre><code class="bash"># Настроить имя пользователя (обязательно!)
+git config --global user.name "Ваше Имя"
+
+# Настроить email (обязательно!)
+git config --global user.email "ваш.email@example.com"
+
+# Включить цветной вывод
+git config --global color.ui auto
+
+# Настроить редактор по умолчанию
+git config --global core.editor "code --wait"  # VS Code
+# или
+git config --global core.editor "nano"         # Nano
+# или
+git config --global core.editor "vim"          # Vim</code></pre>
+
+					<div class="info-box">
+						<h4><i class="fas fa-check-circle"></i> Проверка настроек:</h4>
+						<p>Чтобы увидеть все текущие настройки, выполните:</p>
+						<pre><code class="bash">git config --list</code></pre>
+						<p>Эта команда покажет все установленные конфигурации.</p>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 3: Первые команды Git ===== -->
+				<section id="first-commands" class="lesson-section">
+					<h2><i class="fas fa-terminal"></i> Первые команды Git</h2>
+					<p>Начнем с основных команд, которые понадобятся каждый день.</p>
+
+					<div class="syntax-examples">
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">1</span>
+								<h4>Инициализация репозитория</h4>
+							</div>
+							<p>Создать новый репозиторий или начать отслеживание существующего проекта:</p>
+							<pre><code class="bash"># Создать новый репозиторий в текущей папке
+git init
+
+# Репозиторий будет создан в скрытой папке .git
+# Проверить статус репозитория
+git status</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">2</span>
+								<h4>Добавление файлов</h4>
+							</div>
+							<p>Подготовить файлы к коммиту (добавить в staging area):</p>
+							<pre><code class="bash"># Добавить все измененные файлы
+git add .
+
+# Добавить конкретный файл
+git add index.html
+
+# Добавить все файлы с расширением .js
+git add *.js
+
+# Добавить все файлы в папке src
+git add src/</code></pre>
+						</div>
+
+						<div class="example-card">
+							<div class="example-header">
+								<span class="example-badge">3</span>
+								<h4>Создание коммита</h4>
+							</div>
+							<p>Зафиксировать изменения с комментарием:</p>
+							<pre><code class="bash"># Создать коммит с сообщением
+git commit -m "Добавлена главная страница"
+
+# Добавить и закоммитить одним действием
+git commit -am "Обновлены стили"
+
+# Просмотреть историю коммитов
+git log --oneline
+
+# Подробный просмотр истории
+git log --graph --oneline --all</code></pre>
+							<div class="tip-box">
+								<i class="fas fa-lightbulb"></i> Сообщения коммитов должны быть понятными и
+								описывать, что было сделано!
+							</div>
+						</div>
+					</div>
+
+					<div class="interactive-demo">
+						<h3><i class="fas fa-play-circle"></i> Практикуем основные команды:</h3>
+						<div class="type-checker">
+							<div class="code-example">
+								<pre><code class="bash"># Создадим проект и поработаем с Git
+
+# 1. Создаем папку проекта
+mkdir my-project
+cd my-project
+
+# 2. Инициализируем репозиторий
+git init
+
+# 3. Создаем файлы
+echo "# Мой проект" > README.md
+echo "console.log('Hello Git!')" > app.js
+
+# 4. Проверяем статус
+git status
+
+# 5. Добавляем файлы
+git add .
+
+# 6. Создаем коммит
+git commit -m "Initial commit: добавлены README и app.js"
+
+# 7. Смотрим историю
+git log --oneline</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 4: Ветвление (Branching) ===== -->
+				<section id="branching" class="lesson-section">
+					<h2><i class="fas fa-code-branch"></i> Ветвление (Branching)</h2>
+					<p>Ветки позволяют работать над разными задачами параллельно, не мешая основной разработке.</p>
+
+					<div class="data-types-grid">
+						<div class="data-type-card">
+							<div class="type-header type-number">
+								<i class="fas fa-branch"></i>
+								<h4>Основная ветка</h4>
+							</div>
+							<p>Главная ветка проекта (обычно main или master)</p>
+							<pre><code class="bash"># Посмотреть все ветки
+git branch
+
+# Создать новую ветку
+git branch feature-login
+
+# Переключиться на ветку
+git checkout feature-login
+# или
+git switch feature-login</code></pre>
+						</div>
+
+						<div class="data-type-card">
+							<div class="type-header type-string">
+								<i class="fas fa-exchange-alt"></i>
+								<h4>Слияние веток</h4>
+							</div>
+							<p>Объединение изменений из разных веток</p>
+							<pre><code class="bash"># Перейти в основную ветку
+git checkout main
+
+# Влить изменения из feature ветки
+git merge feature-login
+
+# Если есть конфликты, Git сообщит
+# Нужно их разрешить и сделать коммит</code></pre>
+						</div>
+
+						<div class="data-type-card">
+							<div class="type-header type-boolean">
+								<i class="fas fa-trash-alt"></i>
+								<h4>Удаление веток</h4>
+							</div>
+							<p>Очистка после завершения работы</p>
+							<pre><code class="bash"># Удалить локальную ветку
+git branch -d feature-login
+
+# Принудительное удаление
+git branch -D feature-login
+
+# Удалить удаленную ветку
+git push origin --delete feature-login</code></pre>
+						</div>
+
+						<div class="data-type-card">
+							<div class="type-header type-special">
+								<i class="fas fa-exclamation-triangle"></i>
+								<h4>Конфликты слияния</h4>
+							</div>
+							<p>Решаем конфликты при merge</p>
+							<pre><code class="bash"># Если при слиянии возник конфликт
+<<<<<<< HEAD
+ваша версия кода
+=======
+версия кода из ветки
+>>>>>>> feature-login
+
+# Редактируем файл, оставляя нужный код
+# Затем добавляем и коммитим
+git add файл_с_конфликтом
+git commit -m "Разрешен конфликт слияния"</code></pre>
+						</div>
+					</div>
+
+					<div class="info-box">
+						<h4><i class="fas fa-sitemap"></i> Рабочий процесс с ветками:</h4>
+						<p>Типовая схема работы с ветками в проекте:</p>
+						<ol>
+							<li><code>main</code> — стабильная версия, готовый продукт</li>
+							<li><code>develop</code> — ветка разработки</li>
+							<li><code>feature/*</code> — ветки для новых функций</li>
+							<li><code>hotfix/*</code> — срочные исправления для main</li>
+							<li><code>release/*</code> — подготовка к выпуску</li>
+						</ol>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 5: Работа с удаленным репозиторием ===== -->
+				<section id="remote" class="lesson-section">
+					<h2><i class="fas fa-cloud"></i> Работа с удаленным репозиторием</h2>
+					<p>GitHub, GitLab и другие хостинги позволяют хранить код в облаке и работать в команде.</p>
+
+					<div class="operators-table">
+						<table>
+							<thead>
+								<tr>
+									<th>Команда</th>
+									<th>Описание</th>
+									<th>Пример</th>
+									<th>Когда использовать</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>git remote add</code></td>
+									<td>Добавить удаленный репозиторий</td>
+									<td><code>git remote add origin URL</code></td>
+									<td>Первый раз привязываем локальный репозиторий к GitHub</td>
+								</tr>
+								<tr>
+									<td><code>git push</code></td>
+									<td>Отправить изменения на сервер</td>
+									<td><code>git push origin main</code></td>
+									<td>После коммитов, чтобы поделиться изменениями</td>
+								</tr>
+								<tr>
+									<td><code>git pull</code></td>
+									<td>Забрать изменения с сервера</td>
+									<td><code>git pull origin main</code></td>
+									<td>Перед началом работы, чтобы получить свежие изменения</td>
+								</tr>
+								<tr>
+									<td><code>git clone</code></td>
+									<td>Скопировать репозиторий</td>
+									<td><code>git clone URL</code></td>
+									<td>Начать работу с существующим проектом</td>
+								</tr>
+								<tr>
+									<td><code>git fetch</code></td>
+									<td>Получить изменения (без слияния)</td>
+									<td><code>git fetch origin</code></td>
+									<td>Посмотреть, что изменилось на сервере</td>
+								</tr>
+								<tr>
+									<td><code>git remote -v</code></td>
+									<td>Показать удаленные репозитории</td>
+									<td><code>git remote -v</code></td>
+									<td>Проверить, куда отправляются изменения</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<!-- Интерактивный пример -->
+					<div class="calculator-demo">
+						<h3><i class="fab fa-github"></i> Работа с GitHub:</h3>
+						<div class="calculator">
+							<div class="code-example">
+								<pre><code class="bash"># Пример полного цикла работы с GitHub
+
+# 1. Клонируем существующий репозиторий
+git clone https://github.com/username/project.git
+cd project
+
+# 2. Создаем новую ветку для задачи
+git checkout -b add-feature
+
+# 3. Работаем над кодом, делаем изменения
+echo "Новая функция" > new-feature.js
+
+# 4. Добавляем и коммитим изменения
+git add new-feature.js
+git commit -m "Добавлена новая функция"
+
+# 5. Отправляем ветку на GitHub
+git push origin add-feature
+
+# 6. На GitHub создаем Pull Request
+# 7. После одобрения сливаем ветку
+git checkout main
+git pull origin main
+git merge add-feature
+git push origin main
+
+# 8. Удаляем отработанную ветку
+git branch -d add-feature
+git push origin --delete add-feature</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 6: Типовые рабочие процессы ===== -->
+				<section id="workflow" class="lesson-section">
+					<h2><i class="fas fa-project-diagram"></i> Типовые рабочие процессы</h2>
+					<p>Рассмотрим популярные подходы к организации работы с Git.</p>
+
+					<div class="tabs">
+						<div class="tab-buttons">
+							<button class="tab-btn active" data-tab="tab-gitflow">Git Flow</button>
+							<button class="tab-btn" data-tab="tab-github">GitHub Flow</button>
+							<button class="tab-btn" data-tab="tab-trunk">Trunk Based</button>
+						</div>
+
+						<div class="tab-content active" id="tab-gitflow">
+							<h4><i class="fas fa-sitemap"></i> Git Flow</h4>
+							<p>Строгая модель для больших проектов:</p>
+							<ul>
+								<li><strong>main</strong> — стабильные релизы</li>
+								<li><strong>develop</strong> — основная разработка</li>
+								<li><strong>feature/*</strong> — новые функции</li>
+								<li><strong>release/*</strong> — подготовка релиза</li>
+								<li><strong>hotfix/*</strong> — срочные исправления</li>
+							</ul>
+							<pre><code class="bash"># Начало работы над новой функцией
+git checkout develop
+git checkout -b feature/new-auth
+
+# Завершение функции
+git checkout develop
+git merge --no-ff feature/new-auth
+git branch -d feature/new-auth</code></pre>
+						</div>
+
+						<div class="tab-content" id="tab-github">
+							<h4><i class="fab fa-github"></i> GitHub Flow</h4>
+							<p>Упрощенный подход для непрерывного развертывания:</p>
+							<ul>
+								<li>Только ветка <strong>main</strong> как основа</li>
+								<li>Ветки для всех изменений</li>
+								<li>Pull Request для code review</li>
+								<li>Развертывание после мержа</li>
+							</ul>
+							<pre><code class="bash"># Простой рабочий процесс
+git checkout main
+git pull origin main
+git checkout -b fix-bug-123
+
+# После работы
+git push origin fix-bug-123
+# Создаем Pull Request на GitHub
+# После ревью и тестов - merge</code></pre>
+						</div>
+
+						<div class="tab-content" id="tab-trunk">
+							<h4><i class="fas fa-truck"></i> Trunk Based Development</h4>
+							<p>Современный подход для частых релизов:</p>
+							<ul>
+								<li>Все работают в <strong>main/trunk</strong></li>
+								<li>Короткоживущие ветки (1-2 дня)</li>
+								<li>Частые мелкие коммиты</li>
+								<li>Функциональные флаги вместо веток</li>
+							</ul>
+							<pre><code class="bash"># Короткий цикл разработки
+git checkout main
+git pull origin main
+
+# Небольшие изменения, сразу в main
+# или короткая ветка
+git checkout -b small-change
+# Быстрая работа и мерж</code></pre>
+						</div>
+					</div>
+
+					<div class="tip-box">
+						<h4><i class="fas fa-check-circle"></i> Какой подход выбрать?</h4>
+						<ul>
+							<li><strong>Git Flow</strong> — для крупных проектов с релизами</li>
+							<li><strong>GitHub Flow</strong> — для веб-приложений и сервисов</li>
+							<li><strong>Trunk Based</strong> — для стартапов и DevOps</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- ===== РАЗДЕЛ 7: Практическое задание ===== -->
+				<section id="practice" class="lesson-section">
+					<h2><i class="fas fa-tasks"></i> Практическое задание</h2>
+					<p>Создадим свой первый проект на GitHub от начала до конца:</p>
+
+					<div class="exercise">
+						<div class="exercise-header">
+							<h3>Задача: Первый репозиторий на GitHub</h3>
+							<span class="difficulty-badge">Начальный уровень</span>
+						</div>
+
+						<div class="exercise-content">
+							<p>Выполните все шаги для создания и настройки репозитория:</p>
+							<ol>
+								<li>Создайте аккаунт на GitHub (если нет)</li>
+								<li>Создайте новый репозиторий на GitHub</li>
+								<li>Склонируйте его на локальный компьютер</li>
+								<li>Добавьте файлы проекта</li>
+								<li>Создайте ветку для новой функции</li>
+								<li>Сделайте коммит и отправьте изменения</li>
+								<li>Создайте Pull Request и слейте изменения</li>
+							</ol>
+
+							<div class="hint-box">
+								<h4><i class="fas fa-lightbulb"></i> Подсказки:</h4>
+								<ul>
+									<li>Используйте <code>git clone</code> для копирования репозитория</li>
+									<li><code>git checkout -b</code> создаст и переключит на новую ветку</li>
+									<li><code>git push -u origin branch-name</code> отправит ветку на GitHub</li>
+									<li>На GitHub в интерфейсе создавайте Pull Request</li>
+								</ul>
+							</div>
+
+							<div class="code-editor-area">
+								<h4>Пошаговые команды:</h4>
+								<textarea id="exerciseCode" class="code-editor"
+									placeholder="Запишите сюда команды, которые вы выполнили...">
+# Шаг 1: Клонирование репозитория
+git clone https://github.com/ваш-логин/ваш-репозиторий.git
+
+# Шаг 2: Переход в папку проекта
+cd ваш-репозиторий
+
+# Шаг 3: Создание файлов
+echo "# Мой проект" > README.md
+echo "console.log('Hello World')" > app.js
+
+# Шаг 4: Проверка статуса
+git status
+
+# Шаг 5: Добавление файлов
+git add .
+
+# Шаг 6: Первый коммит
+git commit -m "Initial commit"
+
+# Шаг 7: Отправка на GitHub
+git push origin main
+
+# Шаг 8: Создание ветки для новой функции
+git checkout -b feature/add-styles
+
+# Шаг 9: Добавление CSS файла
+echo "body { color: blue; }" > style.css
+git add style.css
+git commit -m "Add basic styles"
+
+# Шаг 10: Отправка ветки
+git push origin feature/add-styles
+
+# Далее идем на GitHub и создаем Pull Request!</textarea>
+								<div class="editor-actions">
+									<button class="btn btn-primary" onclick="runGitExercise()">
+										<i class="fas fa-play"></i> Проверить команды
+									</button>
+									<button class="btn btn-secondary" onclick="clearExercise()">
+										<i class="fas fa-eraser"></i> Очистить
+									</button>
+								</div>
+								<div id="exerciseOutput" class="output-area">
+									<div class="output-placeholder">
+										<i class="fas fa-terminal"></i>
+										Результат выполнения команд появится здесь
+									</div>
+								</div>
+							</div>
+
+							<div class="solution-section">
+								<button class="btn btn-warning show-solution">
+									<i class="fas fa-code"></i> Показать полное решение
+								</button>
+								<div class="solution hidden">
+									<h4><i class="fas fa-check-circle"></i> Полный сценарий работы:</h4>
+									<pre><code class="bash"># === ПОЛНОЕ РЕШЕНИЕ ===
+
+# 1. НАСТРОЙКА GIT (делается один раз)
+git config --global user.name "Ваше Имя"
+git config --global user.email "ваш.email@example.com"
+
+# 2. СОЗДАНИЕ ЛОКАЛЬНОГО РЕПОЗИТОРИЯ
+mkdir my-first-project
+cd my-first-project
+git init
+
+# 3. СОЗДАНИЕ ФАЙЛОВ ПРОЕКТА
+echo "# Мой первый проект на Git" > README.md
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой проект</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Привет, Git!</h1>
+    <script src="app.js"></script>
+</body>
+</html>
+EOF
+
+echo "console.log('Проект запущен!')" > app.js
+echo "body { font-family: Arial; margin: 20px; }" > style.css
+
+# 4. ПЕРВЫЙ КОММИТ
+git add .
+git commit -m "Initial commit: базовая структура проекта"
+
+# 5. ПОДКЛЮЧЕНИЕ К GITHUB
+# Предварительно создайте репозиторий на GitHub
+git remote add origin https://github.com/username/my-first-project.git
+git branch -M main
+git push -u origin main
+
+# 6. РАБОТА НАД НОВОЙ ФУНКЦИЕЙ
+git checkout -b feature/add-header
+cat >> index.html << 'EOF'
+<header>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/about">О нас</a>
+    </nav>
+</header>
+EOF
+
+git add index.html
+git commit -m "Add navigation header"
+git push origin feature/add-header
+
+# 7. СОЗДАНИЕ PULL REQUEST
+# Перейдите на GitHub в вашем репозитории
+# Нажмите "Compare & pull request" для ветки feature/add-header
+# Добавьте описание и создайте PR
+# После ревью нажмите "Merge pull request"
+
+# 8. ОБНОВЛЕНИЕ ЛОКАЛЬНОЙ КОПИИ
+git checkout main
+git pull origin main
+
+# 9. УДАЛЕНИЕ ОТРАБОТАННОЙ ВЕТКИ
+git branch -d feature/add-header
+git push origin --delete feature/add-header  # опционально
+
+# 10. ПРОВЕРКА РЕЗУЛЬТАТА
+git log --oneline --graph --all</code></pre>
+									<div class="solution-tips">
+										<h5><i class="fas fa-tips"></i> Советы по улучшению:</h5>
+										<ul>
+											<li>Используйте <code>.gitignore</code> для исключения ненужных файлов</li>
+											<li>Пишите подробные сообщения коммитов</li>
+											<li>Делайте частые мелкие коммиты вместо одного большого</li>
+											<li>Всегда делайте <code>git pull</code> перед началом работы</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Пройденные темы -->
+					<div class="topics-summary">
+						<h3><i class="fas fa-graduation-cap"></i> Вы изучили:</h3>
+						<div class="topics-list">
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Что такое Git и зачем он нужен</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Установка и настройка Git</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Основные команды: init, add, commit</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Работа с ветками (branching)</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>GitHub и удаленные репозитории</span>
+							</div>
+							<div class="topic-item">
+								<i class="fas fa-check-circle"></i>
+								<span>Популярные рабочие процессы</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навигация между уроками -->
+				<div class="navigation-buttons">
+					<a href="practice.html" class="nav-btn prev-btn">
+						<i class="fas fa-laptop-code"></i> Практика
+					</a>
+					<a href="/index.html" class="nav-btn next-btn">
+						<i class="fas fa-home"></i> На Главную страницу
+					</a>
+				</div>
+
+				<!-- Дополнительные материалы -->
+				<div class="additional-materials">
+					<h3><i class="fas fa-book-open"></i> Дополнительные материалы</h3>
+					<div class="materials-list">
+						<a href="https://git-scm.com/book/ru/v2" target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Официальная книга по Git (на русском)</span>
+						</a>
+						<a href="https://github.com/" target="_blank" class="material-link">
+							<i class="fab fa-github"></i>
+							<span>GitHub - создайте аккаунт</span>
+						</a>
+						<a href="https://learngitbranching.js.org/" target="_blank" class="material-link">
+							<i class="fas fa-gamepad"></i>
+							<span>Интерактивный туториал по Git</span>
+						</a>
+						<a href="https://www.atlassian.com/git/tutorials" target="_blank" class="material-link">
+							<i class="fas fa-external-link-alt"></i>
+							<span>Туториалы от Atlassian</span>
+						</a>
+						<a href="#" class="material-link">
+							<i class="fas fa-download"></i>
+							<span>Скачать шпаргалку по Git</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2026 Мини проект по JavaScript и Git.</p>
+			<p>Сайт создан для ознакомительной цели.</p>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/burger-menu.js"></script>
+	<script src="../js/basic-components.js"></script>
+	<script src="../js/component/objects.js"></script>
+	<script src="../js/component/git-page.js"></script>
+</body>
+
+</html>
