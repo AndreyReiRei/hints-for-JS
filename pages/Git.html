@@ -192,7 +192,7 @@ git --version
 # Если установлен, вы увидите что-то вроде:
 # git version 2.40.1</code></pre>
 							</div>
-							<div class="tip-box">
+							<div class="info-box">
 								<h4><i class="fas fa-download"></i> Скачать Git:</h4>
 								<ul>
 									<li><strong>Windows:</strong> <a href="https://git-scm.com/download/win"
@@ -406,13 +406,13 @@ git commit -m "Разрешен конфликт слияния"</code></pre>
 					<div class="info-box">
 						<h4><i class="fas fa-sitemap"></i> Рабочий процесс с ветками:</h4>
 						<p>Типовая схема работы с ветками в проекте:</p>
-						<ol>
+						<ul>
 							<li><code>main</code> — стабильная версия, готовый продукт</li>
 							<li><code>develop</code> — ветка разработки</li>
 							<li><code>feature/*</code> — ветки для новых функций</li>
 							<li><code>hotfix/*</code> — срочные исправления для main</li>
 							<li><code>release/*</code> — подготовка к выпуску</li>
-						</ol>
+						</ul>
 					</div>
 				</section>
 
@@ -523,7 +523,7 @@ git push origin --delete add-feature</code></pre>
 							<button class="tab-btn" data-tab="tab-trunk">Trunk Based</button>
 						</div>
 
-						<div class="tab-content active" id="tab-gitflow">
+						<div class="tab-content active info-box" id="tab-gitflow">
 							<h4><i class="fas fa-sitemap"></i> Git Flow</h4>
 							<p>Строгая модель для больших проектов:</p>
 							<ul>
@@ -543,7 +543,7 @@ git merge --no-ff feature/new-auth
 git branch -d feature/new-auth</code></pre>
 						</div>
 
-						<div class="tab-content" id="tab-github">
+						<div class="tab-content info-box" id="tab-github">
 							<h4><i class="fab fa-github"></i> GitHub Flow</h4>
 							<p>Упрощенный подход для непрерывного развертывания:</p>
 							<ul>
@@ -563,7 +563,7 @@ git push origin fix-bug-123
 # После ревью и тестов - merge</code></pre>
 						</div>
 
-						<div class="tab-content" id="tab-trunk">
+						<div class="tab-content info-box" id="tab-trunk">
 							<h4><i class="fas fa-truck"></i> Trunk Based Development</h4>
 							<p>Современный подход для частых релизов:</p>
 							<ul>
@@ -583,7 +583,7 @@ git checkout -b small-change
 						</div>
 					</div>
 
-					<div class="tip-box">
+					<div class="info-box">
 						<h4><i class="fas fa-check-circle"></i> Какой подход выбрать?</h4>
 						<ul>
 							<li><strong>Git Flow</strong> — для крупных проектов с релизами</li>
