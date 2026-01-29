@@ -7,6 +7,7 @@ body {
 }
 
 /* 1. ТАБЛИЦА СРАВНЕНИЯ VAR/LET/CONST */
+
 /* Основной контейнер таблицы */
 .comparison-table {
 	background: white;
@@ -105,25 +106,6 @@ body.dark-theme .comparison-table tr:hover td:not(:first-child) {
 	background: #4a5568;
 }
 
-/* Специальные стили для содержимого ячеек */
-.comparison-table td:nth-child(2),
-.comparison-table td:nth-child(3),
-.comparison-table td:nth-child(4) {
-	font-family: 'Segoe UI', 'Roboto', sans-serif;
-	font-size: 14px;
-}
-
-/* Эмодзи и иконки в таблице */
-.comparison-table .icon-true {
-	color: #27ae60;
-}
-
-.comparison-table .icon-false {
-	color: #e74c3c;
-}
-
-/* ===== АДАПТИВНЫЕ СТИЛИ ===== */
-
 /* Планшеты (768px - 1023px) */
 @media (max-width: 1023px) {
 	.comparison-table {
@@ -147,43 +129,64 @@ body.dark-theme .comparison-table tr:hover td:not(:first-child) {
 	}
 }
 
-/* Мобильные устройства (480px - 767px) - вертикальный режим */
+/* Мобильные устройства (480px - 767px) - ВЕРТИКАЛЬНЫЙ РЕЖИМ - ИСПРАВЛЕНО */
 @media (max-width: 767px) and (orientation: portrait) {
 	.comparison-table {
-		padding: 12px;
-		margin: 15px 0;
+		/* УБИРАЕМ старую обертку и создаем новую */
+		padding: 0;
+		margin: 15px -10px;
+		border-radius: 0;
+		border-left: none;
+		border-right: none;
+		width: calc(100% + 20px);
+		background: none;
+		box-shadow: none;
+		border: none;
+	}
+
+	/* Создаем внутренний контейнер для скролла */
+	.comparison-table-inner {
+		background: white;
 		border-radius: 8px;
+		margin: 0 10px;
+		padding: 12px;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 		position: relative;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	}
 
-	/* Делаем таблицу прокручиваемой по горизонтали */
+	body.dark-theme .comparison-table-inner {
+		background: #2d3748;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	}
+
+	/* Важно: применяем стили к таблице внутри контейнера */
 	.comparison-table table {
-		min-width: 600px;
+		min-width: 650px;
 		font-size: 13px;
+		margin: 0;
+		width: auto;
 	}
 
 	.comparison-table th {
-		padding: 12px 8px;
+		padding: 12px 10px;
 		font-size: 13px;
 		white-space: nowrap;
-		position: sticky;
-		top: 0;
-		z-index: 10;
+		/* УБИРАЕМ sticky - это была причина проблемы */
+		position: static;
 	}
 
 	.comparison-table td {
-		padding: 10px 8px;
+		padding: 10px 10px;
 		font-size: 13px;
-		min-width: 120px;
+		min-width: 130px;
 	}
 
 	.comparison-table td:first-child {
-		min-width: 140px;
-		position: sticky;
-		left: 0;
-		z-index: 5;
+		min-width: 150px;
+		/* УБИРАЕМ sticky - это была причина проблемы */
+		position: static;
 		background: #f8f9fa;
 	}
 
@@ -192,105 +195,54 @@ body.dark-theme .comparison-table tr:hover td:not(:first-child) {
 	}
 
 	.comparison-table th:first-child {
-		min-width: 140px;
-		position: sticky;
-		left: 0;
-		z-index: 15;
+		min-width: 150px;
+		/* УБИРАЕМ sticky - это была причина проблемы */
+		position: static;
 		background: #2c3e50;
 	}
 
 	body.dark-theme .comparison-table th:first-child {
 		background: #1a202c;
 	}
+
+	/* Индикатор скролла */
+	.comparison-table-inner::after {
+		content: "← прокрутите →";
+		display: block;
+		text-align: center;
+		color: #666;
+		font-size: 12px;
+		padding: 8px 0;
+		margin-top: 10px;
+		font-style: italic;
+		opacity: 0.8;
+	}
+
+	body.dark-theme .comparison-table-inner::after {
+		color: #a0aec0;
+	}
 }
 
 /* Маленькие мобильные (до 480px) */
 @media (max-width: 480px) and (orientation: portrait) {
 	.comparison-table {
-		padding: 10px 8px;
 		margin: 15px -8px;
-		border-radius: 0;
-		border-left: none;
-		border-right: none;
 		width: calc(100% + 16px);
 	}
 
-	.comparison-table table {
-		min-width: 550px;
-		font-size: 12px;
-	}
-
-	.comparison-table th {
-		padding: 10px 6px;
-		font-size: 12px;
-	}
-
-	.comparison-table td {
-		padding: 8px 6px;
-		font-size: 12px;
-		min-width: 110px;
-	}
-
-	.comparison-table td:first-child {
-		min-width: 130px;
-		font-size: 12px;
-	}
-
-	.comparison-table th:first-child {
-		min-width: 130px;
-		font-size: 12px;
-	}
-}
-
-/* Очень маленькие мобильные (до 320px) */
-@media (max-width: 320px) and (orientation: portrait) {
-	.comparison-table table {
-		min-width: 500px;
-		font-size: 11px;
-	}
-
-	.comparison-table th {
-		padding: 8px 5px;
-		font-size: 11px;
-	}
-
-	.comparison-table td {
-		padding: 7px 5px;
-		font-size: 11px;
-		min-width: 100px;
-	}
-
-	.comparison-table td:first-child {
-		min-width: 120px;
-		font-size: 11px;
-	}
-
-	.comparison-table th:first-child {
-		min-width: 120px;
-		font-size: 11px;
-	}
-}
-
-/* Горизонтальная ориентация на мобильных (до 767px) */
-@media (max-width: 767px) and (orientation: landscape) {
-	.comparison-table {
-		max-height: 60vh;
-		overflow-y: auto;
-		overflow-x: auto;
+	.comparison-table-inner {
+		margin: 0 8px;
 		padding: 10px;
 	}
 
 	.comparison-table table {
-		min-width: 600px;
+		min-width: 580px;
 		font-size: 12px;
 	}
 
 	.comparison-table th {
 		padding: 10px 8px;
 		font-size: 12px;
-		position: sticky;
-		top: 0;
-		z-index: 10;
 	}
 
 	.comparison-table td {
@@ -301,9 +253,89 @@ body.dark-theme .comparison-table tr:hover td:not(:first-child) {
 
 	.comparison-table td:first-child {
 		min-width: 140px;
-		position: sticky;
-		left: 0;
-		z-index: 5;
+		font-size: 12px;
+	}
+
+	.comparison-table th:first-child {
+		min-width: 140px;
+		font-size: 12px;
+	}
+}
+
+/* Очень маленькие мобильные (до 320px) */
+@media (max-width: 320px) and (orientation: portrait) {
+	.comparison-table table {
+		min-width: 520px;
+		font-size: 11px;
+	}
+
+	.comparison-table th {
+		padding: 8px 6px;
+		font-size: 11px;
+	}
+
+	.comparison-table td {
+		padding: 7px 6px;
+		font-size: 11px;
+		min-width: 110px;
+	}
+
+	.comparison-table td:first-child {
+		min-width: 130px;
+		font-size: 11px;
+	}
+
+	.comparison-table th:first-child {
+		min-width: 130px;
+		font-size: 11px;
+	}
+}
+
+/* Горизонтальная ориентация на мобильных */
+@media (max-width: 767px) and (orientation: landscape) {
+	.comparison-table {
+		margin: 15px -10px;
+		width: calc(100% + 20px);
+		background: none;
+		box-shadow: none;
+		border: none;
+	}
+
+	.comparison-table-inner {
+		background: white;
+		border-radius: 8px;
+		margin: 0 10px;
+		padding: 10px;
+		overflow-x: auto;
+		max-height: none;
+	}
+
+	body.dark-theme .comparison-table-inner {
+		background: #2d3748;
+	}
+
+	.comparison-table table {
+		min-width: 600px;
+		font-size: 12px;
+	}
+
+	.comparison-table th {
+		padding: 10px 8px;
+		font-size: 12px;
+		/* УБИРАЕМ sticky */
+		position: static;
+	}
+
+	.comparison-table td {
+		padding: 8px 8px;
+		font-size: 12px;
+		min-width: 120px;
+	}
+
+	.comparison-table td:first-child {
+		min-width: 140px;
+		/* УБИРАЕМ sticky */
+		position: static;
 		background: #f8f9fa;
 	}
 
@@ -312,67 +344,37 @@ body.dark-theme .comparison-table tr:hover td:not(:first-child) {
 	}
 }
 
-/* Альтернативное представление для очень узких экранов */
-@media (max-width: 480px) {
-
-	/* Альтернатива: карточки вместо таблицы (опционально) */
-	.comparison-table.card-view {
-		overflow-x: visible;
-		padding: 15px;
-	}
-
-	.comparison-table.card-view table {
-		display: none;
-	}
-
-	.comparison-table.card-view::before {
-		content: "ℹ️ На узких экранах таблица прокручивается по горизонтали";
-		display: block;
-		text-align: center;
-		color: #666;
-		font-size: 13px;
-		margin-bottom: 10px;
-		padding: 8px;
-		background: #f8f9fa;
-		border-radius: 6px;
-	}
-
-	body.dark-theme .comparison-table.card-view::before {
-		color: #a0aec0;
-		background: #4a5568;
-	}
-}
-
 /* Стили для скроллбара в таблице */
 @media (max-width: 767px) {
-	.comparison-table::-webkit-scrollbar {
+	.comparison-table-inner::-webkit-scrollbar {
 		height: 6px;
 		width: 6px;
 	}
 
-	.comparison-table::-webkit-scrollbar-track {
+	.comparison-table-inner::-webkit-scrollbar-track {
 		background: #f1f1f1;
 		border-radius: 3px;
+		margin: 0 10px;
 	}
 
-	.comparison-table::-webkit-scrollbar-thumb {
+	.comparison-table-inner::-webkit-scrollbar-thumb {
 		background: #3498db;
 		border-radius: 3px;
 	}
 
-	.comparison-table::-webkit-scrollbar-thumb:hover {
+	.comparison-table-inner::-webkit-scrollbar-thumb:hover {
 		background: #2980b9;
 	}
 
-	body.dark-theme .comparison-table::-webkit-scrollbar-track {
+	body.dark-theme .comparison-table-inner::-webkit-scrollbar-track {
 		background: #4a5568;
 	}
 
-	body.dark-theme .comparison-table::-webkit-scrollbar-thumb {
+	body.dark-theme .comparison-table-inner::-webkit-scrollbar-thumb {
 		background: #2980b9;
 	}
 
-	body.dark-theme .comparison-table::-webkit-scrollbar-thumb:hover {
+	body.dark-theme .comparison-table-inner::-webkit-scrollbar-thumb:hover {
 		background: #3498db;
 	}
 }
@@ -380,89 +382,20 @@ body.dark-theme .comparison-table tr:hover td:not(:first-child) {
 /* Поддержка iOS */
 @supports (-webkit-touch-callout: none) {
 	.comparison-table {
-		-webkit-overflow-scrolling: touch;
 		padding-left: max(8px, env(safe-area-inset-left));
 		padding-right: max(8px, env(safe-area-inset-right));
 	}
 
 	@media (max-width: 767px) {
 		.comparison-table {
-			padding-bottom: max(15px, env(safe-area-inset-bottom));
+			padding-left: 0;
+			padding-right: 0;
 		}
-	}
-}
 
-/* Поддержка touch-устройств */
-@media (hover: none) and (pointer: coarse) {
-	.comparison-table {
-		scrollbar-width: thin;
-		scrollbar-color: #3498db #f1f1f1;
-	}
-
-	body.dark-theme .comparison-table {
-		scrollbar-color: #2980b9 #4a5568;
-	}
-
-	/* Увеличиваем минимальную высоту строк для касаний */
-	.comparison-table td {
-		min-height: 44px;
-	}
-}
-
-/* Адаптация для печати */
-@media print {
-	.comparison-table {
-		box-shadow: none;
-		border: 1px solid #ccc;
-		break-inside: avoid;
-		overflow: visible !important;
-	}
-
-	.comparison-table table {
-		min-width: 100% !important;
-		font-size: 12pt !important;
-	}
-
-	.comparison-table th {
-		background: #ddd !important;
-		color: black !important;
-		-webkit-print-color-adjust: exact;
-		print-color-adjust: exact;
-	}
-
-	.comparison-table td:first-child {
-		background: #eee !important;
-		color: black !important;
-		-webkit-print-color-adjust: exact;
-		print-color-adjust: exact;
-	}
-}
-
-/* Улучшенная доступность */
-@media (prefers-reduced-motion: reduce) {
-	.comparison-table {
-		scroll-behavior: auto;
-	}
-}
-
-/* Поддержка темной темы системного уровня */
-@media (prefers-color-scheme: dark) {
-	body:not(.dark-theme) .comparison-table {
-		background: #2d3748;
-		border-color: #4a5568;
-	}
-
-	body:not(.dark-theme) .comparison-table th {
-		background: #2980b9;
-	}
-
-	body:not(.dark-theme) .comparison-table th:first-child {
-		background: #1a202c;
-	}
-
-	body:not(.dark-theme) .comparison-table td:first-child {
-		background: #2d3748;
-		color: #e2e8f0;
+		.comparison-table-inner {
+			-webkit-overflow-scrolling: touch;
+			padding-bottom: max(10px, env(safe-area-inset-bottom));
+		}
 	}
 }
 

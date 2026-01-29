@@ -218,48 +218,50 @@ for (const num of numbers) {
 						<div class="tab-content" id="tab-comparison">
 							<h4><i class="fas fa-balance-scale"></i> Сравнение var, let, const</h4>
 							<div class="comparison-table">
-								<table>
-									<thead>
-										<tr>
-											<th>Критерий</th>
-											<th>var</th>
-											<th>let</th>
-											<th>const</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Область видимости</td>
-											<td>Функция</td>
-											<td>Блок</td>
-											<td>Блок</td>
-										</tr>
-										<tr>
-											<td>Поднятие (hoisting)</td>
-											<td>✅ С инициализацией</td>
-											<td>✅ Без инициализации</td>
-											<td>✅ Без инициализации</td>
-										</tr>
-										<tr>
-											<td>Повторное объявление</td>
-											<td>✅ Разрешено</td>
-											<td>❌ Запрещено</td>
-											<td>❌ Запрещено</td>
-										</tr>
-										<tr>
-											<td>Изменение значения</td>
-											<td>✅ Разрешено</td>
-											<td>✅ Разрешено</td>
-											<td>❌ Запрещено</td>
-										</tr>
-										<tr>
-											<td>Инициализация при объявлении</td>
-											<td>❌ Не требуется</td>
-											<td>❌ Не требуется</td>
-											<td>✅ Обязательна</td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="comparison-table-inner">
+									<table>
+										<thead>
+											<tr>
+												<th>Критерий</th>
+												<th>var</th>
+												<th>let</th>
+												<th>const</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Область видимости</td>
+												<td>Функция</td>
+												<td>Блок</td>
+												<td>Блок</td>
+											</tr>
+											<tr>
+												<td>Поднятие (hoisting)</td>
+												<td>✅ С инициализацией</td>
+												<td>✅ Без инициализации</td>
+												<td>✅ Без инициализации</td>
+											</tr>
+											<tr>
+												<td>Повторное объявление</td>
+												<td>✅ Разрешено</td>
+												<td>❌ Запрещено</td>
+												<td>❌ Запрещено</td>
+											</tr>
+											<tr>
+												<td>Изменение значения</td>
+												<td>✅ Разрешено</td>
+												<td>✅ Разрешено</td>
+												<td>❌ Запрещено</td>
+											</tr>
+											<tr>
+												<td>Инициализация при объявлении</td>
+												<td>❌ Не требуется</td>
+												<td>❌ Не требуется</td>
+												<td>✅ Обязательна</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 							<div class="tip-box">
 								<h4><i class="fas fa-lightbulb"></i> Правила использования:</h4>
