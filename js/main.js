@@ -291,7 +291,6 @@ const JSTutorApp = {
 		this.initCodeExamples();    // Блоки с кодом (копирование)
 		this.initTabs();            // Табы (вкладки)
 		this.initAccordions();      // Аккордеоны (раскрывающиеся блоки)
-		this.initGitPageSupport(); // Гит
 	},
 
 	// Инициализация кнопок показа/скрытия решений
@@ -412,20 +411,6 @@ const JSTutorApp = {
 				this.closeAllModals();
 			}
 		} );
-	},
-
-	initGitPageSupport() {
-		if ( window.location.pathname.includes( 'Git.html' ) && typeof hljs !== 'undefined' ) {
-			// Убедимся, что bash работает на Git странице
-			hljs.registerAliases( 'bash', 'shell' );
-
-			// Переподсветим все блоки кода
-			setTimeout( () => {
-				document.querySelectorAll( 'pre code.language-bash, pre code.language-shell' ).forEach( block => {
-					hljs.highlightElement( block );
-				} );
-			}, 100 );
-		}
 	},
 
 	// Показ уведомления о нажатии горячей клавиши

@@ -1,14 +1,10 @@
 /* es6.css - полные стили для урока ES6+ */
 
-
 body {
 	overflow-x: hidden;
 	width: 100%;
 	max-width: 100vw;
 }
-
-
-/* ===== КОМПОНЕНТЫ ДЛЯ УРОКА ES6+ ===== */
 
 /* 1. ТАБЛИЦА СРАВНЕНИЯ VAR/LET/CONST */
 .comparison-table-wrapper {
@@ -323,104 +319,16 @@ body.dark-theme .code-example pre {
 	color: #a0aec0;
 }
 
-/* 5. ДЕМОНСТРАЦИОННЫЕ ПРИМЕРЫ В ТАБАХ */
-.tabs {
-	background: white;
-	border-radius: 12px;
-	overflow: hidden;
-	margin: 25px 0;
-	border: 1px solid #e0e0e0;
-	width: 100%;
-}
-
-body.dark-theme .tabs {
-	background: #2d3748;
-	border-color: #4a5568;
-}
-
-.tab-buttons {
-	background: #f8f9fa;
-	border-bottom: 1px solid #e0e0e0;
-}
-
-
-body.dark-theme .tab-buttons {
-	background: #1a202c;
-	border-bottom-color: #4a5568;
-}
-
-.tab-btn {
-	padding: 14px 20px;
-	background: none;
-	border: none;
-	font-size: 15px;
-	font-weight: 600;
-	color: #7f8c8d;
-	cursor: pointer;
-	white-space: nowrap;
-	border-right: 1px solid #e0e0e0;
-	transition: all 0.2s ease;
-	flex: 1;
-	min-width: 150px;
-}
-
-@media (min-width: 768px) {
-	.tab-btn {
-		flex: none;
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(5px);
 	}
-}
 
-.tab-btn:last-child {
-	border-right: none;
-}
-
-body.dark-theme .tab-btn {
-	color: #a0aec0;
-	border-right-color: #4a5568;
-}
-
-.tab-btn:hover {
-	background: #e8f4fc;
-	color: #3498db;
-}
-
-body.dark-theme .tab-btn:hover {
-	background: #4a5568;
-	color: #3498db;
-}
-
-.tab-btn.active {
-	background: #3498db;
-	color: white;
-	border-bottom: 3px solid #2980b9;
-}
-
-body.dark-theme .tab-btn.active {
-	background: #2980b9;
-	border-bottom-color: #1c6ea4;
-}
-
-.tab-content {
-	padding: 25px;
-	display: none;
-}
-
-.tab-content.active {
-	display: block;
-}
-
-.tab-content h4 {
-	margin-top: 0;
-	margin-bottom: 20px;
-	color: #2c3e50;
-	font-size: 20px;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-body.dark-theme .tab-content h4 {
-	color: #e2e8f0;
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /* 6. БЛОКИ С ПРИМЕРАМИ (МЕТОДЫ ДЕМО) */
@@ -676,16 +584,6 @@ body.dark-theme .console-output {
 		margin: 10px 0;
 	}
 
-	.tab-content {
-		padding: 15px;
-	}
-
-	.tab-btn {
-		padding: 12px 15px;
-		font-size: 14px;
-		min-width: 130px;
-	}
-
 	.warning-box,
 	.code-example {
 		padding: 15px;
@@ -736,8 +634,7 @@ body.dark-theme .console-output {
 	}
 
 	.method-header h4,
-	.example-header h4,
-	.tab-content h4 {
+	.example-header h4 {
 		font-size: 16px;
 	}
 
@@ -756,12 +653,6 @@ body.dark-theme .console-output {
 	.warning-box li,
 	.code-example pre {
 		font-size: 13px;
-	}
-
-	.tab-btn {
-		padding: 10px 12px;
-		font-size: 13px;
-		min-width: 110px;
 	}
 
 	.run-code {
@@ -820,16 +711,6 @@ body.dark-theme .console-output {
 		height: 28px;
 		font-size: 13px;
 	}
-
-	.tab-btn {
-		padding: 8px 10px;
-		font-size: 12px;
-		min-width: 90px;
-	}
-
-	.tab-content {
-		padding: 12px;
-	}
 }
 
 /* Экстремально маленькие экраны (до 280px) */
@@ -863,281 +744,216 @@ body.dark-theme .console-output {
 		font-size: 14px;
 	}
 
-	.tab-btn {
-		padding: 6px 8px;
-		font-size: 11px;
-		min-width: 70px;
-	}
-}
 
-/* Планшеты в портретной ориентации (600px - 767px) */
-@media (min-width: 600px) and (max-width: 767px) {
-	.methods-grid {
-		grid-template-columns: repeat(2, 1fr);
-		gap: 15px;
-	}
+	/* Планшеты в портретной ориентации (600px - 767px) */
+	@media (min-width: 600px) and (max-width: 767px) {
+		.methods-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 15px;
+		}
 
-	.methods-demo {
-		grid-template-columns: repeat(2, 1fr);
-		gap: 15px;
+		.methods-demo {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 15px;
+		}
 	}
 
-	.tab-buttons {
-		flex-wrap: wrap;
+	/* Горизонтальная ориентация на мобильных */
+	@media (max-width: 767px) and (orientation: landscape) {
+		.comparison-table-wrapper {
+			max-height: 50vh;
+			overflow-y: auto;
+		}
+
+		.methods-grid,
+		.methods-demo {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.method-card pre,
+		.example-card pre {
+			max-height: 150px;
+		}
+
+		.code-executor .code-editor {
+			max-height: 200px;
+			overflow-y: auto;
+		}
 	}
 
-	.tab-btn {
-		flex: 1 0 calc(33.333% - 2px);
-		margin-bottom: 2px;
-	}
-}
+	/* Высокие экраны */
+	@media (max-height: 600px) {
+		.comparison-table-wrapper {
+			max-height: 40vh;
+		}
 
-/* Горизонтальная ориентация на мобильных */
-@media (max-width: 767px) and (orientation: landscape) {
-	.comparison-table-wrapper {
-		max-height: 50vh;
-		overflow-y: auto;
-	}
+		.method-card pre,
+		.example-card pre {
+			max-height: 150px;
+		}
 
-	.methods-grid,
-	.methods-demo {
-		grid-template-columns: repeat(2, 1fr);
-	}
+		.code-executor .code-editor {
+			max-height: 150px;
+		}
 
-	.method-card pre,
-	.example-card pre {
-		max-height: 150px;
+		.console-output {
+			max-height: 150px;
+		}
 	}
 
-	.code-executor .code-editor {
-		max-height: 200px;
-		overflow-y: auto;
-	}
-}
+	/* Поддержка touch-устройств */
+	@media (hover: none) and (pointer: coarse) {
 
-/* Высокие экраны */
-@media (max-height: 600px) {
-	.comparison-table-wrapper {
-		max-height: 40vh;
-	}
+		.method-card:hover,
+		.example-card:hover {
+			transform: none;
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+		}
 
-	.method-card pre,
-	.example-card pre {
-		max-height: 150px;
-	}
+		body.dark-theme .method-card:hover,
+		body.dark-theme .example-card:hover {
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+		}
 
-	.code-executor .code-editor {
-		max-height: 150px;
-	}
+		.comparison-table tr:hover td:not(:first-child) {
+			background: inherit;
+		}
 
-	.console-output {
-		max-height: 150px;
-	}
-}
+		body.dark-theme .comparison-table tr:hover td:not(:first-child) {
+			background: inherit;
+		}
 
-/* Поддержка touch-устройств */
-@media (hover: none) and (pointer: coarse) {
+		.comparison-table tr:active td:not(:first-child) {
+			background: #f0f7ff;
+		}
 
-	.method-card:hover,
-	.example-card:hover {
-		transform: none;
-		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-	}
+		body.dark-theme .comparison-table tr:active td:not(:first-child) {
+			background: #4a5568;
+		}
 
-	body.dark-theme .method-card:hover,
-	body.dark-theme .example-card:hover {
-		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-	}
+		/* Увеличиваем кликабельные области */
+		.btn,
+		.run-code {
+			min-height: 44px;
+			padding: 12px 20px;
+		}
 
-	.tab-btn:hover {
-		background: none;
-		color: inherit;
-	}
-
-	body.dark-theme .tab-btn:hover {
-		background: none;
-		color: inherit;
+		input,
+		select,
+		button {
+			min-height: 44px;
+		}
 	}
 
-	.tab-btn:active {
-		background: #3498db;
-		color: white;
+	/* Поддержка iOS */
+	@supports (-webkit-touch-callout: none) {
+		.container {
+			padding-left: max(10px, env(safe-area-inset-left));
+			padding-right: max(10px, env(safe-area-inset-right));
+		}
+
+		/* Предотвращаем зум при фокусе */
+		input,
+		select,
+		textarea {
+			font-size: 16px;
+		}
+
+		/* Улучшаем скролл */
+		.comparison-table-wrapper,
+		.code-editor,
+		.console-output {
+			-webkit-overflow-scrolling: touch;
+		}
 	}
 
-	body.dark-theme .tab-btn:active {
-		background: #2980b9;
-		color: white;
+	/* Адаптация для печати */
+	@media print {
+
+		.comparison-table-wrapper,
+		.code-executor {
+			box-shadow: none;
+			border: 1px solid #ccc;
+			break-inside: avoid;
+		}
+
+		.comparison-table,
+		.methods-grid,
+		.methods-demo {
+			min-width: 100%;
+		}
+
+		.comparison-table th {
+			background: #ddd !important;
+			color: black !important;
+		}
+
+		.comparison-table td:first-child {
+			background: #eee !important;
+			color: black !important;
+		}
+
+		.method-card,
+		.example-card {
+			break-inside: avoid;
+			box-shadow: none;
+			border: 1px solid #ccc;
+		}
+
+		.btn,
+		.run-code {
+			display: none;
+		}
 	}
 
-	.comparison-table tr:hover td:not(:first-child) {
-		background: inherit;
+	/* Улучшенная доступность */
+	@media (prefers-reduced-motion: reduce) {
+
+		.method-card,
+		.example-card,
+		.btn {
+			transition: none;
+		}
+
+		.method-card:hover,
+		.example-card:hover {
+			transform: none;
+		}
 	}
 
-	body.dark-theme .comparison-table tr:hover td:not(:first-child) {
-		background: inherit;
+	/* Исправления для Firefox */
+	@-moz-document url-prefix() {
+
+		.comparison-table td:first-child,
+		.comparison-table th:first-child {
+			position: -moz-sticky;
+		}
 	}
 
-	.comparison-table tr:active td:not(:first-child) {
-		background: #f0f7ff;
-	}
+	/* Поддержка темной темы системного уровня */
+	@media (prefers-color-scheme: dark) {
 
-	body.dark-theme .comparison-table tr:active td:not(:first-child) {
-		background: #4a5568;
-	}
+		body:not(.dark-theme) .comparison-table-wrapper,
+		body:not(.dark-theme) .code-executor,
+		body:not(.dark-theme) .method-card,
+		body:not(.dark-theme) .example-card {
+			background: #2d3748;
+			border-color: #4a5568;
+		}
 
-	/* Увеличиваем кликабельные области */
-	.btn,
-	.tab-btn,
-	.run-code {
-		min-height: 44px;
-		padding: 12px 20px;
-	}
+		body:not(.dark-theme) .comparison-table th {
+			background: #2980b9;
+		}
 
-	input,
-	select,
-	button {
-		min-height: 44px;
-	}
-}
+		body:not(.dark-theme) .comparison-table td:first-child {
+			background: #2d3748;
+			color: #e2e8f0;
+		}
 
-/* Поддержка iOS */
-@supports (-webkit-touch-callout: none) {
-	.container {
-		padding-left: max(10px, env(safe-area-inset-left));
-		padding-right: max(10px, env(safe-area-inset-right));
-	}
-
-	/* Предотвращаем зум при фокусе */
-	input,
-	select,
-	textarea {
-		font-size: 16px;
-	}
-
-	/* Улучшаем скролл */
-	.comparison-table-wrapper,
-	.tab-buttons,
-	.code-editor,
-	.console-output {
-		-webkit-overflow-scrolling: touch;
-	}
-
-	/* Улучшаем внешний вид кнопок */
-	.btn,
-	.tab-btn,
-	.run-code {
-		-webkit-tap-highlight-color: rgba(52, 152, 219, 0.3);
-	}
-}
-
-/* Адаптация для печати */
-@media print {
-
-	.comparison-table-wrapper,
-	.tabs,
-	.code-executor {
-		box-shadow: none;
-		border: 1px solid #ccc;
-		break-inside: avoid;
-	}
-
-	.comparison-table,
-	.methods-grid,
-	.methods-demo {
-		min-width: 100%;
-	}
-
-	.comparison-table th {
-		background: #ddd !important;
-		color: black !important;
-	}
-
-	.comparison-table td:first-child {
-		background: #eee !important;
-		color: black !important;
-	}
-
-	.method-card,
-	.example-card {
-		break-inside: avoid;
-		box-shadow: none;
-		border: 1px solid #ccc;
-	}
-
-	.tab-btn {
-		border: 1px solid #ccc;
-		background: #eee !important;
-		color: black !important;
-	}
-
-	.tab-content {
-		display: block !important;
-	}
-
-	.btn,
-	.run-code {
-		display: none;
-	}
-}
-
-/* Улучшенная доступность */
-@media (prefers-reduced-motion: reduce) {
-
-	.method-card,
-	.example-card,
-	.tab-btn,
-	.btn {
-		transition: none;
-	}
-
-	.method-card:hover,
-	.example-card:hover {
-		transform: none;
-	}
-}
-
-/* Исправления для Firefox */
-@-moz-document url-prefix() {
-
-	.comparison-table td:first-child,
-	.comparison-table th:first-child {
-		position: -moz-sticky;
-	}
-
-	.tab-buttons {
-		scrollbar-width: thin;
-	}
-}
-
-/* Поддержка темной темы системного уровня */
-@media (prefers-color-scheme: dark) {
-
-	body:not(.dark-theme) .comparison-table-wrapper,
-	body:not(.dark-theme) .tabs,
-	body:not(.dark-theme) .code-executor,
-	body:not(.dark-theme) .method-card,
-	body:not(.dark-theme) .example-card {
-		background: #2d3748;
-		border-color: #4a5568;
-	}
-
-	body:not(.dark-theme) .comparison-table th {
-		background: #2980b9;
-	}
-
-	body:not(.dark-theme) .comparison-table td:first-child {
-		background: #2d3748;
-		color: #e2e8f0;
-	}
-
-	body:not(.dark-theme) .tab-buttons {
-		background: #1a202c;
-		border-color: #4a5568;
-	}
-
-	body:not(.dark-theme) .code-editor,
-	body:not(.dark-theme) .output-container {
-		background: #1a202c;
-		border-color: #4a5568;
+		body:not(.dark-theme) .code-editor,
+		body:not(.dark-theme) .output-container {
+			background: #1a202c;
+			border-color: #4a5568;
+		}
 	}
 }

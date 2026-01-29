@@ -837,6 +837,84 @@ body.dark-theme .data-card:hover {
 	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
+/* Таблица операторов */
+.operators-table {
+	overflow-x: auto;
+	margin: 20px 0;
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+}
+
+body.dark-theme .operators-table {
+	background: #2d3748;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.operators-table table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 600px;
+	table-layout: fixed;
+}
+
+.operators-table th {
+	background: #3498db;
+	color: white;
+	padding: 14px 10px;
+	text-align: left;
+	font-weight: 600;
+	font-size: 14px;
+	white-space: nowrap;
+	position: sticky;
+	left: 0;
+}
+
+body.dark-theme .operators-table th {
+	background: #2980b9;
+}
+
+.operators-table td {
+	padding: 12px 10px;
+	border-bottom: 1px solid #e0e0e0;
+	color: #34495e;
+	font-size: 14px;
+	line-height: 1.5;
+	word-break: break-word;
+}
+
+body.dark-theme .operators-table td {
+	color: #e2e8f0;
+	border-bottom-color: #4a5568;
+}
+
+.operators-table tr:hover {
+	background: #f8f9fa;
+}
+
+body.dark-theme .operators-table tr:hover {
+	background: #4a5568;
+}
+
+.operators-table code {
+	background: #e3f2fd;
+	color: #1976d2;
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-family: 'Consolas', monospace;
+	font-size: 13px;
+	display: inline-block;
+	word-break: break-all;
+}
+
+body.dark-theme .operators-table code {
+	background: #4a5568;
+	color: #3498db;
+}
+
+
 /* Аватар пользователя */
 .user-avatar {
 	width: 50px;
@@ -2072,7 +2150,13 @@ body.dark-theme .editor-actions {
 		padding: 12px;
 		font-size: 13px;
 	}
+
+	.operators-table {
+		margin: 25px 0;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+	}
 }
+
 
 /* Планшеты в портретной ориентации (600px - 767px) */
 @media (min-width: 600px) and (max-width: 767px) {
@@ -2161,6 +2245,11 @@ body.dark-theme .editor-actions {
 	.lesson-section {
 		margin-bottom: 35px;
 		padding-bottom: 25px;
+	}
+
+	.operators-table {
+		margin: 25px 0;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 	}
 
 	.code-example {
@@ -2804,6 +2893,137 @@ body.dark-theme .editor-actions {
 		padding: 9px 12px;
 		font-size: 11px;
 	}
+}
+
+/* operators-table на мобильных */
+
+@media (max-width: 767px) {
+	.operators-table {
+		margin: 15px -10px;
+		border-radius: 0;
+		border-left: none;
+		border-right: none;
+	}
+
+	.operators-table table {
+		min-width: 500px;
+		font-size: 13px;
+	}
+
+	.operators-table th,
+	.operators-table td {
+		padding: 10px 8px;
+		font-size: 13px;
+	}
+
+	.operators-table th {
+		font-size: 13px;
+		padding: 12px 8px;
+	}
+
+	.operators-table code {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 480px) {
+	.operators-table table {
+		min-width: 400px;
+	}
+
+	.operators-table th,
+	.operators-table td {
+		padding: 8px 6px;
+		font-size: 12px;
+	}
+
+	.operators-table th {
+		font-size: 12px;
+	}
+
+	.operators-table code {
+		font-size: 11px;
+	}
+}
+
+@media (max-width: 767px) {
+	.operators-table {
+		margin: 15px -10px;
+		border-radius: 0;
+		border-left: none;
+		border-right: none;
+	}
+
+	.operators-table table {
+		min-width: 500px;
+		font-size: 13px;
+	}
+
+	.operators-table th,
+	.operators-table td {
+		padding: 10px 8px;
+		font-size: 13px;
+	}
+
+	.operators-table th {
+		font-size: 13px;
+		padding: 12px 8px;
+	}
+
+	.operators-table code {
+		font-size: 12px;
+	}
+
+	.operators-table {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 320px) {
+	.operators-table table {
+		min-width: 300px;
+	}
+
+	.operators-table th,
+	.operators-table td {
+		padding: 6px 4px;
+		font-size: 11px;
+	}
+
+	.operators-table th {
+		font-size: 11px;
+	}
+
+	.operators-table code {
+		font-size: 10px;
+		padding: 1px 3px;
+	}
+
+	.operators-table table {
+		min-width: 260px;
+	}
+
+}
+
+@media (max-width: 480px) {
+	.operators-table table {
+		min-width: 400px;
+	}
+
+	.operators-table th,
+	.operators-table td {
+		padding: 8px 6px;
+		font-size: 12px;
+	}
+
+	.operators-table th {
+		font-size: 12px;
+	}
+
+	.operators-table code {
+		font-size: 11px;
+	}
+
 }
 
 /* Адаптация для landscape-режима на мобильных */
